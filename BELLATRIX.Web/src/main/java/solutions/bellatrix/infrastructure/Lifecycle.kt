@@ -10,8 +10,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.infrastructure
 
-package solutions.bellatrix.infrastructure;/*
+/*
  * Copyright 2021 Automate The Planet Ltd.
  * Author: Anton Angelov
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,11 +23,6 @@ package solutions.bellatrix.infrastructure;/*
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
-
-public enum Lifecycle {
-    NOT_SET,
-    REUSE_IF_STARTED,
-    RESTART_EVERY_TIME,
-    RESTART_ON_FAIL
+ */   enum class Lifecycle {
+    NOT_SET, REUSE_IF_STARTED, RESTART_EVERY_TIME, RESTART_ON_FAIL
 }

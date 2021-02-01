@@ -10,17 +10,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.infrastructure
 
-package solutions.bellatrix.infrastructure;
+import solutions.bellatrix.plugins.BaseTest
+import solutions.bellatrix.services.App
+import org.testng.annotations.BeforeSuite
+import solutions.bellatrix.components.listeners.BddLogging
 
-public enum Browser {
-    CHROME,
-    CHROME_HEADLESS,
-    FIREFOX,
-    FIREFOX_HEADLESS,
-    EDGE,
-    EDGE_HEADLESS,
-    OPERA,
-    SAFARI,
-    INTERNET_EXPLORER
+open class WebTest : BaseTest() {
+    fun app(): App {
+        return App()
+    }
+
+    @BeforeSuite
+    fun beforeSuite() {
+        addPlugin(BrowserLifecyclePlugin())
+        BddLogging.turnOn()
+    }
 }

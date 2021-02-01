@@ -10,16 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.infrastructure
 
-package solutions.bellatrix.infrastructure;import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Target( { ElementType.TYPE, ElementType.METHOD } )
-@Retention(RetentionPolicy.RUNTIME)
-public @interface ExecutionBrowser {
-    Browser browser() default Browser.CHROME;
-    Lifecycle lifecycle() default Lifecycle.RESTART_EVERY_TIME;
-    ExecutionType executionType() default ExecutionType.REGULAR;
+enum class Browser {
+    CHROME, CHROME_HEADLESS, FIREFOX, FIREFOX_HEADLESS, EDGE, EDGE_HEADLESS, OPERA, SAFARI, INTERNET_EXPLORER
 }

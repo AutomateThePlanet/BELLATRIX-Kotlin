@@ -16,10 +16,7 @@ import org.openqa.selenium.SearchContext
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.WebElement
-import solutions.bellatrix.configuration.ConfigurationService
-import solutions.bellatrix.configuration.TimeoutSettings
 import solutions.bellatrix.infrastructure.DriverService
-import java.util.function.Function
 
 abstract class WaitStrategy(protected var timeoutInterval: Int, protected var sleepInterval: Int) {
     constructor() : this(0, 0)

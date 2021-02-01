@@ -10,11 +10,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.infrastructure
 
-package solutions.bellatrix.waitstrategies;
+import java.util.HashMap
 
-public class Wait {
-    public static WaitStrategyFactory to() {
-        return new WaitStrategyFactory();
-    }
+data class BrowserConfiguration(
+        val browser: Browser,
+        val lifecycle: Lifecycle,
+        val executionType: ExecutionType,
+        val height: Int = 0,
+        val width: Int = 0,
+        val shouldCaptureHttpTraffic: Boolean = false) {
+    var driverOptions: HashMap<String, String> = HashMap()
 }
