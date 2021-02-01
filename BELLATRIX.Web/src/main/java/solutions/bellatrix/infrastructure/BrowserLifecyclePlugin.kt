@@ -53,17 +53,16 @@ class BrowserLifecyclePlugin : Plugin() {
 
     override fun preBeforeTest(testResult: ITestResult, memberInfo: Method) {
         currentBrowserConfiguration.set(getBrowserConfiguration(memberInfo))
-        if (!isBrowserStartedDuringPreBeforeClass.get()) {
-            if (shouldRestartBrowser()) {
-                restartBrowser()
-            }
+        if (!isBrowserStartedDuringPreBeforeClass.get() && shouldRestartBrowser()) {
+            restartBrowser()
         }
+
         isBrowserStartedDuringPreBeforeClass.set(false)
     }
 
     override fun postAfterTest(testResult: ITestResult, memberInfo: Method) {
-        if (currentBrowserConfiguration.get()!!.lifecycle ===
-                Lifecycle.RESTART_ON_FAIL && testResult.status == ITestResult.FAILURE) {
+        if (currentBrowserConfiguration.get()!!.lifecycle === Lifecycle.RESTART_ON_FAIL
+                && testResult.status == ITestResult.FAILURE) {
             shutdownBrowser()
             isBrowserStartedDuringPreBeforeClass.set(false)
         }
@@ -95,28 +94,22 @@ class BrowserLifecyclePlugin : Plugin() {
             true
         } else if (previousConfiguration != currentConfiguration) {
             true
-        } else if (currentConfiguration.lifecycle === Lifecycle.RESTART_EVERY_TIME) {
-            true
-        } else {
-            false
-        }
+        } else currentConfiguration.lifecycle === Lifecycle.RESTART_EVERY_TIME
     }
 
     private fun getBrowserConfiguration(memberInfo: Method): BrowserConfiguration? {
-        var result: BrowserConfiguration? = null
         val classBrowserType = getExecutionBrowserClassLevel(memberInfo.declaringClass)
         val methodBrowserType = getExecutionBrowserMethodLevel(memberInfo)
-        if (methodBrowserType != null) {
-            result = methodBrowserType
+        val result: BrowserConfiguration? = if (methodBrowserType != null) {
+            methodBrowserType
         } else {
-            result = classBrowserType
+            classBrowserType
         }
         return result
     }
 
     private fun getExecutionBrowserMethodLevel(memberInfo: Method): BrowserConfiguration? {
         val executionBrowserAnnotation = memberInfo.getDeclaredAnnotation(ExecutionBrowser::class.java) as ExecutionBrowser
-                ?: return null
         return BrowserConfiguration(executionBrowserAnnotation.browser, executionBrowserAnnotation.lifecycle, executionBrowserAnnotation.executionType)
     }
 

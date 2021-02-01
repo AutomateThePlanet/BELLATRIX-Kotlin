@@ -12,5 +12,5 @@
  */
 package solutions.bellatrix.configuration
 
-data class BrowserSettings(val pageLoadTimeout: Int = 0, val scriptTimeout: Int = 0) {
+data class BrowserSettings(val pageLoadTimeout: Long = 0, val scriptTimeout: Long = 0) {
 }
