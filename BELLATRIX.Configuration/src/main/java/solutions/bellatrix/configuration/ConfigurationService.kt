@@ -24,7 +24,7 @@ import java.nio.charset.StandardCharsets
 object ConfigurationService {
     inline fun <reified TConfigSection> get(): TConfigSection {
         var environment: String? = null
-        var mappedObject: TConfigSection? = null
+        var mappedObject: TConfigSection = TConfigSection::class.java.getDeclaredConstructor().newInstance() as TConfigSection
         if (environment == null) {
             val environmentOverride = System.getProperty("environment")
             if (environmentOverride == null) {
@@ -33,7 +33,7 @@ object ConfigurationService {
                 try {
                     p.load(input)
                 } catch (e: IOException) {
-                    return TConfigSection::class.java.newInstance();
+                    return mappedObject
                 }
                 environment = p.getProperty("environment")
             } else {
