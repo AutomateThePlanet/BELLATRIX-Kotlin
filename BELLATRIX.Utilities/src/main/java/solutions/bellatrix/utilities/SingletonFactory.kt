@@ -13,7 +13,6 @@
 package solutions.bellatrix.utilities
 
 object SingletonFactory {
-    @Throws
     inline fun <reified T> getInstance(vararg initArgs: Any): T {
         val tClass:Class<T> = T::class.java
         return tClass.constructors[0].newInstance(*initArgs) as T

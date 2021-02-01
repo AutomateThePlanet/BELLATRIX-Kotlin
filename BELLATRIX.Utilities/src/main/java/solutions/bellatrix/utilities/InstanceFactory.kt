@@ -12,10 +12,6 @@
  */
 package solutions.bellatrix.utilities
 
-import java.lang.Exception
-import java.lang.InstantiationException
-import java.lang.IllegalAccessException
-import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.ParameterizedType
 
 object InstanceFactory {
@@ -23,12 +19,10 @@ object InstanceFactory {
         return T::class.java.constructors[0].newInstance() as T
     }
 
-    @JvmStatic
     inline fun <reified T> create(vararg args: Any?): T {
         return T::class.java.constructors[0].newInstance(args) as T
     }
 
-    @JvmStatic
     inline fun <reified T> createByTypeParameter(index: Int): T? {
         val elementsClass = (T::class.java.genericSuperclass as ParameterizedType).actualTypeArguments[index] as Class<*>
         return elementsClass.getDeclaredConstructor().newInstance() as T
