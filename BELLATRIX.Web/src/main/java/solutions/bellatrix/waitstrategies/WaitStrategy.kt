@@ -24,7 +24,7 @@ abstract class WaitStrategy(protected var timeoutInterval: Int, protected var sl
     abstract fun waitUntil(searchContext: SearchContext, by: By)
 
     protected fun waitUntil(waitCondition: (SearchContext) -> Boolean) {
-        val webDriverWait = WebDriverWait(DriverService.getWrappedDriver(), timeoutInterval.toLong(), sleepInterval.toLong())
+        val webDriverWait = WebDriverWait(DriverService.wrappedDriver(), timeoutInterval.toLong(), sleepInterval.toLong())
         webDriverWait.until(waitCondition)
     }
 

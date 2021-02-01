@@ -10,14 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.services
 
-package solutions.bellatrix.services;
-
-import org.openqa.selenium.WebDriver;
-import solutions.bellatrix.infrastructure.DriverService;
-
-public abstract class WebService {
-    public WebDriver getWrappedDriver() {
-        return DriverService.getWrappedDriver();
-    }
+enum class DialogButton {
+    OK, CANCEL, OPEN, YES, NO, CLOSE, RUN, SAVE
 }

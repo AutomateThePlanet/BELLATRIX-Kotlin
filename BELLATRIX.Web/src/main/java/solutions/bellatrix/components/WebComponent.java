@@ -18,8 +18,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
-import lombok.experimental.ExtensionMethod;
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -80,7 +78,7 @@ public class WebComponent implements Component {
         browserService = new BrowserService();
         componentCreateService = new ComponentCreateService();
         componentWaitService = new ComponentWaitService();
-        wrappedDriver = DriverService.getWrappedDriver();
+        wrappedDriver = DriverService.wrappedDriver();
     }
 
     public LayoutAssertionsFactory layout() {
@@ -517,7 +515,7 @@ public class WebComponent implements Component {
     }
 
     private void waitUntil(Function<SearchContext, Boolean> waitCondition, String exceptionMessage) {
-        var webDriverWait = new WebDriverWait(DriverService.getWrappedDriver(), webSettings.getTimeoutSettings().getValidationsTimeout(), webSettings.getTimeoutSettings().getSleepInterval());
+        var webDriverWait = new WebDriverWait(DriverService.wrappedDriver(), webSettings.getTimeoutSettings().getValidationsTimeout(), webSettings.getTimeoutSettings().getSleepInterval());
         try {
             webDriverWait.until(waitCondition);
         } catch (TimeoutException ex) {

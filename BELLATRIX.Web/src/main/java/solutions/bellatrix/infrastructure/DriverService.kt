@@ -35,7 +35,7 @@ object DriverService {
     //    private static ProxyService proxyService;
     private var browserConfiguration: ThreadLocal<BrowserConfiguration>
     private var customDriverOptions: ThreadLocal<HashMap<String, String>>
-    private var wrappedDriver: ThreadLocal<WebDriver?>
+    private var wrappedDriver: ThreadLocal<WebDriver>
 
     init {
         disposed = ThreadLocal()
@@ -46,7 +46,7 @@ object DriverService {
         disposed.set(false)
     }
 
-    fun getCustomDriverOptions(): HashMap<String, String> {
+    fun customDriverOptions(): HashMap<String, String> {
         return customDriverOptions.get()
     }
 
@@ -54,11 +54,11 @@ object DriverService {
         customDriverOptions.get()[key] = value
     }
 
-    fun getWrappedDriver(): WebDriver? {
+    fun wrappedDriver(): WebDriver {
         return wrappedDriver.get()
     }
 
-    fun getBrowserConfiguration(): BrowserConfiguration {
+    fun browserConfiguration(): BrowserConfiguration {
         return browserConfiguration.get()
     }
 
@@ -149,8 +149,8 @@ object DriverService {
 
     private fun changeWindowSize(wrappedDriver: WebDriver) {
         try {
-            if (getBrowserConfiguration().height != 0 && getBrowserConfiguration().width != 0) {
-                wrappedDriver.manage().window().size = Dimension(getBrowserConfiguration().height, getBrowserConfiguration().width)
+            if (browserConfiguration().height != 0 && browserConfiguration().width != 0) {
+                wrappedDriver.manage().window().size = Dimension(browserConfiguration().height, browserConfiguration().width)
             }
         } catch (ignored: Exception) {
         }

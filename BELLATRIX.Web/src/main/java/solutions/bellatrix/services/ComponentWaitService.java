@@ -20,7 +20,7 @@ import solutions.bellatrix.waitstrategies.WaitStrategy;
 public class ComponentWaitService extends WebService {
     public void wait(WebComponent component, WaitStrategy waitStrategy) {
         if (component.getParentWrappedElement() == null) {
-            waitStrategy.waitUntil(DriverService.getWrappedDriver(), component.getFindStrategy().convert());
+            waitStrategy.waitUntil(DriverService.wrappedDriver(), component.getFindStrategy().convert());
         } else {
             waitStrategy.waitUntil(component.getParentWrappedElement(), component.getFindStrategy().convert());
         }

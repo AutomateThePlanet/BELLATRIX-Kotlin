@@ -10,16 +10,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.services
 
-package solutions.bellatrix.services;
+import org.openqa.selenium.Alert
+import java.util.function.Function
 
-public enum DialogButton {
-    OK,
-    CANCEL,
-    OPEN,
-    YES,
-    NO,
-    CLOSE,
-    RUN,
-    SAVE,
+class DialogService : WebService() {
+    fun handle(function: Function<Any, Alert>, dialogButton: DialogButton) {
+        val alert = wrappedDriver.switchTo().alert()
+        function.apply(alert)
+        if (dialogButton == DialogButton.OK) {
+            alert.accept()
+            wrappedDriver.switchTo().defaultContent()
+        } else {
+            alert.dismiss()
+            wrappedDriver.switchTo().defaultContent()
+        }
+    }
 }

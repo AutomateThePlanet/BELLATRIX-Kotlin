@@ -10,23 +10,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.services
 
-package solutions.bellatrix.services;
+import org.openqa.selenium.WebDriver
+import solutions.bellatrix.infrastructure.DriverService
 
-import org.openqa.selenium.Alert;
-
-import java.util.function.Function;
-
-public class DialogService extends WebService {
-    public void handle(Function<Object, Alert> function, DialogButton dialogButton) {
-        var alert = getWrappedDriver().switchTo().alert();
-        function.apply(alert);
-        if (dialogButton == DialogButton.OK) {
-            alert.accept();
-            getWrappedDriver().switchTo().defaultContent();
-        } else {
-            alert.dismiss();
-            getWrappedDriver().switchTo().defaultContent();
-        }
-    }
+abstract class WebService() {
+    val wrappedDriver: WebDriver
+        get() = DriverService.wrappedDriver()
 }
