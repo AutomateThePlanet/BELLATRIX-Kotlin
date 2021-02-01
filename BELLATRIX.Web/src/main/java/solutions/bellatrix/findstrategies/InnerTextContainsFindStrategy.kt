@@ -10,23 +10,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.findstrategies
 
-package solutions.bellatrix.findstrategies;
+import org.openqa.selenium.By
 
-import org.openqa.selenium.By;
-
-public abstract class FindStrategy {
-    private final String value;
-
-    protected FindStrategy(String value)
-    {
-        this.value = value;
+class InnerTextContainsFindStrategy(value: String?) : FindStrategy(value!!) {
+    override fun convert(): By {
+        return By.xpath("//*[contains(text(), '$value')]")
     }
 
-    public String getValue()
-    {
-        return value;
+    override fun toString(): String {
+        return "text containing $value"
     }
-
-    public abstract By convert();
 }

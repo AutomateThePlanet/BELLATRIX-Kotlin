@@ -10,28 +10,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.findstrategies
 
-package solutions.bellatrix.findstrategies;
+import org.openqa.selenium.By
 
-import org.openqa.selenium.By;
-
-public class TextContains extends FindStrategy {
-    public TextContains(String value)
-    {
-        super(value);
+class CssFindStrategy(value: String) : FindStrategy(value) {
+    override fun convert(): By {
+        return By.cssSelector(value)
     }
 
-    public static TextContains by(String value) {
-        return new TextContains(value);
-    }
-
-    @Override
-    public By convert() {
-        return By.xpath(String.format("//*[contains(text(), '%s')]", getValue()));
-    }
-
-    @Override
-    public String toString() {
-        return String.format("text containing %s", getValue());
+    override fun toString(): String {
+        return "css = $value"
     }
 }

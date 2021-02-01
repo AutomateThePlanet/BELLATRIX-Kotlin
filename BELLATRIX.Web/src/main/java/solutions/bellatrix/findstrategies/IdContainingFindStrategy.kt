@@ -10,24 +10,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.findstrategies
 
-package solutions.bellatrix.findstrategies;
+import org.openqa.selenium.By
 
-import org.openqa.selenium.By;
-
-public class CssFindStrategy extends FindStrategy {
-    public CssFindStrategy(String value)
-    {
-        super(value);
+class IdContainingFindStrategy(value: String) : FindStrategy(value) {
+    override fun convert(): By {
+        return By.cssSelector("[id*='$value']")
     }
 
-    @Override
-    public By convert() {
-        return By.cssSelector(getValue());
-    }
-
-    @Override
-    public String toString() {
-        return String.format("css = %s", getValue());
+    override fun toString(): String {
+        return "id containing $value"
     }
 }

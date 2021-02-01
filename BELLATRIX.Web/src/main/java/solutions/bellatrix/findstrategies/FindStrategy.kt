@@ -10,24 +10,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.findstrategies
 
-package solutions.bellatrix.findstrategies;
+import org.openqa.selenium.By
 
-import org.openqa.selenium.By;
-
-public class LinkTextFindStrategy extends FindStrategy {
-    public LinkTextFindStrategy(String value)
-    {
-        super(value);
-    }
-
-    @Override
-    public By convert() {
-        return By.linkText(getValue());
-    }
-
-    @Override
-    public String toString() {
-        return String.format("link text = %s", getValue());
-    }
+abstract class FindStrategy protected constructor(val value: String) {
+    abstract fun convert(): By
 }

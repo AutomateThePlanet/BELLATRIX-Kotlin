@@ -10,24 +10,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.findstrategies
 
-package solutions.bellatrix.findstrategies;
+import org.openqa.selenium.By
 
-import org.openqa.selenium.By;
-
-public class XPathFindStrategy extends FindStrategy {
-    public XPathFindStrategy(String value)
-    {
-        super(value);
+class XPathFindStrategy(value: String) : FindStrategy(value) {
+    override fun convert(): By {
+        return By.xpath(value)
     }
 
-    @Override
-    public By convert() {
-        return By.xpath(getValue());
-    }
-
-    @Override
-    public String toString() {
-        return String.format("xpath = %s", getValue());
+    override fun toString(): String {
+        return "xpath = $value"
     }
 }
