@@ -10,17 +10,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package layout
 
-package layout;
+import org.openqa.selenium.Dimension
+import org.openqa.selenium.Point
 
-import lombok.Getter;
-
-public class LayoutTwoComponentsNoExpectedActionEventArgs {
-    @Getter private final LayoutComponent component;
-    @Getter private final LayoutComponent secondComponent;
-
-    public LayoutTwoComponentsNoExpectedActionEventArgs(LayoutComponent component, LayoutComponent secondComponent) {
-        this.component = component;
-        this.secondComponent = secondComponent;
-    }
+interface LayoutComponent {
+    val elementName: String
+    val location: Point
+    val size: Dimension
 }

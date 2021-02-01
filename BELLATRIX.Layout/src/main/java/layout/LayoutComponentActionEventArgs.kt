@@ -10,19 +10,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package layout
 
-package layout;
-
-import lombok.Getter;
-
-import java.util.List;
-
-public class LayoutComponentsActionEventArgs {
-    @Getter private final List<LayoutComponent> components;
-    @Getter private final String actionValue;
-
-    public LayoutComponentsActionEventArgs(List<LayoutComponent> components, String actionValue) {
-        this.components = components;
-        this.actionValue = actionValue;
+data class LayoutComponentActionEventArgs(val component: LayoutComponent, val actionValue: String) {
+    constructor(component: LayoutComponent) : this(component, "") {
     }
 }

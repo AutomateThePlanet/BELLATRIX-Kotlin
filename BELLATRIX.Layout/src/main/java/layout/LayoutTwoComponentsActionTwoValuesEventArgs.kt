@@ -10,14 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package layout
 
-package layout;
-
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
-
-public interface LayoutComponent {
-    String getElementName();
-    Point getLocation();
-    Dimension getSize();
-}
+data class LayoutTwoComponentsActionTwoValuesEventArgs(val component: LayoutComponent, val secondComponent: LayoutComponent, val actionValue: String, val secondActionValue: String)

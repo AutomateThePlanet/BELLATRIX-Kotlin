@@ -10,19 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package layout
 
-package layout;
-
-import lombok.Getter;
-
-public class LayoutTwoComponentsActionEventArgs {
-    @Getter private final LayoutComponent component;
-    @Getter private final LayoutComponent secondComponent;
-    @Getter private final String actionValue;
-
-    public LayoutTwoComponentsActionEventArgs(LayoutComponent component, LayoutComponent secondComponent, String actionValue) {
-        this.component = component;
-        this.secondComponent = secondComponent;
-        this.actionValue = actionValue;
-    }
-}
+data class LayoutTwoComponentsActionEventArgs(val component: LayoutComponent, val secondComponent: LayoutComponent, val actionValue: String)
