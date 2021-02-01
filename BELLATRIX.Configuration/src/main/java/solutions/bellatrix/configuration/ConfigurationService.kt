@@ -22,7 +22,7 @@ import java.lang.StringBuilder
 import java.nio.charset.StandardCharsets
 
 object ConfigurationService {
-    inline fun <reified TConfigSection> get(): TConfigSection? {
+    inline fun <reified TConfigSection> get(): TConfigSection {
         var environment: String? = null
         var mappedObject: TConfigSection? = null
         if (environment == null) {
@@ -33,7 +33,7 @@ object ConfigurationService {
                 try {
                     p.load(input)
                 } catch (e: IOException) {
-                    return mappedObject
+                    return TConfigSection::class.java.newInstance();
                 }
                 environment = p.getProperty("environment")
             } else {

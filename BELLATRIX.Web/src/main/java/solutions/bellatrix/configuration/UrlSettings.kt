@@ -10,26 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.configuration
 
-package solutions.bellatrix.configuration;
-
-public class BrowserSettings {
-    private int pageLoadTimeout;
-    private int scriptTimeout;
-
-    public int getPageLoadTimeout() {
-        return pageLoadTimeout;
-    }
-
-    public int getScriptTimeout() {
-        return scriptTimeout;
-    }
-
-    @Override
-    public String toString() {
-        return "solutions.bellatrix.configuration.BrowserSettings{" +
-                "pageLoadTimeout=" + pageLoadTimeout +
-                ", scriptTimeout=" + scriptTimeout +
-                '}';
-    }
+data class UrlSettings(val shopUrl: String, val accountUrl: String) {
 }

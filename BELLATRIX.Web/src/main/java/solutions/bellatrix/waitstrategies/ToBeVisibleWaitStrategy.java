@@ -11,7 +11,9 @@
  * limitations under the License.
  */
 
-package solutions.bellatrix.waitstrategies;import org.openqa.selenium.*;
+package solutions.bellatrix.waitstrategies;
+
+import org.openqa.selenium.*;
 import solutions.bellatrix.configuration.ConfigurationService;
 import solutions.bellatrix.configuration.TimeoutSettings;
 import solutions.bellatrix.configuration.WebSettings;

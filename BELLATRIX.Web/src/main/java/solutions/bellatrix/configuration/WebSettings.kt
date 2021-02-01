@@ -10,8 +10,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.configuration
 
-package solutions.bellatrix.configuration;/*
+/*
  * Copyright 2021 Automate The Planet Ltd.
  * Author: Anton Angelov
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,19 +24,15 @@ package solutions.bellatrix.configuration;/*
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import lombok.Getter;
-import lombok.Setter;
-
-public class WebSettings {
-    private @Getter @Setter String baseUrl;
-    private @Getter @Setter BrowserSettings chrome;
-    private @Getter @Setter BrowserSettings firefox;
-    private @Getter @Setter BrowserSettings edge;
-    private @Getter @Setter TimeoutSettings timeoutSettings;
-    private @Getter @Setter int elementWaitTimeout;
-    private @Getter @Setter Boolean automaticallyScrollToVisible;
-    private @Getter @Setter Boolean waitUntilReadyOnElementFound;
-    private @Getter @Setter Boolean waitForAngular;
-    private @Getter @Setter int artificialDelayBeforeAction;
-}
+class WebSettings(
+        var baseUrl: String,
+        var chrome: BrowserSettings,
+        var firefox: BrowserSettings ,
+        var edge: BrowserSettings,
+        var timeoutSettings: TimeoutSettings,
+        val elementWaitTimeout: Int = 0,
+        val automaticallyScrollToVisible: Boolean,
+        val waitUntilReadyOnElementFound: Boolean,
+        val waitForAngular: Boolean,
+        val artificialDelayBeforeAction: Int = 0,
+)

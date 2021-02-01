@@ -10,24 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.configuration
 
-package solutions.bellatrix.configuration;public class UrlSettings {
-    private String shopUrl;
-    private String accountUrl;
-
-    public String getShopUrl() {
-        return shopUrl;
-    }
-
-    public String getAccountUrl() {
-        return accountUrl;
-    }
-
-    @Override
-    public String toString() {
-        return "solutions.bellatrix.configuration.UrlSettings{" +
-                "shopUrl='" + shopUrl + '\'' +
-                ", accountUrl='" + accountUrl + '\'' +
-                '}';
-    }
+data class BrowserSettings(val pageLoadTimeout: Int = 0, val scriptTimeout: Int = 0) {
 }
