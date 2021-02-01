@@ -1,2 +1,2 @@
-# BELLATRIX-Kotlin
-BELLATRIX Kotlin Edition
+# BELLATRIX-Java
+BELLATRIX Java Version
