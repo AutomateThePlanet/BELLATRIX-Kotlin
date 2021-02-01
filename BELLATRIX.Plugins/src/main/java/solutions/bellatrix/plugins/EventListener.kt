@@ -10,23 +10,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.plugins
 
-package solutions.bellatrix.plugins;
+import java.util.HashSet
+import java.util.function.Consumer
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Consumer;
-
-public class EventListener<TArgs> {
-    private Set<Consumer<TArgs>> listeners = new HashSet();
-
-    public void addListener(Consumer<TArgs> listener) {
-        listeners.add(listener);
+class EventListener<TArgs> {
+    private val listeners = HashSet<Consumer<TArgs>>()
+    fun addListener(listener: Consumer<TArgs>) {
+        listeners.add(listener)
     }
 
-    public void broadcast(TArgs args) {
-        if (listeners.stream().count() > 0) {
-            listeners.forEach(x -> x.accept(args));
+    fun broadcast(args: TArgs) {
+        if (listeners.count() > 0) {
+            listeners.forEach(Consumer { it.accept(args) })
         }
     }
 }
