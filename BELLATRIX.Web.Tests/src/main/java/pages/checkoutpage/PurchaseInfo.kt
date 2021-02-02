@@ -10,15 +10,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.pages
+package pages.checkoutpage
 
-
-import solutions.bellatrix.services.BrowserService
-import solutions.bellatrix.services.ComponentCreateService
-
-abstract class WebSection<ComponentsT : PageComponents, AssertsT : PageAsserts<ComponentsT>> {
-    val browser = BrowserService
-    val create = ComponentCreateService
-    abstract val components: ComponentsT
-    abstract val asserts: AssertsT
+class PurchaseInfo {
+    var firstName: String = "Anton"
+    var lastName: String = "Angelov"
+    var company: String = "Space Flowers"
+    var country: String = "Germany"
+    var address1: String = "1 Willi Brandt Avenue Tiergarten"
+    var address2: String = "2 Willi Brandt Avenue Tiergarten"
+    var city: String = "Berlin"
+    var zip: String = "10115"
+    var phone: String = "+00498888999281"
+    var email: String = "info@spaceFlowers.com"
+    var shouldCreateAccount = false
+    var shouldCheckPayment = false
 }

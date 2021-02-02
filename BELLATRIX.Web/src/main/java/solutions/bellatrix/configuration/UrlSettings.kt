@@ -12,5 +12,5 @@
  */
 package solutions.bellatrix.configuration
 
-data class UrlSettings(val shopUrl: String, val accountUrl: String) {
+data class UrlSettings(val shopUrl: String = "", val accountUrl: String = "") {
 }

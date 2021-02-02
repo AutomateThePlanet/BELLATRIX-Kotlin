@@ -91,14 +91,15 @@ object ComponentCreateService : WebService() {
     }
 
     inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> create(value: String): TComponent {
-        val findStrategy = InstanceFactory.create<TFindStrategy>(value)
+        val findStrategy = TFindStrategy::class.java.constructors[0].newInstance(value) as TFindStrategy
         val component: TComponent = InstanceFactory.create()
         component.findStrategy = findStrategy
-        return this as TComponent
+        component.parentWrappedElement = null
+        return component
     }
 
     inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> createAll(value: String): List<TComponent> {
-        val findStrategy = InstanceFactory.create<TFindStrategy>(value)
+        val findStrategy = TFindStrategy::class.java.constructors[0].newInstance(value) as TFindStrategy
         val nativeElements = wrappedDriver().findElements(findStrategy.convert())
         val componentList = mutableListOf<TComponent>()
         for (i in 0 until nativeElements.count()) {

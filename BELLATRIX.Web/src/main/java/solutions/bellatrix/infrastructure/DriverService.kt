@@ -15,26 +15,27 @@ package solutions.bellatrix.infrastructure
 import io.github.bonigarcia.wdm.WebDriverManager
 import org.openqa.selenium.Dimension
 import org.openqa.selenium.InvalidArgumentException
-import java.lang.ThreadLocal
-import java.util.HashMap
-import org.openqa.selenium.WebDriver
 import org.openqa.selenium.MutableCapabilities
+import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.firefox.FirefoxOptions
 import solutions.bellatrix.configuration.ConfigurationService
 import solutions.bellatrix.configuration.WebSettings
-import java.lang.Exception
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 object DriverService {
     private var disposed: ThreadLocal<Boolean>
 
     //    private static ProxyService proxyService;
-    private var browserConfiguration: ThreadLocal<BrowserConfiguration>
-    private var customDriverOptions: ThreadLocal<HashMap<String, String>>
-    private var wrappedDriver: ThreadLocal<WebDriver>
+    @JvmStatic
+    private val browserConfiguration: ThreadLocal<BrowserConfiguration>
+    @JvmStatic
+    private val customDriverOptions: ThreadLocal<HashMap<String, String>>
+    @JvmStatic
+    private val wrappedDriver: ThreadLocal<WebDriver>
 
     init {
         disposed = ThreadLocal()
@@ -45,56 +46,64 @@ object DriverService {
         disposed.set(false)
     }
 
+    @JvmStatic
     fun customDriverOptions(): HashMap<String, String> {
         return customDriverOptions.get()
     }
 
+    @JvmStatic
     fun addDriverOptions(key: String, value: String) {
         customDriverOptions.get()[key] = value
     }
 
+    @JvmStatic
     fun wrappedDriver(): WebDriver {
-        return wrappedDriver.get()
+        val driver = wrappedDriver.get()
+        return driver
     }
 
+    @JvmStatic
     fun browserConfiguration(): BrowserConfiguration {
         return browserConfiguration.get()
     }
 
     fun start(configuration: BrowserConfiguration): WebDriver {
-        browserConfiguration.set(configuration)
-        disposed.set(false)
-        var driver: WebDriver = when (configuration.executionType) {
-            ExecutionType.REGULAR -> initializeDriverRegularMode()
-            ExecutionType.GRID -> initializeDriverGridMode()
-            ExecutionType.SAUCE_LABS -> initializeDriverSauceLabsMode()
-            ExecutionType.BROWSER_STACK -> initializeDriverBrowserStackMode()
-            ExecutionType.CROSS_BROWSER_TESTING -> initializeDriverCrossBrowserTestingMode()
-            else ->  initializeDriverRegularMode();
-        }
+        try {
+            browserConfiguration.set(configuration)
+            disposed.set(false)
+            val driver: WebDriver = when (configuration.executionType) {
+                ExecutionType.REGULAR -> initializeDriverRegularMode()
+                ExecutionType.GRID -> initializeDriverGridMode()
+                ExecutionType.SAUCE_LABS -> initializeDriverSauceLabsMode()
+                ExecutionType.BROWSER_STACK -> initializeDriverBrowserStackMode()
+                ExecutionType.CROSS_BROWSER_TESTING -> initializeDriverCrossBrowserTestingMode()
+            }
 
-        driver.manage().window().maximize()
-        changeWindowSize(driver)
-        wrappedDriver.set(driver)
-        return driver
+            driver.manage().window().maximize()
+            changeWindowSize(driver)
+            wrappedDriver.set(driver)
+            return driver
+        } catch (ex: Exception) {
+            return ChromeDriver()
+        }
     }
 
     private fun initializeDriverRegularMode(): WebDriver {
-        var driver: WebDriver  = when (browserConfiguration.get().browser) {
+        var driver: WebDriver = when (browserConfiguration.get().browser) {
             Browser.CHROME -> {
                 WebDriverManager.chromedriver().setup()
-                var chromeOptions = ChromeOptions()
+                val chromeOptions = ChromeOptions()
                 addDriverOptions(chromeOptions)
                 chromeOptions.addArguments("--log-level=3")
                 System.setProperty("webdriver.chrome.silentOutput", "true")
                 val driver = ChromeDriver(chromeOptions)
                 driver.manage().timeouts().pageLoadTimeout(ConfigurationService.get<WebSettings>().chrome.pageLoadTimeout, TimeUnit.SECONDS)
                 driver.manage().timeouts().setScriptTimeout(ConfigurationService.get<WebSettings>().chrome.scriptTimeout, TimeUnit.SECONDS)
-                return driver
+                driver
             }
             Browser.CHROME_HEADLESS -> {
                 WebDriverManager.chromedriver().setup()
-                var chromeHeadlessOptions = ChromeOptions()
+                val chromeHeadlessOptions = ChromeOptions()
                 addDriverOptions(chromeHeadlessOptions)
                 chromeHeadlessOptions.setHeadless(true);
                 chromeHeadlessOptions.addArguments("--log-level=3")
@@ -102,26 +111,26 @@ object DriverService {
                 val driver = ChromeDriver(chromeHeadlessOptions)
                 driver.manage().timeouts().pageLoadTimeout(ConfigurationService.get<WebSettings>().chrome.pageLoadTimeout, TimeUnit.SECONDS)
                 driver.manage().timeouts().setScriptTimeout(ConfigurationService.get<WebSettings>().chrome.scriptTimeout, TimeUnit.SECONDS)
-                return driver
+                driver
             }
             Browser.FIREFOX -> {
                 WebDriverManager.firefoxdriver().setup()
-                var firefoxOptions = FirefoxOptions()
+                val firefoxOptions = FirefoxOptions()
                 addDriverOptions(firefoxOptions)
                 val driver = FirefoxDriver(firefoxOptions)
                 driver.manage().timeouts().pageLoadTimeout(ConfigurationService.get<WebSettings>().firefox.pageLoadTimeout, TimeUnit.SECONDS)
                 driver.manage().timeouts().setScriptTimeout(ConfigurationService.get<WebSettings>().firefox.scriptTimeout, TimeUnit.SECONDS)
-                return driver
+                driver
             }
             Browser.FIREFOX_HEADLESS -> {
                 WebDriverManager.firefoxdriver().setup()
-                var firefoxHeadlessOptions = FirefoxOptions()
+                val firefoxHeadlessOptions = FirefoxOptions()
                 addDriverOptions(firefoxHeadlessOptions)
                 addDriverOptions(firefoxHeadlessOptions);
                 val driver = FirefoxDriver(firefoxHeadlessOptions)
                 driver.manage().timeouts().pageLoadTimeout(ConfigurationService.get<WebSettings>().firefox.pageLoadTimeout, TimeUnit.SECONDS)
                 driver.manage().timeouts().setScriptTimeout(ConfigurationService.get<WebSettings>().firefox.scriptTimeout, TimeUnit.SECONDS)
-                return driver
+                driver
             }
             Browser.EDGE -> throw InvalidArgumentException("BELLATRIX doesn't support Edge. It will be supported with the official release of WebDriver 4.0")
             Browser.EDGE_HEADLESS -> throw InvalidArgumentException("BELLATRIX doesn't support Edge. It will be supported with the official release of WebDriver 4.0")
@@ -129,7 +138,8 @@ object DriverService {
             Browser.SAFARI -> throw InvalidArgumentException("BELLATRIX doesn't support Safari.")
             Browser.INTERNET_EXPLORER -> throw InvalidArgumentException("BELLATRIX doesn't support Internet Explorer.")
         }
-            return driver
+
+        return driver
     }
 
     private fun <TOption : MutableCapabilities?> addDriverOptions(chromeOptions: TOption) {
@@ -140,11 +150,11 @@ object DriverService {
 
     private fun initializeDriverCrossBrowserTestingMode(): WebDriver = FirefoxDriver()
 
-    private fun initializeDriverBrowserStackMode(): WebDriver  = FirefoxDriver()
+    private fun initializeDriverBrowserStackMode(): WebDriver = FirefoxDriver()
 
-    private fun initializeDriverSauceLabsMode(): WebDriver  = FirefoxDriver()
+    private fun initializeDriverSauceLabsMode(): WebDriver = FirefoxDriver()
 
-    private fun initializeDriverGridMode(): WebDriver  = FirefoxDriver()
+    private fun initializeDriverGridMode(): WebDriver = FirefoxDriver()
 
     private fun changeWindowSize(wrappedDriver: WebDriver) {
         try {

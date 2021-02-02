@@ -10,14 +10,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package pages.checkoutpage
 
-package pages.checkoutpage;
+import org.testng.Assert
+import solutions.bellatrix.pages.PageAsserts
 
-import org.testng.Assert;
-import solutions.bellatrix.pages.PageAsserts;
-
-public class Asserts extends PageAsserts<Components> {
-    public void orderReceived() {
-        Assert.assertEquals(elements().receivedMessage().getText(), "Order received");
+class Asserts(override val components: Components) : PageAsserts<Components>() {
+    fun orderReceived() {
+        Assert.assertEquals(components.receivedMessage.text, "Order received")
     }
 }

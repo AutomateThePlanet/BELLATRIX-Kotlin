@@ -10,27 +10,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package pages.mainpage
 
-package pages.mainpage;
+import solutions.bellatrix.components.Anchor
+import solutions.bellatrix.components.Button
+import solutions.bellatrix.pages.PageComponents
 
-
-import solutions.bellatrix.pages.WebPage;
-
-public class MainPage extends WebPage<MainPageComponents, Asserts> {
-
-    @Override
-    protected String getUrl() {
-        return "http://demos.bellatrix.solutions/";
-    }
-
-    @Override
-    protected void waitForPageLoad() {
-        elements().addToCartFalcon9().toExists().waitToBe();
-    }
-
-    public void addRocketToShoppingCart(String rocketName) {
-        open();
-        elements().getProductBoxByName(rocketName).click();
-        elements().viewCartButton().click();
-    }
+class Components : PageComponents() {
+    val addToCartFalcon9: Anchor = create.byCss("[data-product_id*='28']")
+    val viewCartButton: Button = create.byCss("[class*='added_to_cart wc-forward']")
+    fun getProductBoxByName(name: String): Anchor = create.byXPath("//h2[text()='$name']/parent::a[1]")
 }

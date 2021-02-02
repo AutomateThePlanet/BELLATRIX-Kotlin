@@ -10,16 +10,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pages.cartInfosection
+package pages.mainpage
 
-import solutions.bellatrix.pages.WebSection
+import solutions.bellatrix.components.Anchor
+import solutions.bellatrix.pages.WebPage
 
-class CartInfoSection : WebSection<Components, Asserts>() {
-    val currentAmount: String = components.cartAmount.text
-    fun openCart() = components.cartIcon.click()
-
+class MainPage : WebPage<Components, Asserts>() {
+    override val url: String = "http://demos.bellatrix.solutions/"
     override val components: Components
         get() = Components()
     override val asserts: Asserts
         get() = Asserts(components)
+
+    override fun waitForPageLoad() {
+        components.addToCartFalcon9.toExists<Anchor>().waitToBe()
+    }
+
+    fun addRocketToShoppingCart(rocketName: String) {
+        open()
+        components.getProductBoxByName(rocketName).click()
+        components.viewCartButton.click()
+    }
 }

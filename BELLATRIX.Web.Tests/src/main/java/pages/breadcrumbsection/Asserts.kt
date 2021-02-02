@@ -14,6 +14,4 @@ package pages.breadcrumbsection
 
 import solutions.bellatrix.pages.PageAsserts
 
-class Asserts : PageAsserts<Components>() {
-    override fun componentsClass(): Class<Components> = Components::class.java
-}
+class Asserts(override val components: Components) : PageAsserts<Components>()

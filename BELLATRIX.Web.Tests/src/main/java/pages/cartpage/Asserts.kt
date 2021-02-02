@@ -10,15 +10,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package pages.cartpage
 
-package pages.mainpage;
+import org.testng.Assert
+import solutions.bellatrix.pages.PageAsserts
 
-import org.testng.Assert;
-import solutions.bellatrix.pages.PageAsserts;
+class Asserts(override val components: Components) : PageAsserts<Components>() {
+    fun couponAppliedSuccessfully() {
+        Assert.assertEquals(components.messageAlert.text, "Coupon code applied successfully.")
+    }
 
-public class Asserts extends PageAsserts<MainPageComponents> {
-    public void productBoxLink(String name, String expectedLink) {
-        var actualLink = elements().getProductBoxByName(name).getAttribute("href");
-        Assert.assertEquals(actualLink, expectedLink);
+    fun totalPrice(expectedPrice: String?) {
+        Assert.assertEquals(components.totalSpan.text, expectedPrice)
     }
 }

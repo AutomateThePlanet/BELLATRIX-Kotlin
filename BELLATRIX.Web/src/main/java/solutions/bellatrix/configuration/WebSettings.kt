@@ -25,14 +25,14 @@ package solutions.bellatrix.configuration
  * limitations under the License.
  */
 class WebSettings(
-        var baseUrl: String,
-        var chrome: BrowserSettings,
-        var firefox: BrowserSettings ,
-        var edge: BrowserSettings,
-        var timeoutSettings: TimeoutSettings,
+        var baseUrl: String = "",
+        var chrome: BrowserSettings = BrowserSettings(30, 2),
+        var firefox: BrowserSettings = BrowserSettings(30, 2),
+        var edge: BrowserSettings = BrowserSettings(30, 2),
+        var timeoutSettings: TimeoutSettings = TimeoutSettings(),
         val elementWaitTimeout: Int = 0,
-        val automaticallyScrollToVisible: Boolean,
-        val waitUntilReadyOnElementFound: Boolean,
-        val waitForAngular: Boolean,
+        val automaticallyScrollToVisible: Boolean = false,
+        val waitUntilReadyOnElementFound: Boolean = false,
+        val waitForAngular: Boolean = false,
         val artificialDelayBeforeAction: Int = 0,
 )

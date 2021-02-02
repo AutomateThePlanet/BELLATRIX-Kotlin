@@ -18,9 +18,8 @@ import org.testng.annotations.BeforeSuite
 import solutions.bellatrix.components.listeners.BddLogging
 
 open class WebTest : BaseTest() {
-    fun app(): App {
-        return App()
-    }
+    val app
+    get() = App
 
     @BeforeSuite
     fun beforeSuite() {

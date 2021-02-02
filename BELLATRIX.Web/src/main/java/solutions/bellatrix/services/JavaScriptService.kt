@@ -17,7 +17,8 @@ import org.openqa.selenium.WebElement
 import java.lang.Exception
 
 object JavaScriptService : WebService() {
-    private val javascriptExecutor: JavascriptExecutor = wrappedDriver as JavascriptExecutor
+    private val javascriptExecutor: JavascriptExecutor
+        get() = wrappedDriver as JavascriptExecutor
 
     fun execute(script: String): Any {
         return try {

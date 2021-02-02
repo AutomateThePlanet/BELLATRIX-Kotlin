@@ -20,6 +20,8 @@ class BreadcrumbSection : WebSection<Components, Asserts>() {
         components.breadcrumb.createByLinkText<Anchor>(itemToOpen).click()
     }
 
-    override fun componentsClass(): Class<Components> = Components::class.java
-    override fun assertsClass(): Class<Asserts> = Asserts::class.java
+    override val components: Components
+        get() = Components()
+    override val asserts: Asserts
+        get() = Asserts(components)
 }

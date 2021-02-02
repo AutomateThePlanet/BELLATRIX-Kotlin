@@ -13,6 +13,7 @@
 package solutions.bellatrix.utilities
 
 import java.lang.reflect.ParameterizedType
+import kotlin.reflect.typeOf
 
 object InstanceFactory {
     inline fun <reified T> create(): T {
@@ -23,12 +24,26 @@ object InstanceFactory {
         return tclass.constructors[0].newInstance() as T
     }
 
-    inline fun <reified T> create(vararg args: Any?): T {
-        return T::class.java.constructors[0].newInstance(args) as T
+    inline fun <reified T> create(vararg args: Any): T {
+        try {
+            return T::class.java.constructors[0].newInstance(args) as T
+        } catch (ex: Exception) {
+            return T::class.java.constructors[0].newInstance(args) as T
+        }
     }
 
-    inline fun <reified T> createByTypeParameter(index: Int): T {
-        val elementsClass = (T::class.java.genericSuperclass as ParameterizedType).actualTypeArguments[index] as Class<*>
-        return elementsClass.getDeclaredConstructor().newInstance() as T
+    fun <T> createByTypeParameter(parameterClass: Class<*>, index: Int): T? {
+        return try {
+            val obj = object : WrapGeneric<T>() {}
+            val javaClass = obj.javaClass
+            val parameterizedType = javaClass.genericSuperclass as ParameterizedType
+            val inputType = parameterizedType.actualTypeArguments[0]
+            println(inputType)
+            inputType.javaClass.getDeclaredConstructor().newInstance() as T
+        } catch (e: java.lang.Exception) {
+            null
+        }
     }
+
+    open class WrapGeneric<T>
 }

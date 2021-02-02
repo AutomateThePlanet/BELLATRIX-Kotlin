@@ -23,6 +23,8 @@ import kotlin.jvm.JvmOverloads
 
 object BrowserService : WebService() {
     private val javascriptExecutor: JavascriptExecutor
+        get() = wrappedDriver as JavascriptExecutor
+
     val pageSource: String
         get() = wrappedDriver.pageSource
     val url: String
@@ -189,9 +191,5 @@ object BrowserService : WebService() {
                 }
             }
         }
-    }
-
-    init {
-        javascriptExecutor = wrappedDriver as JavascriptExecutor
     }
 }

@@ -10,10 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package pages.mainmenusection
 
-package pages.searchsection;
+import solutions.bellatrix.pages.PageAsserts
 
-import solutions.bellatrix.pages.PageAsserts;
-
-public class Asserts extends PageAsserts<Components> {
-}
+class Asserts(override val components: Components) : PageAsserts<Components>()

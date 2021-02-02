@@ -16,36 +16,19 @@ import solutions.bellatrix.services.BrowserService
 import solutions.bellatrix.services.ComponentCreateService
 import solutions.bellatrix.services.NavigationService
 import solutions.bellatrix.utilities.InstanceFactory
+import java.lang.reflect.ParameterizedType
 
 abstract class WebPage<ComponentsT : PageComponents, AssertsT : PageAsserts<ComponentsT>> {
-    fun browser(): BrowserService {
-        return BrowserService
-    }
-
-    fun create(): ComponentCreateService {
-        return ComponentCreateService
-    }
-
-    fun components(): ComponentsT {
-        return InstanceFactory.createByClass(componentsClass())
-    }
-
-    fun asserts(): AssertsT {
-        return InstanceFactory.createByClass(assertsClass())
-    }
-
-    abstract fun assertsClass() : Class<AssertsT>
-
-    abstract fun componentsClass() : Class<ComponentsT>
-
-    fun navigate(): NavigationService {
-        return NavigationService
-    }
+    val browser = BrowserService
+    var create = ComponentCreateService
+    var navigate = NavigationService
+    abstract val components: ComponentsT
+    abstract val asserts: AssertsT
 
     protected abstract val url: String
 
     fun open() {
-        navigate().to(url)
+        navigate.to(url)
         waitForPageLoad()
     }
 

@@ -17,48 +17,29 @@ import java.lang.AutoCloseable
 import solutions.bellatrix.pages.WebPage
 import solutions.bellatrix.utilities.InstanceFactory
 
-class App : AutoCloseable {
+object App : AutoCloseable {
     private var disposed = false
-    fun navigate(): NavigationService {
-        return NavigationService
-    }
 
-    fun browser(): BrowserService {
-        return BrowserService
-    }
-
-    fun cookies(): CookiesService {
-        return CookiesService
-    }
-
-    fun dialogs(): DialogService {
-        return DialogService
-    }
-
-    fun script(): JavaScriptService {
-        return JavaScriptService
-    }
-
-    fun create(): ComponentCreateService {
-        return ComponentCreateService
-    }
-
-    fun waitFor(): ComponentWaitService {
-        return ComponentWaitService
-    }
+    val browser = BrowserService
+    val navigate = NavigationService
+    val cookies = CookiesService
+    val dialogs = DialogService
+    val script = JavaScriptService
+    val create = ComponentCreateService
+    val waitFor = ComponentWaitService
 
     fun addDriverOptions(key: String, value: String) {
         DriverService.addDriverOptions(key, value)
     }
 
-    inline fun <reified TPage : WebPage<*, *>> goTo(vararg args: Any): TPage {
-        val page = InstanceFactory.create<TPage>(args)
+    inline fun <reified TPage : WebPage<*, *>> goTo(): TPage {
+        val page = InstanceFactory.create<TPage>()
         page.open()
         return page
     }
 
-    inline fun <reified TPage : WebPage<*, *>> create(vararg args: Any): TPage {
-        return InstanceFactory.create<TPage>(args)
+    inline fun <reified TPage : WebPage<*, *>> create(): TPage {
+        return InstanceFactory.create<TPage>()
     }
 
     override fun close() {

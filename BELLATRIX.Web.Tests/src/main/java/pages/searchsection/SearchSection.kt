@@ -10,18 +10,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package pages.searchsection
 
-package pages.cartpage;
+import solutions.bellatrix.pages.WebSection
 
-import org.testng.Assert;
-import solutions.bellatrix.pages.PageAsserts;
+class SearchSection : WebSection<Components, Asserts>() {
+    override val components: Components
+        get() = Components()
+    override val asserts: Asserts
+        get() = Asserts(components)
 
-public class Asserts extends PageAsserts<Components> {
-    public void couponAppliedSuccessfully() {
-        Assert.assertEquals(elements().messageAlert().getText(), "Coupon code applied successfully.");
-    }
-
-    public void totalPrice(String expectedPrice) {
-        Assert.assertEquals(elements().totalSpan().getText(), expectedPrice);
+    fun searchForItem(searchText: String) {
+        components.searchField.setText(searchText)
     }
 }

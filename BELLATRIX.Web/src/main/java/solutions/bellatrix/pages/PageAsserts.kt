@@ -13,11 +13,8 @@
 package solutions.bellatrix.pages
 
 import solutions.bellatrix.utilities.InstanceFactory
+import java.lang.reflect.ParameterizedType
 
 abstract class PageAsserts<ComponentsT : PageComponents> {
-    fun components(): ComponentsT {
-        return InstanceFactory.createByClass(componentsClass())
-    }
-
-    abstract fun componentsClass() : Class<ComponentsT>
+    abstract val components: ComponentsT
 }

@@ -10,10 +10,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package pages.searchsection
 
-package pages.mainmenusection;
+import solutions.bellatrix.components.TextField
+import solutions.bellatrix.pages.PageComponents
 
-import solutions.bellatrix.pages.PageAsserts;
-
-public class Asserts extends PageAsserts<Components> {
+class Components : PageComponents() {
+    val searchField: TextField = create.byId("woocommerce-product-search-field-0")
 }

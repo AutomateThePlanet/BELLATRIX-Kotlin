@@ -10,15 +10,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.pages
+package pages.mainmenusection
 
+import solutions.bellatrix.pages.WebSection
 
-import solutions.bellatrix.services.BrowserService
-import solutions.bellatrix.services.ComponentCreateService
+class MainMenuSection : WebSection<Components, Asserts>() {
+    override val components: Components
+        get() = Components()
+    override val asserts: Asserts
+        get() = Asserts(components)
 
-abstract class WebSection<ComponentsT : PageComponents, AssertsT : PageAsserts<ComponentsT>> {
-    val browser = BrowserService
-    val create = ComponentCreateService
-    abstract val components: ComponentsT
-    abstract val asserts: AssertsT
+    fun openHomePage() = components.homeLink.click()
+    fun openBlogPage() = components.blogLink.click()
+    fun openMyAccountPage() = components.myAccountLink.click()
+    fun openPromotionsPage() = components.promotionsLink.click()
+
 }

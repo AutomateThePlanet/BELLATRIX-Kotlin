@@ -47,7 +47,7 @@ import java.util.function.Function
 
 open abstract class WebComponent : Component {
     override lateinit var wrappedElement: WebElement
-    lateinit var parentWrappedElement: WebElement
+    var parentWrappedElement: WebElement? = null
     var elementIndex = 0
     override lateinit var findStrategy: FindStrategy
     val wrappedDriver: WebDriver
@@ -200,19 +200,19 @@ open abstract class WebComponent : Component {
 //        return createAll(componentClass, findStrategy)
 //    }
 
-    protected inline fun <reified TComponent : WebComponent> createById(id: String): TComponent {
+    inline fun <reified TComponent : WebComponent> createById(id: String): TComponent {
         return create<TComponent, IdFindStrategy>(id)
     }
 
-    protected inline fun <reified TComponent : WebComponent> createByCss(css: String): TComponent {
+    inline fun <reified TComponent : WebComponent> createByCss(css: String): TComponent {
         return create<TComponent, CssFindStrategy>(css)
     }
 
-    protected inline fun <reified TComponent : WebComponent> createByClass(cclass: String): TComponent {
+    inline fun <reified TComponent : WebComponent> createByClass(cclass: String): TComponent {
         return create<TComponent, ClassFindStrategy>(cclass)
     }
 
-    protected inline fun <reified TComponent : WebComponent> createByXPath(xpath: String): TComponent {
+    inline fun <reified TComponent : WebComponent> createByXPath(xpath: String): TComponent {
         return create<TComponent, XPathFindStrategy>(xpath)
     }
 
@@ -220,51 +220,51 @@ open abstract class WebComponent : Component {
         return create<TComponent, LinkTextFindStrategy>(linkText)
     }
 
-    protected inline fun <reified TComponent : WebComponent> createByTag(tag: String): TComponent {
+    inline fun <reified TComponent : WebComponent> createByTag(tag: String): TComponent {
         return create<TComponent, TagFindStrategy>(tag)
     }
 
-    protected inline fun <reified TComponent : WebComponent> createByIdContaining(idContaining: String): TComponent {
+    inline fun <reified TComponent : WebComponent> createByIdContaining(idContaining: String): TComponent {
         return create<TComponent, IdContainingFindStrategy>(idContaining)
     }
 
-    protected inline fun <reified TComponent : WebComponent> createByInnerTextContaining(innerText: String): TComponent {
+    inline fun <reified TComponent : WebComponent> createByInnerTextContaining(innerText: String): TComponent {
         return create<TComponent, InnerTextContainsFindStrategy>(innerText)
     }
 
-    protected inline fun <reified TComponent : WebComponent> createAllById(id: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> createAllById(id: String): List<TComponent> {
         return createAll<TComponent, IdFindStrategy>(id)
     }
 
-    protected inline fun <reified TComponent : WebComponent> createAllByCss(css: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> createAllByCss(css: String): List<TComponent> {
         return createAll<TComponent, CssFindStrategy>(css)
     }
 
-    protected inline fun <reified TComponent : WebComponent> createAllByClass(cclass: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> createAllByClass(cclass: String): List<TComponent> {
         return createAll<TComponent, ClassFindStrategy>(cclass)
     }
 
-    protected inline fun <reified TComponent : WebComponent> createAllByXPath(xpath: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> createAllByXPath(xpath: String): List<TComponent> {
         return createAll<TComponent, XPathFindStrategy>(xpath)
     }
 
-    protected inline fun <reified TComponent : WebComponent> createAllByLinkText(linkText: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> createAllByLinkText(linkText: String): List<TComponent> {
         return createAll<TComponent, LinkTextFindStrategy>(linkText)
     }
 
-    protected inline fun <reified TComponent : WebComponent> createAllByTag(tag: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> createAllByTag(tag: String): List<TComponent> {
         return createAll<TComponent, TagFindStrategy>(tag)
     }
 
-    protected inline fun <reified TComponent : WebComponent> createAllByIdContaining(idContaining: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> createAllByIdContaining(idContaining: String): List<TComponent> {
         return createAll<TComponent, IdContainingFindStrategy>(idContaining)
     }
 
-    protected inline fun <reified TComponent : WebComponent> createAllByInnerTextContaining(innerText: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> createAllByInnerTextContaining(innerText: String): List<TComponent> {
         return createAll<TComponent, InnerTextContainsFindStrategy>(innerText)
     }
 
-    protected inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> create(value: String): TComponent {
+    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> create(value: String): TComponent {
         CREATING_ELEMENT.broadcast(ComponentActionEventArgs(this))
         findElement()
         val findStrategy = InstanceFactory.create<TFindStrategy>(value)
@@ -274,7 +274,7 @@ open abstract class WebComponent : Component {
         return this as TComponent
     }
 
-    protected inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> createAll(value: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> createAll(value: String): List<TComponent> {
         CREATING_ELEMENTS.broadcast(ComponentActionEventArgs(this))
         val findStrategy = InstanceFactory.create<TFindStrategy>(value)
         findElement()
@@ -291,7 +291,7 @@ open abstract class WebComponent : Component {
         return componentList
     }
 
-    protected fun findElement(): WebElement {
+    fun findElement(): WebElement {
         if (waitStrategies.stream().count() == 0L) {
             waitStrategies.add(ToExistsWaitStrategy.of())
         }

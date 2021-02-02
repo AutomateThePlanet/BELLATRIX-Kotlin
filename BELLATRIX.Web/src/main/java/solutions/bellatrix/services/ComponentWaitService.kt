@@ -21,7 +21,7 @@ object ComponentWaitService : WebService() {
         if (component.parentWrappedElement == null) {
             waitStrategy.waitUntil(wrappedDriver(), component.findStrategy.convert())
         } else {
-            waitStrategy.waitUntil(component.parentWrappedElement, component.findStrategy.convert())
+            waitStrategy.waitUntil(component.parentWrappedElement!!, component.findStrategy.convert())
         }
     }
 }

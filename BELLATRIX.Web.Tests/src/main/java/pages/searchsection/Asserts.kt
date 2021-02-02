@@ -10,13 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package pages.searchsection
 
-package pages.searchsection;
+import solutions.bellatrix.pages.PageAsserts
 
-import solutions.bellatrix.pages.WebSection;
-
-public class SearchSection extends WebSection<Components, Asserts> {
-    public void searchForItem(String searchText) throws InterruptedException {
-        elements().searchField().setText(searchText);
-    }
-}
+class Asserts(override val components: Components) : PageAsserts<Components>()

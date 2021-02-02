@@ -10,25 +10,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package pages.mainpage
 
-package pages.mainmenusection;
+import org.testng.Assert
+import solutions.bellatrix.pages.PageAsserts
 
-import solutions.bellatrix.pages.WebSection;
-
-public class MainMenuSection extends WebSection<Components, Asserts> {
-    public void openHomePage() {
-        elements().homeLink().click();
-    }
-
-    public void openBlogPage() {
-        elements().blogLink().click();
-    }
-
-    public void openMyAccountPage() {
-        elements().myAccountLink().click();
-    }
-
-    public void openPromotionsPage() {
-        elements().promotionsLink().click();
+class Asserts(override val components: Components) : PageAsserts<Components>() {
+    fun productBoxLink(name: String, expectedLink: String) {
+        val actualLink: String = components.getProductBoxByName(name).attribute("href")
+        Assert.assertEquals(actualLink, expectedLink)
     }
 }
