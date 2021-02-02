@@ -10,16 +10,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.findstrategies
+package solutions.bellatrix.components.listeners
 
-import org.openqa.selenium.By
+import solutions.bellatrix.components.Anchor
 
-class ClassFindStrategy(value: String) : FindStrategy(value) {
-    override fun convert(): By {
-        return By.xpath("//*[@class='$value']")
-    }
-
-    override fun toString(): String {
-        return "class = $value"
+object BddLogging {
+    private var isBddLoggingTurnedOn = false
+    fun turnOn() {
+        if (!isBddLoggingTurnedOn) {
+            Anchor.CLICKING.addListener { println("clicking $it.component.elementName\n") }
+            isBddLoggingTurnedOn = true
+        }
     }
 }

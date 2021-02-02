@@ -10,16 +10,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.findstrategies
+package solutions.bellatrix.components.contracts
 
-import org.openqa.selenium.By
+import layout.LayoutComponent
+import org.openqa.selenium.WebElement
+import solutions.bellatrix.findstrategies.FindStrategy
 
-class ClassFindStrategy(value: String) : FindStrategy(value) {
-    override fun convert(): By {
-        return By.xpath("//*[@class='$value']")
-    }
-
-    override fun toString(): String {
-        return "class = $value"
-    }
+interface Component : LayoutComponent {
+    val componentClass: Class<*>
+    var wrappedElement: WebElement
+    var findStrategy: FindStrategy
 }

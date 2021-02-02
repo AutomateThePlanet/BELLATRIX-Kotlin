@@ -10,16 +10,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.findstrategies
+package solutions.bellatrix.components
 
-import org.openqa.selenium.By
+import solutions.bellatrix.components.contracts.Component
 
-class ClassFindStrategy(value: String) : FindStrategy(value) {
-    override fun convert(): By {
-        return By.xpath("//*[@class='$value']")
-    }
-
-    override fun toString(): String {
-        return "class = $value"
+class ComponentActionEventArgs (val component: Component, val actionValue: String) {
+    constructor(component: Component) : this(component, "") {
     }
 }

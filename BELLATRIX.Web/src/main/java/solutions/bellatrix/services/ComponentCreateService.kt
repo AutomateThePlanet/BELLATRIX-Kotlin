@@ -24,97 +24,87 @@ import solutions.bellatrix.findstrategies.LinkTextFindStrategy
 import solutions.bellatrix.findstrategies.TagFindStrategy
 import solutions.bellatrix.findstrategies.IdContainingFindStrategy
 import solutions.bellatrix.findstrategies.InnerTextContainsFindStrategy
-import org.openqa.selenium.WebElement
-import java.util.ArrayList
 
-object ComponentCreateService : WebService {
-    fun <TComponent : WebComponent?, TFindStrategy : FindStrategy?> create(findStrategyClass: Class<TFindStrategy>?, componentClass: Class<TComponent>?, vararg args: Any?): TComponent {
-        val findStrategy: Unit = InstanceFactory.create(findStrategyClass, args)
-        return by(componentClass, findStrategy)
+object ComponentCreateService : WebService() {
+    inline fun <reified TComponent : WebComponent> byId(id: String): TComponent {
+        return create<TComponent, IdFindStrategy>(id)
     }
 
-    fun <TComponent : WebComponent?, TFindStrategy : FindStrategy?> allBy(findStrategyClass: Class<TFindStrategy>?, componentClass: Class<TComponent>?, vararg args: Any?): List<TComponent> {
-        val findStrategy: Unit = InstanceFactory.create(findStrategyClass, args)
-        return allBy(componentClass, findStrategy)
+    inline fun <reified TComponent : WebComponent> byCss(css: String): TComponent {
+        return create<TComponent, CssFindStrategy>(css)
     }
 
-    fun <TComponent : WebComponent?> byId(componentClass: Class<TComponent>?, id: String?): TComponent {
-        return by(componentClass, IdFindStrategy(id!!))
+    inline fun <reified TComponent : WebComponent> byClass(cclass: String): TComponent {
+        return create<TComponent, ClassFindStrategy>(cclass)
     }
 
-    fun <TComponent : WebComponent?> byCss(componentClass: Class<TComponent>?, css: String?): TComponent {
-        return by(componentClass, CssFindStrategy(css!!))
+    inline fun <reified TComponent : WebComponent> byXPath(xpath: String): TComponent {
+        return create<TComponent, XPathFindStrategy>(xpath)
     }
 
-    fun <TComponent : WebComponent?> byClass(componentClass: Class<TComponent>?, cclass: String?): TComponent {
-        return by(componentClass, ClassFindStrategy(cclass))
+    inline fun <reified TComponent : WebComponent> byLinkText(linkText: String): TComponent {
+        return create<TComponent, LinkTextFindStrategy>(linkText)
     }
 
-    fun <TComponent : WebComponent?> byXPath(componentClass: Class<TComponent>?, xpath: String?): TComponent {
-        return by(componentClass, XPathFindStrategy(xpath!!))
+    inline fun <reified TComponent : WebComponent> byTag(tag: String): TComponent {
+        return create<TComponent, TagFindStrategy>(tag)
     }
 
-    fun <TComponent : WebComponent?> byLinkText(componentClass: Class<TComponent>?, linkText: String?): TComponent {
-        return by(componentClass, LinkTextFindStrategy(linkText!!))
+    inline fun <reified TComponent : WebComponent> byIdContaining(idContaining: String): TComponent {
+        return create<TComponent, IdContainingFindStrategy>(idContaining)
     }
 
-    fun <TComponent : WebComponent?> byTag(componentClass: Class<TComponent>?, tag: String?): TComponent {
-        return by(componentClass, TagFindStrategy(tag!!))
+    inline fun <reified TComponent : WebComponent> byInnerTextContaining(innerText: String): TComponent {
+        return create<TComponent, InnerTextContainsFindStrategy>(innerText)
     }
 
-    fun <TComponent : WebComponent?> byIdContaining(componentClass: Class<TComponent>?, idContaining: String?): TComponent {
-        return by(componentClass, IdContainingFindStrategy(idContaining!!))
+    inline fun <reified TComponent : WebComponent> allByyId(id: String): List<TComponent> {
+        return createAll<TComponent, IdFindStrategy>(id)
     }
 
-    fun <TComponent : WebComponent?> byInnerTextContaining(componentClass: Class<TComponent>?, innerText: String?): TComponent {
-        return by(componentClass, InnerTextContainsFindStrategy(innerText))
+    inline fun <reified TComponent : WebComponent> allByyCss(css: String): List<TComponent> {
+        return createAll<TComponent, CssFindStrategy>(css)
     }
 
-    fun <TComponent : WebComponent?> allById(componentClass: Class<TComponent>?, id: String?): List<TComponent> {
-        return allBy(componentClass, IdFindStrategy(id!!))
+    inline fun <reified TComponent : WebComponent> allByyClass(cclass: String): List<TComponent> {
+        return createAll<TComponent, ClassFindStrategy>(cclass)
     }
 
-    fun <TComponent : WebComponent?> allByCss(componentClass: Class<TComponent>?, css: String?): List<TComponent> {
-        return allBy(componentClass, CssFindStrategy(css!!))
+    inline fun <reified TComponent : WebComponent> allByyXPath(xpath: String): List<TComponent> {
+        return createAll<TComponent, XPathFindStrategy>(xpath)
     }
 
-    fun <TComponent : WebComponent?> allByClass(componentClass: Class<TComponent>?, cclass: String?): List<TComponent> {
-        return allBy(componentClass, ClassFindStrategy(cclass))
+    inline fun <reified TComponent : WebComponent> allByyLinkText(linkText: String): List<TComponent> {
+        return createAll<TComponent, LinkTextFindStrategy>(linkText)
     }
 
-    fun <TComponent : WebComponent?> allByXPath(componentClass: Class<TComponent>?, xpath: String?): List<TComponent> {
-        return allBy(componentClass, XPathFindStrategy(xpath!!))
+    inline fun <reified TComponent : WebComponent> allByyTag(tag: String): List<TComponent> {
+        return createAll<TComponent, TagFindStrategy>(tag)
     }
 
-    fun <TComponent : WebComponent?> allByLinkText(componentClass: Class<TComponent>?, linkText: String?): List<TComponent> {
-        return allBy(componentClass, LinkTextFindStrategy(linkText!!))
+    inline fun <reified TComponent : WebComponent> allByyIdContaining(idContaining: String): List<TComponent> {
+        return createAll<TComponent, IdContainingFindStrategy>(idContaining)
     }
 
-    fun <TComponent : WebComponent?> allByTag(componentClass: Class<TComponent>?, tag: String?): List<TComponent> {
-        return allBy(componentClass, TagFindStrategy(tag!!))
+    inline fun <reified TComponent : WebComponent> allByyInnerTextContaining(innerText: String): List<TComponent> {
+        return createAll<TComponent, InnerTextContainsFindStrategy>(innerText)
     }
 
-    fun <TComponent : WebComponent?> allByIdContaining(componentClass: Class<TComponent>?, idContaining: String?): List<TComponent> {
-        return allBy(componentClass, IdContainingFindStrategy(idContaining!!))
+    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> create(value: String): TComponent {
+        val findStrategy = InstanceFactory.create<TFindStrategy>(value)
+        val component: TComponent = InstanceFactory.create()
+        component.findStrategy = findStrategy
+        return this as TComponent
     }
 
-    fun <TComponent : WebComponent?> allByInnerTextContaining(componentClass: Class<TComponent>?, innerText: String?): List<TComponent> {
-        return allBy(componentClass, InnerTextContainsFindStrategy(innerText))
-    }
-
-    fun <TComponent : WebComponent?, TFindStrategy : FindStrategy?> by(componentClass: Class<TComponent>?, findStrategy: TFindStrategy): TComponent {
-        val component: Unit = InstanceFactory.create(componentClass)
-        component.setFindStrategy(findStrategy)
-        return component
-    }
-
-    fun <TComponent : WebComponent?, TFindStrategy : FindStrategy?> allBy(componentClass: Class<TComponent>?, findStrategy: TFindStrategy): List<TComponent> {
-        val nativeElements = wrappedDriver().findElements(findStrategy!!.convert())
-        val componentList: MutableList<TComponent> = ArrayList()
-        for (i in 0 until nativeElements.stream().count()) {
-            val component: Unit = InstanceFactory.create(componentClass)
-            component.setFindStrategy(findStrategy)
-            component.setElementIndex(i)
+    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> createAll(value: String): List<TComponent> {
+        val findStrategy = InstanceFactory.create<TFindStrategy>(value)
+        val nativeElements = wrappedDriver().findElements(findStrategy.convert())
+        val componentList = mutableListOf<TComponent>()
+        for (i in 0 until nativeElements.count()) {
+            val component: TComponent = InstanceFactory.create()
+            component.findStrategy = findStrategy
+            component.elementIndex = i
             componentList.add(component)
         }
         return componentList

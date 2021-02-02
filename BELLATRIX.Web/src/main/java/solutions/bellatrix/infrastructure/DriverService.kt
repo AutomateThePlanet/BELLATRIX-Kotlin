@@ -25,7 +25,6 @@ import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.firefox.FirefoxOptions
 import solutions.bellatrix.configuration.ConfigurationService
 import solutions.bellatrix.configuration.WebSettings
-import sun.reflect.generics.reflectiveObjects.NotImplementedException
 import java.lang.Exception
 import java.util.concurrent.TimeUnit
 
@@ -139,13 +138,13 @@ object DriverService {
         }
     }
 
-    private fun initializeDriverCrossBrowserTestingMode(): WebDriver = throw NotImplementedException()
+    private fun initializeDriverCrossBrowserTestingMode(): WebDriver = FirefoxDriver()
 
-    private fun initializeDriverBrowserStackMode(): WebDriver  = throw NotImplementedException()
+    private fun initializeDriverBrowserStackMode(): WebDriver  = FirefoxDriver()
 
-    private fun initializeDriverSauceLabsMode(): WebDriver  = throw NotImplementedException()
+    private fun initializeDriverSauceLabsMode(): WebDriver  = FirefoxDriver()
 
-    private fun initializeDriverGridMode(): WebDriver  = throw NotImplementedException()
+    private fun initializeDriverGridMode(): WebDriver  = FirefoxDriver()
 
     private fun changeWindowSize(wrappedDriver: WebDriver) {
         try {

@@ -10,16 +10,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.findstrategies
+package solutions.bellatrix.components
 
-import org.openqa.selenium.By
+class CheckBox : WebComponent() {
+    override val componentClass: Class<*>
+        get() = javaClass
 
-class ClassFindStrategy(value: String) : FindStrategy(value) {
-    override fun convert(): By {
-        return By.xpath("//*[@class='$value']")
-    }
-
-    override fun toString(): String {
-        return "class = $value"
-    }
+    fun check() {}
+    fun uncheck() {}
 }

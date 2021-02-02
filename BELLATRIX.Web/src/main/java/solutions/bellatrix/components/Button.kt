@@ -10,16 +10,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.findstrategies
+package solutions.bellatrix.components
 
-import org.openqa.selenium.By
+import solutions.bellatrix.plugins.EventListener
 
-class ClassFindStrategy(value: String) : FindStrategy(value) {
-    override fun convert(): By {
-        return By.xpath("//*[@class='$value']")
+class Button : WebComponent() {
+    fun click() {
+        defaultClick(CLICKING, CLICKED)
     }
 
-    override fun toString(): String {
-        return "class = $value"
+    override val componentClass: Class<*>
+        get() = javaClass
+
+    companion object {
+        val CLICKING = EventListener<ComponentActionEventArgs>()
+        val CLICKED = EventListener<ComponentActionEventArgs>()
     }
 }
