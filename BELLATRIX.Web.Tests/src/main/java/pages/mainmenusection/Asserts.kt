@@ -14,4 +14,4 @@ package pages.mainmenusection
 
 import solutions.bellatrix.pages.PageAsserts
 
-class Asserts(override val components: Components) : PageAsserts<Components>()
+class Asserts(override val map: Map) : PageAsserts<Map>()

@@ -14,13 +14,13 @@ package pages.searchsection
 
 import solutions.bellatrix.pages.WebSection
 
-class SearchSection : WebSection<Components, Asserts>() {
-    override val components: Components
-        get() = Components()
+class SearchSection : WebSection<Map, Asserts>() {
+    override val map: Map
+        get() = Map()
     override val asserts: Asserts
-        get() = Asserts(components)
+        get() = Asserts(map)
 
     fun searchForItem(searchText: String) {
-        components.searchField.setText(searchText)
+        map.searchField.setText(searchText)
     }
 }

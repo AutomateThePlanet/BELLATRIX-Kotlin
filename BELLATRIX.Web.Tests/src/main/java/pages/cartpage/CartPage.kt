@@ -15,35 +15,35 @@ package pages.cartpage
 import solutions.bellatrix.components.TextField
 import solutions.bellatrix.pages.WebPage
 
-class CartPage : WebPage<Components, Asserts>() {
+class CartPage : WebPage<Map, Asserts>() {
     override val url: String = "http://demos.bellatrix.solutions/cart/"
 
     override fun waitForPageLoad() {
-        components.couponCodeTextField.toExists<TextField>().waitToBe()
+        map.couponCodeTextField.toExists<TextField>().waitToBe()
     }
 
-    override val components: Components
-        get() = Components()
+    override val map: Map
+        get() = Map()
     override val asserts: Asserts
-        get() = Asserts(components)
+        get() = Asserts(map)
 
-    val total: String = components.totalSpan.text
-    val messageNotification: String = components.messageAlert.text
+    val total: String = map.totalSpan.text
+    val messageNotification: String = map.messageAlert.text
 
-    fun applyCoupon(coupon: String?) {
-        components.couponCodeTextField.setText(coupon)
-        components.applyCouponButton.click()
+    fun applyCoupon(coupon: String) {
+        map.couponCodeTextField.setText(coupon)
+        map.applyCouponButton.click()
         browser.waitForAjax()
     }
 
     fun increaseProductQuantity(newQuantity: Int) {
-        components.quantityBox.setText(newQuantity.toString())
-        components.updateCart.click()
+        map.quantityBox.setText(newQuantity.toString())
+        map.updateCart.click()
         browser.waitForAjax()
     }
 
     fun clickProceedToCheckout() {
-        components.proceedToCheckout.click()
+        map.proceedToCheckout.click()
         browser.waitUntilPageLoadsCompletely()
     }
 }

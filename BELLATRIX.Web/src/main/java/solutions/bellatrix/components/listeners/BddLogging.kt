@@ -16,7 +16,7 @@ import solutions.bellatrix.components.Anchor
 
 object BddLogging {
     private var isBddLoggingTurnedOn = false
-    fun turnOn() {
+    fun addListeners() {
         if (!isBddLoggingTurnedOn) {
             Anchor.CLICKING.addListener { println("clicking $it.component.elementName\n") }
             isBddLoggingTurnedOn = true

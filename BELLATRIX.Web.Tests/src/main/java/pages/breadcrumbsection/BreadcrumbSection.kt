@@ -15,13 +15,13 @@ package pages.breadcrumbsection
 import solutions.bellatrix.components.Anchor
 import solutions.bellatrix.pages.WebSection
 
-class BreadcrumbSection : WebSection<Components, Asserts>() {
+class BreadcrumbSection : WebSection<Map, Asserts>() {
     fun openBreadcrumbItem(itemToOpen: String) {
-        components.breadcrumb.createByLinkText<Anchor>(itemToOpen).click()
+        map.breadcrumb.createByLinkText<Anchor>(itemToOpen).click()
     }
 
-    override val components: Components
-        get() = Components()
+    override val map: Map
+        get() = Map()
     override val asserts: Asserts
-        get() = Asserts(components)
+        get() = Asserts(map)
 }

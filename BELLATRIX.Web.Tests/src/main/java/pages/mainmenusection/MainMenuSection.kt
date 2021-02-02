@@ -14,15 +14,15 @@ package pages.mainmenusection
 
 import solutions.bellatrix.pages.WebSection
 
-class MainMenuSection : WebSection<Components, Asserts>() {
-    override val components: Components
-        get() = Components()
+class MainMenuSection : WebSection<Map, Asserts>() {
+    override val map: Map
+        get() = Map()
     override val asserts: Asserts
-        get() = Asserts(components)
+        get() = Asserts(map)
 
-    fun openHomePage() = components.homeLink.click()
-    fun openBlogPage() = components.blogLink.click()
-    fun openMyAccountPage() = components.myAccountLink.click()
-    fun openPromotionsPage() = components.promotionsLink.click()
+    fun openHomePage() = map.homeLink.click()
+    fun openBlogPage() = map.blogLink.click()
+    fun openMyAccountPage() = map.myAccountLink.click()
+    fun openPromotionsPage() = map.promotionsLink.click()
 
 }

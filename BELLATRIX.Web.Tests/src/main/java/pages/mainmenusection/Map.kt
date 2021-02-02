@@ -10,13 +10,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pages.cartInfosection
+package pages.mainmenusection
 
 import solutions.bellatrix.components.Anchor
-import solutions.bellatrix.components.Span
-import solutions.bellatrix.pages.PageComponents
+import solutions.bellatrix.pages.PageMap
 
-class Components : PageComponents() {
-    val cartIcon: Anchor = create.byClass("cart-contents")
-    val cartAmount: Span = create.byClass("amount")
+class Map : PageMap() {
+    val homeLink: Anchor = create.byLinkText("Home")
+    val blogLink: Anchor = create.byLinkText("Blog")
+    val cartLink: Anchor = create.byLinkText("Cart")
+    val checkoutLink: Anchor = create.byLinkText("Checkout")
+    val myAccountLink: Anchor = create.byLinkText("My Account")
+    val promotionsLink: Anchor = create.byLinkText("Promotions")
 }

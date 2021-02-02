@@ -13,9 +13,9 @@
 package pages.cartpage
 
 import solutions.bellatrix.components.*
-import solutions.bellatrix.pages.PageComponents
+import solutions.bellatrix.pages.PageMap
 
-class Components : PageComponents() {
+class Map : PageMap() {
     val couponCodeTextField: TextField = create.byId("coupon_code")
     val applyCouponButton: Button = create.byCss("[value*='Apply coupon']")
     val quantityBox: TextField = create.byCss("[class*='input-text qty text']")

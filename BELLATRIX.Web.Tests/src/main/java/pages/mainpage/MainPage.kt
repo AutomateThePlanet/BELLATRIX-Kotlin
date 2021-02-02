@@ -15,20 +15,20 @@ package pages.mainpage
 import solutions.bellatrix.components.Anchor
 import solutions.bellatrix.pages.WebPage
 
-class MainPage : WebPage<Components, Asserts>() {
+class MainPage : WebPage<Map, Asserts>() {
     override val url: String = "http://demos.bellatrix.solutions/"
-    override val components: Components
-        get() = Components()
+    override val map: Map
+        get() = Map()
     override val asserts: Asserts
-        get() = Asserts(components)
+        get() = Asserts(map)
 
     override fun waitForPageLoad() {
-        components.addToCartFalcon9.toExists<Anchor>().waitToBe()
+        map.addToCartFalcon9.toExists<Anchor>().waitToBe()
     }
 
     fun addRocketToShoppingCart(rocketName: String) {
         open()
-        components.getProductBoxByName(rocketName).click()
-        components.viewCartButton.click()
+        map.getProductBoxByName(rocketName).click()
+        map.getViewCartButtonByName(rocketName).click()
     }
 }

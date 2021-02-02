@@ -20,33 +20,39 @@ object JavaScriptService : WebService() {
     private val javascriptExecutor: JavascriptExecutor
         get() = wrappedDriver as JavascriptExecutor
 
-    fun execute(script: String): Any {
+    fun execute(script: String): Any? {
         return try {
-            javascriptExecutor.executeScript(script) as String
+            val result = javascriptExecutor.executeScript(script)
         } catch (ex: Exception) {
             ex.printStackTrace()
         }
     }
 
-    fun execute(frameName: String, script: String): String {
+    fun execute(frameName: String, script: String): String? {
         wrappedDriver.switchTo().frame(frameName)
-        val result = execute(script) as String
+        val result = execute(script)
         wrappedDriver.switchTo().defaultContent()
-        return result
+        if (result != null) {
+            return result as String
+        } else {
+            return null
+        }
     }
 
-    fun execute(script: String, vararg args: Any): String {
+    fun execute(script: String, vararg args: Any): String? {
         return try {
-            javascriptExecutor.executeScript(script, *args) as String
+            val result = javascriptExecutor.executeScript(script, *args)
+            if (result != null) result as String else null
         } catch (ex: Exception) {
             ex.printStackTrace()
             ""
         }
     }
 
-    fun execute(script: String, nativeElement: WebElement): String {
+    fun execute(script: String, nativeElement: WebElement): String? {
         return try {
-            javascriptExecutor.executeScript(script, nativeElement) as String
+            val result = javascriptExecutor.executeScript(script, nativeElement)
+            if (result != null) result as String else null
         } catch (ex: Exception) {
             ex.printStackTrace()
             ""

@@ -16,9 +16,9 @@ package solutions.bellatrix.pages
 import solutions.bellatrix.services.BrowserService
 import solutions.bellatrix.services.ComponentCreateService
 
-abstract class WebSection<ComponentsT : PageComponents, AssertsT : PageAsserts<ComponentsT>> {
+abstract class WebSection<MapT : PageMap, AssertsT : PageAsserts<MapT>> {
     val browser = BrowserService
     val create = ComponentCreateService
-    abstract val components: ComponentsT
+    abstract val map: MapT
     abstract val asserts: AssertsT
 }

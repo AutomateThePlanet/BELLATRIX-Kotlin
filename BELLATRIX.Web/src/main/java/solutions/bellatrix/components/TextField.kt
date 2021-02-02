@@ -13,7 +13,9 @@
 package solutions.bellatrix.components
 
 class TextField : WebComponent() {
-    fun setText(value: String?) {}
+    fun setText(value: String) {
+//        defaultSetText(value)
+    }
     override val componentClass: Class<*>
         get() = javaClass
 }

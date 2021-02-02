@@ -10,10 +10,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.pages
+package pages.cartInfosection
 
-import solutions.bellatrix.services.ComponentCreateService
+import solutions.bellatrix.components.Anchor
+import solutions.bellatrix.components.Span
+import solutions.bellatrix.pages.PageMap
 
-abstract class PageComponents {
-    val create = ComponentCreateService
+class Map : PageMap() {
+    val cartIcon: Anchor = create.byClass("cart-contents")
+    val cartAmount: Span = create.byClass("amount")
 }

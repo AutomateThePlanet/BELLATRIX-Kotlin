@@ -10,11 +10,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pages.searchsection
+package solutions.bellatrix.pages
 
-import solutions.bellatrix.components.TextField
-import solutions.bellatrix.pages.PageComponents
+import solutions.bellatrix.services.ComponentCreateService
 
-class Components : PageComponents() {
-    val searchField: TextField = create.byId("woocommerce-product-search-field-0")
+abstract class PageMap {
+    val create = ComponentCreateService
 }

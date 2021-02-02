@@ -15,9 +15,9 @@ package pages.mainpage
 import org.testng.Assert
 import solutions.bellatrix.pages.PageAsserts
 
-class Asserts(override val components: Components) : PageAsserts<Components>() {
+class Asserts(override val map: Map) : PageAsserts<Map>() {
     fun productBoxLink(name: String, expectedLink: String) {
-        val actualLink: String = components.getProductBoxByName(name).attribute("href")
+        val actualLink: String = map.getProductBoxByName(name).attribute("href")
         Assert.assertEquals(actualLink, expectedLink)
     }
 }

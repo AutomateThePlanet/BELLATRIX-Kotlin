@@ -15,11 +15,11 @@ package solutions.bellatrix.services
 import org.openqa.selenium.Cookie
 
 object CookiesService : WebService() {
-    fun add(cookieName: String?, cookieValue: String?, path: String?) {
+    fun add(cookieName: String, cookieValue: String, path: String) {
         wrappedDriver.manage().addCookie(Cookie(cookieName, cookieValue, path))
     }
 
-    fun add(cookieToAdd: Cookie?) {
+    fun add(cookieToAdd: Cookie) {
         wrappedDriver.manage().addCookie(cookieToAdd)
     }
 
@@ -27,13 +27,13 @@ object CookiesService : WebService() {
         wrappedDriver.manage().deleteAllCookies()
     }
 
-    fun delete(cookieName: String?) {
+    fun delete(cookieName: String) {
         wrappedDriver.manage().deleteCookieNamed(cookieName)
     }
 
     val all = wrappedDriver.manage().cookies
 
-    fun get(cookieName: String?): Cookie {
+    fun get(cookieName: String): Cookie {
         return wrappedDriver.manage().getCookieNamed(cookieName)
     }
 }

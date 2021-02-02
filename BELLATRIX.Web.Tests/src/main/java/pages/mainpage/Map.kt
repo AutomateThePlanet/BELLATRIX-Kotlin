@@ -10,11 +10,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pages.breadcrumbsection
+package pages.mainpage
 
-import solutions.bellatrix.pages.PageComponents
-import solutions.bellatrix.components.WebComponent
+import solutions.bellatrix.components.Anchor
+import solutions.bellatrix.components.Button
+import solutions.bellatrix.pages.PageMap
 
-class Components : PageComponents() {
-    val breadcrumb: WebComponent = create.byCss("woocommerce-breadcrumb")
+class Map : PageMap() {
+    val addToCartFalcon9: Anchor = create.byCss("[data-product_id*='28']")
+    val viewCartButton: Button = create.byCss("[class*='added_to_cart wc-forward']")
+    fun getProductBoxByName(name: String): Anchor = create.byXPath("//h2[text()='$name']/parent::a[1]/following-sibling::a[1]")
+    fun getViewCartButtonByName(name: String): Anchor = create.byXPath("//h2[text()='$name']/parent::a[1]/following-sibling::a[2]")
 }

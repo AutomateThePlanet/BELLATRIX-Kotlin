@@ -14,31 +14,31 @@ package pages.checkoutpage
 
 import solutions.bellatrix.pages.WebPage
 
-class CheckoutPage : WebPage<Components, Asserts>() {
+class CheckoutPage : WebPage<Map, Asserts>() {
     override val url: String = "http://demos.bellatrix.solutions/checkout/"
-    override val components: Components
-        get() = Components()
+    override val map: Map
+        get() = Map()
     override val asserts: Asserts
-        get() = Asserts(components)
+        get() = Asserts(map)
 
     fun fillInfo(purchaseInfo: PurchaseInfo) {
-        components.firstName.setText(purchaseInfo.firstName)
-        components.lastName.setText(purchaseInfo.lastName)
-        components.company.setText(purchaseInfo.company)
-        components.countryWrapper.click()
-        components.countryFilter.setText(purchaseInfo.country)
-        components.countryOption(purchaseInfo.country).click()
-        components.address1.setText(purchaseInfo.address1)
-        components.address2.setText(purchaseInfo.address2)
-        components.city.setText(purchaseInfo.city)
-        components.zip.setText(purchaseInfo.zip)
-        components.phone.setText(purchaseInfo.phone)
-        components.email.setText(purchaseInfo.email)
+        map.firstName.setText(purchaseInfo.firstName)
+        map.lastName.setText(purchaseInfo.lastName)
+        map.company.setText(purchaseInfo.company)
+        map.countryWrapper.click()
+        map.countryFilter.setText(purchaseInfo.country)
+        map.countryOption(purchaseInfo.country).click()
+        map.address1.setText(purchaseInfo.address1)
+        map.address2.setText(purchaseInfo.address2)
+        map.city.setText(purchaseInfo.city)
+        map.zip.setText(purchaseInfo.zip)
+        map.phone.setText(purchaseInfo.phone)
+        map.email.setText(purchaseInfo.email)
 
-        if (purchaseInfo.shouldCreateAccount) components.createAccountCheckBox.check()
-        if (purchaseInfo.shouldCheckPayment) components.checkPaymentsRadioButton.click()
+        if (purchaseInfo.shouldCreateAccount) map.createAccountCheckBox.check()
+        if (purchaseInfo.shouldCheckPayment) map.checkPaymentsRadioButton.click()
 
-        components.placeOrderButton.click()
+        map.placeOrderButton.click()
         browser.waitForAjax()
     }
 }

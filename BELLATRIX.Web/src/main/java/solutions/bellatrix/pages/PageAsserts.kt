@@ -12,9 +12,6 @@
  */
 package solutions.bellatrix.pages
 
-import solutions.bellatrix.utilities.InstanceFactory
-import java.lang.reflect.ParameterizedType
-
-abstract class PageAsserts<ComponentsT : PageComponents> {
-    abstract val components: ComponentsT
+abstract class PageAsserts<MapT : PageMap> {
+    abstract val map: MapT
 }

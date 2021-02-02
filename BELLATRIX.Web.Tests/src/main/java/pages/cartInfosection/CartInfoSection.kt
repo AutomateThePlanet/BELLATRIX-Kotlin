@@ -14,12 +14,12 @@ package pages.cartInfosection
 
 import solutions.bellatrix.pages.WebSection
 
-class CartInfoSection : WebSection<Components, Asserts>() {
-    val currentAmount: String = components.cartAmount.text
-    fun openCart() = components.cartIcon.click()
+class CartInfoSection : WebSection<Map, Asserts>() {
+    val currentAmount: String = map.cartAmount.text
+    fun openCart() = map.cartIcon.click()
 
-    override val components: Components
-        get() = Components()
+    override val map: Map
+        get() = Map()
     override val asserts: Asserts
-        get() = Asserts(components)
+        get() = Asserts(map)
 }

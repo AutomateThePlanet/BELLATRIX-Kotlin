@@ -22,8 +22,12 @@ open class WebTest : BaseTest() {
     get() = App
 
     @BeforeSuite
-    fun beforeSuite() {
+    fun beforeSuiteCore() {
         addPlugin(BrowserLifecyclePlugin())
-        BddLogging.turnOn()
+        BddLogging.addListeners()
+        beforeSuite();
+    }
+
+    fun beforeSuite() {
     }
 }

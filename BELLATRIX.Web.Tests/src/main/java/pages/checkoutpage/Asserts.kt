@@ -15,8 +15,8 @@ package pages.checkoutpage
 import org.testng.Assert
 import solutions.bellatrix.pages.PageAsserts
 
-class Asserts(override val components: Components) : PageAsserts<Components>() {
+class Asserts(override val map: Map) : PageAsserts<Map>() {
     fun orderReceived() {
-        Assert.assertEquals(components.receivedMessage.text, "Order received")
+        Assert.assertEquals(map.receivedMessage.text, "Order received")
     }
 }

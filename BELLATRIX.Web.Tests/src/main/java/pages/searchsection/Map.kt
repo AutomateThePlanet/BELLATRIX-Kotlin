@@ -10,14 +10,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pages.mainpage
+package pages.searchsection
 
-import solutions.bellatrix.components.Anchor
-import solutions.bellatrix.components.Button
-import solutions.bellatrix.pages.PageComponents
+import solutions.bellatrix.components.TextField
+import solutions.bellatrix.pages.PageMap
 
-class Components : PageComponents() {
-    val addToCartFalcon9: Anchor = create.byCss("[data-product_id*='28']")
-    val viewCartButton: Button = create.byCss("[class*='added_to_cart wc-forward']")
-    fun getProductBoxByName(name: String): Anchor = create.byXPath("//h2[text()='$name']/parent::a[1]")
+class Map : PageMap() {
+    val searchField: TextField = create.byId("woocommerce-product-search-field-0")
 }

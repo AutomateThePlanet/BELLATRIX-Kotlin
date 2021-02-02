@@ -15,14 +15,12 @@ package solutions.bellatrix.pages
 import solutions.bellatrix.services.BrowserService
 import solutions.bellatrix.services.ComponentCreateService
 import solutions.bellatrix.services.NavigationService
-import solutions.bellatrix.utilities.InstanceFactory
-import java.lang.reflect.ParameterizedType
 
-abstract class WebPage<ComponentsT : PageComponents, AssertsT : PageAsserts<ComponentsT>> {
+abstract class WebPage<MapT : PageMap, AssertsT : PageAsserts<MapT>> {
     val browser = BrowserService
     var create = ComponentCreateService
     var navigate = NavigationService
-    abstract val components: ComponentsT
+    abstract val map: MapT
     abstract val asserts: AssertsT
 
     protected abstract val url: String
