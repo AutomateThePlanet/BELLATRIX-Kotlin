@@ -19,6 +19,10 @@ object InstanceFactory {
         return T::class.java.constructors[0].newInstance() as T
     }
 
+    inline fun <T> createByClass(tclass: Class<T>): T {
+        return tclass.constructors[0].newInstance() as T
+    }
+
     inline fun <reified T> create(vararg args: Any?): T {
         return T::class.java.constructors[0].newInstance(args) as T
     }

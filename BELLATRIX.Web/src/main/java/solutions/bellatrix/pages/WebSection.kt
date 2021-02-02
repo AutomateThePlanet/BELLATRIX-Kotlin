@@ -15,33 +15,19 @@ package solutions.bellatrix.pages
 
 import solutions.bellatrix.services.BrowserService
 import solutions.bellatrix.services.ComponentCreateService
-import java.lang.Exception
-import java.lang.reflect.ParameterizedType
+import solutions.bellatrix.utilities.InstanceFactory
 
-abstract class WebSection<ComponentsT : PageComponents, AssertionsT : PageAsserts<ComponentsT>> {
-    fun browser(): BrowserService {
-        return BrowserService
-    }
+abstract class WebSection<ComponentsT : PageComponents, AssertsT : PageAsserts<ComponentsT>> {
 
-    fun create(): ComponentCreateService {
-        return ComponentCreateService
-    }
+    val browser = BrowserService
+    val create = ComponentCreateService
+    val components: ComponentsT
+    get() = InstanceFactory.createByClass(componentsClass())
 
-    fun elements(): ComponentsT? {
-        return try {
-            val elementsClass = (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<ComponentsT>
-            elementsClass.getDeclaredConstructor().newInstance()
-        } catch (e: Exception) {
-            null
-        }
-    }
+    val asserts: AssertsT
+    get() = InstanceFactory.createByClass(assertsClass())
 
-    fun asserts(): AssertionsT? {
-        return try {
-            val assertionsClass = (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[1] as Class<AssertionsT>
-            assertionsClass.getDeclaredConstructor().newInstance()
-        } catch (e: Exception) {
-            null
-        }
-    }
+    abstract fun assertsClass() : Class<AssertsT>
+
+    abstract fun componentsClass() : Class<ComponentsT>
 }

@@ -10,17 +10,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package pages.cartInfosection
 
-package pages.cartInfosection;
+import solutions.bellatrix.pages.WebSection
 
-import solutions.bellatrix.pages.WebSection;
+class CartInfoSection : WebSection<Components, Asserts>() {
+    val currentAmount: String = components.cartAmount.text
 
-public class CartInfoSection extends WebSection<Components, Asserts> {
-    public String getCurrentAmount() {
-        return elements().cartAmount().getText();
-    }
+    fun openCart() = components.cartIcon.click()
 
-    public void openCart() {
-        elements().cartIcon().click();
-    }
+    override fun componentsClass(): Class<Components> = Components::class.java
+
+    override fun assertsClass(): Class<Asserts> = Asserts::class.java
 }

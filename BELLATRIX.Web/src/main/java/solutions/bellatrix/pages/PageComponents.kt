@@ -15,7 +15,5 @@ package solutions.bellatrix.pages
 import solutions.bellatrix.services.ComponentCreateService
 
 abstract class PageComponents {
-    fun create(): ComponentCreateService {
-        return ComponentCreateService
-    }
+    val create = ComponentCreateService
 }

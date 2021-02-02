@@ -15,7 +15,9 @@ package solutions.bellatrix.pages
 import solutions.bellatrix.utilities.InstanceFactory
 
 abstract class PageAsserts<ComponentsT : PageComponents> {
-    protected inline fun <reified ComponentsT> elements(): ComponentsT {
-        return InstanceFactory.create()
+    fun components(): ComponentsT {
+        return InstanceFactory.createByClass(componentsClass())
     }
+
+    abstract fun componentsClass() : Class<ComponentsT>
 }

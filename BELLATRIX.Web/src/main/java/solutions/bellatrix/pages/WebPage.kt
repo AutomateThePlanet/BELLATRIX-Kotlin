@@ -26,13 +26,17 @@ abstract class WebPage<ComponentsT : PageComponents, AssertsT : PageAsserts<Comp
         return ComponentCreateService
     }
 
-    inline fun <reified ComponentsT> elements(): ComponentsT {
-        return InstanceFactory.create()
+    fun components(): ComponentsT {
+        return InstanceFactory.createByClass(componentsClass())
     }
 
-    inline fun <reified AssertsT> asserts(): AssertsT {
-        return InstanceFactory.create()
+    fun asserts(): AssertsT {
+        return InstanceFactory.createByClass(assertsClass())
     }
+
+    abstract fun assertsClass() : Class<AssertsT>
+
+    abstract fun componentsClass() : Class<ComponentsT>
 
     fun navigate(): NavigationService {
         return NavigationService

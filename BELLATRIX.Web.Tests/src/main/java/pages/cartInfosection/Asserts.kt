@@ -10,10 +10,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package pages.cartInfosection
 
-package pages.breadcrumbsection;
+import solutions.bellatrix.pages.PageAsserts
 
-import solutions.bellatrix.pages.PageAsserts;
-
-public class Asserts extends PageAsserts<Components> {
+class Asserts : PageAsserts<Components>() {
+    override fun componentsClass(): Class<Components> = Components::class.java
 }

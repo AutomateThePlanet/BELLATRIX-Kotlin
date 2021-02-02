@@ -10,10 +10,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package pages.breadcrumbsection
 
-package pages.cartInfosection;
+import solutions.bellatrix.pages.PageComponents
+import solutions.bellatrix.components.WebComponent
 
-import solutions.bellatrix.pages.PageAsserts;
-
-public class Asserts extends PageAsserts<Components> {
+class Components : PageComponents() {
+    val breadcrumb: WebComponent = create.byCss("woocommerce-breadcrumb")
 }

@@ -10,14 +10,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package pages.breadcrumbsection
 
-package pages.breadcrumbsection;
+import solutions.bellatrix.pages.PageAsserts
 
-import solutions.bellatrix.components.WebComponent;
-import solutions.bellatrix.pages.PageComponents;
-
-public class Components extends PageComponents {
-    public WebComponent breadcrumb() {
-        return create().byCss(WebComponent.class, "woocommerce-breadcrumb");
-    }
+class Asserts : PageAsserts<Components>() {
+    override fun componentsClass(): Class<Components> = Components::class.java
 }

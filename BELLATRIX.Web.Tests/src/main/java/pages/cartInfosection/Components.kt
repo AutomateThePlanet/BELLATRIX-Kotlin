@@ -10,21 +10,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package pages.cartInfosection
 
-package pages.breadcrumbsection;
+import solutions.bellatrix.components.Anchor
+import solutions.bellatrix.components.Span
+import solutions.bellatrix.pages.PageComponents
 
-import solutions.bellatrix.components.Anchor;
-import solutions.bellatrix.components.WebComponent;
-import solutions.bellatrix.pages.WebSection;
-
-public class BreadcrumbSection extends WebSection<Components, Asserts> {
-
-    private WebComponent breadcrumb() {
-        return create().byCss(WebComponent.class, "woocommerce-breadcrumb");
-    }
-
-    // TODO: add create methods to component
-    public void openBreadcrumbItem(String itemToOpen) {
-        breadcrumb().createByLinkText(Anchor.class, itemToOpen).click();
-    }
+class Components : PageComponents() {
+    val cartIcon: Anchor = create.byClass("cart-contents")
+    val cartAmount: Span = create.byClass("amount")
 }

@@ -216,7 +216,7 @@ open abstract class WebComponent : Component {
         return create<TComponent, XPathFindStrategy>(xpath)
     }
 
-    protected inline fun <reified TComponent : WebComponent> createByLinkText(linkText: String): TComponent {
+    inline fun <reified TComponent : WebComponent> createByLinkText(linkText: String): TComponent {
         return create<TComponent, LinkTextFindStrategy>(linkText)
     }
 

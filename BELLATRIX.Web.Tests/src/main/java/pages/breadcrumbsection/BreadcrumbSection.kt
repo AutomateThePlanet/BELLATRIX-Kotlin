@@ -10,19 +10,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package pages.breadcrumbsection
 
-package pages.cartInfosection;
+import solutions.bellatrix.components.Anchor
+import solutions.bellatrix.pages.WebSection
 
-import solutions.bellatrix.components.Anchor;
-import solutions.bellatrix.components.Span;
-import solutions.bellatrix.pages.PageComponents;
-
-public class Components extends PageComponents {
-    public Anchor cartIcon() {
-        return create().byClass(Anchor.class, "cart-contents");
+class BreadcrumbSection : WebSection<Components, Asserts>() {
+    fun openBreadcrumbItem(itemToOpen: String) {
+        components.breadcrumb.createByLinkText<Anchor>(itemToOpen).click()
     }
 
-    public Span cartAmount() {
-        return create().byClass(Span.class, "amount");
-    }
+    override fun componentsClass(): Class<Components> = Components::class.java
+    override fun assertsClass(): Class<Asserts> = Asserts::class.java
 }
