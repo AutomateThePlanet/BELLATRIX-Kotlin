@@ -10,13 +10,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.pages
 
-package solutions.bellatrix.pages;
+import solutions.bellatrix.utilities.InstanceFactory
 
-import solutions.bellatrix.services.ComponentCreateService;
-
-public abstract class PageComponents {
-    public ComponentCreateService create() {
-        return new ComponentCreateService();
+abstract class PageAsserts<ComponentsT : PageComponents> {
+    protected inline fun <reified ComponentsT> elements(): ComponentsT {
+        return InstanceFactory.create()
     }
 }

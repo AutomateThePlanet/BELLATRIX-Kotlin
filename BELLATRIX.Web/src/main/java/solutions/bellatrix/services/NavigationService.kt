@@ -18,7 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.WebDriver
 import java.lang.Exception
 
-class NavigationService : WebService() {
+object NavigationService : WebService() {
     // TODO: UrlNotNavigatedEvent
     fun to(url: String?) {
         wrappedDriver.navigate().to(url)

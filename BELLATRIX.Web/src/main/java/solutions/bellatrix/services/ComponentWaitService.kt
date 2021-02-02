@@ -10,19 +10,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.services
 
-package solutions.bellatrix.services;
+import solutions.bellatrix.infrastructure.DriverService.wrappedDriver
+import solutions.bellatrix.components.WebComponent
+import solutions.bellatrix.waitstrategies.WaitStrategy
 
-import solutions.bellatrix.components.WebComponent;
-import solutions.bellatrix.infrastructure.DriverService;
-import solutions.bellatrix.waitstrategies.WaitStrategy;
-
-public class ComponentWaitService extends WebService {
-    public void wait(WebComponent component, WaitStrategy waitStrategy) {
-        if (component.getParentWrappedElement() == null) {
-            waitStrategy.waitUntil(DriverService.wrappedDriver(), component.getFindStrategy().convert());
+object ComponentWaitService : WebService() {
+    fun wait(component: WebComponent, waitStrategy: WaitStrategy) {
+        if (component.parentWrappedElement == null) {
+            waitStrategy.waitUntil(wrappedDriver(), component.findStrategy.convert())
         } else {
-            waitStrategy.waitUntil(component.getParentWrappedElement(), component.getFindStrategy().convert());
+            waitStrategy.waitUntil(component.parentWrappedElement, component.findStrategy.convert())
         }
     }
 }

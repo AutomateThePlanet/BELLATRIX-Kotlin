@@ -15,7 +15,7 @@ package solutions.bellatrix.services
 import org.openqa.selenium.Alert
 import java.util.function.Function
 
-class DialogService : WebService() {
+object DialogService : WebService() {
     fun handle(function: Function<Any, Alert>, dialogButton: DialogButton) {
         val alert = wrappedDriver.switchTo().alert()
         function.apply(alert)

@@ -23,7 +23,7 @@ object InstanceFactory {
         return T::class.java.constructors[0].newInstance(args) as T
     }
 
-    inline fun <reified T> createByTypeParameter(index: Int): T? {
+    inline fun <reified T> createByTypeParameter(index: Int): T {
         val elementsClass = (T::class.java.genericSuperclass as ParameterizedType).actualTypeArguments[index] as Class<*>
         return elementsClass.getDeclaredConstructor().newInstance() as T
     }
