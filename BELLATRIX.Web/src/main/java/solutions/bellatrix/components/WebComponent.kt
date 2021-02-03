@@ -426,9 +426,9 @@ open abstract class WebComponent : Component {
 
     private fun findNativeElement(): WebElement {
         return if (parentWrappedElement == null) {
-            wrappedDriver.findElements(findStrategy!!.convert())[elementIndex]
+            wrappedDriver.findElements(findStrategy.convert())[elementIndex]
         } else {
-            parentWrappedElement!!.findElements(findStrategy!!.convert())[elementIndex]
+            parentWrappedElement!!.findElements(findStrategy.convert())[elementIndex]
         }
     }
 

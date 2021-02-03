@@ -13,6 +13,6 @@
 
 package solutions.bellatrix.components.contracts
 
-interface ComponentHref {
+interface ComponentHref : Component {
     val href: String
 }

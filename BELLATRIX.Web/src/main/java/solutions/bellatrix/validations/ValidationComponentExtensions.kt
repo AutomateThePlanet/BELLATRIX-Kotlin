@@ -13,32 +13,84 @@
 
 package solutions.bellatrix.validations
 
-import org.openqa.selenium.*
+import org.openqa.selenium.SearchContext
+import org.openqa.selenium.StaleElementReferenceException
+import org.openqa.selenium.WebDriverException
 import org.openqa.selenium.support.ui.WebDriverWait
-import solutions.bellatrix.components.ComponentActionEventArgs
+import solutions.bellatrix.components.contracts.Component
+import solutions.bellatrix.components.contracts.ComponentHref
+import solutions.bellatrix.components.contracts.ComponentHtml
 import solutions.bellatrix.configuration.ConfigurationService
 import solutions.bellatrix.configuration.WebSettings
 import solutions.bellatrix.infrastructure.DriverService
 import solutions.bellatrix.plugins.EventListener
-import kotlin.NoSuchElementException
 
-class ValidationComponentExtensions {
-    private fun waitUntil(waitCondition: () -> Boolean, validationsTimeout:Integer? = null, sleepInterval:Integer? = null) {
-        var timeoutInterval = validationsTimeout ?: ConfigurationService.get<WebSettings>().timeoutSettings.validationsTimeout
-        var sleepInterval = sleepInterval ?: ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
-        val webDriverWait = WebDriverWait(DriverService.wrappedDriver(), timeoutInterval.toLong(), sleepInterval.toLong())
+fun <TComponent : ComponentHref> TComponent.validateHrefIs(expected: String, validationsTimeout: Int? = null, sleepInterval: Int? = null) {
+    Validator.waitUntil({ this.href.trim() == expected },
+            this,
+            "validate ${this.elementName} href is '$expected'",
+            "The component's href should be '$expected' but was '$this.href'.",
+            expected,
+            validationsTimeout,
+            sleepInterval)
+}
+
+fun <TComponent : ComponentHref> TComponent.validateHrefIsSet(validationsTimeout: Int? = null, sleepInterval: Int? = null) {
+    Validator.waitUntil({ !this.href.trim().isBlank() },
+            this,
+            "validate ${this.elementName} href is set",
+            "The component's href shouldn't be empty but was.",
+            null,
+            validationsTimeout,
+            sleepInterval)
+}
+
+fun <TComponent : ComponentHtml> TComponent.validateHtmlIs(expected: String, validationsTimeout: Int? = null, sleepInterval: Int? = null) {
+    Validator.waitUntil({ this.html == expected },
+            this,
+            "validate ${this.elementName} HTML is '$expected'",
+            "The component's HTML should be '$expected' but was '${this.html}'.",
+            expected,
+            validationsTimeout,
+            sleepInterval)
+}
+
+fun <TComponent : ComponentHtml> TComponent.validateHtmlContains(expected: String, validationsTimeout: Int? = null, sleepInterval: Int? = null) {
+    Validator.waitUntil({ this.html.contains(expected) },
+            this,
+            "validate ${this.elementName} HTML contains '$expected'",
+            "The component's HTML should contain '$expected' but was '${this.html}'.",
+            expected,
+            validationsTimeout,
+            sleepInterval)
+}
+
+object Validator {
+    val VALIDATED_EXCEPTION_TROWED_EVENT = EventListener<ComponentNotFulfillingValidateConditionEventArgs>()
+    val VALIDATED_EVENT = EventListener<ValidationEventArgs>()
+
+    fun <TComponent : Component> waitUntil(
+            waitCondition: () -> Boolean,
+            component: TComponent,
+            successMessage: String,
+            exceptionMessage: String,
+            actionValue: String? = null,
+            validationsTimeout: Int? = null,
+            sleepInterval: Int? = null) {
+        val currentTimeoutInterval = validationsTimeout
+                ?: ConfigurationService.get<WebSettings>().timeoutSettings.validationsTimeout
+        val currentSleepInterval = sleepInterval
+                ?: ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
+        val webDriverWait = WebDriverWait(DriverService.wrappedDriver(), currentTimeoutInterval.toLong(), currentSleepInterval.toLong())
         webDriverWait.ignoring(NoSuchElementException::class.java, StaleElementReferenceException::class.java)
         try {
-            val untilWaitCondition = fun(s: SearchContext) : Boolean = waitCondition()
+            val untilWaitCondition = fun(s: SearchContext): Boolean = waitCondition()
             webDriverWait.until(untilWaitCondition)
+            VALIDATED_EVENT.broadcast(ValidationEventArgs(component, successMessage, actionValue))
         } catch (ex: WebDriverException) {
-            val elementPropertyValidateException = ElementPropertyValidateException(ex.message ?: "", DriverService.wrappedDriver().currentUrl)
+            val elementPropertyValidateException = ElementPropertyValidateException(exceptionMessage, DriverService.wrappedDriver().currentUrl)
             VALIDATED_EXCEPTION_TROWED_EVENT.broadcast(ComponentNotFulfillingValidateConditionEventArgs(ex))
             throw elementPropertyValidateException
         }
-    }
-
-    companion object {
-        val VALIDATED_EXCEPTION_TROWED_EVENT = EventListener<ComponentNotFulfillingValidateConditionEventArgs>()
     }
 }

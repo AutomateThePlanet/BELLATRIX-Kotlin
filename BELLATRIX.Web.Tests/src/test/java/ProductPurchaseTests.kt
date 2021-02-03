@@ -3,13 +3,9 @@ import pages.cartpage.CartPage
 import pages.checkoutpage.CheckoutPage
 import pages.checkoutpage.PurchaseInfo
 import pages.mainpage.MainPage
-import solutions.bellatrix.components.Anchor
-import solutions.bellatrix.components.Image
-import solutions.bellatrix.findstrategies.IdContainingFindStrategy
-import solutions.bellatrix.infrastructure.Browser
-import solutions.bellatrix.infrastructure.ExecutionBrowser
-import solutions.bellatrix.infrastructure.Lifecycle
-import solutions.bellatrix.infrastructure.WebTest
+import solutions.bellatrix.components.*
+import solutions.bellatrix.infrastructure.*
+import solutions.bellatrix.validations.*
 
 @ExecutionBrowser(browser = Browser.CHROME, lifecycle = Lifecycle.REUSE_IF_STARTED)
 class ProductPurchaseTests : WebTest() {
@@ -22,6 +18,7 @@ class ProductPurchaseTests : WebTest() {
         blogLink.layout().assertAboveOf(addToCartFalcon9)
         blogLink.layout() assertAboveOf addToCartFalcon9
         MainPage().asserts.productBoxLink("", "")
+        blogLink.validateHrefIs("http://demos.bellatrix.solutions/")
     }
 
     @Test

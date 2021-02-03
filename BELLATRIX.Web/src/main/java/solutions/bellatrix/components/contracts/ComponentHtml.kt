@@ -13,6 +13,6 @@
 
 package solutions.bellatrix.components.contracts
 
-interface ComponentHtml {
+interface ComponentHtml : Component {
     val html: String
 }

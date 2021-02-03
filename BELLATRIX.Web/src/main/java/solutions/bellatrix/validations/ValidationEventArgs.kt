@@ -10,23 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pages.mainpage
+package solutions.bellatrix.validations
 
-import solutions.bellatrix.components.Anchor
-import solutions.bellatrix.pages.WebPage
+import solutions.bellatrix.components.contracts.Component
 
-class MainPage : WebPage<Map, Asserts>() {
-    override val url: String = "http://demos.bellatrix.solutions/"
-    override val map = Map()
-    override val asserts = Asserts(map)
-
-    override fun waitForPageLoad() {
-        map.addToCartFalcon9.toExists<Anchor>().waitToBe()
-    }
-
-    fun addRocketToShoppingCart(rocketName: String) {
-        open()
-        map.getProductBoxByName(rocketName).click()
-        map.getViewCartButtonByName(rocketName).click()
-    }
-}
+class ValidationEventArgs (val component: Component, val message: String, val actionValue: String? = null)
