@@ -16,6 +16,7 @@ import solutions.bellatrix.plugins.BaseTest
 import solutions.bellatrix.services.App
 import org.testng.annotations.BeforeSuite
 import solutions.bellatrix.components.listeners.BddLogging
+import solutions.bellatrix.components.listeners.HighlightElements
 import solutions.bellatrix.validations.ValidationsBddLogging
 
 open class WebTest : BaseTest() {
@@ -25,8 +26,9 @@ open class WebTest : BaseTest() {
     @BeforeSuite
     fun beforeSuiteCore() {
         addPlugin(BrowserLifecyclePlugin())
-        BddLogging.addListeners()
-        ValidationsBddLogging.addListeners()
+        BddLogging.addPlugin()
+        ValidationsBddLogging.addPlugin()
+        HighlightElements.addPlugin()
         beforeSuite();
     }
 

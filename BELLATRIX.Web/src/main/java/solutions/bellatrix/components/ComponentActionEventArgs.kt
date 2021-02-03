@@ -12,9 +12,7 @@
  */
 package solutions.bellatrix.components
 
-import solutions.bellatrix.components.contracts.Component
-
-class ComponentActionEventArgs (val component: Component, val actionValue: String) {
-    constructor(component: Component) : this(component, "") {
+class ComponentActionEventArgs (val component: WebComponent, val actionValue: String) {
+    constructor(component: WebComponent) : this(component, "") {
     }
 }

@@ -35,4 +35,5 @@ class WebSettings(
         val waitUntilReadyOnElementFound: Boolean = false,
         val waitForAngular: Boolean = false,
         val artificialDelayBeforeAction: Int = 0,
+        val shouldHighlightElements: Boolean = true,
 )

@@ -14,7 +14,7 @@ package solutions.bellatrix.validations
 
 object ValidationsBddLogging {
     private var isBddLoggingTurnedOn = false
-    fun addListeners() {
+    fun addPlugin() {
         if (!isBddLoggingTurnedOn) {
             Validator.VALIDATED_EVENT.addListener { println("${it.message}\n") }
             Validator.VALIDATED_EXCEPTION_TROWED_EVENT.addListener { println("${it.exception.toString()}\n") }
