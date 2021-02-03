@@ -12,32 +12,33 @@
  */
 package solutions.bellatrix.components
 
+import solutions.bellatrix.components.contracts.*
 import solutions.bellatrix.plugins.EventListener
 
-class Anchor : WebComponent() {
+class Anchor : WebComponent(), ComponentHref, ComponentText, ComponentHtml, ComponentTarget, ComponentRel {
     override val componentClass: Class<*>
         get() = javaClass
 
-    val href: String
+    override val href: String
         get() = defaultGetHref()
 
-    val text: String
+    override val text: String
         get() = defaultGetText()
 
-    val html: String
+    override val html: String
         get() = defaultGetInnerHtmlAttribute()
 
-    val target: String
+    override val target: String
         get() = defaultGetTargetAttribute()
 
-    val rel: String
+    override val rel: String
         get() = defaultGetRelAttribute()
 
     fun click() {
         defaultClick(CLICKING, CLICKED)
     }
 
-    fun validateHrefIs(value: String?) {
+    fun validateHrefIs(value: String) {
         defaultValidateHrefIs(value!!)
     }
 
