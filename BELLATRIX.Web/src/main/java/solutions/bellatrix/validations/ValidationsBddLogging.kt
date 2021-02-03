@@ -10,26 +10,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.infrastructure
+package solutions.bellatrix.validations
 
-import solutions.bellatrix.plugins.BaseTest
-import solutions.bellatrix.services.App
-import org.testng.annotations.BeforeSuite
-import solutions.bellatrix.components.listeners.BddLogging
-import solutions.bellatrix.validations.ValidationsBddLogging
-
-open class WebTest : BaseTest() {
-    val app
-    get() = App
-
-    @BeforeSuite
-    fun beforeSuiteCore() {
-        addPlugin(BrowserLifecyclePlugin())
-        BddLogging.addListeners()
-        ValidationsBddLogging.addListeners()
-        beforeSuite();
-    }
-
-    fun beforeSuite() {
+object ValidationsBddLogging {
+    private var isBddLoggingTurnedOn = false
+    fun addListeners() {
+        if (!isBddLoggingTurnedOn) {
+            Validator.VALIDATED_EVENT.addListener { println("${it.message}\n") }
+            Validator.VALIDATED_EXCEPTION_TROWED_EVENT.addListener { println("${it.exception.toString()}\n") }
+            isBddLoggingTurnedOn = true
+        }
     }
 }
