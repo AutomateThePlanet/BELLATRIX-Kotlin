@@ -12,28 +12,23 @@
  */
 package solutions.bellatrix.infrastructure
 
-import plugins.screenshots.ScreenshotsPlugin
-import ru.yandex.qatools.ashot.AShot
-import ru.yandex.qatools.ashot.shooting.ShootingStrategies
+import plugins.video.VideoPlugin
 import solutions.bellatrix.configuration.ConfigurationService
 import solutions.bellatrix.configuration.WebSettings
 import java.io.File
-import java.nio.file.Paths
 import java.util.*
-import javax.imageio.ImageIO
 
-class WebScreenshotsPlugin(isEnabled: Boolean) : ScreenshotsPlugin(isEnabled) {
-    protected override fun takeScreenshot(screenshotSaveDir: String, filename: String) {
-        val screenshot = AShot()
-                .shootingStrategy(ShootingStrategies.viewportPasting(100))
-                .takeScreenshot(DriverService.wrappedDriver())
-        val destFile = File(Paths.get(screenshotSaveDir, filename).toString())
-        ImageIO.write(screenshot.image, "png", destFile)
+class WebVideoPlugin(isEnabled: Boolean) : VideoPlugin(isEnabled) {
+    companion object {
+        fun of(): WebVideoPlugin {
+            val isEnabled: Boolean = ConfigurationService.get<WebSettings>().videosOnFailEnabled
+            return WebVideoPlugin(isEnabled)
+        }
     }
 
-    protected override val outputFolder: String
+    override val outputFolder: String
         protected get() {
-            var saveLocation: String = ConfigurationService.get<WebSettings>().screenshotsSaveLocation
+            var saveLocation: String = ConfigurationService.get<WebSettings>().videosSaveLocation
             if (saveLocation.startsWith("user.home")) {
                 val userHomeDir = System.getProperty("user.home")
                 saveLocation = saveLocation.replace("user.home", userHomeDir)
@@ -45,14 +40,7 @@ class WebScreenshotsPlugin(isEnabled: Boolean) : ScreenshotsPlugin(isEnabled) {
             return saveLocation
         }
 
-    protected override fun getUniqueFileName(testName: String): String {
-        return testName + UUID.randomUUID().toString() + ".png"
-    }
-
-    companion object {
-        fun of(): WebScreenshotsPlugin {
-            val isEnabled: Boolean = ConfigurationService.get<WebSettings>().screenshotsOnFailEnabled
-            return WebScreenshotsPlugin(isEnabled)
-        }
+    override fun getUniqueFileName(testName: String): String {
+        return testName + UUID.randomUUID().toString()
     }
 }

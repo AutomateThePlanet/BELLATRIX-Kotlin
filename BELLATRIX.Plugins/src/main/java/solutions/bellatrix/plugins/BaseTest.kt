@@ -33,10 +33,7 @@ import org.testng.annotations.BeforeClass
 import java.lang.Exception
 
 open class BaseTest {
-//    private val plugins = mutableListOf<Plugin>()
-//    private var testResult: ITestResult? = null
-
-    fun addPlugin(plugin: Plugin?) {
+    fun addPlugin(plugin: Plugin) {
         PluginExecutionEngine.addPlugin(plugin!!)
     }
 

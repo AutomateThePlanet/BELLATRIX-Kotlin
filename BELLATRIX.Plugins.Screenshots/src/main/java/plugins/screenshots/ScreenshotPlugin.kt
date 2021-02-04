@@ -19,7 +19,7 @@ import java.lang.Exception
 import java.lang.reflect.Method
 import java.nio.file.Paths
 
-abstract class ScreenshotsPlugin(private val isEnabled: Boolean) : Plugin() {
+abstract class ScreenshotPlugin(private val isEnabled: Boolean) : Plugin() {
     protected abstract fun takeScreenshot(screenshotSaveDir: String, filename: String)
     protected abstract val outputFolder: String
     protected abstract fun getUniqueFileName(testName: String): String

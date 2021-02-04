@@ -33,5 +33,7 @@ class WebSettings(
         val artificialDelayBeforeAction: Int = 0,
         val shouldHighlightElements: Boolean = true,
         val screenshotsOnFailEnabled: Boolean = true,
-        val screenshotsSaveLocation: String = "user.home\\BELLATRIX\\Screenshots"
+        val screenshotsSaveLocation: String = "user.home\\BELLATRIX\\Screenshots",
+        val videosOnFailEnabled: Boolean = true,
+        val videosSaveLocation: String = "user.home\\BELLATRIX\\Videos"
 )

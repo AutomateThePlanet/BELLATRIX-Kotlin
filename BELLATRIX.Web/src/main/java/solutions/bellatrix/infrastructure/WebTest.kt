@@ -15,6 +15,7 @@ package solutions.bellatrix.infrastructure
 import solutions.bellatrix.plugins.BaseTest
 import solutions.bellatrix.services.App
 import org.testng.annotations.BeforeSuite
+import plugins.video.VideoPlugin
 import solutions.bellatrix.components.listeners.BddLogging
 import solutions.bellatrix.components.listeners.HighlightElements
 import solutions.bellatrix.validations.ValidationsBddLogging
@@ -26,7 +27,8 @@ open class WebTest : BaseTest() {
     @BeforeSuite
     fun beforeSuiteCore() {
         addPlugin(BrowserLifecyclePlugin.of())
-        addPlugin(WebScreenshotsPlugin.of())
+        addPlugin(WebScreenshotPlugin.of())
+        addPlugin(WebVideoPlugin.of())
         BddLogging.addPlugin()
         ValidationsBddLogging.addPlugin()
         HighlightElements.addPlugin()
