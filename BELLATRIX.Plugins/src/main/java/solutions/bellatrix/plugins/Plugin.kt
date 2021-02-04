@@ -12,7 +12,6 @@
  */
 package solutions.bellatrix.plugins
 
-import org.testng.ITestResult
 import java.lang.Exception
 import java.lang.reflect.Method
 
@@ -24,11 +23,11 @@ open class Plugin {
     open fun preBeforeClass(type: Class<*>) {}
     open fun postBeforeClass(type: Class<*>) {}
     open fun beforeClassFailed(e: Exception) {}
-    open fun preBeforeTest(testResult: ITestResult, memberInfo: Method) {}
-    open fun postBeforeTest(testResult: ITestResult, memberInfo: Method) {}
+    open fun preBeforeTest(testResult: TestResult, memberInfo: Method) {}
+    open fun postBeforeTest(testResult: TestResult, memberInfo: Method) {}
     open fun beforeTestFailed(e: Exception?) {}
-    open fun preAfterTest(testResult: ITestResult, memberInfo: Method) {}
-    open fun postAfterTest(testResult: ITestResult, memberInfo: Method) {}
+    open fun preAfterTest(testResult: TestResult, memberInfo: Method) {}
+    open fun postAfterTest(testResult: TestResult, memberInfo: Method) {}
     open fun afterTestFailed(e: Exception) {}
     open fun preAfterClass(type: Class<*>) {}
     open fun postAfterClass(type: Class<*>) {}

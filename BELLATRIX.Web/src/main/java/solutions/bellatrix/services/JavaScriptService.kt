@@ -54,7 +54,7 @@ object JavaScriptService : WebService() {
             val result = javascriptExecutor.executeScript(script, nativeElement)
             if (result != null) result as String else null
         } catch (ex: Exception) {
-            ex.printStackTrace()
+//            ex.printStackTrace()
             ""
         }
     }

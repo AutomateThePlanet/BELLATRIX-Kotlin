@@ -16,6 +16,7 @@ import org.apache.commons.io.FileUtils
 import org.testng.ITestResult
 import solutions.bellatrix.plugins.EventListener
 import solutions.bellatrix.plugins.Plugin
+import solutions.bellatrix.plugins.TestResult
 import java.io.File
 import java.lang.Exception
 import java.lang.reflect.Method
@@ -31,7 +32,7 @@ abstract class VideoPlugin(private val isEnabled: Boolean) : Plugin() {
         val FFMPEG_VIDEO_RECORDER = FFmpegVideoRecorder()
     }
 
-    override fun preBeforeTest(testResult: ITestResult, memberInfo: Method) {
+    override fun preBeforeTest(testResult: TestResult, memberInfo: Method) {
         if (isEnabled) {
             try {
                 val videoSaveDir = outputFolder
@@ -44,13 +45,13 @@ abstract class VideoPlugin(private val isEnabled: Boolean) : Plugin() {
         }
     }
 
-    override fun preAfterTest(testResult: ITestResult, memberInfo: Method) {
+    override fun preAfterTest(testResult: TestResult, memberInfo: Method) {
         if (isEnabled) {
             val videoSaveDir = outputFolder
             val videoFileName = getUniqueFileName(memberInfo.name)
             val videoFullPath: String = Paths.get(videoSaveDir, videoFileName).toString()
             FFMPEG_VIDEO_RECORDER.close()
-            if (testResult.getStatus() == ITestResult.FAILURE) {
+            if (testResult == TestResult.FAILURE) {
                 VIDEO_GENERATED.broadcast(VideoPluginEventArgs(VIDEO_FULL_PATH.get()))
             } else {
                 FileUtils.forceDeleteOnExit(File(videoFullPath))

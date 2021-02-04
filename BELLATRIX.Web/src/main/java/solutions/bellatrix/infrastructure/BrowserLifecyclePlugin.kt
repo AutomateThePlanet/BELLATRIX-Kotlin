@@ -17,6 +17,7 @@ import org.testng.ITestResult
 import solutions.bellatrix.configuration.ConfigurationService
 import solutions.bellatrix.configuration.WebSettings
 import solutions.bellatrix.plugins.Plugin
+import solutions.bellatrix.plugins.TestResult
 import java.lang.Exception
 import java.lang.reflect.Method
 
@@ -57,7 +58,7 @@ class BrowserLifecyclePlugin : Plugin() {
         super.preAfterClass(type)
     }
 
-    override fun preBeforeTest(testResult: ITestResult, memberInfo: Method) {
+    override fun preBeforeTest(testResult: TestResult, memberInfo: Method) {
         currentBrowserConfiguration.set(getBrowserConfiguration(memberInfo))
         if (!isBrowserStartedDuringPreBeforeClass.get() && shouldRestartBrowser()) {
             restartBrowser()
@@ -66,9 +67,9 @@ class BrowserLifecyclePlugin : Plugin() {
         isBrowserStartedDuringPreBeforeClass.set(false)
     }
 
-    override fun postAfterTest(testResult: ITestResult, memberInfo: Method) {
+    override fun postAfterTest(testResult: TestResult, memberInfo: Method) {
         if (currentBrowserConfiguration.get()!!.lifecycle === Lifecycle.RESTART_ON_FAIL
-                && testResult.status == ITestResult.FAILURE) {
+                && testResult == TestResult.FAILURE) {
             shutdownBrowser()
             isBrowserStartedDuringPreBeforeClass.set(false)
         }

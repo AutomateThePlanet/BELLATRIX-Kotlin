@@ -51,63 +51,54 @@ object PluginExecutionEngine {
         }
     }
 
-    @JvmStatic
-    fun preBeforeTest(result: ITestResult, memberInfo: Method) {
+    fun preBeforeTest(result: TestResult, memberInfo: Method) {
         for (currentObserver in plugins) {
             currentObserver.preBeforeTest(result, memberInfo)
         }
     }
 
-    @JvmStatic
-    fun postBeforeTest(result: ITestResult, memberInfo: Method) {
+    fun postBeforeTest(result: TestResult, memberInfo: Method) {
         for (currentObserver in plugins) {
             currentObserver.postBeforeTest(result, memberInfo)
         }
     }
 
-    @JvmStatic
     fun beforeTestFailed(e: Exception) {
         for (currentObserver in plugins) {
             currentObserver.beforeTestFailed(e)
         }
     }
 
-    @JvmStatic
-    fun preAfterTest(result: ITestResult, memberInfo: Method) {
+    fun preAfterTest(result: TestResult, memberInfo: Method) {
         for (currentObserver in plugins) {
             currentObserver.preAfterTest(result, memberInfo)
         }
     }
 
-    @JvmStatic
-    fun postAfterTest(result: ITestResult, memberInfo: Method) {
+    fun postAfterTest(result: TestResult, memberInfo: Method) {
         for (currentObserver in plugins) {
             currentObserver.postAfterTest(result, memberInfo)
         }
     }
 
-    @JvmStatic
     fun afterTestFailed(e: Exception) {
         for (currentObserver in plugins) {
             currentObserver.afterTestFailed(e)
         }
     }
 
-    @JvmStatic
     fun preAfterClass(type: Class<*>) {
         for (currentObserver in plugins) {
             currentObserver.preAfterClass(type)
         }
     }
 
-    @JvmStatic
     fun postAfterClass(type: Class<*>) {
         for (currentObserver in plugins) {
             currentObserver.postAfterClass(type)
         }
     }
 
-    @JvmStatic
     fun afterClassFailed(e: Exception) {
         for (currentObserver in plugins) {
             currentObserver.afterClassFailed(e)

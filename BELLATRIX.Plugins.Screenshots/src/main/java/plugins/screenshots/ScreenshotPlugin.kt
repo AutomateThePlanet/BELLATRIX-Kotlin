@@ -15,6 +15,7 @@ package plugins.screenshots
 import org.testng.ITestResult
 import solutions.bellatrix.plugins.EventListener
 import solutions.bellatrix.plugins.Plugin
+import solutions.bellatrix.plugins.TestResult
 import java.lang.Exception
 import java.lang.reflect.Method
 import java.nio.file.Paths
@@ -24,8 +25,8 @@ abstract class ScreenshotPlugin(private val isEnabled: Boolean) : Plugin() {
     protected abstract val outputFolder: String
     protected abstract fun getUniqueFileName(testName: String): String
 
-    override fun preAfterTest(testResult: ITestResult, memberInfo: Method) {
-        if (!isEnabled)
+    override fun preAfterTest(testResult: TestResult, memberInfo: Method) {
+        if (!isEnabled && testResult == TestResult.SUCCESS)
             return
 
         try {

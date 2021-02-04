@@ -10,9 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.plugins
+package solutions.bellatrix.plugins.testng
 
-import solutions.bellatrix.plugins.PluginExecutionEngine.addPlugin
 import solutions.bellatrix.plugins.PluginExecutionEngine.preBeforeClass
 import solutions.bellatrix.plugins.PluginExecutionEngine.postBeforeClass
 import solutions.bellatrix.plugins.PluginExecutionEngine.beforeClassFailed
@@ -30,17 +29,32 @@ import org.testng.annotations.AfterClass
 import org.testng.annotations.BeforeMethod
 import org.testng.annotations.AfterMethod
 import org.testng.annotations.BeforeClass
+import solutions.bellatrix.plugins.Plugin
+import solutions.bellatrix.plugins.PluginExecutionEngine
+import solutions.bellatrix.plugins.TestResult
 import java.lang.Exception
 
 open class BaseTest {
+    companion object {
+        private val CONFIGURATION_EXECUTED = ThreadLocal<Boolean>()
+    }
+
+    init {
+        CONFIGURATION_EXECUTED.set(false)
+    }
+
     fun addPlugin(plugin: Plugin) {
-        PluginExecutionEngine.addPlugin(plugin!!)
+        PluginExecutionEngine.addPlugin(plugin)
     }
 
     @BeforeClass
     fun beforeClassCore() {
         try {
-            configure()
+            if (!CONFIGURATION_EXECUTED.get()) {
+                configure()
+                CONFIGURATION_EXECUTED.set(true)
+            }
+
             val testClass: Class<out BaseTest> = this.javaClass
             preBeforeClass(testClass)
             beforeClass()
@@ -55,9 +69,9 @@ open class BaseTest {
         try {
             val testClass: Class<out BaseTest> = this.javaClass
             val methodInfo = testClass.getMethod(testResult.method.methodName)
-            preBeforeTest(testResult, methodInfo)
+            preBeforeTest(convertToTestResult(testResult), methodInfo)
             beforeMethod()
-            postBeforeTest(testResult, methodInfo)
+            postBeforeTest(convertToTestResult(testResult), methodInfo)
         } catch (e: Exception) {
             beforeTestFailed(e)
         }
@@ -68,9 +82,9 @@ open class BaseTest {
         try {
             val testClass: Class<out BaseTest> = this.javaClass
             val methodInfo = testClass.getMethod(testResult.method.methodName)
-            preAfterTest(testResult, methodInfo)
+            preAfterTest(convertToTestResult(testResult), methodInfo)
             afterMethod()
-            postAfterTest(testResult, methodInfo)
+            postAfterTest(convertToTestResult(testResult), methodInfo)
         } catch (e: Exception) {
             afterTestFailed(e)
         }
@@ -93,4 +107,12 @@ open class BaseTest {
     protected open fun afterClass() {}
     protected open fun beforeMethod() {}
     protected open fun afterMethod() {}
+
+    private fun convertToTestResult(testResult: ITestResult): TestResult {
+        return if (testResult.status == ITestResult.SUCCESS) {
+            TestResult.FAILURE
+        } else {
+            TestResult.SUCCESS
+        }
+    }
 }
