@@ -14,6 +14,8 @@ package solutions.bellatrix.infrastructure
 
 import java.lang.ThreadLocal
 import org.testng.ITestResult
+import solutions.bellatrix.configuration.ConfigurationService
+import solutions.bellatrix.configuration.WebSettings
 import solutions.bellatrix.plugins.Plugin
 import java.lang.Exception
 import java.lang.reflect.Method
@@ -30,6 +32,10 @@ class BrowserLifecyclePlugin : Plugin() {
             previousBrowserConfiguration = ThreadLocal()
             isBrowserStartedDuringPreBeforeClass = ThreadLocal()
             isBrowserStartedCorrectly = ThreadLocal()
+        }
+
+        fun of(): BrowserLifecyclePlugin {
+            return BrowserLifecyclePlugin()
         }
     }
 

@@ -25,7 +25,8 @@ open class WebTest : BaseTest() {
 
     @BeforeSuite
     fun beforeSuiteCore() {
-        addPlugin(BrowserLifecyclePlugin())
+        addPlugin(BrowserLifecyclePlugin.of())
+        addPlugin(WebScreenshotsPlugin.of())
         BddLogging.addPlugin()
         ValidationsBddLogging.addPlugin()
         HighlightElements.addPlugin()

@@ -26,14 +26,12 @@ package solutions.bellatrix.configuration
  */
 class WebSettings(
         var baseUrl: String = "",
-        var chrome: BrowserSettings = BrowserSettings(30, 2),
-        var firefox: BrowserSettings = BrowserSettings(30, 2),
-        var edge: BrowserSettings = BrowserSettings(30, 2),
         var timeoutSettings: TimeoutSettings = TimeoutSettings(),
-        val elementWaitTimeout: Int = 0,
         val automaticallyScrollToVisible: Boolean = false,
         val waitUntilReadyOnElementFound: Boolean = false,
         val waitForAngular: Boolean = false,
         val artificialDelayBeforeAction: Int = 0,
         val shouldHighlightElements: Boolean = true,
+        val screenshotsOnFailEnabled: Boolean = true,
+        val screenshotsSaveLocation: String = "user.home\\BELLATRIX\\Screenshots"
 )

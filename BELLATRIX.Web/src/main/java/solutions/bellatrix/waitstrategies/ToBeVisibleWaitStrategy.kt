@@ -25,7 +25,7 @@ class ToBeVisibleWaitStrategy : WaitStrategy {
         sleepInterval = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
     }
 
-    constructor(timeoutIntervalSeconds: Int, sleepIntervalSeconds: Int) : super(timeoutIntervalSeconds, sleepIntervalSeconds) {}
+    constructor(timeoutIntervalSeconds: Long, sleepIntervalSeconds: Long) : super(timeoutIntervalSeconds, sleepIntervalSeconds) {}
 
     override fun waitUntil(searchContext: SearchContext, by: By) {
         waitUntil { elementIsVisible(searchContext, by) }

@@ -50,10 +50,10 @@ object NavigationService : WebService() {
 //        }
     }
 
-    fun waitForPartialUrl(partialUrl: String?) {
+    fun waitForPartialUrl(partialUrl: String) {
         try {
-            val waitForPartialTimeout: Int = ConfigurationService.get<WebSettings>().timeoutSettings.waitForPartialUrl
-            val sleepInterval: Int = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
+            val waitForPartialTimeout = ConfigurationService.get<WebSettings>().timeoutSettings.waitForPartialUrl
+            val sleepInterval= ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
             val webDriverWait = WebDriverWait(wrappedDriver, waitForPartialTimeout.toLong(), sleepInterval.toLong())
             webDriverWait.until { d: WebDriver? -> wrappedDriver.currentUrl.contains(partialUrl!!) }
         } catch (ex: Exception) {

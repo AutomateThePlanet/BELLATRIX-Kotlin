@@ -15,17 +15,17 @@ package solutions.bellatrix.waitstrategies
 import solutions.bellatrix.components.WebComponent
 
 class WaitStrategyComponentExtensions {
-    fun <TComponent : WebComponent> TComponent.exists(timeoutInterval: Int = 30, sleepInterval: Int = 2): TComponent {
+    fun <TComponent : WebComponent> TComponent.exists(timeoutInterval: Long = 30, sleepInterval: Long = 2): TComponent {
         this.ensureState(ToExistsWaitStrategy(timeoutInterval, sleepInterval))
         return this;
     }
 
-    fun <TComponent : WebComponent> TComponent.beVisible(timeoutInterval: Int = 30, sleepInterval: Int = 2): TComponent {
+    fun <TComponent : WebComponent> TComponent.beVisible(timeoutInterval: Long = 30, sleepInterval: Long = 2): TComponent {
         this.ensureState(ToBeVisibleWaitStrategy(timeoutInterval, sleepInterval))
         return this;
     }
 
-    fun<TComponent : WebComponent> TComponent. beClickable(timeoutInterval: Int = 30, sleepInterval: Int = 2): TComponent {
+    fun<TComponent : WebComponent> TComponent. beClickable(timeoutInterval: Long = 30, sleepInterval: Long = 2): TComponent {
         this.ensureState(ToBeClickableWaitStrategy(timeoutInterval, sleepInterval))
         return this;
     }

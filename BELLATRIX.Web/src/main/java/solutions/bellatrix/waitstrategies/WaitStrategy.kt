@@ -18,13 +18,13 @@ import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.WebElement
 import solutions.bellatrix.infrastructure.DriverService
 
-abstract class WaitStrategy(protected var timeoutInterval: Int, protected var sleepInterval: Int) {
+abstract class WaitStrategy(protected var timeoutInterval: Long, protected var sleepInterval: Long) {
     constructor() : this(0, 0)
 
     abstract fun waitUntil(searchContext: SearchContext, by: By)
 
     protected fun waitUntil(waitCondition: (SearchContext) -> Boolean) {
-        val webDriverWait = WebDriverWait(DriverService.wrappedDriver(), timeoutInterval.toLong(), sleepInterval.toLong())
+        val webDriverWait = WebDriverWait(DriverService.wrappedDriver(), timeoutInterval, sleepInterval)
         webDriverWait.until(waitCondition)
     }
 

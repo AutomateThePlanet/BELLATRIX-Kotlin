@@ -10,11 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package plugins.screenshots
 
-package solutions.bellatrix.infrastructure;public enum ExecutionType {
-    REGULAR,
-    GRID,
-    SAUCE_LABS,
-    BROWSER_STACK,
-    CROSS_BROWSER_TESTING,
-}
+class ScreenshotPluginEventArgs(val screenshotPath: String)

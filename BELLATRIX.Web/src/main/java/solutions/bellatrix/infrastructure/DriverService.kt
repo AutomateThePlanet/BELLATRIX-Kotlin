@@ -79,6 +79,8 @@ object DriverService {
                 ExecutionType.CROSS_BROWSER_TESTING -> initializeDriverCrossBrowserTestingMode()
             }
 
+            driver.manage().timeouts().pageLoadTimeout(ConfigurationService.get<WebSettings>().timeoutSettings.pageLoadTimeout, TimeUnit.SECONDS)
+            driver.manage().timeouts().setScriptTimeout(ConfigurationService.get<WebSettings>().timeoutSettings.scriptTimeout, TimeUnit.SECONDS)
             driver.manage().window().maximize()
             changeWindowSize(driver)
             wrappedDriver.set(driver)
@@ -97,8 +99,6 @@ object DriverService {
                 chromeOptions.addArguments("--log-level=3")
                 System.setProperty("webdriver.chrome.silentOutput", "true")
                 val driver = ChromeDriver(chromeOptions)
-                driver.manage().timeouts().pageLoadTimeout(ConfigurationService.get<WebSettings>().chrome.pageLoadTimeout, TimeUnit.SECONDS)
-                driver.manage().timeouts().setScriptTimeout(ConfigurationService.get<WebSettings>().chrome.scriptTimeout, TimeUnit.SECONDS)
                 driver
             }
             Browser.CHROME_HEADLESS -> {
@@ -109,8 +109,6 @@ object DriverService {
                 chromeHeadlessOptions.addArguments("--log-level=3")
                 System.setProperty("webdriver.chrome.silentOutput", "true")
                 val driver = ChromeDriver(chromeHeadlessOptions)
-                driver.manage().timeouts().pageLoadTimeout(ConfigurationService.get<WebSettings>().chrome.pageLoadTimeout, TimeUnit.SECONDS)
-                driver.manage().timeouts().setScriptTimeout(ConfigurationService.get<WebSettings>().chrome.scriptTimeout, TimeUnit.SECONDS)
                 driver
             }
             Browser.FIREFOX -> {
@@ -118,8 +116,6 @@ object DriverService {
                 val firefoxOptions = FirefoxOptions()
                 addDriverOptions(firefoxOptions)
                 val driver = FirefoxDriver(firefoxOptions)
-                driver.manage().timeouts().pageLoadTimeout(ConfigurationService.get<WebSettings>().firefox.pageLoadTimeout, TimeUnit.SECONDS)
-                driver.manage().timeouts().setScriptTimeout(ConfigurationService.get<WebSettings>().firefox.scriptTimeout, TimeUnit.SECONDS)
                 driver
             }
             Browser.FIREFOX_HEADLESS -> {
@@ -128,8 +124,6 @@ object DriverService {
                 addDriverOptions(firefoxHeadlessOptions)
                 addDriverOptions(firefoxHeadlessOptions);
                 val driver = FirefoxDriver(firefoxHeadlessOptions)
-                driver.manage().timeouts().pageLoadTimeout(ConfigurationService.get<WebSettings>().firefox.pageLoadTimeout, TimeUnit.SECONDS)
-                driver.manage().timeouts().setScriptTimeout(ConfigurationService.get<WebSettings>().firefox.scriptTimeout, TimeUnit.SECONDS)
                 driver
             }
             Browser.EDGE -> throw InvalidArgumentException("BELLATRIX doesn't support Edge. It will be supported with the official release of WebDriver 4.0")

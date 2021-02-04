@@ -140,16 +140,16 @@ object BrowserService : WebService() {
     //        }
     //    }
     fun waitForAjax() {
-        val ajaxTimeout: Int = ConfigurationService.get<WebSettings>().timeoutSettings.waitForAjaxTimeout
-        val sleepInterval: Int = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
+        val ajaxTimeout = ConfigurationService.get<WebSettings>().timeoutSettings.waitForAjaxTimeout
+        val sleepInterval = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
         val webDriverWait = WebDriverWait(wrappedDriver, ajaxTimeout.toLong(), sleepInterval.toLong())
         val javascriptExecutor = wrappedDriver as JavascriptExecutor
         webDriverWait.until { d: WebDriver? -> javascriptExecutor.executeScript("return window.jQuery != undefined && jQuery.active == 0") as Boolean }
     }
 
     fun waitForAjaxRequest(requestPartialUrl: String?, additionalTimeoutInSeconds: Int = 0) {
-        val ajaxTimeout: Int = ConfigurationService.get<WebSettings>().timeoutSettings.waitForAjaxTimeout
-        val sleepInterval: Int = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
+        val ajaxTimeout = ConfigurationService.get<WebSettings>().timeoutSettings.waitForAjaxTimeout
+        val sleepInterval = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
         val webDriverWait = WebDriverWait(wrappedDriver, (ajaxTimeout + additionalTimeoutInSeconds).toLong(), sleepInterval.toLong())
         webDriverWait.until { d: WebDriver? ->
             val script = String.format("return performance.getEntriesByType('resource').filter(item => item.initiatorType == 'xmlhttprequest' && item.name.toLowerCase().includes('%s'))[0] !== undefined;", requestPartialUrl)
@@ -162,22 +162,22 @@ object BrowserService : WebService() {
     }
 
     fun waitUntilPageLoadsCompletely() {
-        val waitUntilReadyTimeout: Int = ConfigurationService.get<WebSettings>().timeoutSettings.waitUntilReadyTimeout
-        val sleepInterval: Int = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
-        val webDriverWait = WebDriverWait(wrappedDriver, waitUntilReadyTimeout.toLong(), sleepInterval.toLong())
+        val waitUntilReadyTimeout = ConfigurationService.get<WebSettings>().timeoutSettings.waitUntilReadyTimeout
+        val sleepInterval = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
+        val webDriverWait = WebDriverWait(wrappedDriver, waitUntilReadyTimeout.toLong(), sleepInterval)
         webDriverWait.until { d: WebDriver? -> javascriptExecutor.executeScript("return document.readyState").toString() == "complete" }
     }
 
     fun waitForJavaScriptAnimations() {
-        val waitForJavaScriptAnimationsTimeout: Int = ConfigurationService.get<WebSettings>().timeoutSettings.waitForJavaScriptAnimationsTimeout
-        val sleepInterval: Int = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
-        val webDriverWait = WebDriverWait(wrappedDriver, waitForJavaScriptAnimationsTimeout.toLong(), sleepInterval.toLong())
+        val waitForJavaScriptAnimationsTimeout = ConfigurationService.get<WebSettings>().timeoutSettings.waitForJavaScriptAnimationsTimeout
+        val sleepInterval = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
+        val webDriverWait = WebDriverWait(wrappedDriver, waitForJavaScriptAnimationsTimeout.toLong(), sleepInterval)
         webDriverWait.until { d: WebDriver? -> javascriptExecutor.executeScript("return jQuery && jQuery(':animated').length === 0") as Boolean }
     }
 
     fun waitForAngular() {
-        val angularTimeout: Int = ConfigurationService.get<WebSettings>().timeoutSettings.waitForAngularTimeout
-        val sleepInterval: Int = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
+        val angularTimeout = ConfigurationService.get<WebSettings>().timeoutSettings.waitForAngularTimeout
+        val sleepInterval = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
         val webDriverWait = WebDriverWait(wrappedDriver, angularTimeout.toLong(), sleepInterval.toLong())
         val isAngular5 = javascriptExecutor.executeScript("return getAllAngularRootElements()[0].attributes['ng-version']") as String
         if (isAngular5.isBlank()) {

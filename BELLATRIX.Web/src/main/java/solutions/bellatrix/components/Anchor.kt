@@ -14,7 +14,6 @@ package solutions.bellatrix.components
 
 import solutions.bellatrix.components.contracts.*
 import solutions.bellatrix.plugins.EventListener
-import solutions.bellatrix.validations.ValidationComponentExtensions
 
 class Anchor : WebComponent(), ComponentHref, ComponentText, ComponentHtml, ComponentTarget, ComponentRel {
     override val componentClass: Class<*>
