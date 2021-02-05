@@ -10,17 +10,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.infrastructure
+package solutions.bellatrix.configuration
 
-import org.openqa.selenium.Platform
-import java.util.HashMap
+import java.util.*
+import kotlin.collections.HashMap
 
-data class BrowserConfiguration(
-        val browser: Browser,
-        val lifecycle: Lifecycle,
-        val version: Int = 0,
-        val height: Int = 0,
-        val width: Int = 0,
-        val platform: Platform = Platform.ANY) {
-    var driverOptions: HashMap<String, String> = HashMap()
+class GridSettings {
+    var providerName: String = ""
+    var url: String = ""
+    var arguments: List<HashMap<String, String>> = ArrayList<HashMap<String, String>>()
 }

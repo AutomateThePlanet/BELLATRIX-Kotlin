@@ -12,6 +12,7 @@
  */
 package solutions.bellatrix.infrastructure
 
+import org.openqa.selenium.Platform
 import solutions.bellatrix.infrastructure.Browser
 import solutions.bellatrix.infrastructure.Lifecycle
 import solutions.bellatrix.infrastructure.ExecutionType
@@ -20,7 +21,4 @@ import java.lang.annotation.RetentionPolicy
 
 @Target(AnnotationTarget.ANNOTATION_CLASS, AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
 @Retention(RetentionPolicy.RUNTIME)
-annotation class ExecutionBrowser(
-        val browser: Browser = Browser.CHROME,
-        val lifecycle: Lifecycle = Lifecycle.RESTART_EVERY_TIME,
-        val executionType: ExecutionType = ExecutionType.REGULAR)
+annotation class ExecutionBrowser(val browser: Browser = Browser.CHROME, val lifecycle: Lifecycle = Lifecycle.RESTART_EVERY_TIME, val browserVersion: Int = 0, val platform: Platform = Platform.ANY, val width: Int = 0, val height: Int = 0)

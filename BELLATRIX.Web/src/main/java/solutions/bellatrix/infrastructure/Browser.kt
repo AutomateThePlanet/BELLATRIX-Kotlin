@@ -12,6 +12,10 @@
  */
 package solutions.bellatrix.infrastructure
 
-enum class Browser {
-    CHROME, CHROME_HEADLESS, FIREFOX, FIREFOX_HEADLESS, EDGE, EDGE_HEADLESS, OPERA, SAFARI, INTERNET_EXPLORER
+enum class Browser(private val value: String) {
+    CHROME("chrome"), CHROME_HEADLESS("chrome"), FIREFOX("firefox"), FIREFOX_HEADLESS("firefox"), EDGE("edge"), EDGE_HEADLESS("edge"), OPERA("opera"), SAFARI("safari"), INTERNET_EXPLORER("ie");
+
+    override fun toString(): String {
+        return value
+    }
 }

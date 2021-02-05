@@ -27,6 +27,7 @@ object App : AutoCloseable {
     val script = JavaScriptService
     val create = ComponentCreateService
     val waitFor = ComponentWaitService
+    val requests = ProxyServer
 
     fun addDriverOptions(key: String, value: String) {
         DriverService.addDriverOptions(key, value)

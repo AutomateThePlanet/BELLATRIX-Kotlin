@@ -117,11 +117,11 @@ class BrowserLifecyclePlugin : Plugin() {
 
     private fun getExecutionBrowserMethodLevel(memberInfo: Method): BrowserConfiguration? {
         val executionBrowserAnnotation = memberInfo.getDeclaredAnnotation(ExecutionBrowser::class.java) as ExecutionBrowser
-        return BrowserConfiguration(executionBrowserAnnotation.browser, executionBrowserAnnotation.lifecycle, executionBrowserAnnotation.executionType)
+        return BrowserConfiguration(executionBrowserAnnotation.browser, executionBrowserAnnotation.lifecycle)
     }
 
     private fun getExecutionBrowserClassLevel(type: Class<*>): BrowserConfiguration {
         val executionBrowserAnnotation = type.getDeclaredAnnotation(ExecutionBrowser::class.java) as ExecutionBrowser
-        return BrowserConfiguration(executionBrowserAnnotation.browser, executionBrowserAnnotation.lifecycle, executionBrowserAnnotation.executionType)
+        return BrowserConfiguration(executionBrowserAnnotation.browser, executionBrowserAnnotation.lifecycle)
     }
 }

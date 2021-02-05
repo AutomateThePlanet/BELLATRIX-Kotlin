@@ -10,6 +10,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.configuration
+package solutions.bellatrix.utilities
 
-data class BrowserSettings(val pageLoadTimeout: Long = 0, val scriptTimeout: Long = 0)
+import solutions.bellatrix.configuration.ConfigurationService
+import solutions.bellatrix.utilities.configuration.TroubleshootingSettings
+import java.lang.Exception
+
+fun Exception.debugStackTrace() {
+    if (ConfigurationService.get<TroubleshootingSettings>().debugInformationEnabled) {
+        this.printStackTrace()
+    }
+}

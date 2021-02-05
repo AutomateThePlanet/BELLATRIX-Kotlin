@@ -16,11 +16,11 @@ import org.testng.Assert
 import solutions.bellatrix.plugins.EventListener
 
 class LayoutAssertionsFactory(private val component: LayoutComponent) {
-    infix fun assertAboveOf(secondComponent: LayoutComponent) {
-        val actualDistance = calculateAboveOfDistance(component, secondComponent)
-        Assert.assertTrue(actualDistance >= -1, String.format("%s should be above of %s but was %d px.", component.elementName, secondComponent.elementName, actualDistance))
-        ASSERTED_ABOVE_OF_NO_EXPECTED_VALUE.broadcast(LayoutTwoComponentsNoExpectedActionEventArgs(component, secondComponent))
+    infix fun above(secondComponent: LayoutComponent) : ComparedLayoutElement {
+        return ComparedLayoutElement(secondComponent, LayoutAssertion.ABOVE)
     }
+
+
 
     fun assertAboveOf(secondComponent: LayoutComponent, expected: Double) {
         val actualDistance = calculateAboveOfDistance(component, secondComponent)
@@ -66,6 +66,7 @@ class LayoutAssertionsFactory(private val component: LayoutComponent) {
     }
 
     companion object {
+        // single event?
         val ASSERTED_ABOVE_OF_NO_EXPECTED_VALUE = EventListener<LayoutTwoComponentsNoExpectedActionEventArgs>()
         val ASSERTED_ABOVE_OF = EventListener<LayoutTwoComponentsActionEventArgs>()
         val ASSERTED_ABOVE_OF_BETWEEN = EventListener<LayoutTwoComponentsActionTwoValuesEventArgs>()

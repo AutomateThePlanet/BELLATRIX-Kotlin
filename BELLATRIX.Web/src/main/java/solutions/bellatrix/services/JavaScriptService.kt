@@ -14,6 +14,7 @@ package solutions.bellatrix.services
 
 import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.WebElement
+import solutions.bellatrix.utilities.debugStackTrace
 import java.lang.Exception
 
 object JavaScriptService : WebService() {
@@ -24,7 +25,7 @@ object JavaScriptService : WebService() {
         return try {
             val result = javascriptExecutor.executeScript(script)
         } catch (ex: Exception) {
-            ex.printStackTrace()
+            ex.debugStackTrace()
         }
     }
 
@@ -44,7 +45,7 @@ object JavaScriptService : WebService() {
             val result = javascriptExecutor.executeScript(script, *args)
             if (result != null) result as String else null
         } catch (ex: Exception) {
-            ex.printStackTrace()
+            ex.debugStackTrace()
             ""
         }
     }
@@ -54,7 +55,7 @@ object JavaScriptService : WebService() {
             val result = javascriptExecutor.executeScript(script, nativeElement)
             if (result != null) result as String else null
         } catch (ex: Exception) {
-//            ex.printStackTrace()
+            ex.debugStackTrace()
             ""
         }
     }

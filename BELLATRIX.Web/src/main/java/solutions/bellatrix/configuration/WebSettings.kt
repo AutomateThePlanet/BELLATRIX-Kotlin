@@ -26,12 +26,15 @@ package solutions.bellatrix.configuration
  */
 class WebSettings(
         var baseUrl: String = "",
+        var executionType: String = "regular",
         var timeoutSettings: TimeoutSettings = TimeoutSettings(),
+        var gridSettings: List<GridSettings> = listOf(),
         val automaticallyScrollToVisible: Boolean = false,
         val waitUntilReadyOnElementFound: Boolean = false,
         val waitForAngular: Boolean = false,
         val artificialDelayBeforeAction: Int = 0,
         val shouldHighlightElements: Boolean = true,
+        val shouldCaptureHttpTraffic: Boolean = true,
         val screenshotsOnFailEnabled: Boolean = true,
         val screenshotsSaveLocation: String = "user.home\\BELLATRIX\\Screenshots",
         val videosOnFailEnabled: Boolean = true,

@@ -41,6 +41,7 @@ import org.openqa.selenium.support.ui.WebDriverWait
 import solutions.bellatrix.components.contracts.Component
 import solutions.bellatrix.configuration.ConfigurationService
 import solutions.bellatrix.plugins.EventListener
+import solutions.bellatrix.utilities.debugStackTrace
 import java.nio.charset.StandardCharsets
 import java.util.*
 import java.util.function.Function
@@ -437,7 +438,7 @@ open abstract class WebComponent : Component {
             try {
                 Thread.sleep(webSettings.artificialDelayBeforeAction.toLong())
             } catch (e: InterruptedException) {
-                e.printStackTrace()
+                e.debugStackTrace()
             }
         }
     }
@@ -458,9 +459,9 @@ open abstract class WebComponent : Component {
                 toExists<WebComponent>().waitToBe()
             }
         } catch (ex: ElementNotInteractableException) {
-            print(ex)
+            ex.debugStackTrace()
         } catch (e: InterruptedException) {
-            e.printStackTrace()
+            e.debugStackTrace()
         }
         SCROLLED_TO_VISIBLE.broadcast(ComponentActionEventArgs(this))
     }

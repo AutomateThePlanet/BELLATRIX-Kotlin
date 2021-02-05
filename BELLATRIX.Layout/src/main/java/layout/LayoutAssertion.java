@@ -10,17 +10,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.infrastructure
 
-import org.openqa.selenium.Platform
-import java.util.HashMap
+package layout;
 
-data class BrowserConfiguration(
-        val browser: Browser,
-        val lifecycle: Lifecycle,
-        val version: Int = 0,
-        val height: Int = 0,
-        val width: Int = 0,
-        val platform: Platform = Platform.ANY) {
-    var driverOptions: HashMap<String, String> = HashMap()
+public enum LayoutAssertion {
+    ABOVE,
+    BELOW,
+    RIGHT,
+    LEFT,
+    BOTTOM_INSIDE,
+    BOTTOM_LEFT_INSIDE_OF,
+    CENTER_INSIDE_OF,
+    INSIDE_OF,
+    LEFT_INSIDE_OF,
+    LEFT_OF,
+    NEAR_BOTTOM_LEFT_OF,
+    NEAR_BOTTOM_OF,
+    NEAR_BOTTOM_RIGHT,
+    NEAR_LEFT_OF,
+    NEAR_RIGHT_OF,
+    NEAR_TOP_LEFT_OF,
+    NEAR_TOP_OF,
+    NEAR_TOP_RIGHT_OF,
+    RIGHT_INSIDE_OF,
+    RIGHT_OF,
+    TOP_INSIDE_OF,
+    TOP_LEFT_INSIDE_OF,
+    TOP_RIGHT_INSIDE_OF
 }
