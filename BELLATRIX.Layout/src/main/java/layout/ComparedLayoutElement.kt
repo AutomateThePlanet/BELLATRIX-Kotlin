@@ -62,6 +62,9 @@ class ComparedLayoutElement (internal val firstLayoutComponent: LayoutComponent,
     fun AP(expected: Double, percent: Double): AssertedComparedLayoutElement {
         return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected);
     }
+
+    fun assert() {
+    }
 //    infix fun ComparedLayoutElement.ne(expected: Double) {  }
 //    infix fun ComparedLayoutElement.lt(expected: Double) {  }
 //    infix fun ComparedLayoutElement.le(expected: Double) {  }
