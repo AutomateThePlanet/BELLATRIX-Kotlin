@@ -15,7 +15,7 @@ package layout
 import org.testng.Assert
 
 class ComparedLayoutElement (internal val firstLayoutComponent: LayoutComponent, internal val secondLayoutComponent: LayoutComponent, internal val layoutAssertion: LayoutAssertion) {
-    fun EQ(expected: INT) : AssertedComparedLayoutElement {
+    fun EQ(expected: Int) : AssertedComparedLayoutElement {
 //        val actualDistance = calculateAboveOfDistance(component, this.layoutComponent)
 //        Assert.assertEquals(expected, actualDistance, String.format("%s should be %d px above of %s but was %d px.", component.elementName, expected, this.layoutComponent.elementName, actualDistance))
 //        LayoutAssertionsFactory.ASSERTED_ABOVE_OF.broadcast(LayoutTwoComponentsActionEventArgs(component, this.layoutComponent, expected.toString()))
