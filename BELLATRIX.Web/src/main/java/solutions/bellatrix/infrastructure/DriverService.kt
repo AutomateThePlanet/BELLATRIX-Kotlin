@@ -73,7 +73,7 @@ object DriverService {
         disposed.set(false)
         val webSettings = ConfigurationService.get<WebSettings>()
         val executionType = webSettings.executionType
-        var driver = if (executionType.toLowerCase() === "regular") {
+        var driver = if (executionType.toLowerCase().equals("regular")) {
             initializeDriverRegularMode()
         } else {
             val gridSettings: GridSettings = webSettings.gridSettings.first { g -> g.providerName.equals(executionType.toLowerCase()) }

@@ -18,16 +18,16 @@ import java.lang.ThreadLocal
 import net.lightbody.bmp.BrowserMobProxyServer
 import lombok.SneakyThrows
 import org.testng.Assert
+import java.io.IOException
 import java.net.ServerSocket
 
 class ProxyServer {
     companion object {
-        private val proxyServer = ThreadLocal<BrowserMobProxyServer?>()
+        private val proxyServer = ThreadLocal<BrowserMobProxyServer>()
         fun init(): Int {
-            val s = ServerSocket(0)
-            val port = s.localPort
+            val port: Int = findFreePort()
             proxyServer.set(BrowserMobProxyServer())
-            proxyServer.get()!!.start(port)
+            proxyServer.get().start(port)
             return port
         }
 
@@ -35,6 +35,22 @@ class ProxyServer {
             if (proxyServer.get() != null) {
                 proxyServer.get()!!.stop()
             }
+        }
+
+        private fun findFreePort(): Int {
+            var port = 0
+            // For ServerSocket port number 0 means that the port number is automatically allocated.
+            // Disable timeout and reuse address after closing the socket.
+            try {
+                ServerSocket(0).use { socket ->
+                    socket.reuseAddress = true
+                    port = socket.localPort
+                }
+            } catch (ignored: IOException) {}
+
+            if (port > 0) port
+
+            throw RuntimeException("Could not find a free port")
         }
     }
 
