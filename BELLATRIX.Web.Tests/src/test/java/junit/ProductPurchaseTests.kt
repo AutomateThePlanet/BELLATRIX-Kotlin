@@ -66,20 +66,9 @@ class ProductPurchaseTests : WebTest() {
         cartPage.increaseProductQuantity(2)
         cartPage.asserts.totalPrice("114.00€")
         cartPage.clickProceedToCheckout()
-        val purchaseInfo = PurchaseInfo()
-        purchaseInfo.email = "info@berlinspaceflowers.com"
-        purchaseInfo.firstName = "Anton"
-        purchaseInfo.lastName = "Angelov"
-        purchaseInfo.company = "Space Flowers"
-        purchaseInfo.country = "Germany"
-        purchaseInfo.address1 = "1 Willi Brandt Avenue Tiergarten"
-        purchaseInfo.address2 = "Lьtzowplatz 17"
-        purchaseInfo.city = "Berlin"
-        purchaseInfo.zip = "10115"
-        purchaseInfo.phone = "+00498888999281"
 
         val checkoutPage = app.create<CheckoutPage>()
-        checkoutPage.fillInfo(purchaseInfo)
+        checkoutPage.fillInfo(PurchaseInfo())
         checkoutPage.asserts.orderReceived()
     }
 
@@ -93,20 +82,9 @@ class ProductPurchaseTests : WebTest() {
         cartPage.increaseProductQuantity(3)
         cartPage.asserts.totalPrice("355.00€")
         cartPage.clickProceedToCheckout()
-        val purchaseInfo = PurchaseInfo()
-        purchaseInfo.email = "info@berlinspaceflowers.com"
-        purchaseInfo.firstName = "Anton"
-        purchaseInfo.lastName = "Angelov"
-        purchaseInfo.company = "Space Flowers"
-        purchaseInfo.country = "Germany"
-        purchaseInfo.address1 = "1 Willi Brandt Avenue Tiergarten"
-        purchaseInfo.address2 = "Lьtzowplatz 17"
-        purchaseInfo.city = "Berlin"
-        purchaseInfo.zip = "10115"
-        purchaseInfo.phone = "+00498888999281"
 
         val checkoutPage = app.create<CheckoutPage>()
-        checkoutPage.fillInfo(purchaseInfo)
+        checkoutPage.fillInfo(PurchaseInfo())
         checkoutPage.asserts.orderReceived()
     }
 }
