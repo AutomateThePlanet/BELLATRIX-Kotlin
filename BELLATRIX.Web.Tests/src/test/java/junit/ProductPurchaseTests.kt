@@ -31,7 +31,7 @@ class ProductPurchaseTests : WebTest() {
         val addToCartFalcon9 = app.create.byCss<Anchor>("[data-product_id*='28']")
         val blogLink = app.create.byCss<Anchor>("[data-product_id*='28']")
         addToCartFalcon9.click()
-        blogLink.layout().assertAboveOf(addToCartFalcon9, 9.0)
+        blogLink.layout.above(addToCartFalcon9).GT(9.0).assert()
 //        blogLink.layout() assertAboveOf addToCartFalcon9
         MainPage.asserts.productBoxLink("", "")
         blogLink.validateHrefIs("http://demos.bellatrix.solutions/")

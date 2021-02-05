@@ -16,16 +16,16 @@ import org.testng.Assert
 import solutions.bellatrix.plugins.EventListener
 
 class LayoutAssertionsFactory(private val component: LayoutComponent) {
-    infix fun above(secondComponent: LayoutComponent) : ComparedLayoutElement {
+//    infix fun above(secondComponent: LayoutComponent) : ComparedLayoutElement {
+//        return ComparedLayoutElement(secondComponent, LayoutAssertion.ABOVE)
+//    }
+
+    fun above(secondComponent: LayoutComponent) : ComparedLayoutElement {
+//        val actualDistance = calculateAboveOfDistance(component, secondComponent)
+//        Assert.assertEquals(expected, actualDistance, String.format("%s should be %d px above of %s but was %d px.", component.elementName, expected, secondComponent.elementName, actualDistance))
+//        ASSERTED_ABOVE_OF.broadcast(LayoutTwoComponentsActionEventArgs(component, secondComponent, expected.toString()))
+
         return ComparedLayoutElement(secondComponent, LayoutAssertion.ABOVE)
-    }
-
-
-
-    fun assertAboveOf(secondComponent: LayoutComponent, expected: Double) {
-        val actualDistance = calculateAboveOfDistance(component, secondComponent)
-        Assert.assertEquals(expected, actualDistance, String.format("%s should be %d px above of %s but was %d px.", component.elementName, expected, secondComponent.elementName, actualDistance))
-        ASSERTED_ABOVE_OF.broadcast(LayoutTwoComponentsActionEventArgs(component, secondComponent, expected.toString()))
     }
 
     private fun calculatePercentDifference(num1: Double, num2: Double): Double {

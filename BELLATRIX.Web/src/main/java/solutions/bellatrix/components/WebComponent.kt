@@ -93,9 +93,8 @@ open abstract class WebComponent : Component {
         val VALIDATED_HREF_IS = EventListener<ComponentActionEventArgs>()
     }
 
-    fun layout(): LayoutAssertionsFactory {
-        return LayoutAssertionsFactory(this)
-    }
+    val layout: LayoutAssertionsFactory
+        get() =  LayoutAssertionsFactory(this)
 
     override val elementName: String
         get() = "$componentClass.simpleName ($findStrategy)"
