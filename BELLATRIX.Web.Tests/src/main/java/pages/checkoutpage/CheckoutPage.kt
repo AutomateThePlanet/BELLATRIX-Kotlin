@@ -14,7 +14,7 @@ package pages.checkoutpage
 
 import solutions.bellatrix.pages.WebPage
 
-class CheckoutPage : WebPage<Map, Asserts>() {
+object CheckoutPage : WebPage<Map, Asserts>() {
     override val url: String = "http://demos.bellatrix.solutions/checkout/"
     override val map: Map
         get() = Map()

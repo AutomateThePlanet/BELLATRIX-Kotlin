@@ -15,7 +15,7 @@ package pages.cartpage
 import solutions.bellatrix.components.TextField
 import solutions.bellatrix.pages.WebPage
 
-class CartPage : WebPage<Map, Asserts>() {
+object CartPage : WebPage<Map, Asserts>() {
     override val url: String = "http://demos.bellatrix.solutions/cart/"
 
     override fun waitForPageLoad() {

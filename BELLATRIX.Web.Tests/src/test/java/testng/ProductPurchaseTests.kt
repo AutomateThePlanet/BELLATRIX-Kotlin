@@ -33,7 +33,7 @@ class ProductPurchaseTests : WebTest() {
         addToCartFalcon9.click()
         blogLink.layout().assertAboveOf(addToCartFalcon9, 9.0)
 //        blogLink.layout() above addToCartFalcon9
-        MainPage().asserts.productBoxLink("", "")
+        MainPage.asserts.productBoxLink("", "")
         blogLink.validateHrefIs("http://demos.bellatrix.solutions/")
     }
 
@@ -46,44 +46,39 @@ class ProductPurchaseTests : WebTest() {
 
     @Test
     fun falcon9LinkAddsCorrectProduct() {
-        val mainPage = app.goTo<MainPage>()
-        mainPage.asserts.productBoxLink("Falcon 9", "http://demos.bellatrix.solutions/product/falcon-9/")
+        MainPage.open()
+        MainPage.asserts.productBoxLink("Falcon 9", "http://demos.bellatrix.solutions/product/falcon-9/")
     }
 
     @Test
     fun saturnVLinkAddsCorrectProduct() {
-        val mainPage = app.goTo<MainPage>()
-        mainPage.asserts.productBoxLink("Saturn V", "http://demos.bellatrix.solutions/product/saturn-v/")
+        MainPage.open()
+        MainPage.asserts.productBoxLink("Saturn V", "http://demos.bellatrix.solutions/product/saturn-v/")
     }
 
     @Test
     fun purchaseFalcon9WithoutFacade() {
-        val mainPage = app.goTo<MainPage>()
-        mainPage.addRocketToShoppingCart("Falcon 9")
-        val cartPage = app.create<CartPage>()
-        cartPage.applyCoupon("happybirthday")
-        cartPage.asserts.couponAppliedSuccessfully()
-        cartPage.increaseProductQuantity(2)
-        cartPage.asserts.totalPrice("114.00€")
-        cartPage.clickProceedToCheckout()
-        val checkoutPage = app.create<CheckoutPage>()
-        checkoutPage.fillInfo(PurchaseInfo())
-        checkoutPage.asserts.orderReceived()
+        MainPage.open()
+        MainPage.addRocketToShoppingCart("Falcon 9")
+        CartPage.applyCoupon("happybirthday")
+        CartPage.asserts.couponAppliedSuccessfully()
+        CartPage.increaseProductQuantity(2)
+        CartPage.asserts.totalPrice("114.00€")
+        CartPage.clickProceedToCheckout()
+        CheckoutPage.fillInfo(PurchaseInfo())
+        CheckoutPage.asserts.orderReceived()
     }
 
     @Test
     fun purchaseSaturnVWithoutFacade() {
-        val mainPage = app.goTo<MainPage>()
-        mainPage.addRocketToShoppingCart("Saturn V")
-        val cartPage = app.create<CartPage>()
-        cartPage.applyCoupon("happybirthday")
-        cartPage.asserts.couponAppliedSuccessfully()
-        cartPage.increaseProductQuantity(3)
-        cartPage.asserts.totalPrice("355.00€")
-        cartPage.clickProceedToCheckout()
-
-        val checkoutPage = app.create<CheckoutPage>()
-        checkoutPage.fillInfo(PurchaseInfo())
-        checkoutPage.asserts.orderReceived()
+        MainPage.open()
+        MainPage.addRocketToShoppingCart("Saturn V")
+        CartPage.applyCoupon("happybirthday")
+        CartPage.asserts.couponAppliedSuccessfully()
+        CartPage.increaseProductQuantity(3)
+        CartPage.asserts.totalPrice("355.00€")
+        CartPage.clickProceedToCheckout()
+        CheckoutPage.fillInfo(PurchaseInfo())
+        CheckoutPage.asserts.orderReceived()
     }
 }
