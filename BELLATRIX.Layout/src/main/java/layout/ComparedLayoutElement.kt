@@ -15,51 +15,33 @@ package layout
 import org.testng.Assert
 
 class ComparedLayoutElement (internal val firstLayoutComponent: LayoutComponent, internal val secondLayoutComponent: LayoutComponent, internal val layoutAssertion: LayoutAssertion) {
-    fun EQ(expected: Double) : AssertedComparedLayoutElement {
+    fun EQ(expected: INT) : AssertedComparedLayoutElement {
 //        val actualDistance = calculateAboveOfDistance(component, this.layoutComponent)
 //        Assert.assertEquals(expected, actualDistance, String.format("%s should be %d px above of %s but was %d px.", component.elementName, expected, this.layoutComponent.elementName, actualDistance))
 //        LayoutAssertionsFactory.ASSERTED_ABOVE_OF.broadcast(LayoutTwoComponentsActionEventArgs(component, this.layoutComponent, expected.toString()))
-        return this;
+        return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected);
     }
+
     fun NE(expected: Int) : AssertedComparedLayoutElement {
-        return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected.toDouble());
+        return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected);
     }
 
     fun LT(expected: Int) : AssertedComparedLayoutElement {
-        return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected.toDouble());
+        return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected);
     }
     fun LE(expected: Int) : AssertedComparedLayoutElement {
-        return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected.toDouble());
+        return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected);
     }
 
     fun GT(expected: Int) : AssertedComparedLayoutElement {
-        return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected.toDouble());
+        return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected);
     }
 
     fun GE(expected: Int): AssertedComparedLayoutElement {
-        return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected.toDouble());
-    }
-
-    fun NE(expected: Double) : AssertedComparedLayoutElement {
         return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected);
     }
 
-    fun LT(expected: Double) : AssertedComparedLayoutElement {
-        return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected);
-    }
-    fun LE(expected: Double) : AssertedComparedLayoutElement {
-        return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected);
-    }
-
-    fun GT(expected: Double) : AssertedComparedLayoutElement {
-        return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected);
-    }
-
-    fun GE(expected: Double): AssertedComparedLayoutElement {
-        return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected);
-    }
-
-    fun AP(expected: Double, percent: Double): AssertedComparedLayoutElement {
+    fun AP(expected: Int, percent: Int): AssertedComparedLayoutElement {
         return AssertedComparedLayoutElement(this.firstLayoutComponent, this.secondLayoutComponent, this.layoutAssertion, expected);
     }
 

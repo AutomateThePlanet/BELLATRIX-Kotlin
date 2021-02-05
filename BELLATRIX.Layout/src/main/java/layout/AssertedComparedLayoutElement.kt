@@ -14,6 +14,6 @@ package layout
 
 import org.testng.Assert
 
-class AssertedComparedLayoutElement (internal val firstLayoutComponent: LayoutComponent, internal val secondLayoutComponent: LayoutComponent, internal val layoutAssertion: LayoutAssertion, val expected: Double) {
+class AssertedComparedLayoutElement (internal val firstLayoutComponent: LayoutComponent, internal val secondLayoutComponent: LayoutComponent, internal val layoutAssertion: LayoutAssertion, val expected: Int) {
     fun assert() {  }
 }
