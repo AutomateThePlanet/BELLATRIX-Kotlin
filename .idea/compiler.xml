@@ -14,6 +14,7 @@
         <module name="bellatrix.api" />
         <module name="bellatrix.web.tests" />
         <module name="bellatrix.mobile" />
+        <module name="BELLATRIX.Plugins" />
         <module name="bellatrix.plugins.screenshots" />
       </profile>
       <profile name="Annotation profile for BELLATRIX" enabled="true">
@@ -25,6 +26,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bellatrix.configuration" target="15" />
+      <module name="bellatrix.core" target="15" />
       <module name="bellatrix.data" target="15" />
       <module name="BELLATRIX.Logging" target="15" />
       <module name="bellatrix.utilities" target="15" />
