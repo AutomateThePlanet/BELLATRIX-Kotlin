@@ -12,8 +12,13 @@
  */
 package layout
 
-import org.testng.Assert
-
-class AssertedComparedLayoutElement (internal val firstLayoutComponent: LayoutComponent, internal val secondLayoutComponent: LayoutComponent, internal val layoutAssertion: LayoutAssertion, val expected: Int) {
-    fun assert() {  }
+object LayoutValidationsBddLogging {
+    private var isBddLoggingTurnedOn = false
+    fun addPlugin() {
+        if (!isBddLoggingTurnedOn) {
+            FinishValidationBuilder.VALIDATED_COMPONENT_LAYOUT.addListener { x: LayoutValidationEventArgs -> println(x.message) }
+            LayoutPreciseValidationBuilder.VALIDATED_COMPONENT_LAYOUT.addListener { x: LayoutValidationEventArgs -> println(x.message) }
+            isBddLoggingTurnedOn = true
+        }
+    }
 }

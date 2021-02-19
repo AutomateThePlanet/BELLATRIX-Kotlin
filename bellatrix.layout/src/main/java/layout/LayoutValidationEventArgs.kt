@@ -12,4 +12,4 @@
  */
 package layout
 
-data class LayoutComponentsActionEventArgs(val components: List<LayoutComponent>, val actionValue: String)
+class LayoutValidationEventArgs(val message: String)

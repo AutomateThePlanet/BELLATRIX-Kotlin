@@ -12,4 +12,10 @@
  */
 package layout
 
-data class LayoutTwoComponentsActionTwoValuesEventArgs(val component: LayoutComponent, val secondComponent: LayoutComponent, val actionValue: String, val secondActionValue: String)
+enum class ComparingOperators(val compareOperator: String) {
+    EQUAL("="), GREATER_THAN(">"), GREATER_THAN_EQUAL(">="), LESS_THAN("<"), LESS_THAN_EQUAL("<=");
+
+    override fun toString(): String {
+        return compareOperator
+    }
+}

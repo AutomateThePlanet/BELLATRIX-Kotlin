@@ -31,8 +31,15 @@ class ProductPurchaseTests : WebTest() {
         val addToCartFalcon9 = app.create.byCss<Anchor>("[data-product_id*='28']")
         val blogLink = app.create.byCss<Anchor>("[data-product_id*='28']")
         addToCartFalcon9.click()
-        blogLink.layout.above(addToCartFalcon9).GT(9).assert()
-//        blogLink.layout() assertAboveOf addToCartFalcon9
+
+        blogLink.above(addToCartFalcon9).greaterThan(30).validate()
+        blogLink.above(addToCartFalcon9).validate()
+        blogLink.height().equal(10).validate()
+        blogLink.width().greaterThanOrEqual(10).validate()
+        blogLink.inside(addToCartFalcon9).validate()
+        blogLink.topInside(addToCartFalcon9).greaterThan(5).validate()
+        blogLink.alignedHorizontallyTop(addToCartFalcon9, addToCartFalcon9).validate()
+
         MainPage.asserts.productBoxLink("", "")
         blogLink.validateHrefIs("http://demos.bellatrix.solutions/")
     }

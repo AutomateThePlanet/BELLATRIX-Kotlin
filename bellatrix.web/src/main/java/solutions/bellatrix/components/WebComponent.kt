@@ -12,6 +12,7 @@
  */
 package solutions.bellatrix.components
 
+import layout.LayoutComponentValidationsBuilder
 import solutions.bellatrix.infrastructure.DriverService.wrappedDriver
 import solutions.bellatrix.findstrategies.FindStrategy
 import solutions.bellatrix.services.JavaScriptService
@@ -20,8 +21,8 @@ import solutions.bellatrix.services.ComponentCreateService
 import solutions.bellatrix.services.ComponentWaitService
 import solutions.bellatrix.waitstrategies.WaitStrategy
 import solutions.bellatrix.configuration.WebSettings
-import layout.LayoutAssertionsFactory
 import org.apache.commons.lang3.StringEscapeUtils
+import org.apache.commons.lang3.StringUtils
 import solutions.bellatrix.waitstrategies.ToExistsWaitStrategy
 import solutions.bellatrix.waitstrategies.ToBeClickableWaitStrategy
 import solutions.bellatrix.waitstrategies.ToBeVisibleWaitStrategy
@@ -40,13 +41,17 @@ import java.lang.InterruptedException
 import org.openqa.selenium.support.ui.WebDriverWait
 import solutions.bellatrix.components.contracts.Component
 import solutions.bellatrix.configuration.ConfigurationService
+import solutions.bellatrix.infrastructure.DriverService
 import solutions.bellatrix.plugins.EventListener
+import solutions.bellatrix.services.BrowserService.url
 import solutions.bellatrix.utilities.debugStackTrace
 import java.nio.charset.StandardCharsets
 import java.util.*
 import java.util.function.Function
+import java.util.function.Supplier
+import kotlin.text.*
 
-open abstract class WebComponent : Component {
+open abstract class WebComponent : LayoutComponentValidationsBuilder(), Component {
     override lateinit var wrappedElement: WebElement
     var parentWrappedElement: WebElement? = null
     var elementIndex = 0
@@ -92,9 +97,6 @@ open abstract class WebComponent : Component {
         val VALIDATED_HREF_IS_SET = EventListener<ComponentActionEventArgs>()
         val VALIDATED_HREF_IS = EventListener<ComponentActionEventArgs>()
     }
-
-    val layout: LayoutAssertionsFactory
-        get() =  LayoutAssertionsFactory(this)
 
     override val elementName: String
         get() = "$componentClass.simpleName ($findStrategy)"
@@ -442,17 +444,17 @@ open abstract class WebComponent : Component {
         }
     }
 
-    private fun scrollToMakeElementVisible(wrappedElement: WebElement?) {
+    private fun scrollToMakeElementVisible(wrappedElement: WebElement) {
         // createBy default scroll down to make the element visible.
         if (webSettings.automaticallyScrollToVisible) {
             scrollToVisible(wrappedElement, false)
         }
     }
 
-    private fun scrollToVisible(wrappedElement: WebElement?, shouldWait: Boolean) {
+    private fun scrollToVisible(wrappedElement: WebElement, shouldWait: Boolean) {
         SCROLLING_TO_VISIBLE.broadcast(ComponentActionEventArgs(this))
         try {
-            javaScriptService.execute("arguments[0].scrollIntoView(true);", wrappedElement!!)
+            javaScriptService.execute("arguments[0].scrollIntoView(true);", wrappedElement)
             if (shouldWait) {
                 Thread.sleep(500)
                 toExists<WebComponent>().waitToBe()
@@ -465,33 +467,40 @@ open abstract class WebComponent : Component {
         SCROLLED_TO_VISIBLE.broadcast(ComponentActionEventArgs(this))
     }
 
-    protected fun defaultValidateAcceptIsNull() {
-        waitUntil({ d: SearchContext? -> defaultGetAcceptAttribute() == null }, String.format("The control's accept should be null but was '%s'.", defaultGetAcceptAttribute()))
-        VALIDATED_ACCEPT_IS_NULL.broadcast(ComponentActionEventArgs(this))
-    }
-
-    protected fun defaultValidateAcceptIs(value: String) {
-        waitUntil({ d: SearchContext? -> defaultGetAcceptAttribute() == value }, String.format("The control's accept should be '%s' but was '%s'.", defaultGetAcceptAttribute()))
-        VALIDATED_ACCEPT_IS.broadcast(ComponentActionEventArgs(this))
-    }
-
-    protected fun defaultValidateHrefIs(value: String) {
-        waitUntil({ d: SearchContext? -> defaultGetHref() == value }, String.format("The control's href should be '%s' but was '%s'.", value, defaultGetHref()))
-        VALIDATED_HREF_IS.broadcast(ComponentActionEventArgs(this))
-    }
-
-    protected fun defaultValidateHrefIsSet() {
-        waitUntil({ !defaultGetHref().isBlank() }, "The control's href shouldn't be empty but was.")
-        VALIDATED_HREF_IS_SET.broadcast(ComponentActionEventArgs(this))
-    }
-
-    private fun waitUntil(waitCondition: Function<SearchContext, Boolean>, exceptionMessage: String) {
-        val webDriverWait = WebDriverWait(wrappedDriver(), webSettings.timeoutSettings.validationsTimeout.toLong(), webSettings.timeoutSettings.sleepInterval.toLong())
-        try {
-            webDriverWait.until(waitCondition)
-        } catch (ex: TimeoutException) {
-            val validationExceptionMessage = "$exceptionMessage The test failed on URL: $browserService.url"
-            throw TimeoutException(validationExceptionMessage, ex)
-        }
-    }
+//    val VALIDATED_ATTRIBUTE = EventListener<ComponentActionEventArgs>()
+//
+//    protected open fun defaultValidateAttributeSet(supplier: Supplier<String>, attributeName: String) {
+//        waitUntil({ d: SearchContext? -> !StringUtils.isEmpty(supplier.get()) }, "The control's $attributeName shouldn't be empty but was.")
+//        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, "", "validate $attributeName is empty"))
+//    }
+//
+//    protected open fun defaultValidateAttributeNotSet(supplier: Supplier<String>, attributeName: String) {
+//        waitUntil({ d: SearchContext? -> StringUtils.isEmpty(supplier.get()) }, "The control's $attributeName should be null but was '$supplier.get()'.")
+//        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, "", "validate $attributeName is null"))
+//    }
+//
+//    protected open fun defaultValidateAttributeIs(supplier: Supplier<String>, value: String, attributeName: String) {
+//        waitUntil({ d: SearchContext? -> supplier.get().trim() == value }, "The control's $attributeName should be '$value' but was '$supplier.get()'.")
+//        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, value, "validate $attributeName is $value"))
+//    }
+//
+//    protected open fun defaultValidateAttributeContains(supplier: Supplier<String>, value: String, attributeName: String) {
+//        waitUntil({ d: SearchContext? -> supplier.get().trim().contains(value) }, "The control's $attributeName should contain '$value' but was '$supplier.get()'.")
+//        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, value, "validate $attributeName contains $value"))
+//    }
+//
+//    protected open fun defaultValidateAttributeNotContains(supplier: Supplier<String>, value: String, attributeName: String) {
+//        waitUntil({ d: SearchContext? -> !supplier.get().trim().contains(value) }, "The control's $attributeName shouldn't contain '$value' but was '$supplier.get()'.")
+//        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, value, "validate $attributeName doesn't contain $value"))
+//    }
+//
+//    private fun waitUntil(waitCondition: Function<SearchContext, Boolean>, exceptionMessage: String) {
+//        val webDriverWait = WebDriverWait(wrappedDriver(), webSettings.timeoutSettings.validationsTimeout, webSettings.timeoutSettings.sleepInterval)
+//        try {
+//            webDriverWait.until(waitCondition)
+//        } catch (ex: TimeoutException) {
+//            val validationExceptionMessage = "$exceptionMessage The test failed on URL: $browserService.url"
+//            throw TimeoutException(validationExceptionMessage, ex)
+//        }
+//    }
 }
