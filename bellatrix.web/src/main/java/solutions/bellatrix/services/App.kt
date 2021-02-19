@@ -14,8 +14,6 @@ package solutions.bellatrix.services
 
 import solutions.bellatrix.infrastructure.DriverService
 import java.lang.AutoCloseable
-import solutions.bellatrix.pages.WebPage
-import solutions.bellatrix.utilities.InstanceFactory
 
 object App : AutoCloseable {
     private var disposed = false

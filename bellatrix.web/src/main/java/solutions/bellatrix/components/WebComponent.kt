@@ -22,7 +22,6 @@ import solutions.bellatrix.services.ComponentWaitService
 import solutions.bellatrix.waitstrategies.WaitStrategy
 import solutions.bellatrix.configuration.WebSettings
 import org.apache.commons.lang3.StringEscapeUtils
-import org.apache.commons.lang3.StringUtils
 import solutions.bellatrix.waitstrategies.ToExistsWaitStrategy
 import solutions.bellatrix.waitstrategies.ToBeClickableWaitStrategy
 import solutions.bellatrix.waitstrategies.ToBeVisibleWaitStrategy
@@ -38,17 +37,12 @@ import solutions.bellatrix.findstrategies.InnerTextContainsFindStrategy
 import org.openqa.selenium.*
 import java.net.URLDecoder
 import java.lang.InterruptedException
-import org.openqa.selenium.support.ui.WebDriverWait
 import solutions.bellatrix.components.contracts.Component
 import solutions.bellatrix.configuration.ConfigurationService
-import solutions.bellatrix.infrastructure.DriverService
 import solutions.bellatrix.plugins.EventListener
-import solutions.bellatrix.services.BrowserService.url
 import solutions.bellatrix.utilities.debugStackTrace
 import java.nio.charset.StandardCharsets
 import java.util.*
-import java.util.function.Function
-import java.util.function.Supplier
 import kotlin.text.*
 
 open abstract class WebComponent : LayoutComponentValidationsBuilder(), Component {

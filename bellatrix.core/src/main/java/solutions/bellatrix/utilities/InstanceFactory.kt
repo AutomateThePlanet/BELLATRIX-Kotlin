@@ -13,7 +13,6 @@
 package solutions.bellatrix.utilities
 
 import java.lang.reflect.ParameterizedType
-import kotlin.reflect.typeOf
 
 object InstanceFactory {
     inline fun <reified T> create(): T {

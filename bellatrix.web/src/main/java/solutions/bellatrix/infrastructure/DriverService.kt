@@ -30,8 +30,6 @@ import solutions.bellatrix.configuration.ConfigurationService
 import solutions.bellatrix.configuration.GridSettings
 import solutions.bellatrix.configuration.WebSettings
 import solutions.bellatrix.services.ProxyServer
-import solutions.bellatrix.utilities.debugStackTrace
-import java.net.MalformedURLException
 import java.net.URL
 import java.util.*
 import java.util.concurrent.TimeUnit
