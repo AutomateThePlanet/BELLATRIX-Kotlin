@@ -224,7 +224,7 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
         return Optional.ofNullable(findElement().text).orElse("")
     }
 
-    protected fun defaultSetText(settingValue: EventListener<ComponentActionEventArgs?>, valueSet: EventListener<ComponentActionEventArgs?>, value: String) {
+    protected fun defaultSetText(settingValue: EventListener<ComponentActionEventArgs>, valueSet: EventListener<ComponentActionEventArgs>, value: String) {
         settingValue.broadcast(ComponentActionEventArgs(this))
         findElement().clear()
         findElement().sendKeys(value)
@@ -324,9 +324,9 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
     init {
         waitStrategies = ArrayList()
         desktopSettings = ConfigurationService.get<DesktopSettings>()
-        appService = AppService()
-        componentCreateService = ComponentCreateService()
-        componentWaitService = ComponentWaitService()
+        appService = AppService
+        componentCreateService = ComponentCreateService
+        componentWaitService = ComponentWaitService
         wrappedDriver = getWrappedDriver()
     }
 }

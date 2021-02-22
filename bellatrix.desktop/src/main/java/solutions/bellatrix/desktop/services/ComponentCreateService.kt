@@ -18,59 +18,59 @@ import solutions.bellatrix.core.utilities.InstanceFactory
 import solutions.bellatrix.desktop.findstrategies.*
 
 object ComponentCreateService : DesktopService() {
-    inline fun <reified TComponent : DesktopComponent> createByAccessibilityId(accessibilityId: String): TComponent {
+    inline fun <reified TComponent : DesktopComponent> byAccessibilityId(accessibilityId: String): TComponent {
         return create<TComponent, AccessibilityIdFindStrategy>(accessibilityId)
     }
 
-    inline fun <reified TComponent : DesktopComponent> createByClass(cclass: String): TComponent {
+    inline fun <reified TComponent : DesktopComponent> byClass(cclass: String): TComponent {
         return create<TComponent, ClassFindStrategy>(cclass)
     }
 
-    inline fun <reified TComponent : DesktopComponent> createByXPath(componentClass: Class<TComponent>, xpath: String): TComponent {
+    inline fun <reified TComponent : DesktopComponent> byXPath(xpath: String): TComponent {
         return create<TComponent, XPathFindStrategy>(xpath)
     }
 
-    inline fun <reified TComponent : DesktopComponent> createByName(name: String): TComponent {
+    inline fun <reified TComponent : DesktopComponent> byName(name: String): TComponent {
         return create<TComponent, NameFindStrategy>(name)
     }
 
-    inline fun <reified TComponent : DesktopComponent> createByTag(tag: String): TComponent {
+    inline fun <reified TComponent : DesktopComponent> byTag(tag: String): TComponent {
         return create<TComponent, TagFindStrategy>(tag)
     }
 
-    inline fun <reified TComponent : DesktopComponent> createByIdContaining(idContaining: String): TComponent {
+    inline fun <reified TComponent : DesktopComponent> byIdContaining(idContaining: String): TComponent {
         return create<TComponent, IdContainingFindStrategy>(idContaining)
     }
 
-    inline fun <reified TComponent : DesktopComponent> createByAutomationId(automationId: String): TComponent {
+    inline fun <reified TComponent : DesktopComponent> byAutomationId(automationId: String): TComponent {
         return create<TComponent, AutomationIdFindStrategy>(automationId)
     }
 
-    inline fun <reified TComponent : DesktopComponent> createAllByAccessibilityId(accessibilityId: String): List<TComponent> {
+    inline fun <reified TComponent : DesktopComponent> allByAccessibilityId(accessibilityId: String): List<TComponent> {
         return createAll<TComponent, AccessibilityIdFindStrategy>(accessibilityId)
     }
 
-    inline fun <reified TComponent : DesktopComponent> createAllByName(name: String): List<TComponent> {
+    inline fun <reified TComponent : DesktopComponent> allByName(name: String): List<TComponent> {
         return createAll<TComponent, NameFindStrategy>(name)
     }
 
-    inline fun <reified TComponent : DesktopComponent> createAllByClass(cclass: String): List<TComponent> {
+    inline fun <reified TComponent : DesktopComponent> allByClass(cclass: String): List<TComponent> {
         return createAll<TComponent, ClassFindStrategy>(cclass)
     }
 
-    inline fun <reified TComponent : DesktopComponent> createAllByXPath(xpath: String): List<TComponent> {
+    inline fun <reified TComponent : DesktopComponent> allByXPath(xpath: String): List<TComponent> {
         return createAll<TComponent, XPathFindStrategy>(xpath)
     }
 
-    inline fun <reified TComponent : DesktopComponent> createAllByAutomationId(automationId: String): List<TComponent> {
+    inline fun <reified TComponent : DesktopComponent> allByAutomationId(automationId: String): List<TComponent> {
         return createAll<TComponent, AutomationIdFindStrategy>(automationId)
     }
 
-    inline fun <reified TComponent : DesktopComponent>  createAllByTag(tag: String): List<TComponent> {
+    inline fun <reified TComponent : DesktopComponent>  allByTag(tag: String): List<TComponent> {
         return createAll<TComponent, TagFindStrategy>(tag)
     }
 
-    inline fun <reified TComponent : DesktopComponent> createAllByIdContaining(idContaining: String): List<TComponent> {
+    inline fun <reified TComponent : DesktopComponent> allByIdContaining(idContaining: String): List<TComponent> {
         return createAll<TComponent, IdContainingFindStrategy>(idContaining)
     }
 

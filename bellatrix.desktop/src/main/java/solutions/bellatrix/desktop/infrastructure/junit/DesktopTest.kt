@@ -20,7 +20,7 @@ import solutions.bellatrix.desktop.infrastructure.DesktopVideoPlugin
 import solutions.bellatrix.desktop.infrastructure.DownloadDemoAppsPlugin
 import solutions.bellatrix.desktop.services.App
 
-class DesktopTest : BaseTest() {
+open class DesktopTest : BaseTest() {
     val app
         get() = App
 

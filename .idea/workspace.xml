@@ -5,52 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="306427ac-e0d6-4ca7-a786-35b27c176913" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/waitstrategies/ToBeClickableWaitStrategy.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/waitstrategies/ToBeVisibleWaitStrategy.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/waitstrategies/ToExistsWaitStrategy.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/waitstrategies/WaitStrategy.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/waitstrategies/WaitStrategyComponentExtensions.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/listeners/BddLogging.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/DesktopScreenshotPlugin.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/junit/DesktopTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/pages/DesktopPage.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/App.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/ComponentCreateService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/DesktopService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToBeClickableWaitStrategy.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToBeVisibleWaitStrategy.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToExistsWaitStrategy.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/WaitStrategy.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/WaitStrategyFactory.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/src/test/java/junit/ProductPurchaseTests.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/src/test/java/testng/ProductPurchaseTests.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/WebComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/WebComponent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/waitstrategies/ToBeClickableWaitStrategy.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/waitstrategies/ToBeVisibleWaitStrategy.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/waitstrategies/ToExistsWaitStrategy.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/waitstrategies/WaitStrategy.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/waitstrategies/WaitStrategyComponentExtensions.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/ComponentWaitService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/ComponentWaitService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/listeners/BddLogging.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/DesktopScreenshotPlugin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/junit/DesktopTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/pages/AppSection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/pages/DesktopPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/pages/PageAsserts.java" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/pages/PageAsserts.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/pages/PageMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/Wait.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/AppService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/AppService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/ComponentCreateService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/ComponentWaitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/ComponentWaitService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/DesktopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/pages/DesktopSection.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToBeClickableWaitStrategy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToBeVisibleWaitStrategy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToExistsWaitStrategy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/Wait.java" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/pages/PageMap.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/WaitStrategy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/WaitStrategyElementsExtensions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/WaitStrategyFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop.tests/bellatrix.desktop.tests.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop.tests/src/test/java/junit/ProductPurchaseTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop.tests/src/test/java/testng/ProductPurchaseTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/TextField.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/TextField.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/junit/DesktopTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/junit/DesktopTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/ComponentCreateService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/ComponentCreateService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

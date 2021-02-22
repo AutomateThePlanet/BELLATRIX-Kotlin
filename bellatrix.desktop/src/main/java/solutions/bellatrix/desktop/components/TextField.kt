@@ -16,7 +16,7 @@ import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.desktop.components.DesktopComponent
 
 class TextField : DesktopComponent() {
-    var text: String?
+    var text: String
         get() = defaultGetText()
         set(value) {
             defaultSetText(SETTING_TEXT, TEXT_SET, value)
@@ -25,7 +25,7 @@ class TextField : DesktopComponent() {
         get() = javaClass
 
     companion object {
-        val SETTING_TEXT: EventListener<ComponentActionEventArgs> = EventListener<ComponentActionEventArgs>()
-        val TEXT_SET: EventListener<ComponentActionEventArgs> = EventListener<ComponentActionEventArgs>()
+        val SETTING_TEXT = EventListener<ComponentActionEventArgs>()
+        val TEXT_SET = EventListener<ComponentActionEventArgs>()
     }
 }
