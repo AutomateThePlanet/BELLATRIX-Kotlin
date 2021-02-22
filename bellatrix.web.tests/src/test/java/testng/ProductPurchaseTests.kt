@@ -18,10 +18,10 @@ import pages.cartpage.CartPage
 import pages.checkoutpage.CheckoutPage
 import pages.checkoutpage.PurchaseInfo
 import pages.mainpage.MainPage
-import solutions.bellatrix.components.*
-import solutions.bellatrix.infrastructure.*
-import solutions.bellatrix.infrastructure.testng.WebTest
-import solutions.bellatrix.validations.*
+import solutions.bellatrix.web.components.*
+import solutions.bellatrix.web.infrastructure.*
+import solutions.bellatrix.web.infrastructure.testng.WebTest
+import solutions.bellatrix.web.validations.*
 
 @ExecutionBrowser(browser = Browser.CHROME, lifecycle = Lifecycle.REUSE_IF_STARTED)
 class ProductPurchaseTests : WebTest() {

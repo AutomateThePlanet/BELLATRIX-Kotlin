@@ -12,8 +12,8 @@
  */
 package pages.cartpage
 
-import solutions.bellatrix.components.TextField
-import solutions.bellatrix.pages.WebPage
+import solutions.bellatrix.web.components.TextField
+import solutions.bellatrix.web.pages.WebPage
 
 object CartPage : WebPage<Map, Asserts>() {
     override val url: String = "http://demos.bellatrix.solutions/cart/"

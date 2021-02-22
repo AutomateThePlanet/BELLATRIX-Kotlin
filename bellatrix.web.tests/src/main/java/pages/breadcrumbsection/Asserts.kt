@@ -12,6 +12,6 @@
  */
 package pages.breadcrumbsection
 
-import solutions.bellatrix.pages.PageAsserts
+import solutions.bellatrix.web.pages.PageAsserts
 
 class Asserts(override val map: Map) : PageAsserts<Map>()

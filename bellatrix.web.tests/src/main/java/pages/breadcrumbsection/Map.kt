@@ -12,8 +12,8 @@
  */
 package pages.breadcrumbsection
 
-import solutions.bellatrix.pages.PageMap
-import solutions.bellatrix.components.WebComponent
+import solutions.bellatrix.web.pages.PageMap
+import solutions.bellatrix.web.components.WebComponent
 
 class Map : PageMap() {
     val breadcrumb: WebComponent = create.byCss("woocommerce-breadcrumb")

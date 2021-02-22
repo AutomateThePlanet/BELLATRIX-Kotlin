@@ -12,8 +12,8 @@
  */
 package pages.checkoutpage
 
-import solutions.bellatrix.components.*
-import solutions.bellatrix.pages.PageMap
+import solutions.bellatrix.web.components.*
+import solutions.bellatrix.web.pages.PageMap
 
 class Map : PageMap() {
     val firstName: TextField = create.byId("billing_first_name")

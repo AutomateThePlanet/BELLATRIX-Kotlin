@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="306427ac-e0d6-4ca7-a786-35b27c176913" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__cglib_cglib_3_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_beust_jcommander_1_78.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_1_3_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_25_0_jre.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_inject_guice_no_aop_4_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jcraft_jzlib_1_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_okhttp_3_11_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okio_okio_1_14_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_digester_commons_digester_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_8_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_validator_commons_validator_1_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__dnsjava_dnsjava_2_1_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_appium_java_client_7_4_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_bonigarcia_webdrivermanager_4_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_all_4_0_51_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_inject_javax_inject_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_8_15.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_lightbody_bmp_browsermob_core_2_1_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_lightbody_bmp_littleproxy_1_1_0_beta_bmp_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_lightbody_bmp_mitm_2_1_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_ant_ant_1_10_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_ant_ant_launcher_1_10_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_exec_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_client5_httpclient5_5_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_core5_httpcore5_5_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_core5_httpcore5_h2_5_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bouncycastle_bcpkix_jdk15on_1_58.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bouncycastle_bcprov_jdk15on_1_58.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_compat_qual_2_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_mojo_animal_sniffer_annotations_1_14.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_13_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_1_4_30_RC.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_common_1_4_30_RC.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_4_30_RC.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_jdk8_1_4_30_RC.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_test_1_4_30_RC.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_test_common_1_4_30_RC.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_13_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_launcher_1_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_vintage_junit_vintage_engine_5_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_7_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_rauschig_jarchivelib_1_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_api_3_141_59.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_chrome_driver_3_141_59.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_edge_driver_3_141_59.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_firefox_driver_3_141_59.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_ie_driver_3_141_59.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_java_3_141_59.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_opera_driver_3_141_59.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_remote_driver_3_141_59.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_safari_driver_3_141_59.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_support_3_141_59.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_30.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_testng_testng_7_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_21.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ru_yandex_qatools_ashot_ashot_1_5_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web.Tests/bellatrix.web.tests.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/bellatrix.web.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Number.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Progress.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Range.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Search.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/configuration/GridSettings.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/configuration/TimeoutSettings.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/configuration/UrlDeterminer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/configuration/UrlSettings.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/configuration/WebSettings.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/waitstrategies/WaitStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/CookiesService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.api/bellatrix.api.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/utilities/UserHomePathNormalizer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/bellatrix.desktop.tests.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/bellatrix.desktop.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.layout/bellatrix.layout.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.mobile/bellatrix.mobile.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/checkstyleidea-libs/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copyright/AutomateThePlanet.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web.Tests/src/main/java/pages/breadcrumbsection/BreadcrumbSection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web.Tests/src/main/java/pages/breadcrumbsection/BreadcrumbSection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web.Tests/src/main/java/pages/checkoutpage/CheckoutPage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web.Tests/src/main/java/pages/checkoutpage/CheckoutPage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web.Tests/src/main/java/pages/searchsection/Map.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web.Tests/src/main/java/pages/searchsection/Map.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/components/Number.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/components/Progress.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/components/Range.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/components/Search.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/configuration/UrlDeterminer.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/configuration/WebSettings.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/services/CookiesService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/waitstrategies/WaitStrategy.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.api/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/bellatrix.core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/bellatrix.core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/configuration/ConfigurationService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/configuration/ConfigurationService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/plugins/EventListener.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/plugins/EventListener.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/plugins/Plugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/plugins/Plugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/plugins/PluginExecutionEngine.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/plugins/PluginExecutionEngine.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/plugins/TestResult.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/plugins/TestResult.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/plugins/junit/BaseTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/plugins/junit/BaseTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/plugins/testng/BaseTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/plugins/testng/BaseTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/utilities/DebugInformation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/utilities/DebugInformation.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/utilities/FileDownloader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/utilities/FileDownloader.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/utilities/InstanceFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/utilities/InstanceFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/utilities/ResourcesReader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/utilities/ResourcesReader.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/utilities/RuntimeInformation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/utilities/RuntimeInformation.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/utilities/SingletonFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/utilities/SingletonFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/utilities/TempFileWriter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/utilities/TempFileWriter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/utilities/UserThread.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/utilities/UserThread.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/utilities/configuration/TroubleshootingSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/configuration/TroubleshootingSettings.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.layout/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.layout/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.layout/src/main/java/layout/FinishValidationBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.layout/src/main/java/layout/FinishValidationBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.layout/src/main/java/layout/LayoutPreciseValidationBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.layout/src/main/java/layout/LayoutPreciseValidationBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.layout/target/classes/META-INF/BELLATRIX.Layout.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.mobile/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.mobile/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.plugins.screenshots/bellatrix.plugins.screenshots.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.plugins.screenshots/bellatrix.plugins.screenshots.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.plugins.screenshots/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.plugins.screenshots/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.plugins.screenshots/src/main/java/plugins/screenshots/ScreenshotPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.plugins.screenshots/src/main/java/plugins/screenshots/ScreenshotPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.plugins.video/bellatrix.plugins.video.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.plugins.video/bellatrix.plugins.video.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.plugins.video/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.plugins.video/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.plugins.video/src/main/java/plugins/video/FFmpegVideoRecorder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.plugins.video/src/main/java/plugins/video/FFmpegVideoRecorder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.plugins.video/src/main/java/plugins/video/VideoPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.plugins.video/src/main/java/plugins/video/VideoPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/breadcrumbsection/Asserts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/breadcrumbsection/Asserts.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/breadcrumbsection/Map.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/breadcrumbsection/Map.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/cartInfosection/Asserts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/cartInfosection/Asserts.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/cartInfosection/CartInfoSection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/cartInfosection/CartInfoSection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/cartInfosection/Map.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/cartInfosection/Map.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/cartpage/Asserts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/cartpage/Asserts.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/cartpage/CartPage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/cartpage/CartPage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/cartpage/Map.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/cartpage/Map.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/checkoutpage/Asserts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/checkoutpage/Asserts.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/checkoutpage/Map.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/checkoutpage/Map.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/mainmenusection/Asserts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/mainmenusection/Asserts.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/mainmenusection/MainMenuSection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/mainmenusection/MainMenuSection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/mainmenusection/Map.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/mainmenusection/Map.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/mainpage/Asserts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/mainpage/Asserts.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/mainpage/MainPage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/mainpage/MainPage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/mainpage/Map.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/mainpage/Map.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/searchsection/Asserts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/searchsection/Asserts.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/searchsection/SearchSection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/searchsection/SearchSection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/resources/testFrameworkSettings.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/resources/testFrameworkSettings.dev.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/resources/testFrameworkSettings.qa.json" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/resources/testFrameworkSettings.qa.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/test/java/junit/ProductPurchaseTests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/test/java/junit/ProductPurchaseTests.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/test/java/testng/ProductPurchaseTests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/test/java/testng/ProductPurchaseTests.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/bellatrix.web.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Anchor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Anchor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Button.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Button.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/CheckBox.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/CheckBox.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Color.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Color.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/ComponentActionEventArgs.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/ComponentActionEventArgs.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Date.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Date.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/DateTimeLocal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/DateTimeLocal.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Div.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Div.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Email.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Email.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Heading.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Heading.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Image.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Image.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/InputFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/InputFile.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Label.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Label.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Month.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Month.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Option.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Option.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Output.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Output.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Phone.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Phone.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/RadioButton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/RadioButton.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Reset.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Reset.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Select.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Select.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Span.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Span.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/TextArea.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/TextArea.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/TextField.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/TextField.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Time.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Time.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Url.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Url.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/WebComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/WebComponent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/Week.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Week.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/contracts/Component.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/Component.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/contracts/ComponentHref.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentHref.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/contracts/ComponentHtml.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentHtml.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/contracts/ComponentRel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentRel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/contracts/ComponentTarget.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentTarget.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/contracts/ComponentText.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentText.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/listeners/BddLogging.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/listeners/BddLogging.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/components/listeners/HighlightElements.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/listeners/HighlightElements.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/configuration/GridSettings.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/configuration/TimeoutSettings.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/configuration/UrlSettings.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/findstrategies/ClassFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/ClassFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/findstrategies/CssFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/CssFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/findstrategies/FindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/FindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/findstrategies/IdContainingFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/IdContainingFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/findstrategies/IdFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/IdFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/findstrategies/InnerTextContainsFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/InnerTextContainsFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/findstrategies/LinkTextFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/LinkTextFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/findstrategies/TagFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/TagFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/findstrategies/XPathFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/XPathFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/infrastructure/Browser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/infrastructure/Browser.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/infrastructure/BrowserConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/infrastructure/BrowserConfiguration.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/infrastructure/BrowserLifecyclePlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/infrastructure/BrowserLifecyclePlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/infrastructure/DriverService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/infrastructure/DriverService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/infrastructure/ExecutionBrowser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/infrastructure/ExecutionBrowser.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/infrastructure/ExecutionType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/infrastructure/ExecutionType.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/infrastructure/FullPageScreenshotEngine.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/infrastructure/FullPageScreenshotEngine.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/infrastructure/Lifecycle.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/infrastructure/Lifecycle.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/infrastructure/WebScreenshotPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/infrastructure/WebScreenshotPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/infrastructure/WebVideoPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/infrastructure/WebVideoPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/infrastructure/junit/WebTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/infrastructure/junit/WebTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/infrastructure/testng/WebTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/infrastructure/testng/WebTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/pages/PageAsserts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/pages/PageAsserts.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/pages/PageMap.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/pages/PageMap.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/pages/WebPage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/pages/WebPage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/pages/WebSection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/pages/WebSection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/services/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/App.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/services/BrowserService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/BrowserService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/services/ComponentCreateService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/ComponentCreateService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/services/ComponentWaitService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/ComponentWaitService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/services/DialogButton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/DialogButton.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/services/DialogService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/DialogService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/services/JavaScriptService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/JavaScriptService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/services/NavigationService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/NavigationService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/services/ProxyServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/ProxyServer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/services/WebService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/WebService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/validations/ComponentNotFulfillingValidateConditionEventArgs.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/validations/ComponentNotFulfillingValidateConditionEventArgs.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/validations/ElementPropertyValidateException.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/validations/ElementPropertyValidateException.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/validations/ValidationComponentExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/validations/ValidationComponentExtensions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/validations/ValidationEventArgs.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/validations/ValidationEventArgs.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/validations/ValidationsBddLogging.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/validations/ValidationsBddLogging.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/waitstrategies/ToBeClickableWaitStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/waitstrategies/ToBeClickableWaitStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/waitstrategies/ToBeVisibleWaitStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/waitstrategies/ToBeVisibleWaitStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/waitstrategies/ToExistsWaitStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/waitstrategies/ToExistsWaitStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/waitstrategies/WaitStrategyComponentExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/waitstrategies/WaitStrategyComponentExtensions.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1oqLqLBbzLoDtO2XkCFas2mi3wZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="solutions.bellatrix.core.configuration" />
+      <recent name="solutions.bellatrix.web.configuration" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="solutions.bellatrix.core.utilities" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="306427ac-e0d6-4ca7-a786-35b27c176913" name="Default Changelist" comment="" />
+      <created>1614009364924</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614009364924</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

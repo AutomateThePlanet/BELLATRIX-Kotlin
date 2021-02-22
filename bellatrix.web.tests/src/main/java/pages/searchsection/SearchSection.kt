@@ -12,7 +12,7 @@
  */
 package pages.searchsection
 
-import solutions.bellatrix.pages.WebSection
+import solutions.bellatrix.web.pages.WebSection
 
 class SearchSection : WebSection<Map, Asserts>() {
     override val map: Map

@@ -12,7 +12,7 @@
  */
 package pages.checkoutpage
 
-import solutions.bellatrix.pages.WebPage
+import solutions.bellatrix.web.pages.WebPage
 
 object CheckoutPage : WebPage<Map, Asserts>() {
     override val url: String = "http://demos.bellatrix.solutions/checkout/"

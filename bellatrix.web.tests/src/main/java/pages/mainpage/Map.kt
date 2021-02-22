@@ -12,9 +12,9 @@
  */
 package pages.mainpage
 
-import solutions.bellatrix.components.Anchor
-import solutions.bellatrix.components.Button
-import solutions.bellatrix.pages.PageMap
+import solutions.bellatrix.web.components.Anchor
+import solutions.bellatrix.web.components.Button
+import solutions.bellatrix.web.pages.PageMap
 
 class Map : PageMap() {
     val addToCartFalcon9: Anchor = create.byCss("[data-product_id*='28']")

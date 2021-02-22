@@ -12,8 +12,8 @@
  */
 package pages.mainpage
 
-import solutions.bellatrix.components.Anchor
-import solutions.bellatrix.pages.WebPage
+import solutions.bellatrix.web.components.Anchor
+import solutions.bellatrix.web.pages.WebPage
 
 object MainPage : WebPage<Map, Asserts>() {
     override val url: String = "http://demos.bellatrix.solutions/"

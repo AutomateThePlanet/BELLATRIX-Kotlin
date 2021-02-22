@@ -12,8 +12,8 @@
  */
 package pages.mainmenusection
 
-import solutions.bellatrix.components.Anchor
-import solutions.bellatrix.pages.PageMap
+import solutions.bellatrix.web.components.Anchor
+import solutions.bellatrix.web.pages.PageMap
 
 class Map : PageMap() {
     val homeLink: Anchor = create.byLinkText("Home")

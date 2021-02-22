@@ -12,7 +12,7 @@
  */
 package pages.cartInfosection
 
-import solutions.bellatrix.pages.WebSection
+import solutions.bellatrix.web.pages.WebSection
 
 class CartInfoSection : WebSection<Map, Asserts>() {
     val currentAmount: String = map.cartAmount.text

@@ -12,8 +12,8 @@
  */
 package pages.breadcrumbsection
 
-import solutions.bellatrix.components.Anchor
-import solutions.bellatrix.pages.WebSection
+import solutions.bellatrix.web.components.Anchor
+import solutions.bellatrix.web.pages.WebSection
 
 class BreadcrumbSection : WebSection<Map, Asserts>() {
     fun openBreadcrumbItem(itemToOpen: String) {

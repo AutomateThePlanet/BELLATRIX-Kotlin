@@ -12,9 +12,9 @@
  */
 package pages.cartInfosection
 
-import solutions.bellatrix.components.Anchor
-import solutions.bellatrix.components.Span
-import solutions.bellatrix.pages.PageMap
+import solutions.bellatrix.web.components.Anchor
+import solutions.bellatrix.web.components.Span
+import solutions.bellatrix.web.pages.PageMap
 
 class Map : PageMap() {
     val cartIcon: Anchor = create.byClass("cart-contents")

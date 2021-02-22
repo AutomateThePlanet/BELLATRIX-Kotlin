@@ -12,8 +12,8 @@
  */
 package pages.cartpage
 
-import solutions.bellatrix.components.*
-import solutions.bellatrix.pages.PageMap
+import solutions.bellatrix.web.components.*
+import solutions.bellatrix.web.pages.PageMap
 
 class Map : PageMap() {
     val couponCodeTextField: TextField = create.byId("coupon_code")

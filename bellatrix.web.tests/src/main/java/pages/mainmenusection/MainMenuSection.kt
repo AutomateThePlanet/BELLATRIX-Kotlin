@@ -12,7 +12,7 @@
  */
 package pages.mainmenusection
 
-import solutions.bellatrix.pages.WebSection
+import solutions.bellatrix.web.pages.WebSection
 
 class MainMenuSection : WebSection<Map, Asserts>() {
     override val map: Map

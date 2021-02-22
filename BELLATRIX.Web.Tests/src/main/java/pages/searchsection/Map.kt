@@ -12,8 +12,8 @@
  */
 package pages.searchsection
 
-import solutions.bellatrix.components.TextField
-import solutions.bellatrix.pages.PageMap
+import solutions.bellatrix.web.components.TextField
+import solutions.bellatrix.web.pages.PageMap
 
 class Map : PageMap() {
     val searchField: TextField = create.byId("woocommerce-product-search-field-0")

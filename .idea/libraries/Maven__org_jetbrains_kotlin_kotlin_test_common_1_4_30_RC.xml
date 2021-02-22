@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jetbrains.kotlin:kotlin-test-common:1.4.30-RC">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-test-common/1.4.30-RC/kotlin-test-common-1.4.30-RC.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-test-common/1.4.30-RC/kotlin-test-common-1.4.30-RC-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-test-common/1.4.30-RC/kotlin-test-common-1.4.30-RC-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

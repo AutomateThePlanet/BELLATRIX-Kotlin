@@ -13,7 +13,7 @@
 package layout
 
 import org.testng.Assert
-import solutions.bellatrix.plugins.EventListener
+import solutions.bellatrix.core.plugins.EventListener
 import java.util.function.Supplier
 
 class LayoutPreciseValidationBuilder {
