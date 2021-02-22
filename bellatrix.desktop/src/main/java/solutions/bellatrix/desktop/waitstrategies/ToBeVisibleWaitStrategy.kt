@@ -10,31 +10,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.web.findstrategies.waitstrategies
+package solutions.bellatrix.desktop.waitstrategies
 
+import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
 import solutions.bellatrix.core.configuration.ConfigurationService
-import solutions.bellatrix.web.configuration.WebSettings
-import org.openqa.selenium.SearchContext
-import org.openqa.selenium.By
+import solutions.bellatrix.desktop.configuration.DesktopSettings
+import io.appium.java_client.windows.WindowsDriver
+import io.appium.java_client.windows.WindowsElement
 import org.openqa.selenium.NoSuchElementException
 import org.openqa.selenium.StaleElementReferenceException
+import org.openqa.selenium.WebDriver
+import solutions.bellatrix.desktop.findstrategies.FindStrategy
+import java.util.function.Function
 
 class ToBeVisibleWaitStrategy : WaitStrategy {
-    constructor() : super() {
-        timeoutInterval = ConfigurationService.get<WebSettings>().timeoutSettings.elementToBeVisibleTimeout
-        sleepInterval = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
+    constructor() {
+        timeoutInterval = ConfigurationService.get<DesktopSettings>().timeoutSettings.elementToBeVisibleTimeout
+        sleepInterval = ConfigurationService.get<DesktopSettings>().timeoutSettings.sleepInterval
     }
 
     constructor(timeoutIntervalSeconds: Long, sleepIntervalSeconds: Long) : super(timeoutIntervalSeconds, sleepIntervalSeconds) {}
 
-    override fun waitUntil(searchContext: SearchContext, by: By) {
-        waitUntil { elementIsVisible(searchContext, by) }
+    override fun <TFindStrategy : FindStrategy> waitUntil(findStrategy: TFindStrategy) {
+        val func = Function { w: WebDriver -> elementIsVisible(getWrappedDriver(), findStrategy) }
+        waitUntil(func)
     }
 
-    private fun elementIsVisible(searchContext: SearchContext, by: By): Boolean {
-        val element = findElement(searchContext, by)
+    private fun <TFindStrategy : FindStrategy> elementIsVisible(searchContext: WindowsDriver<WindowsElement>, findStrategy: TFindStrategy): Boolean {
+        val element = findStrategy.findElement(searchContext)
         return try {
-            element != null && element.isDisplayed
+            element.isDisplayed
         } catch (e: StaleElementReferenceException) {
             false
         } catch (e: NoSuchElementException) {

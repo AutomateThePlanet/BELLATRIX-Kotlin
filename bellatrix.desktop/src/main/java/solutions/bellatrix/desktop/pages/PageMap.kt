@@ -10,18 +10,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.web.services
+package solutions.bellatrix.desktop.pages
 
-import solutions.bellatrix.web.infrastructure.DriverService.wrappedDriver
-import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.waitstrategies.WaitStrategy
+import solutions.bellatrix.desktop.services.ComponentCreateService
 
-object ComponentWaitService : WebService() {
-    fun wait(component: WebComponent, waitStrategy: WaitStrategy) {
-        if (component.parentWrappedElement == null) {
-            waitStrategy.waitUntil(wrappedDriver(), component.findStrategy.convert())
-        } else {
-            waitStrategy.waitUntil(component.parentWrappedElement!!, component.findStrategy.convert())
-        }
-    }
+abstract class PageMap {
+    val create = ComponentCreateService
 }

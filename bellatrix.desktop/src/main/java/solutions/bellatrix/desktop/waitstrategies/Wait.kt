@@ -10,23 +10,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.desktop.waitstrategies
 
-package solutions.bellatrix.desktop.services;
-
-public class AppService extends DesktopService {
-    public String getTitle() {
-        return getWrappedDriver().getTitle();
-    }
-
-    public void back() {
-        getWrappedDriver().navigate().back();
-    }
-
-    public void forward() {
-        getWrappedDriver().navigate().forward();
-    }
-
-    public void maximize() {
-        getWrappedDriver().manage().window().maximize();
+object Wait {
+    @JvmStatic
+    fun to(): solutions.bellatrix.desktop.waitstrategies.WaitStrategyFactory {
+        return solutions.bellatrix.desktop.waitstrategies.WaitStrategyFactory()
     }
 }

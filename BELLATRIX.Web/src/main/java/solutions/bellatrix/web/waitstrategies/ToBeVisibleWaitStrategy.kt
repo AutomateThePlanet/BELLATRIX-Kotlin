@@ -10,8 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.web.findstrategies.waitstrategies
-
+package solutions.bellatrix.web.waitstrategies
 
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.web.configuration.WebSettings
@@ -20,22 +19,22 @@ import org.openqa.selenium.By
 import org.openqa.selenium.NoSuchElementException
 import org.openqa.selenium.StaleElementReferenceException
 
-class ToBeClickableWaitStrategy : WaitStrategy {
+class ToBeVisibleWaitStrategy : WaitStrategy {
     constructor() : super() {
-        timeoutInterval = ConfigurationService.get<WebSettings>().timeoutSettings.elementToBeClickableTimeout
+        timeoutInterval = ConfigurationService.get<WebSettings>().timeoutSettings.elementToBeVisibleTimeout
         sleepInterval = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
     }
 
     constructor(timeoutIntervalSeconds: Long, sleepIntervalSeconds: Long) : super(timeoutIntervalSeconds, sleepIntervalSeconds) {}
 
     override fun waitUntil(searchContext: SearchContext, by: By) {
-        waitUntil { x: SearchContext -> elementIsClickable(searchContext, by) }
+        waitUntil { elementIsVisible(searchContext, by) }
     }
 
-    private fun elementIsClickable(searchContext: SearchContext, by: By): Boolean {
+    private fun elementIsVisible(searchContext: SearchContext, by: By): Boolean {
         val element = findElement(searchContext, by)
         return try {
-            element != null && element.isEnabled
+            element != null && element.isDisplayed
         } catch (e: StaleElementReferenceException) {
             false
         } catch (e: NoSuchElementException) {
@@ -44,8 +43,8 @@ class ToBeClickableWaitStrategy : WaitStrategy {
     }
 
     companion object {
-        fun of(): ToBeClickableWaitStrategy {
-            return ToBeClickableWaitStrategy()
+        fun of(): ToBeVisibleWaitStrategy {
+            return ToBeVisibleWaitStrategy()
         }
     }
 }

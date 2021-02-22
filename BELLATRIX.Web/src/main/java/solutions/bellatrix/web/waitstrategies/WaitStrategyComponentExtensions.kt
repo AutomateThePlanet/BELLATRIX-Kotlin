@@ -10,7 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.web.findstrategies.waitstrategies
+package solutions.bellatrix.web.waitstrategies
 
 import solutions.bellatrix.web.components.WebComponent
 

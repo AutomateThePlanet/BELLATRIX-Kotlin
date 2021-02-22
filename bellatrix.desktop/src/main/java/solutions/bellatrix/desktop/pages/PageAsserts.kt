@@ -10,15 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.desktop.pages
 
-package solutions.bellatrix.desktop.services;
-
-import io.appium.java_client.windows.WindowsDriver;
-import io.appium.java_client.windows.WindowsElement;
-import solutions.bellatrix.desktop.infrastructure.DriverService;
-
-public abstract class DesktopService {
-    public WindowsDriver<WindowsElement> getWrappedDriver() {
-        return DriverService.getWrappedDriver();
-    }
+abstract class PageAsserts<MapT : PageMap> {
+    abstract val map: MapT
 }

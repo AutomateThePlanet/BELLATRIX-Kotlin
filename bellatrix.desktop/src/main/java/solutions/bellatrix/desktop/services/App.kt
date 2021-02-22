@@ -10,13 +10,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.desktop.services
 
-package solutions.bellatrix.desktop.pages;
+import solutions.bellatrix.desktop.infrastructure.DriverService
 
-import solutions.bellatrix.core.utilities.InstanceFactory;
+object App : AutoCloseable {
+    private var disposed = false
+    val appService = AppService
+    val create = ComponentCreateService
+    val waitFor = ComponentWaitService
 
-public abstract class PageAsserts<ComponentsT extends PageMap> {
-    protected ComponentsT map() {
-        return InstanceFactory.<ComponentsT>createByTypeParameter(getClass(), 0);
+    fun addDriverOptions(key: String, value: String) {
+        DriverService.addDriverOptions(key, value)
+    }
+
+    override fun close() {
+        if (disposed) {
+            return
+        }
+        DriverService.close()
+        disposed = true
     }
 }

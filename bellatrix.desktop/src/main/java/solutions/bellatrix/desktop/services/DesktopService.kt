@@ -10,11 +10,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.desktop.services
 
-package solutions.bellatrix.desktop.waitstrategies;
+import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
+import io.appium.java_client.windows.WindowsDriver
+import io.appium.java_client.windows.WindowsElement
 
-public class Wait {
-    public static WaitStrategyFactory to() {
-        return new WaitStrategyFactory();
-    }
+abstract class DesktopService {
+    val wrappedDriver: WindowsDriver<WindowsElement>
+        get() = getWrappedDriver()
 }

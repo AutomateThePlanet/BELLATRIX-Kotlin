@@ -13,7 +13,6 @@
 package solutions.bellatrix.desktop.components
 
 import solutions.bellatrix.core.plugins.EventListener
-import solutions.bellatrix.desktop.components.DesktopComponent
 
 class Button : DesktopComponent() {
     override val componentClass: Class<*>
@@ -26,7 +25,7 @@ class Button : DesktopComponent() {
     }
 
     // validate inner text
-    fun validateTextIs(value: String?) {
+    fun validateTextIs(value: String) {
         defaultValidateAttributeIs({ text }, value, "inner text")
     }
 
@@ -34,11 +33,11 @@ class Button : DesktopComponent() {
         defaultValidateAttributeSet({ text }, "inner text")
     }
 
-    fun validateTextContains(value: String?) {
+    fun validateTextContains(value: String) {
         defaultValidateAttributeContains({ text }, value, "inner text")
     }
 
-    fun validateTextNotContains(value: String?) {
+    fun validateTextNotContains(value: String) {
         defaultValidateAttributeNotContains({ text }, value, "inner text")
     }
 

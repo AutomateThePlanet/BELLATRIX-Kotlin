@@ -10,13 +10,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.desktop.services
 
-package solutions.bellatrix.desktop.pages;
+import solutions.bellatrix.desktop.components.DesktopComponent
+import solutions.bellatrix.desktop.waitstrategies.WaitStrategy
 
-import solutions.bellatrix.desktop.services.ComponentCreateService;
-
-public abstract class PageMap {
-    public ComponentCreateService create() {
-        return new ComponentCreateService();
+object ComponentWaitService : DesktopService() {
+    fun wait(component: DesktopComponent, waitStrategy: WaitStrategy) {
+        if (component.parentWrappedElement == null) {
+            waitStrategy.waitUntil(component.findStrategy!!)
+        } else {
+            // TODO: should be fixed to pass parent Wrapped Element?
+            waitStrategy.waitUntil(component.findStrategy!!)
+        }
     }
 }

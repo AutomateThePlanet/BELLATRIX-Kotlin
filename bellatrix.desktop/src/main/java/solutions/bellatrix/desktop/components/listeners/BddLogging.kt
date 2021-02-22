@@ -10,19 +10,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.desktop.components.listeners
 
-package solutions.bellatrix.desktop.components.listeners;
+import solutions.bellatrix.desktop.components.Anchor
+import solutions.bellatrix.desktop.components.ComponentActionEventArgs
+import solutions.bellatrix.desktop.components.DesktopComponent
 
-import solutions.bellatrix.desktop.components.Anchor;
-import solutions.bellatrix.desktop.components.DesktopComponent;
-
-public class BddLogging {
-    private static Boolean isBddLoggingTurnedOn = false;
-    public static void addPlugin() {
+object BddLogging {
+    private var isBddLoggingTurnedOn = false
+    fun addPlugin() {
         if (!isBddLoggingTurnedOn) {
-            Anchor.CLICKING.addListener((x) -> System.out.println(String.format("clicking %s\n", x.getComponent().getElementName())));
-            DesktopComponent.VALIDATED_ATTRIBUTE.addListener((x) -> System.out.println(x.getMessage()));
-            isBddLoggingTurnedOn = true;
+            Anchor.CLICKING.addListener { x: ComponentActionEventArgs -> println(String.format("clicking %s\n", x.component.elementName)) }
+            DesktopComponent.VALIDATED_ATTRIBUTE.addListener { x: ComponentActionEventArgs -> println(x.message) }
+            isBddLoggingTurnedOn = true
         }
     }
 }

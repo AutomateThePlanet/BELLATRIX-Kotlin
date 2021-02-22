@@ -10,38 +10,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.web.findstrategies.waitstrategies
+package solutions.bellatrix.web.waitstrategies
+
 
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.web.configuration.WebSettings
 import org.openqa.selenium.SearchContext
 import org.openqa.selenium.By
 import org.openqa.selenium.NoSuchElementException
+import org.openqa.selenium.StaleElementReferenceException
 
-class ToExistsWaitStrategy : WaitStrategy {
+class ToBeClickableWaitStrategy : WaitStrategy {
     constructor() : super() {
-        timeoutInterval = ConfigurationService.get<WebSettings>().timeoutSettings.elementToExistTimeout
+        timeoutInterval = ConfigurationService.get<WebSettings>().timeoutSettings.elementToBeClickableTimeout
         sleepInterval = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
     }
 
     constructor(timeoutIntervalSeconds: Long, sleepIntervalSeconds: Long) : super(timeoutIntervalSeconds, sleepIntervalSeconds) {}
 
     override fun waitUntil(searchContext: SearchContext, by: By) {
-        waitUntil { elementExists(searchContext, by) }
+        waitUntil { x: SearchContext -> elementIsClickable(searchContext, by) }
     }
 
-    private fun elementExists(searchContext: SearchContext, by: By): Boolean {
+    private fun elementIsClickable(searchContext: SearchContext, by: By): Boolean {
+        val element = findElement(searchContext, by)
         return try {
-            val element = findElement(searchContext, by)
-            element != null
+            element != null && element.isEnabled
+        } catch (e: StaleElementReferenceException) {
+            false
         } catch (e: NoSuchElementException) {
             false
         }
     }
 
     companion object {
-        fun of(): ToExistsWaitStrategy {
-            return ToExistsWaitStrategy()
+        fun of(): ToBeClickableWaitStrategy {
+            return ToBeClickableWaitStrategy()
         }
     }
 }

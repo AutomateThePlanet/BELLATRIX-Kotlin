@@ -10,19 +10,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package solutions.bellatrix.desktop.services
 
-package solutions.bellatrix.desktop.services;
+object AppService : DesktopService() {
+    val title: String
+        get() = wrappedDriver.title
 
-import solutions.bellatrix.desktop.components.DesktopComponent;
-import solutions.bellatrix.desktop.waitstrategies.WaitStrategy;
+    fun back() {
+        wrappedDriver.navigate().back()
+    }
 
-public class ComponentWaitService extends DesktopService {
-    public void wait(DesktopComponent component, WaitStrategy waitStrategy) {
-        if (component.getParentWrappedElement() == null) {
-            waitStrategy.waitUntil(component.getFindStrategy());
-        } else {
-            // TODO: should be fixed to pass parent Wrapped Element?
-            waitStrategy.waitUntil(component.getFindStrategy());
-        }
+    fun forward() {
+        wrappedDriver.navigate().forward()
+    }
+
+    fun maximize() {
+        wrappedDriver.manage().window().maximize()
     }
 }

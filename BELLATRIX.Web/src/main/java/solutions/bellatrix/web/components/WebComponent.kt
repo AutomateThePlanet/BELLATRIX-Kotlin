@@ -19,12 +19,12 @@ import solutions.bellatrix.web.services.JavaScriptService
 import solutions.bellatrix.web.services.BrowserService
 import solutions.bellatrix.web.services.ComponentCreateService
 import solutions.bellatrix.web.services.ComponentWaitService
-import solutions.bellatrix.web.findstrategies.waitstrategies.WaitStrategy
+import solutions.bellatrix.web.waitstrategies.WaitStrategy
 import solutions.bellatrix.web.configuration.WebSettings
 import org.apache.commons.lang3.StringEscapeUtils
-import solutions.bellatrix.web.findstrategies.waitstrategies.ToExistsWaitStrategy
-import solutions.bellatrix.web.findstrategies.waitstrategies.ToBeClickableWaitStrategy
-import solutions.bellatrix.web.findstrategies.waitstrategies.ToBeVisibleWaitStrategy
+import solutions.bellatrix.web.waitstrategies.ToExistsWaitStrategy
+import solutions.bellatrix.web.waitstrategies.ToBeClickableWaitStrategy
+import solutions.bellatrix.web.waitstrategies.ToBeVisibleWaitStrategy
 import solutions.bellatrix.core.utilities.InstanceFactory
 import solutions.bellatrix.web.findstrategies.IdFindStrategy
 import solutions.bellatrix.web.findstrategies.CssFindStrategy
