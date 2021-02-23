@@ -32,7 +32,6 @@ class AppLifecyclePlugin : Plugin() {
         fun of(): AppLifecyclePlugin {
             return AppLifecyclePlugin()
         }
-
     }
 
     override fun preBeforeClass(type: Class<*>) {

@@ -32,6 +32,13 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="bellatrix.ios" scope="TEST" />
+    <orderEntry type="module" module-name="bellatrix.core" scope="TEST" />
+    <orderEntry type="module" module-name="bellatrix.layout" scope="TEST" />
+    <orderEntry type="module" module-name="bellatrix.plugins.video" scope="TEST" />
+    <orderEntry type="module" module-name="bellatrix.plugins.screenshots" scope="TEST" />
+    <orderEntry type="module" module-name="bellatrix.web" scope="TEST" />
+    <orderEntry type="library" scope="TEST" name="Maven: ru.yandex.qatools.ashot:ashot:1.5.4" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.18" level="project" />
     <orderEntry type="library" name="Maven: org.testng:testng:7.3.0" level="project" />
     <orderEntry type="library" name="Maven: com.beust:jcommander:1.78" level="project" />

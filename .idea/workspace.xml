@@ -4,41 +4,168 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="306427ac-e0d6-4ca7-a786-35b27c176913" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/bellatrix.desktop.tests.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/DesktopVideoPlugin.kt" afterDir="false" />
+    <list default="true" id="3855c427-2129-4180-8d4c-6145ae0107e4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/bellatrix.android.tests/bellatrix.android.tests.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android.tests/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android.tests/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android.tests/src/main/resources/testFrameworkSettings.dev.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android.tests/src/main/resources/testFrameworkSettings.qa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android.tests/src/test/java/junit/ProductPurchaseTests.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android.tests/src/test/java/testng/ProductPurchaseTests.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/bellatrix.android.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/Anchor.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/AndroidComponent.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/Button.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/CheckBox.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/ComponentActionEventArgs.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/Div.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/Heading.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/Image.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/InputFile.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/Label.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/Option.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/Progress.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/RadioButton.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/Search.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/Select.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/Span.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/TextArea.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/TextField.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/Time.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/contracts/Component.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/components/listeners/BddLogging.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/configuration/AndroidSettings.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/configuration/GridSettings.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/configuration/TimeoutSettings.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/findstrategies/AndroidUIAutomatorFindStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/findstrategies/ClassFindStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/findstrategies/DescriptionContainingFindStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/findstrategies/DescriptionFindStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/findstrategies/FindStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/findstrategies/IdContainingFindStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/findstrategies/IdFindStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/findstrategies/NameFindStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/findstrategies/TagFindStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/findstrategies/TextContainingFindStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/findstrategies/TextFindStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/findstrategies/XPathFindStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/infrastructure/AppConfiguration.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/infrastructure/AppLifecyclePlugin.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/infrastructure/DownloadDemoAppsPlugin.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/infrastructure/DriverService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/infrastructure/ExecutionApp.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/infrastructure/ExecutionType.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/infrastructure/Lifecycle.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/infrastructure/MobileScreenshotPlugin.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/infrastructure/MobileVideoPlugin.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/infrastructure/junit/AndroidTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/infrastructure/testng/AndroidTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/pages/AndroidPage.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/pages/PageAsserts.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/pages/PageMap.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/services/App.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/services/AppService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/services/ComponentCreateService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/services/ComponentWaitService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/services/DeviceService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/services/FileSystemService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/services/KeyboardService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/services/MobileService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/services/TouchActionsService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/services/WebServiceFacade.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/waitstrategies/ToBeClickableWaitStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/waitstrategies/ToBeVisibleWaitStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/waitstrategies/ToExistsWaitStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/waitstrategies/Wait.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/waitstrategies/WaitStrategy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/waitstrategies/WaitStrategyElementsExtensions.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.android/src/main/java/solutions/bellatrix/android/waitstrategies/WaitStrategyFactory.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios.tests/bellatrix.ios.tests.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios.tests/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios.tests/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios.tests/src/main/resources/testFrameworkSettings.dev.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios.tests/src/main/resources/testFrameworkSettings.qa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios.tests/src/test/java/junit/ProductPurchaseTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios.tests/src/test/java/testng/ProductPurchaseTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios.tests/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios.tests/target/classes/testFrameworkSettings.dev.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios.tests/target/classes/testFrameworkSettings.qa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/Anchor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/Button.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/CheckBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/ComponentActionEventArgs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/Div.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/Heading.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/IOSComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/Image.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/InputFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/Label.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/Option.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/Progress.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/RadioButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/Search.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/Select.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/Span.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/TextArea.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/TextField.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/Time.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/contracts/Component.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/components/listeners/BddLogging.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/configuration/GridSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/configuration/IOSSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/configuration/TimeoutSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/findstrategies/AccessibilityIdFindStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/findstrategies/ClassFindStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/findstrategies/FindStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/findstrategies/IOSClassChainFindStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/findstrategies/IOSNsPredicateFindStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/findstrategies/IdFindStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/findstrategies/NameFindStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/findstrategies/TagFindStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/findstrategies/ValueContainingFindStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/findstrategies/XPathFindStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/infrastructure/AppConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/infrastructure/AppLifecyclePlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/infrastructure/DownloadDemoAppsPlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/infrastructure/DriverService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/infrastructure/ExecutionApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/infrastructure/ExecutionType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/infrastructure/Lifecycle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/infrastructure/MobileScreenshotPlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/infrastructure/MobileVideoPlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/infrastructure/junit/IOSTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/infrastructure/testng/IOSTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/pages/AppSection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/pages/IOSPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/pages/PageAsserts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/pages/PageMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/services/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/services/AppService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/services/ComponentCreateService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/services/ComponentWaitService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/services/DeviceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/services/FileSystemService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/services/KeyboardService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/services/MobileService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/services/TouchActionsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/services/WebServiceFacade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/waitstrategies/ToBeClickableWaitStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/waitstrategies/ToBeVisibleWaitStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/waitstrategies/ToExistsWaitStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/waitstrategies/Wait.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/waitstrategies/WaitStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/waitstrategies/WaitStrategyElementsExtensions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/android/waitstrategies/WaitStrategyFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/plugins/junit/BaseTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/plugins/junit/BaseTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.core/target/classes/META-INF/BELLATRIX.Plugins.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.core/target/classes/META-INF/bellatrix.core.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/target/classes/META-INF/bellatrix.core.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop.tests/src/main/resources/testFrameworkSettings.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/src/main/resources/testFrameworkSettings.dev.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop.tests/src/main/resources/testFrameworkSettings.qa.json" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/src/main/resources/testFrameworkSettings.qa.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop.tests/target/classes/testFrameworkSettings.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/target/classes/testFrameworkSettings.dev.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop.tests/target/classes/testFrameworkSettings.qa.json" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/target/classes/testFrameworkSettings.qa.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Anchor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Anchor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/TextArea.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/TextArea.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/contracts/Component.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/contracts/Component.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/configuration/DesktopSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/configuration/DesktopSettings.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/configuration/TimeoutSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/configuration/TimeoutSettings.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/AccessibilityIdFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/AccessibilityIdFindStrategy.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/AutomationIdFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/AutomationIdFindStrategy.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/ClassFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/ClassFindStrategy.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/FindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/FindStrategy.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/IdContainingFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/IdContainingFindStrategy.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/NameFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/NameFindStrategy.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/TagFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/TagFindStrategy.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/XPathFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/XPathFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/bellatrix.core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/bellatrix.core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/bellatrix.desktop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/bellatrix.desktop.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/AppLifecyclePlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/AppLifecyclePlugin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/DesktopVideoPlugin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/DriverService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/DriverService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/DesktopService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/DesktopService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToBeClickableWaitStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToBeClickableWaitStrategy.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToBeVisibleWaitStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToBeVisibleWaitStrategy.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToExistsWaitStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToExistsWaitStrategy.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.layout/src/main/java/layout/LayoutComponentValidationsBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.layout/src/main/java/layout/LayoutComponentValidationsBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.mobile/bellatrix.mobile.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.ios/bellatrix.ios.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.mobile/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.android/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,97 +175,30 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1oqLqLBbzLoDtO2XkCFas2mi3wZ" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1ot3dY228gMix5R4WB8UPxYwoT1" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\SourceCode\BELLATRIX-Kotlin\bellatrix.desktop\src\main\java\solutions\bellatrix\desktop\pages" />
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="solutions.bellatrix.ios.components" />
     </key>
-    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
-      <recent name="solutions.bellatrix.core.configuration" />
-      <recent name="solutions.bellatrix.web.configuration" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="solutions.bellatrix.core.utilities" />
-    </key>
-  </component>
-  <component name="RunManager" selected="JUnit.ProductPurchaseTests.subtraction">
-    <configuration name="ProductPurchaseTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bellatrix.desktop.tests" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="junit.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="junit" />
-      <option name="MAIN_CLASS_NAME" value="junit.ProductPurchaseTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductPurchaseTests.addition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bellatrix.desktop.tests" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="junit.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="junit" />
-      <option name="MAIN_CLASS_NAME" value="junit.ProductPurchaseTests" />
-      <option name="METHOD_NAME" value="addition" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductPurchaseTests.subtraction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bellatrix.desktop.tests" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="junit.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="junit" />
-      <option name="MAIN_CLASS_NAME" value="junit.ProductPurchaseTests" />
-      <option name="METHOD_NAME" value="subtraction" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.ProductPurchaseTests.subtraction" />
-        <item itemvalue="JUnit.ProductPurchaseTests.addition" />
-        <item itemvalue="JUnit.ProductPurchaseTests" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="306427ac-e0d6-4ca7-a786-35b27c176913" name="Default Changelist" comment="" />
-      <created>1614009364924</created>
+      <changelist id="3855c427-2129-4180-8d4c-6145ae0107e4" name="Default Changelist" comment="" />
+      <created>1614092147744</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1614009364924</updated>
+      <updated>1614092147744</updated>
     </task>
     <servers />
   </component>
@@ -152,29 +212,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.kt</url>
-          <line>197</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.kt</url>
-          <line>204</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.kt</url>
-          <line>81</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
