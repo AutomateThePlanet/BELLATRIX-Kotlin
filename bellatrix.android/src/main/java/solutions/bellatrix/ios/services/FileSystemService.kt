@@ -10,19 +10,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package testng
+package solutions.bellatrix.ios.services
 
-import org.junit.jupiter.api.Test
-import solutions.bellatrix.ios.components.Button
-import solutions.bellatrix.ios.infrastructure.ExecutionApp
-import solutions.bellatrix.ios.infrastructure.Lifecycle
-import solutions.bellatrix.ios.infrastructure.junit.AndroidTest
+import java.io.File
 
-@ExecutionApp(lifecycle = Lifecycle.RESTART_ON_FAIL)
-class ProductPurchaseTests : AndroidTest() {
-    @Test
-    fun buttonClicked_when_callClickMethod() {
-        val button = app.create.byIdContaining<Button>("button")
-        button.click()
+object FileSystemService : MobileService() {
+    fun PullFile(pathOnDevice: String?): ByteArray {
+        return wrappedAndroidDriver.pullFile(pathOnDevice)
+    }
+
+    fun pullFolder(remotePath: String?): ByteArray {
+        return wrappedAndroidDriver.pullFolder(remotePath)
+    }
+
+    fun pushFile(pathOnDevice: String?, file: File?) {
+        wrappedAndroidDriver.pushFile(pathOnDevice, file)
+    }
+
+    fun pushFile(pathOnDevice: String?, base64Data: ByteArray?) {
+        wrappedAndroidDriver.pushFile(pathOnDevice, base64Data)
     }
 }

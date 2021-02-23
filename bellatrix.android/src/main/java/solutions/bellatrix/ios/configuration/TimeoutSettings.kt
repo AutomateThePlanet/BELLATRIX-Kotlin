@@ -10,19 +10,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package testng
+package solutions.bellatrix.ios.configuration
 
-import org.junit.jupiter.api.Test
-import solutions.bellatrix.ios.components.Button
-import solutions.bellatrix.ios.infrastructure.ExecutionApp
-import solutions.bellatrix.ios.infrastructure.Lifecycle
-import solutions.bellatrix.ios.infrastructure.junit.AndroidTest
-
-@ExecutionApp(lifecycle = Lifecycle.RESTART_ON_FAIL)
-class ProductPurchaseTests : AndroidTest() {
-    @Test
-    fun buttonClicked_when_callClickMethod() {
-        val button = app.create.byIdContaining<Button>("button")
-        button.click()
-    }
-}
+data class TimeoutSettings(
+        val sleepInterval: Long = 30,
+        val implicitWaitTimeout: Long = 5,
+        val validationsTimeout: Long = 30,
+        val elementToBeVisibleTimeout: Long = 30,
+        val elementToExistTimeout: Long = 30,
+        val elementToNotExistTimeout: Long = 30,
+        val elementToBeClickableTimeout: Long = 30,
+        val elementNotToBeVisibleTimeout: Long = 30,
+        val elementToHaveContentTimeout: Long = 30,
+)

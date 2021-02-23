@@ -10,19 +10,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package testng
+package solutions.bellatrix.ios.services
 
-import org.junit.jupiter.api.Test
-import solutions.bellatrix.ios.components.Button
-import solutions.bellatrix.ios.infrastructure.ExecutionApp
-import solutions.bellatrix.ios.infrastructure.Lifecycle
-import solutions.bellatrix.ios.infrastructure.junit.AndroidTest
+import org.openqa.selenium.WebDriverException
+import io.appium.java_client.android.nativekey.AndroidKey
+import io.appium.java_client.android.nativekey.KeyEvent
 
-@ExecutionApp(lifecycle = Lifecycle.RESTART_ON_FAIL)
-class ProductPurchaseTests : AndroidTest() {
-    @Test
-    fun buttonClicked_when_callClickMethod() {
-        val button = app.create.byIdContaining<Button>("button")
-        button.click()
+object KeyboardService : MobileService() {
+    fun hideKeyboard() {
+        try {
+            wrappedAndroidDriver.hideKeyboard()
+        } catch (ignored: WebDriverException) {
+        }
+    }
+
+    fun longPressKey(androidKey: AndroidKey?) {
+        wrappedAndroidDriver.longPressKey(KeyEvent(androidKey))
+    }
+
+    fun pressKey(androidKey: AndroidKey?) {
+        wrappedAndroidDriver.pressKey(KeyEvent(androidKey))
     }
 }

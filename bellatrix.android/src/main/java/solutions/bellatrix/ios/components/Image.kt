@@ -10,19 +10,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package testng
+package solutions.bellatrix.ios.components
 
-import org.junit.jupiter.api.Test
-import solutions.bellatrix.ios.components.Button
-import solutions.bellatrix.ios.infrastructure.ExecutionApp
-import solutions.bellatrix.ios.infrastructure.Lifecycle
-import solutions.bellatrix.ios.infrastructure.junit.AndroidTest
-
-@ExecutionApp(lifecycle = Lifecycle.RESTART_ON_FAIL)
-class ProductPurchaseTests : AndroidTest() {
-    @Test
-    fun buttonClicked_when_callClickMethod() {
-        val button = app.create.byIdContaining<Button>("button")
-        button.click()
-    }
+class Image : AndroidComponent() {
+    override val componentClass: Class<*>
+        get() = javaClass
 }

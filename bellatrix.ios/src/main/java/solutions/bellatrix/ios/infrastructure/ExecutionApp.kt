@@ -10,19 +10,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package testng
+package solutions.bellatrix.ios.infrastructure
 
-import org.junit.jupiter.api.Test
-import solutions.bellatrix.ios.components.Button
-import solutions.bellatrix.ios.infrastructure.ExecutionApp
-import solutions.bellatrix.ios.infrastructure.Lifecycle
-import solutions.bellatrix.ios.infrastructure.junit.AndroidTest
+import java.lang.annotation.Retention
+import java.lang.annotation.RetentionPolicy
 
-@ExecutionApp(lifecycle = Lifecycle.RESTART_ON_FAIL)
-class ProductPurchaseTests : AndroidTest() {
-    @Test
-    fun buttonClicked_when_callClickMethod() {
-        val button = app.create.byIdContaining<Button>("button")
-        button.click()
-    }
-}
+@Target(AnnotationTarget.ANNOTATION_CLASS, AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
+@Retention(RetentionPolicy.RUNTIME)
+annotation class ExecutionApp(val lifecycle: Lifecycle = Lifecycle.RESTART_EVERY_TIME, val iosVersion: String = "", val isMobileWebTest: Boolean = false, val deviceName: String = "", val appPath: String = "", val appPackage: String = "", val appActivity: String = "")

@@ -16,13 +16,13 @@ import org.junit.jupiter.api.Test
 import solutions.bellatrix.ios.components.Button
 import solutions.bellatrix.ios.infrastructure.ExecutionApp
 import solutions.bellatrix.ios.infrastructure.Lifecycle
-import solutions.bellatrix.ios.infrastructure.junit.AndroidTest
+import solutions.bellatrix.ios.infrastructure.testng.IOSTest
 
 @ExecutionApp(lifecycle = Lifecycle.RESTART_ON_FAIL)
-class ProductPurchaseTests : AndroidTest() {
+class ProductPurchaseTests : IOSTest() {
     @Test
     fun buttonClicked_when_callClickMethod() {
-        val button = app.create.byIdContaining<Button>("button")
+        val button = app.create.byName<Button>("ComputeSumButton")
         button.click()
     }
 }

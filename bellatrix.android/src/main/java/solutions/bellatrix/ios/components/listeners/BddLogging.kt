@@ -10,19 +10,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package testng
+package solutions.bellatrix.ios.components.listeners
 
-import org.junit.jupiter.api.Test
-import solutions.bellatrix.ios.components.Button
-import solutions.bellatrix.ios.infrastructure.ExecutionApp
-import solutions.bellatrix.ios.infrastructure.Lifecycle
-import solutions.bellatrix.ios.infrastructure.junit.AndroidTest
+import solutions.bellatrix.ios.components.Anchor
+import solutions.bellatrix.ios.components.AndroidComponent
+import solutions.bellatrix.ios.components.ComponentActionEventArgs
 
-@ExecutionApp(lifecycle = Lifecycle.RESTART_ON_FAIL)
-class ProductPurchaseTests : AndroidTest() {
-    @Test
-    fun buttonClicked_when_callClickMethod() {
-        val button = app.create.byIdContaining<Button>("button")
-        button.click()
+object BddLogging {
+    private var isBddLoggingTurnedOn = false
+    fun addPlugin() {
+        if (!isBddLoggingTurnedOn) {
+            Anchor.CLICKING.addListener { x -> println("clicking ${x.component.elementName}\n" ) }
+            AndroidComponent.VALIDATED_ATTRIBUTE.addListener { x: ComponentActionEventArgs -> println(x.message) }
+            isBddLoggingTurnedOn = true
+        }
     }
 }

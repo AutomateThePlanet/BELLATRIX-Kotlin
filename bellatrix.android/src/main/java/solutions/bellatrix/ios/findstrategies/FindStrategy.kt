@@ -10,19 +10,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package testng
+package solutions.bellatrix.ios.findstrategies
 
-import org.junit.jupiter.api.Test
-import solutions.bellatrix.ios.components.Button
-import solutions.bellatrix.ios.infrastructure.ExecutionApp
-import solutions.bellatrix.ios.infrastructure.Lifecycle
-import solutions.bellatrix.ios.infrastructure.junit.AndroidTest
+import io.appium.java_client.MobileElement
+import io.appium.java_client.android.AndroidDriver
 
-@ExecutionApp(lifecycle = Lifecycle.RESTART_ON_FAIL)
-class ProductPurchaseTests : AndroidTest() {
-    @Test
-    fun buttonClicked_when_callClickMethod() {
-        val button = app.create.byIdContaining<Button>("button")
-        button.click()
-    }
+abstract class FindStrategy protected constructor(val value: String) {
+    abstract fun findElement(driver: AndroidDriver<MobileElement>): MobileElement
+    abstract fun findAllElements(driver: AndroidDriver<MobileElement>): List<MobileElement>
+    abstract fun findElement(element: MobileElement): MobileElement
+    abstract fun findAllElements(element: MobileElement): List<MobileElement>
 }

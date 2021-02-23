@@ -10,19 +10,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package testng
+package solutions.bellatrix.ios.waitstrategies
 
-import org.junit.jupiter.api.Test
-import solutions.bellatrix.ios.components.Button
-import solutions.bellatrix.ios.infrastructure.ExecutionApp
-import solutions.bellatrix.ios.infrastructure.Lifecycle
-import solutions.bellatrix.ios.infrastructure.junit.AndroidTest
+import solutions.bellatrix.ios.components.IOSComponent
 
-@ExecutionApp(lifecycle = Lifecycle.RESTART_ON_FAIL)
-class ProductPurchaseTests : AndroidTest() {
-    @Test
-    fun buttonClicked_when_callClickMethod() {
-        val button = app.create.byIdContaining<Button>("button")
-        button.click()
+object WaitStrategyElementsExtensions {
+    fun toExists1(element: IOSComponent): IOSComponent {
+        val waitStrategy = ToExistsWaitStrategy()
+        element.ensureState(waitStrategy)
+        return element
+    }
+
+    fun toExists1(element: IOSComponent, timeoutInterval: Int, sleepInterval: Int): IOSComponent {
+        val waitStrategy = ToExistsWaitStrategy(timeoutInterval.toLong(), sleepInterval.toLong())
+        element.ensureState(waitStrategy)
+        return element
     }
 }
