@@ -5,17 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="306427ac-e0d6-4ca7-a786-35b27c176913" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/src/test/java/junit/ProductPurchaseTests.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/src/test/java/testng/ProductPurchaseTests.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/bellatrix.desktop.tests.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/DesktopVideoPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop.tests/bellatrix.desktop.tests.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop.tests/src/test/java/junit/ProductPurchaseTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop.tests/src/test/java/testng/ProductPurchaseTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/plugins/junit/BaseTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/src/main/java/solutions/bellatrix/core/plugins/junit/BaseTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/target/classes/META-INF/BELLATRIX.Plugins.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/target/classes/META-INF/bellatrix.core.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/target/classes/META-INF/bellatrix.core.kotlin_module" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop.tests/src/main/resources/testFrameworkSettings.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/src/main/resources/testFrameworkSettings.dev.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop.tests/src/main/resources/testFrameworkSettings.qa.json" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/src/main/resources/testFrameworkSettings.qa.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop.tests/target/classes/testFrameworkSettings.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/target/classes/testFrameworkSettings.dev.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop.tests/target/classes/testFrameworkSettings.qa.json" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/target/classes/testFrameworkSettings.qa.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Anchor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Anchor.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/TextField.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/TextField.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/junit/DesktopTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/junit/DesktopTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/ComponentCreateService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/ComponentCreateService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/TextArea.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/TextArea.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/contracts/Component.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/contracts/Component.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/configuration/DesktopSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/configuration/DesktopSettings.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/configuration/TimeoutSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/configuration/TimeoutSettings.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/AccessibilityIdFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/AccessibilityIdFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/AutomationIdFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/AutomationIdFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/ClassFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/ClassFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/FindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/FindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/IdContainingFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/IdContainingFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/NameFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/NameFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/TagFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/TagFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/XPathFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/findstrategies/XPathFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/AppLifecyclePlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/AppLifecyclePlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/DesktopVideoPlugin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/DriverService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/infrastructure/DriverService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/DesktopService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/services/DesktopService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToBeClickableWaitStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToBeClickableWaitStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToBeVisibleWaitStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToBeVisibleWaitStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToExistsWaitStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/waitstrategies/ToExistsWaitStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.layout/src/main/java/layout/LayoutComponentValidationsBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.layout/src/main/java/layout/LayoutComponentValidationsBuilder.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,11 +49,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1oqLqLBbzLoDtO2XkCFas2mi3wZ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -47,6 +74,62 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="solutions.bellatrix.core.utilities" />
     </key>
+  </component>
+  <component name="RunManager" selected="JUnit.ProductPurchaseTests.subtraction">
+    <configuration name="ProductPurchaseTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bellatrix.desktop.tests" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="junit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="junit" />
+      <option name="MAIN_CLASS_NAME" value="junit.ProductPurchaseTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductPurchaseTests.addition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bellatrix.desktop.tests" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="junit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="junit" />
+      <option name="MAIN_CLASS_NAME" value="junit.ProductPurchaseTests" />
+      <option name="METHOD_NAME" value="addition" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductPurchaseTests.subtraction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bellatrix.desktop.tests" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="junit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="junit" />
+      <option name="MAIN_CLASS_NAME" value="junit.ProductPurchaseTests" />
+      <option name="METHOD_NAME" value="subtraction" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ProductPurchaseTests.subtraction" />
+        <item itemvalue="JUnit.ProductPurchaseTests.addition" />
+        <item itemvalue="JUnit.ProductPurchaseTests" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -69,5 +152,29 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.kt</url>
+          <line>197</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.kt</url>
+          <line>204</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.kt</url>
+          <line>81</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

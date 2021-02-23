@@ -13,26 +13,25 @@
 package solutions.bellatrix.desktop.findstrategies
 
 import io.appium.java_client.windows.WindowsDriver
-import io.appium.java_client.windows.WindowsElement
+import org.openqa.selenium.WebElement
 import io.appium.java_client.MobileElement
+import org.openqa.selenium.By
 
 class IdContainingFindStrategy(value: String) : FindStrategy(value) {
-    private val XPATH_CONTAINING_EXPRESSION = "//*[contains(@id, '%s')]"
-    
-    override fun findElement(driver: WindowsDriver<WindowsElement>): WindowsElement {
-        return driver.findElementByXPath(String.format(XPATH_CONTAINING_EXPRESSION, value))
+    override fun findElement(driver: WindowsDriver<WebElement>): WebElement {
+        return driver.findElementByXPath("//*[contains(@id, '$value')]")
     }
 
-    override fun findAllElements(driver: WindowsDriver<WindowsElement>): List<WindowsElement> {
-        return driver.findElementsByXPath(String.format(XPATH_CONTAINING_EXPRESSION, value))
+    override fun findAllElements(driver: WindowsDriver<WebElement>): List<WebElement> {
+        return driver.findElementsByXPath("//*[contains(@id, '$value')]")
     }
 
-    override fun findElement(element: WindowsElement): MobileElement {
-        return element.findElementByXPath(String.format(XPATH_CONTAINING_EXPRESSION, value))
+    override fun findElement(element: WebElement): MobileElement {
+        return element.findElement(By.xpath("//*[contains(@id, '$value')]"))
     }
 
-    override fun findAllElements(element: WindowsElement): List<MobileElement> {
-        return element.findElementsByXPath(String.format(XPATH_CONTAINING_EXPRESSION, value))
+    override fun findAllElements(element: WebElement): List<MobileElement> {
+        return element.findElements(By.xpath("//*[contains(@id, '$value')]"))
     }
 
     override fun toString(): String {

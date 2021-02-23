@@ -13,24 +13,25 @@
 package solutions.bellatrix.desktop.findstrategies
 
 import io.appium.java_client.windows.WindowsDriver
-import io.appium.java_client.windows.WindowsElement
+import org.openqa.selenium.WebElement
 import io.appium.java_client.MobileElement
+import org.openqa.selenium.By
 
 class ClassFindStrategy(value: String) : FindStrategy(value) {
-    override fun findElement(driver: WindowsDriver<WindowsElement>): WindowsElement {
+    override fun findElement(driver: WindowsDriver<WebElement>): WebElement {
         return driver.findElementByClassName(value)
     }
 
-    override fun findAllElements(driver: WindowsDriver<WindowsElement>): List<WindowsElement> {
+    override fun findAllElements(driver: WindowsDriver<WebElement>): List<WebElement> {
         return driver.findElementsByClassName(value)
     }
 
-    override fun findElement(element: WindowsElement): MobileElement {
-        return element.findElementByClassName(value)
+    override fun findElement(element: WebElement): MobileElement {
+        return element.findElement(By.className(value))
     }
 
-    override fun findAllElements(element: WindowsElement): List<MobileElement> {
-        return element.findElementsByClassName(value)
+    override fun findAllElements(element: WebElement): List<MobileElement> {
+        return element.findElements(By.className(value))
     }
 
     override fun toString(): String {

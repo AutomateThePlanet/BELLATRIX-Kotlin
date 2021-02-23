@@ -14,7 +14,7 @@ package solutions.bellatrix.desktop.components
 
 import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
 import layout.LayoutComponentValidationsBuilder
-import io.appium.java_client.windows.WindowsElement
+import org.openqa.selenium.WebElement
 import io.appium.java_client.windows.WindowsDriver
 import solutions.bellatrix.desktop.services.AppService
 import solutions.bellatrix.desktop.configuration.DesktopSettings
@@ -40,11 +40,11 @@ import java.util.function.Function
 import java.util.function.Supplier
 
 open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
-    override lateinit var wrappedElement: WindowsElement
-    var parentWrappedElement: WindowsElement? = null
+    override lateinit var wrappedElement: WebElement
+    var parentWrappedElement: WebElement? = null
     var elementIndex = 0
     override lateinit var findStrategy: FindStrategy
-    val wrappedDriver: WindowsDriver<WindowsElement>
+    val wrappedDriver: WindowsDriver<WebElement>
     var appService: AppService
         protected set
     var componentCreateService: ComponentCreateService
@@ -62,7 +62,8 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
 
     fun hover() {
         HOVERING.broadcast(ComponentActionEventArgs(this))
-        wrappedDriver.mouse.mouseMove(findElement().coordinates)
+        val action = Actions(wrappedDriver)
+        action.moveToElement(findElement()).build().perform()
         HOVERED.broadcast(ComponentActionEventArgs(this))
     }
 
@@ -188,9 +189,9 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
         return componentList
     }
 
-    fun findElement(): WindowsElement {
+    fun findElement(): WebElement {
         if (waitStrategies.stream().count() == 0L) {
-            waitStrategies.add(toExists())
+            waitStrategies.add(ToExistsWaitStrategy())
         }
         try {
             for (waitStrategy in waitStrategies) {
@@ -221,7 +222,7 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
     }
 
     protected fun defaultGetText(): String {
-        return Optional.ofNullable(findElement().text).orElse("")
+        return findElement().text
     }
 
     protected fun defaultSetText(settingValue: EventListener<ComponentActionEventArgs>, valueSet: EventListener<ComponentActionEventArgs>, value: String) {
@@ -231,11 +232,11 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
         valueSet.broadcast(ComponentActionEventArgs(this))
     }
 
-    private fun findNativeElement(): WindowsElement {
+    private fun findNativeElement(): WebElement {
         return if (parentWrappedElement == null) {
             findStrategy.findAllElements(wrappedDriver)[elementIndex]
         } else {
-            findStrategy.findElement(parentWrappedElement!!) as WindowsElement
+            findStrategy.findElement(parentWrappedElement!!) as WebElement
         }
     }
 
@@ -249,14 +250,14 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
         }
     }
 
-    private fun scrollToMakeElementVisible(wrappedElement: WindowsElement) {
+    private fun scrollToMakeElementVisible(wrappedElement: WebElement) {
         // createBy default scroll down to make the element visible.
         if (desktopSettings.automaticallyScrollToVisible) {
             scrollToVisible(wrappedElement, false)
         }
     }
 
-    private fun scrollToVisible(wrappedElement: WindowsElement, shouldWait: Boolean) {
+    private fun scrollToVisible(wrappedElement: WebElement, shouldWait: Boolean) {
         SCROLLING_TO_VISIBLE.broadcast(ComponentActionEventArgs(this))
         try {
             val action = Actions(wrappedDriver)

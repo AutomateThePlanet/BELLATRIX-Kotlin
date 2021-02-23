@@ -20,7 +20,7 @@ class TextArea : DesktopComponent() {
     override val componentClass: Class<*>
         get() = javaClass
 
-    fun setText(value: String?) {
+    fun setText(value: String) {
         defaultSetText(SETTING_TEXT, TEXT_SET, value)
     }
 

@@ -16,10 +16,10 @@ import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.desktop.configuration.DesktopSettings
 import io.appium.java_client.windows.WindowsDriver
-import io.appium.java_client.windows.WindowsElement
 import org.openqa.selenium.NoSuchElementException
 import org.openqa.selenium.StaleElementReferenceException
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
 import solutions.bellatrix.desktop.findstrategies.FindStrategy
 import java.util.function.Function
 
@@ -36,7 +36,7 @@ class ToBeClickableWaitStrategy : WaitStrategy {
         waitUntil(func)
     }
 
-    private fun <TFindStrategy : FindStrategy> elementIsClickable(searchContext: WindowsDriver<WindowsElement>, findStrategy: TFindStrategy): Boolean {
+    private fun <TFindStrategy : FindStrategy> elementIsClickable(searchContext: WindowsDriver<WebElement>, findStrategy: TFindStrategy): Boolean {
         val element = findStrategy.findElement(searchContext)
         return try {
             element.isEnabled

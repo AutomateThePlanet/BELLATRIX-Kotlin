@@ -13,6 +13,7 @@
         <module name="bellatrix.web.tests" />
         <module name="bellatrix.api" />
         <module name="bellatrix.mobile" />
+        <module name="bellatrix.desktop.tests" />
         <module name="bellatrix.plugins.screenshots" />
         <module name="bellatrix.core" />
       </profile>
@@ -22,6 +23,7 @@
       <module name="bellatrix.api" target="15" />
       <module name="bellatrix.core" target="15" />
       <module name="bellatrix.desktop" target="15" />
+      <module name="bellatrix.desktop.tests" target="15" />
       <module name="bellatrix.layout" target="15" />
       <module name="bellatrix.mobile" target="15" />
       <module name="bellatrix.plugins.screenshots" target="15" />

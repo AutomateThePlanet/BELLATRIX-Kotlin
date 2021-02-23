@@ -12,9 +12,13 @@
  */
 package solutions.bellatrix.desktop.infrastructure
 
+import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.core.plugins.Plugin
 import solutions.bellatrix.core.plugins.TestResult
+import solutions.bellatrix.core.utilities.UserHomePathNormalizer
+import solutions.bellatrix.core.utilities.UserHomePathNormalizer.normalizePath
 import solutions.bellatrix.core.utilities.debugStackTrace
+import solutions.bellatrix.desktop.configuration.DesktopSettings
 import java.lang.Exception
 import java.lang.reflect.Method
 
@@ -115,12 +119,17 @@ class AppLifecyclePlugin : Plugin() {
 
     private fun getExecutionAppMethodLevel(memberInfo: Method): AppConfiguration? {
         val executionAppAnnotation = memberInfo.getDeclaredAnnotation(ExecutionApp::class.java) as ExecutionApp
-                ?: return null
         return AppConfiguration(executionAppAnnotation.lifecycle, executionAppAnnotation.appPath)
     }
 
     private fun getExecutionAppClassLevel(type: Class<*>): AppConfiguration {
         val executionAppAnnotation = type.getDeclaredAnnotation(ExecutionApp::class.java) as ExecutionApp
+        if (executionAppAnnotation == null) {
+            var defaultAppPath: String = ConfigurationService.get<DesktopSettings>().defaultAppPath
+            defaultAppPath = normalizePath(defaultAppPath)
+            val defaultLifecycle: Lifecycle = Lifecycle.fromText(ConfigurationService.get<DesktopSettings>().defaultLifeCycle)
+            return AppConfiguration(defaultLifecycle, defaultAppPath)
+        }
         return AppConfiguration(executionAppAnnotation.lifecycle, executionAppAnnotation.appPath)
     }
 }

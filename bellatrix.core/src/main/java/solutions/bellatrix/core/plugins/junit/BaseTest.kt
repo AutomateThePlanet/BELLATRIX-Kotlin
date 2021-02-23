@@ -68,11 +68,11 @@ open class BaseTest {
 
     @Rule
     var watchman: TestWatcher = object : TestWatcher {
-        protected fun failed(e: Throwable?, description: Description?) {
+        protected fun failed(description: Description) {
             CURRENT_TEST_RESULT.set(TestResult.FAILURE)
         }
 
-        protected fun succeeded(description: Description?) {
+        protected fun succeeded(description: Description) {
             CURRENT_TEST_RESULT.set(TestResult.SUCCESS)
         }
     }

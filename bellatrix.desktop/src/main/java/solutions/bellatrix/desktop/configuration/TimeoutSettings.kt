@@ -17,6 +17,7 @@ import lombok.Setter
 
 data class TimeoutSettings(
         val sleepInterval: Long = 30,
+        val implicitWaitTimeout: Long = 5,
         val validationsTimeout: Long = 30,
         val elementToBeVisibleTimeout: Long = 30,
         val elementToExistTimeout: Long = 30,

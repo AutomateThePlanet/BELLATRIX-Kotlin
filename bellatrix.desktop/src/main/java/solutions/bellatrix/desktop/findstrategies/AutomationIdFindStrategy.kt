@@ -13,24 +13,25 @@
 package solutions.bellatrix.desktop.findstrategies
 
 import io.appium.java_client.windows.WindowsDriver
-import io.appium.java_client.windows.WindowsElement
+import org.openqa.selenium.WebElement
 import io.appium.java_client.MobileElement
+import org.openqa.selenium.By
 
 class AutomationIdFindStrategy(value: String) : FindStrategy(value) {
-    override fun findElement(driver: WindowsDriver<WindowsElement>): WindowsElement {
+    override fun findElement(driver: WindowsDriver<WebElement>): WebElement {
         return driver.findElementByWindowsUIAutomation(value)
     }
 
-    override fun findAllElements(driver: WindowsDriver<WindowsElement>): List<WindowsElement> {
+    override fun findAllElements(driver: WindowsDriver<WebElement>): List<WebElement> {
         return driver.findElementsByWindowsUIAutomation(value)
     }
 
-    override fun findElement(element: WindowsElement): MobileElement {
-        return element.findElementByWindowsUIAutomation(value)
+    override fun findElement(element: WebElement): MobileElement {
+        return element.findElement(By.xpath("//*[@AutomationId='$value']"))
     }
 
-    override fun findAllElements(element: WindowsElement): List<MobileElement> {
-        return element.findElementsByWindowsUIAutomation(value)
+    override fun findAllElements(element: WebElement): List<MobileElement> {
+        return element.findElements(By.xpath("//*[@AutomationId='$value']"))
     }
 
     override fun toString(): String {

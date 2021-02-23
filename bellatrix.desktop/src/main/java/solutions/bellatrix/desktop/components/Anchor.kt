@@ -26,7 +26,7 @@ class Anchor : DesktopComponent() {
     }
 
     // validate inner text
-    fun validateTextIs(value: String?) {
+    fun validateTextIs(value: String) {
         defaultValidateAttributeIs({ text }, value, "inner text")
     }
 
@@ -34,11 +34,11 @@ class Anchor : DesktopComponent() {
         defaultValidateAttributeSet({ text }, "inner text")
     }
 
-    fun validateTextContains(value: String?) {
+    fun validateTextContains(value: String) {
         defaultValidateAttributeContains({ text }, value, "inner text")
     }
 
-    fun validateTextNotContains(value: String?) {
+    fun validateTextNotContains(value: String) {
         defaultValidateAttributeNotContains({ text }, value, "inner text")
     }
 

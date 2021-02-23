@@ -14,11 +14,11 @@ package solutions.bellatrix.desktop.findstrategies
 
 import io.appium.java_client.MobileElement
 import io.appium.java_client.windows.WindowsDriver
-import io.appium.java_client.windows.WindowsElement
+import org.openqa.selenium.WebElement
 
 abstract class FindStrategy protected constructor(val value: String) {
-    abstract fun findElement(driver: WindowsDriver<WindowsElement>): WindowsElement
-    abstract fun findAllElements(driver: WindowsDriver<WindowsElement>): List<WindowsElement>
-    abstract fun findElement(element: WindowsElement): MobileElement
-    abstract fun findAllElements(element: WindowsElement): List<MobileElement>
+    abstract fun findElement(driver: WindowsDriver<WebElement>): WebElement
+    abstract fun findAllElements(driver: WindowsDriver<WebElement>): List<WebElement>
+    abstract fun findElement(element: WebElement): MobileElement
+    abstract fun findAllElements(element: WebElement): List<MobileElement>
 }

@@ -13,16 +13,13 @@
 package solutions.bellatrix.desktop.infrastructure
 
 import io.appium.java_client.windows.WindowsDriver
-import io.appium.java_client.windows.WindowsElement
-import org.openqa.selenium.Dimension
-import org.openqa.selenium.MutableCapabilities
-import org.openqa.selenium.Platform
-import org.openqa.selenium.WebDriver
+import org.openqa.selenium.*
 import org.openqa.selenium.remote.DesiredCapabilities
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.core.utilities.debugStackTrace
 import solutions.bellatrix.desktop.configuration.DesktopSettings
 import solutions.bellatrix.desktop.configuration.GridSettings
+import java.io.File
 import java.lang.Exception
 import java.net.MalformedURLException
 import java.net.URL
@@ -32,7 +29,7 @@ object DriverService {
     private var disposed: ThreadLocal<Boolean> = ThreadLocal()
     private var appConfiguration: ThreadLocal<AppConfiguration> = ThreadLocal()
     private var customDriverOptions: ThreadLocal<HashMap<String, String>> = ThreadLocal()
-    private var wrappedDriver: ThreadLocal<WindowsDriver<WindowsElement>> = ThreadLocal()
+    private var wrappedDriver: ThreadLocal<WindowsDriver<WebElement>> = ThreadLocal()
     fun getCustomDriverOptions(): HashMap<String, String> {
         return customDriverOptions.get()
     }
@@ -42,7 +39,7 @@ object DriverService {
     }
 
     @JvmStatic
-    fun getWrappedDriver(): WindowsDriver<WindowsElement> {
+    fun getWrappedDriver(): WindowsDriver<WebElement> {
         return wrappedDriver.get()
     }
 
@@ -50,47 +47,46 @@ object DriverService {
         return appConfiguration.get()
     }
 
-    fun start(configuration: AppConfiguration): WindowsDriver<WindowsElement>? {
+    fun start(configuration: AppConfiguration): WindowsDriver<WebElement>? {
         appConfiguration.set(configuration)
         disposed.set(false)
 
         val desktopSettings = ConfigurationService.get<DesktopSettings>()
         val executionType: String = desktopSettings.executionType
-        val driver: WindowsDriver<WindowsElement> = if (executionType.equals("regular")) {
+        val driver: WindowsDriver<WebElement> = if (executionType.equals("regular")) {
             initializeDriverRegularMode(desktopSettings.serviceUrl)
         } else {
             val gridSettings = desktopSettings.gridSettings.stream().filter { g -> g.providerName.equals(executionType.toLowerCase()) }.findFirst()
             initializeDriverGridMode(desktopSettings.gridSettings.stream().filter { g -> g.providerName.equals(executionType.toLowerCase()) }.findFirst().get())
         }
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS)
-        //        driver.manage().timeouts().setScriptTimeout(ConfigurationService.get(DesktopSettings.class).getTimeoutSettings().getScriptTimeout(), TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(desktopSettings.timeoutSettings.implicitWaitTimeout, TimeUnit.SECONDS)
         driver.manage().window().maximize()
         changeWindowSize(driver)
         wrappedDriver.set(driver)
         return driver
     }
 
-    private fun initializeDriverGridMode(gridSettings: GridSettings): WindowsDriver<WindowsElement> {
+    private fun initializeDriverGridMode(gridSettings: GridSettings): WindowsDriver<WebElement> {
         val caps = DesiredCapabilities()
         caps.setCapability("platform", Platform.WIN10)
         caps.setCapability("version", "latest")
-        var driver: WindowsDriver<WindowsElement> = try {
-            WindowsDriver<WindowsElement>(URL(gridSettings.url), caps)
+        var driver: WindowsDriver<WebElement> = try {
+            WindowsDriver<WebElement>(URL(gridSettings.url), caps)
         } catch (e: MalformedURLException) {
             e.debugStackTrace()
-            WindowsDriver<WindowsElement>(URL(gridSettings.url), caps)
+            WindowsDriver<WebElement>(URL(gridSettings.url), caps)
         }
         return driver
     }
 
-    private fun initializeDriverRegularMode(serviceUrl: String): WindowsDriver<WindowsElement> {
+    private fun initializeDriverRegularMode(serviceUrl: String): WindowsDriver<WebElement> {
         val caps = DesiredCapabilities()
         caps.setCapability("app", getAppConfiguration().appPath)
-        //        caps.setCapability("deviceName", "WindowsPC");
-//        caps.setCapability("platformName", "Windows");
-//        caps.setCapability("appWorkingDir", new File(getAppConfiguration().getAppPath()).getParent());
+        caps.setCapability("deviceName", "WindowsPC");
+        caps.setCapability("platformName", "Windows");
+        caps.setCapability("appWorkingDir", File(getAppConfiguration().appPath).getParent());
         addDriverOptions<DesiredCapabilities>(caps)
-        return WindowsDriver<WindowsElement>(URL(serviceUrl), caps)
+        return WindowsDriver<WebElement>(URL(serviceUrl), caps)
     }
 
     private fun <TOption : MutableCapabilities> addGridOptions(options: TOption, gridSettings: GridSettings) {
@@ -137,7 +133,7 @@ object DriverService {
         customDriverOptions = ThreadLocal()
         customDriverOptions.set(HashMap())
         appConfiguration = ThreadLocal()
-        wrappedDriver = ThreadLocal<WindowsDriver<WindowsElement>>()
+        wrappedDriver = ThreadLocal<WindowsDriver<WebElement>>()
         disposed.set(false)
     }
 }

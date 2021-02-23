@@ -33,8 +33,6 @@ class DesktopSettings {
     var timeoutSettings: TimeoutSettings = TimeoutSettings()
     var gridSettings: List<GridSettings> = listOf()
     val automaticallyScrollToVisible: Boolean = false
-    val waitUntilReadyOnElementFound: Boolean = false
-    val waitForAngular: Boolean = false
     val artificialDelayBeforeAction: Int = 0
     val shouldHighlightElements: Boolean = true
     val shouldCaptureHttpTraffic: Boolean = true

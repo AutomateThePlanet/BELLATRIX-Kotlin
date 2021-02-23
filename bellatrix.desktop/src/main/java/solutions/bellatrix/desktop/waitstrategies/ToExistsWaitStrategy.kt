@@ -16,7 +16,7 @@ import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.desktop.configuration.DesktopSettings
 import io.appium.java_client.windows.WindowsDriver
-import io.appium.java_client.windows.WindowsElement
+import org.openqa.selenium.WebElement
 import org.openqa.selenium.WebDriver
 import solutions.bellatrix.desktop.findstrategies.FindStrategy
 import java.lang.Exception
@@ -35,7 +35,7 @@ class ToExistsWaitStrategy : WaitStrategy {
         waitUntil(func)
     }
 
-    private fun <TFindStrategy : FindStrategy> elementExists(searchContext: WindowsDriver<WindowsElement>, findStrategy: TFindStrategy): Boolean {
+    private fun <TFindStrategy : FindStrategy> elementExists(searchContext: WindowsDriver<WebElement>, findStrategy: TFindStrategy): Boolean {
         return try {
             val element = findStrategy.findElement(searchContext)
             element != null

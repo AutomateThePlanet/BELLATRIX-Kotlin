@@ -16,7 +16,7 @@ import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.desktop.configuration.DesktopSettings
 import io.appium.java_client.windows.WindowsDriver
-import io.appium.java_client.windows.WindowsElement
+import org.openqa.selenium.WebElement
 import org.openqa.selenium.NoSuchElementException
 import org.openqa.selenium.StaleElementReferenceException
 import org.openqa.selenium.WebDriver
@@ -36,7 +36,7 @@ class ToBeVisibleWaitStrategy : WaitStrategy {
         waitUntil(func)
     }
 
-    private fun <TFindStrategy : FindStrategy> elementIsVisible(searchContext: WindowsDriver<WindowsElement>, findStrategy: TFindStrategy): Boolean {
+    private fun <TFindStrategy : FindStrategy> elementIsVisible(searchContext: WindowsDriver<WebElement>, findStrategy: TFindStrategy): Boolean {
         val element = findStrategy.findElement(searchContext)
         return try {
             element.isDisplayed

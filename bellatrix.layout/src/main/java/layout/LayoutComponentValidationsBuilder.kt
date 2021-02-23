@@ -85,11 +85,11 @@ abstract class LayoutComponentValidationsBuilder() : LayoutComponent {
         val baseLineLeftY: Int = location.getX()
         val comparingComponentsNames: String = getLayoutComponentsNames(layoutComponents)
         val combinedPredicate: Predicate<Boolean> = Predicate { s: Any? -> true }
-        Arrays.stream(layoutComponents).forEach({ c: LayoutComponent ->
+        Arrays.stream(layoutComponents).forEach { c: LayoutComponent ->
             val rightX: Int = c.location.getX() + c.size.getWidth() / 2
             val leftX: Int = c.location.getX()
-            combinedPredicate.and(Predicate { r: Any? -> (baseLineRightY == rightX) }).and(Predicate { r: Any? -> (baseLineLeftY == leftX) })
-        })
+            combinedPredicate.and({ (baseLineRightY == rightX) }).and({ r: Any? -> (baseLineLeftY == leftX) })
+        }
         return FinishValidationBuilder(combinedPredicate,
                 {
                     buildNotificationAlignValidationMessage(comparingComponentsNames, baseLineRightY, LayoutOptions.ALIGNED_VERTICALLY_RIGHT) +
@@ -107,7 +107,7 @@ abstract class LayoutComponentValidationsBuilder() : LayoutComponent {
         val combinedPredicate: Predicate<Boolean> = Predicate { s: Any? -> true }
         Arrays.stream(layoutComponents).forEach({ c: LayoutComponent ->
             val rightX: Int = c.location.getX() + c.size.getWidth() / 2
-            combinedPredicate.and(Predicate { r: Any? -> (baseLineRightY == rightX) })
+            combinedPredicate.and({ r: Any? -> (baseLineRightY == rightX) })
         })
         return FinishValidationBuilder(combinedPredicate,
                 { buildNotificationAlignValidationMessage(comparingComponentsNames, baseLineRightY, LayoutOptions.ALIGNED_VERTICALLY_CENTERED) },
@@ -120,7 +120,7 @@ abstract class LayoutComponentValidationsBuilder() : LayoutComponent {
         val combinedPredicate: Predicate<Boolean> = Predicate { s: Any? -> true }
         Arrays.stream(layoutComponents).forEach({ c: LayoutComponent ->
             val rightX: Int = c.location.getX() + c.size.getWidth()
-            combinedPredicate.and(Predicate { r: Any? -> (baseLineRightY == rightX) })
+            combinedPredicate.and({ r: Any? -> (baseLineRightY == rightX) })
         })
         return FinishValidationBuilder(combinedPredicate,
                 { buildNotificationAlignValidationMessage(comparingComponentsNames, baseLineRightY, LayoutOptions.ALIGNED_VERTICALLY_RIGHT) },
@@ -145,7 +145,7 @@ abstract class LayoutComponentValidationsBuilder() : LayoutComponent {
         Arrays.stream(layoutComponents).forEach({ c: LayoutComponent ->
             val topY: Int = c.location.getY()
             val bottomY: Int = c.location.getY() + c.size.getHeight()
-            combinedPredicate.and(Predicate { r: Any? -> (baseLineTopY == topY) }).and(Predicate { r: Any? -> (baseLineBottomY == bottomY) })
+            combinedPredicate.and({ r: Any? -> (baseLineTopY == topY) }).and({ r: Any? -> (baseLineBottomY == bottomY) })
         })
         return FinishValidationBuilder(combinedPredicate,
                 {
@@ -164,7 +164,7 @@ abstract class LayoutComponentValidationsBuilder() : LayoutComponent {
         val combinedPredicate: Predicate<Boolean> = Predicate { s: Any? -> true }
         Arrays.stream(layoutComponents).forEach({ c: LayoutComponent ->
             val bottomY: Int = c.location.getY() + c.size.getHeight() / 2
-            combinedPredicate.and(Predicate { r: Any? -> (baseLineTopY == bottomY) })
+            combinedPredicate.and({ r: Any? -> (baseLineTopY == bottomY) })
         })
         return FinishValidationBuilder(combinedPredicate,
                 { buildNotificationAlignValidationMessage(comparingComponentsNames, baseLineTopY, LayoutOptions.ALIGNED_HORIZONTALLY_CENTERED) },
@@ -184,10 +184,10 @@ abstract class LayoutComponentValidationsBuilder() : LayoutComponent {
     fun alignedHorizontallyBottom(vararg layoutComponents: LayoutComponent): FinishValidationBuilder {
         val baseLineBottomY: Int = location.getY() + size.getHeight()
         val comparingComponentsNames: String = getLayoutComponentsNames(layoutComponents)
-        val combinedPredicate: Predicate<Boolean> = Predicate { s: Any? -> true }
+        val combinedPredicate: Predicate<Boolean> = Predicate { true }
         Arrays.stream(layoutComponents).forEach({ c: LayoutComponent ->
             val bottomY: Int = c.location.getY() + c.size.getHeight()
-            combinedPredicate.and(Predicate { r: Any? -> (baseLineBottomY == bottomY) })
+            combinedPredicate.and({ r: Any? -> (baseLineBottomY == bottomY) })
         })
         return FinishValidationBuilder(combinedPredicate,
                 { buildNotificationAlignValidationMessage(comparingComponentsNames, baseLineBottomY, LayoutOptions.ALIGNED_HORIZONTALLY_BOTTOM) },

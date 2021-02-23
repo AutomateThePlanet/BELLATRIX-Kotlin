@@ -12,12 +12,12 @@
  */
 package solutions.bellatrix.desktop.components.contracts
 
-import io.appium.java_client.windows.WindowsElement
+import org.openqa.selenium.WebElement
 import layout.LayoutComponent
 import solutions.bellatrix.desktop.findstrategies.FindStrategy
 
 interface Component : LayoutComponent {
     val componentClass: Class<*>
-    val wrappedElement: WindowsElement
+    val wrappedElement: WebElement
     val findStrategy: FindStrategy?
 }
