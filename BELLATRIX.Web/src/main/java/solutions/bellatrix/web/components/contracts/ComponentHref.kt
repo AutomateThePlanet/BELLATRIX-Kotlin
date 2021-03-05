@@ -10,9 +10,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package solutions.bellatrix.web.components.contracts
+
+import solutions.bellatrix.web.components.WebComponent
+import solutions.bellatrix.web.validations.WebValidator
 
 interface ComponentHref : Component {
     val href: String
+
+    fun validateHrefIs(value: String) {
+        defaultValidateAttributeIs(this as WebComponent, href, value, "href")
+    }
+
+    fun validateHrefIsSet() {
+        defaultValidateAttributeIsSet(this as WebComponent, href, "href")
+    }
+
+    fun validateHrefNotSet() {
+        defaultValidateAttributeNotSet(this as WebComponent, href, "href")
+    }
+
+    fun validateHrefContains(value: String) {
+        defaultValidateAttributeContains(this as WebComponent, href, value, "href")
+    }
+
+    fun validateHrefNotContains(value: String) {
+        defaultValidateAttributeNotContains(this as WebComponent, href, value, "href")
+    }
+
+    companion object : WebValidator()
 }
