@@ -12,7 +12,30 @@
  */
 package solutions.bellatrix.web.components
 
-class Reset : WebComponent() {
+import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.web.components.contracts.ComponentDisabled
+import solutions.bellatrix.web.components.contracts.ComponentText
+import solutions.bellatrix.web.components.contracts.ComponentValue
+
+open class Reset : WebComponent(), ComponentDisabled, ComponentText, ComponentValue {
     override val componentClass: Class<*>
         get() = javaClass
+
+    fun click() {
+        defaultClick(CLICKING, CLICKED)
+    }
+
+    override val text: String
+        get() = defaultGetText()
+
+    override val value: String
+        get() = defaultGetValue()
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    companion object {
+        val CLICKING = EventListener<ComponentActionEventArgs>()
+        val CLICKED = EventListener<ComponentActionEventArgs>()
+    }
 }

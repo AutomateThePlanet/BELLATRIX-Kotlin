@@ -17,7 +17,7 @@ import solutions.bellatrix.web.pages.PageAsserts
 
 class Asserts(override val map: Map) : PageAsserts<Map>() {
     fun productBoxLink(name: String, expectedLink: String) {
-        val actualLink: String = map.getProductBoxByName(name).attribute("href")
+        val actualLink: String? = map.getProductBoxByName(name).attribute("href")
         Assert.assertEquals(actualLink, expectedLink)
     }
 }

@@ -12,7 +12,48 @@
  */
 package solutions.bellatrix.web.components
 
-class DateTimeLocal : WebComponent() {
+import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.web.components.contracts.*
+import java.time.LocalDateTime
+
+open class DateTimeLocal : WebComponent(), ComponentDisabled, ComponentValue, ComponentDateTime, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxText, ComponentMinText, ComponentStep {
     override val componentClass: Class<*>
         get() = javaClass
+
+    override fun getTime(): String {
+        return value
+    }
+
+    override fun setTime(time: LocalDateTime) {
+        setValue(SETTING_TIME, TIME_SET, "${time.year}-${time.monthValue}-${time.dayOfMonth}T${time.hour}:${time.minute}")
+    }
+
+    override val isAutoComplete: Boolean
+        get() = defaultGetAutoCompleteAttribute()
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    override val max: String
+        get() = defaultGetMaxAttributeAsString()
+
+    override val min: String
+        get() = defaultGetMinAttributeAsString()
+
+    override val isReadonly: Boolean
+        get() = defaultGetReadonlyAttribute()
+
+    override val isRequired: Boolean
+        get() = defaultGetRequiredAttribute()
+
+    override val step: Int
+        get() = defaultGetStepAttribute()
+
+    override val value: String
+        get() = defaultGetValue()
+
+    companion object {
+        val SETTING_TIME = EventListener<ComponentActionEventArgs>()
+        val TIME_SET = EventListener<ComponentActionEventArgs>()
+    }
 }

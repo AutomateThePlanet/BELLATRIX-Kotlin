@@ -12,10 +12,17 @@
  */
 package solutions.bellatrix.web.components
 
-import solutions.bellatrix.core.utilities.InstanceFactory
 import org.openqa.selenium.support.ui.Select
+import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.core.utilities.InstanceFactory
+import solutions.bellatrix.web.components.contracts.ComponentDisabled
+import solutions.bellatrix.web.components.contracts.ComponentReadonly
+import solutions.bellatrix.web.components.contracts.ComponentRequired
 
-class Select : WebComponent() {
+open class Select : WebComponent(), ComponentDisabled, ComponentRequired, ComponentReadonly {
+    override val componentClass: Class<*>
+        get() = javaClass
+
     fun selected(): Option {
         val nativeSelect = Select(findElement())
         val optionComponent: Option = InstanceFactory.create()
@@ -40,13 +47,24 @@ class Select : WebComponent() {
         }
 
     fun selectByText(text: String) {
-        Select(findElement()).selectByVisibleText(text)
+        defaultSelectByText(SELECTING, SELECTED, text)
     }
 
     fun selectByIndex(index: Int) {
-        Select(findElement()).selectByIndex(index)
+        defaultSelectByIndex(SELECTING, SELECTED, index)
     }
 
-    override val componentClass: Class<*>
-        get() = javaClass
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    override val isRequired: Boolean
+        get() = defaultGetRequiredAttribute()
+
+    override val isReadonly: Boolean
+        get() = defaultGetReadonlyAttribute()
+
+    companion object {
+        val SELECTING = EventListener<ComponentActionEventArgs>()
+        val SELECTED = EventListener<ComponentActionEventArgs>()
+    }
 }

@@ -12,7 +12,47 @@
  */
 package solutions.bellatrix.web.components
 
-class Range : WebComponent() {
+import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.web.components.contracts.*
+
+open class Range : WebComponent(), ComponentDisabled, ComponentValue, ComponentRange, ComponentList, ComponentAutoComplete, ComponentRequired, ComponentMax, ComponentMin, ComponentStep {
     override val componentClass: Class<*>
         get() = javaClass
+
+    override fun getRange(): Int {
+        return value.toInt()
+    }
+
+    override fun setRange(value: Int) {
+        setValue(SETTING_RANGE, RANGE_SET, value.toString())
+    }
+
+    override val isAutoComplete: Boolean
+        get() = defaultGetAutoCompleteAttribute()
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    override val list: String
+        get() = defaultGetList()
+
+    override val max: Int?
+        get() =defaultGetMaxAttribute()
+
+    override val min: Int?
+        get() = defaultGetMinAttribute()
+
+    override val isRequired: Boolean
+        get() = defaultGetRequiredAttribute()
+
+    override val step: Int
+        get() = defaultGetStepAttribute()
+
+    override val value: String
+        get() = defaultGetValue()
+
+    companion object {
+        val SETTING_RANGE = EventListener<ComponentActionEventArgs>()
+        val RANGE_SET = EventListener<ComponentActionEventArgs>()
+    }
 }

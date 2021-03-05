@@ -12,8 +12,50 @@
  */
 package solutions.bellatrix.web.components
 
-class Phone : WebComponent() {
-    fun setPhone(phone: String?) {}
+import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.web.components.contracts.*
+
+open class Phone : WebComponent(), ComponentDisabled, ComponentValue, ComponentPhone, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxLength, ComponentMinLength, ComponentSize, ComponentPlaceholder {
     override val componentClass: Class<*>
         get() = javaClass
+
+    override fun getPhone(): String {
+        return value
+    }
+
+    override fun setPhone(value: String) {
+        setValue(SETTING_PHONE, PHONE_SET, value)
+    }
+
+    override val isAutoComplete: Boolean
+        get() = defaultGetAutoCompleteAttribute()
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    override val maxLength: Int?
+        get() = defaultGetMaxLengthAttribute()
+
+    override val minLength: Int?
+        get() = defaultGetMinLengthAttribute()
+
+    override val placeholder: String
+        get() = defaultGetPlaceholderAttribute()
+
+    override val isReadonly: Boolean
+        get() = defaultGetReadonlyAttribute()
+
+    override val isRequired: Boolean
+        get() = defaultGetRequiredAttribute()
+
+    override val sizeAttribute: Int?
+        get() = defaultGetSizeAttribute()
+
+    override val value: String
+        get() = defaultGetValue()
+
+    companion object {
+        val SETTING_PHONE = EventListener<ComponentActionEventArgs>()
+        val PHONE_SET = EventListener<ComponentActionEventArgs>()
+    }
 }

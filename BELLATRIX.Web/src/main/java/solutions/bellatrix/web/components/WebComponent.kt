@@ -13,39 +13,30 @@
 package solutions.bellatrix.web.components
 
 import layout.LayoutComponentValidationsBuilder
+import org.apache.commons.lang3.StringEscapeUtils
+import org.openqa.selenium.*
+import org.openqa.selenium.support.ui.Select
+import solutions.bellatrix.core.configuration.ConfigurationService
+import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.core.utilities.InstanceFactory
+import solutions.bellatrix.core.utilities.debugStackTrace
+import solutions.bellatrix.web.components.contracts.*
+import solutions.bellatrix.web.configuration.WebSettings
+import solutions.bellatrix.web.findstrategies.*
 import solutions.bellatrix.web.infrastructure.DriverService.wrappedDriver
-import solutions.bellatrix.web.findstrategies.FindStrategy
-import solutions.bellatrix.web.services.JavaScriptService
 import solutions.bellatrix.web.services.BrowserService
 import solutions.bellatrix.web.services.ComponentCreateService
 import solutions.bellatrix.web.services.ComponentWaitService
-import solutions.bellatrix.web.waitstrategies.WaitStrategy
-import solutions.bellatrix.web.configuration.WebSettings
-import org.apache.commons.lang3.StringEscapeUtils
-import solutions.bellatrix.web.waitstrategies.ToExistsWaitStrategy
+import solutions.bellatrix.web.services.JavaScriptService
 import solutions.bellatrix.web.waitstrategies.ToBeClickableWaitStrategy
 import solutions.bellatrix.web.waitstrategies.ToBeVisibleWaitStrategy
-import solutions.bellatrix.core.utilities.InstanceFactory
-import solutions.bellatrix.web.findstrategies.IdFindStrategy
-import solutions.bellatrix.web.findstrategies.CssFindStrategy
-import solutions.bellatrix.web.findstrategies.ClassFindStrategy
-import solutions.bellatrix.web.findstrategies.XPathFindStrategy
-import solutions.bellatrix.web.findstrategies.LinkTextFindStrategy
-import solutions.bellatrix.web.findstrategies.TagFindStrategy
-import solutions.bellatrix.web.findstrategies.IdContainingFindStrategy
-import solutions.bellatrix.web.findstrategies.InnerTextContainsFindStrategy
-import org.openqa.selenium.*
+import solutions.bellatrix.web.waitstrategies.ToExistsWaitStrategy
+import solutions.bellatrix.web.waitstrategies.WaitStrategy
 import java.net.URLDecoder
-import java.lang.InterruptedException
-import solutions.bellatrix.web.components.contracts.Component
-import solutions.bellatrix.core.configuration.ConfigurationService
-import solutions.bellatrix.core.plugins.EventListener
-import solutions.bellatrix.core.utilities.debugStackTrace
 import java.nio.charset.StandardCharsets
 import java.util.*
-import kotlin.text.*
 
-open abstract class WebComponent : LayoutComponentValidationsBuilder(), Component {
+abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, ComponentStyle, ComponentTitle, ComponentHtmlClass, ComponentVisible, ComponentTabIndex, ComponentAccessKey, ComponentDir, ComponentLang {
     override lateinit var wrappedElement: WebElement
     var parentWrappedElement: WebElement? = null
     var elementIndex = 0
@@ -86,14 +77,11 @@ open abstract class WebComponent : LayoutComponentValidationsBuilder(), Componen
         val CREATED_ELEMENT = EventListener<ComponentActionEventArgs>()
         val CREATING_ELEMENTS = EventListener<ComponentActionEventArgs>()
         val CREATED_ELEMENTS = EventListener<ComponentActionEventArgs>()
-        val VALIDATED_ACCEPT_IS_NULL = EventListener<ComponentActionEventArgs>()
-        val VALIDATED_ACCEPT_IS = EventListener<ComponentActionEventArgs>()
-        val VALIDATED_HREF_IS_SET = EventListener<ComponentActionEventArgs>()
-        val VALIDATED_HREF_IS = EventListener<ComponentActionEventArgs>()
+        val VALIDATED_ATTRIBUTE = EventListener<ComponentActionEventArgs>()
     }
 
     override val elementName: String
-        get() = "$componentClass.simpleName ($findStrategy)"
+        get() = "${componentClass.simpleName} ($findStrategy)"
 
     fun waitToBe() {
         findElement()
@@ -105,7 +93,7 @@ open abstract class WebComponent : LayoutComponentValidationsBuilder(), Componen
 
     fun setAttribute(name: String, value: String) {
         SETTING_ATTRIBUTE.broadcast(ComponentActionEventArgs(this))
-        javaScriptService.execute("arguments[0].setAttribute('$name', '$value');", this)
+        javaScriptService.execute("arguments[0].setAttribute('$name', '$value');", findElement())
         ATTRIBUTE_SET.broadcast(ComponentActionEventArgs(this))
     }
 
@@ -116,7 +104,7 @@ open abstract class WebComponent : LayoutComponentValidationsBuilder(), Componen
         FOCUSED.broadcast(ComponentActionEventArgs(this))
     }
 
-    fun hover() {
+    protected fun hover() {
         HOVERING.broadcast(ComponentActionEventArgs(this))
         javaScriptService.execute("arguments[0].onmouseover();", findElement())
         HOVERED.broadcast(ComponentActionEventArgs(this))
@@ -130,28 +118,31 @@ open abstract class WebComponent : LayoutComponentValidationsBuilder(), Componen
     override val size: Dimension
         get() = findElement().size
 
-    val title: String
-        get() = attribute("title")
+    override val title: String
+        get() = attribute("title") ?: ""
 
-    val tabIndex: String
-        get() = attribute("tabindex")
+    override val tabIndex: Int?
+        get() = attribute("tabindex")?.toInt()
 
-    val accessKey: String
-        get() = attribute("accesskey")
+    override val accessKey: String
+        get() = attribute("accesskey") ?: ""
 
-    val style: String
-        get() = attribute("style")
+    override val style: String
+        get() = attribute("style") ?: ""
 
-    val dir: String
-        get() = attribute("dir")
+    override val dir: String
+        get() = attribute("dir") ?: ""
 
-    val lang: String
-        get() = attribute("lang")
+    override val lang: String
+        get() = attribute("lang") ?: ""
 
-    val htmlClass: String
-        get() = attribute("class")
+    override val htmlClass: String
+        get() = attribute("class") ?: ""
 
-    fun attribute(name: String): String {
+    override val isVisible: Boolean
+        get() = findElement().isDisplayed
+
+    fun attribute(name: String): String? {
         return findElement().getAttribute(name)
     }
 
@@ -306,7 +297,7 @@ open abstract class WebComponent : LayoutComponentValidationsBuilder(), Componen
             addArtificialDelay()
             waitStrategies.clear()
         } catch (ex: WebDriverException) {
-            print(String.format("\n\nThe element: \n Name: '%s', \n Locator: '%s = %s', \nWas not found on the page or didn't fulfill the specified conditions.\n\n", componentClass.simpleName, findStrategy.toString(), findStrategy!!.value))
+            print(String.format("\n\nThe element: \n Name: '%s', \n Locator: '%s = %s', \nWas not found on the page or didn't fulfill the specified conditions.\n\n", componentClass.simpleName, findStrategy.toString(), findStrategy.value))
         }
         RETURNING_WRAPPED_ELEMENT.broadcast(ComponentActionEventArgs(this))
         return wrappedElement
@@ -319,34 +310,60 @@ open abstract class WebComponent : LayoutComponentValidationsBuilder(), Componen
         clicked.broadcast(ComponentActionEventArgs(this))
     }
 
-    protected fun setValue(gettingValue: EventListener<ComponentActionEventArgs>, gotValue: EventListener<ComponentActionEventArgs>, value: String) {
-        gettingValue.broadcast(ComponentActionEventArgs(this))
-        setAttribute("value", value)
-        gotValue.broadcast(ComponentActionEventArgs(this))
+    protected fun defaultCheck(checking: EventListener<ComponentActionEventArgs>, checked: EventListener<ComponentActionEventArgs>, isChecked: Boolean = true) {
+        checking.broadcast(ComponentActionEventArgs(this))
+        toExists<WebComponent>().toBeClickable<WebComponent>().waitToBe()
+        if (isChecked && !wrappedElement.isSelected || !isChecked && wrappedElement.isSelected) {
+            javaScriptService.execute("arguments[0].focus();arguments[0].click();", wrappedElement)
+        }
+        checked.broadcast(ComponentActionEventArgs(this))
+    }
+
+    protected fun defaultUncheck(unchecking: EventListener<ComponentActionEventArgs>, unchecked: EventListener<ComponentActionEventArgs>) {
+        unchecking.broadcast(ComponentActionEventArgs(this))
+        toExists<WebComponent>().toBeClickable<WebComponent>().waitToBe()
+        if (wrappedElement.isSelected) {
+            javaScriptService.execute("arguments[0].focus();arguments[0].click();", wrappedElement)
+        }
+        unchecked.broadcast(ComponentActionEventArgs(this))
+    }
+
+    protected fun setValue(settingValue: EventListener<ComponentActionEventArgs>, valueSet: EventListener<ComponentActionEventArgs>, value: String) {
+        settingValue.broadcast(ComponentActionEventArgs(this))
+        javaScriptService.execute("arguments[0].value = '$value';", findElement())
+        valueSet.broadcast(ComponentActionEventArgs(this))
     }
 
     protected fun defaultGetValue(): String {
         return attribute("value") ?: ""
     }
 
-    protected fun defaultGetMaxLength(): Int {
-        return attribute("maxlength").toInt() ?: 0
+    protected fun defaultGetRowsAttribute(): Int? {
+        return attribute("rows")?.toInt()
     }
 
-    protected fun defaultGetMinLength(): Int {
-        return attribute("minlength").toInt() ?: 0
+    protected fun defaultGetColsAttribute(): Int? {
+        return attribute("cols")?.toInt()
     }
 
-    protected fun defaultGetSizeAttribute(): Int {
-        return attribute("size").toInt() ?: 0
+    protected fun defaultGetMaxLengthAttribute(): Int? {
+        return attribute("maxlength")?.toInt()
     }
 
-    protected fun defaultGetHeightAttribute(): Int {
-        return attribute("height").toInt() ?: 0
+    protected fun defaultGetMinLengthAttribute(): Int? {
+        return attribute("minlength")?.toInt()
     }
 
-    protected fun defaultGetWidthAttribute(): Int {
-        return attribute("width").toInt() ?: 0
+    protected fun defaultGetSizeAttribute(): Int? {
+        return attribute("size")?.toInt()
+    }
+
+    protected fun defaultGetHeightAttribute(): Int? {
+        return attribute("height")?.toInt()
+    }
+
+    protected fun defaultGetWidthAttribute(): Int? {
+        return attribute("width")?.toInt()
     }
 
     protected fun defaultGetInnerHtmlAttribute(): String {
@@ -366,23 +383,31 @@ open abstract class WebComponent : LayoutComponentValidationsBuilder(), Componen
     }
 
     protected fun defaultGetDisabledAttribute(): Boolean {
-        return attribute("disabled").toBoolean() ?: false
+        return attribute("disabled")?.toBoolean() ?: false
     }
 
     protected fun defaultGetText(): String {
         return findElement().text ?: ""
     }
 
-    protected fun defaultGetMinAttribute(): Int {
-        return attribute("min").toInt() ?: 0
+    protected fun defaultGetMinAttribute(): Int? {
+        return attribute("min")?.toInt()
     }
 
-    protected fun defaultGetMaxAttribute(): Int {
-        return attribute("max").toInt() ?: 0
+    protected fun defaultGetMinAttributeAsString(): String {
+        return attribute("min") ?: ""
+    }
+
+    protected fun defaultGetMaxAttribute(): Int? {
+        return attribute("max")?.toInt()
+    }
+
+    protected fun defaultGetMaxAttributeAsString(): String {
+        return attribute("max") ?: ""
     }
 
     protected fun defaultGetStepAttribute(): Int {
-        return attribute("step").toInt() ?: 0
+        return attribute("step")?.toInt() ?: 0
     }
 
     protected fun defaultGetPlaceholderAttribute(): String {
@@ -394,29 +419,73 @@ open abstract class WebComponent : LayoutComponentValidationsBuilder(), Componen
     }
 
     protected fun defaultGetAutoCompleteAttribute(): Boolean {
-        return attribute("autocomplete").toBoolean() ?: false
+        return attribute("autocomplete")?.toBoolean() ?: false
     }
 
     protected fun defaultGetReadonlyAttribute(): Boolean {
-        return attribute("readonly").toBoolean() ?: false
+        return attribute("readonly")?.toBoolean() ?: false
     }
 
     protected fun defaultGetRequiredAttribute(): Boolean {
-        return attribute("required").toBoolean() ?: false
+        return attribute("required")?.toBoolean() ?: false
+    }
+
+    protected fun defaultGetMultipleAttribute(): Boolean {
+        return attribute("multiple")?.toBoolean() ?: false
     }
 
     protected fun defaultGetList(): String {
         return attribute("list") ?: ""
     }
 
+    protected fun defaultGetSrcAttribute(): String {
+        return attribute("src") ?: ""
+    }
+
+    protected fun defaultGetLongDescAttribute(): String {
+        return attribute("longdesc") ?: ""
+    }
+
+    protected fun defaultGetAltAttribute(): String {
+        return attribute("alt") ?: ""
+    }
+
+    protected fun defaultGetSizesSetAttribute(): String {
+        return attribute("sizes") ?: ""
+    }
+
+    protected fun defaultGetSrcSetAttribute(): String {
+        return attribute("srcset") ?: ""
+    }
+
+    protected fun defaultGetSpellCheckAttribute(): Boolean {
+        return attribute("spellcheck")?.toBoolean() ?: false
+    }
+
+    protected fun defaultGetWrapAttribute(): String {
+        return attribute("wrap") ?: ""
+    }
+
     protected fun defaultGetHref(): String {
         return StringEscapeUtils.unescapeHtml4(URLDecoder.decode(Optional.ofNullable(attribute("href")).orElse(""), StandardCharsets.UTF_8.name()))
     }
 
-    protected fun defaultSetText(settingValue: EventListener<ComponentActionEventArgs?>, valueSet: EventListener<ComponentActionEventArgs?>, value: String) {
+    protected fun defaultSetText(settingValue: EventListener<ComponentActionEventArgs>, valueSet: EventListener<ComponentActionEventArgs>, value: String) {
         settingValue.broadcast(ComponentActionEventArgs(this))
         findElement().clear()
         findElement().sendKeys(value)
+        valueSet.broadcast(ComponentActionEventArgs(this))
+    }
+
+    protected fun defaultSelectByText(settingValue: EventListener<ComponentActionEventArgs>, valueSet: EventListener<ComponentActionEventArgs>, value: String) {
+        settingValue.broadcast(ComponentActionEventArgs(this))
+        Select(findElement()).selectByVisibleText(value)
+        valueSet.broadcast(ComponentActionEventArgs(this))
+    }
+
+    protected fun defaultSelectByIndex(settingValue: EventListener<ComponentActionEventArgs>, valueSet: EventListener<ComponentActionEventArgs>, value: Int) {
+        settingValue.broadcast(ComponentActionEventArgs(this))
+        Select(findElement()).selectByIndex(value)
         valueSet.broadcast(ComponentActionEventArgs(this))
     }
 
@@ -460,41 +529,4 @@ open abstract class WebComponent : LayoutComponentValidationsBuilder(), Componen
         }
         SCROLLED_TO_VISIBLE.broadcast(ComponentActionEventArgs(this))
     }
-
-//    val VALIDATED_ATTRIBUTE = EventListener<ComponentActionEventArgs>()
-//
-//    protected open fun defaultValidateAttributeSet(supplier: Supplier<String>, attributeName: String) {
-//        waitUntil({ d: SearchContext? -> !StringUtils.isEmpty(supplier.get()) }, "The control's $attributeName shouldn't be empty but was.")
-//        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, "", "validate $attributeName is empty"))
-//    }
-//
-//    protected open fun defaultValidateAttributeNotSet(supplier: Supplier<String>, attributeName: String) {
-//        waitUntil({ d: SearchContext? -> StringUtils.isEmpty(supplier.get()) }, "The control's $attributeName should be null but was '$supplier.get()'.")
-//        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, "", "validate $attributeName is null"))
-//    }
-//
-//    protected open fun defaultValidateAttributeIs(supplier: Supplier<String>, value: String, attributeName: String) {
-//        waitUntil({ d: SearchContext? -> supplier.get().trim() == value }, "The control's $attributeName should be '$value' but was '$supplier.get()'.")
-//        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, value, "validate $attributeName is $value"))
-//    }
-//
-//    protected open fun defaultValidateAttributeContains(supplier: Supplier<String>, value: String, attributeName: String) {
-//        waitUntil({ d: SearchContext? -> supplier.get().trim().contains(value) }, "The control's $attributeName should contain '$value' but was '$supplier.get()'.")
-//        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, value, "validate $attributeName contains $value"))
-//    }
-//
-//    protected open fun defaultValidateAttributeNotContains(supplier: Supplier<String>, value: String, attributeName: String) {
-//        waitUntil({ d: SearchContext? -> !supplier.get().trim().contains(value) }, "The control's $attributeName shouldn't contain '$value' but was '$supplier.get()'.")
-//        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, value, "validate $attributeName doesn't contain $value"))
-//    }
-//
-//    private fun waitUntil(waitCondition: Function<SearchContext, Boolean>, exceptionMessage: String) {
-//        val webDriverWait = WebDriverWait(wrappedDriver(), webSettings.timeoutSettings.validationsTimeout, webSettings.timeoutSettings.sleepInterval)
-//        try {
-//            webDriverWait.until(waitCondition)
-//        } catch (ex: TimeoutException) {
-//            val validationExceptionMessage = "$exceptionMessage The test failed on URL: $browserService.url"
-//            throw TimeoutException(validationExceptionMessage, ex)
-//        }
-//    }
 }

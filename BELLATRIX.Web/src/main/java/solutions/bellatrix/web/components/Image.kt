@@ -12,7 +12,30 @@
  */
 package solutions.bellatrix.web.components
 
-class Image : WebComponent() {
+import solutions.bellatrix.web.components.contracts.*
+
+open class Image : WebComponent(), ComponentSrc, ComponentHeight, ComponentWidth, ComponentLongDesc, ComponentAlt, ComponentSrcSet, ComponentSizes {
     override val componentClass: Class<*>
         get() = javaClass
+
+    override val src: String
+        get() = defaultGetSrcAttribute()
+
+    override val longdesc: String
+        get() = defaultGetLongDescAttribute()
+
+    override val alt: String
+        get() = defaultGetAltAttribute()
+
+    override val srcset: String
+        get() = defaultGetSrcSetAttribute()
+
+    override val sizes: String
+        get() = defaultGetSizesSetAttribute()
+
+    override val height: Int?
+        get() = defaultGetHeightAttribute()
+
+    override val width: Int?
+        get() = defaultGetWidthAttribute()
 }

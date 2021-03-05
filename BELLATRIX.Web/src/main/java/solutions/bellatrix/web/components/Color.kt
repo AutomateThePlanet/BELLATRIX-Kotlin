@@ -12,7 +12,38 @@
  */
 package solutions.bellatrix.web.components
 
-class Color : WebComponent() {
+import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.web.components.contracts.*
+
+open class Color : WebComponent(), ComponentDisabled, ComponentValue, ComponentColor, ComponentList, ComponentAutoComplete, ComponentRequired {
     override val componentClass: Class<*>
         get() = javaClass
+
+    override fun getColor(): String {
+        return value
+    }
+
+    override fun setColor(value: String) {
+        setValue(SETTING_COLOR, COLOR_SET, value)
+    }
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    override val isAutoComplete: Boolean
+        get() = defaultGetAutoCompleteAttribute()
+
+    override val list: String
+        get() = defaultGetList()
+
+    override val isRequired: Boolean
+        get() = defaultGetRequiredAttribute()
+
+    override val value: String
+        get() = defaultGetValue()
+
+    companion object {
+        val SETTING_COLOR = EventListener<ComponentActionEventArgs>()
+        val COLOR_SET = EventListener<ComponentActionEventArgs>()
+    }
 }

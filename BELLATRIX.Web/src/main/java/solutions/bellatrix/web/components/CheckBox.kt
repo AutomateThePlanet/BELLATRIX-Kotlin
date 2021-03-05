@@ -12,10 +12,36 @@
  */
 package solutions.bellatrix.web.components
 
-class CheckBox : WebComponent() {
+import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.web.components.contracts.ComponentChecked
+import solutions.bellatrix.web.components.contracts.ComponentDisabled
+import solutions.bellatrix.web.components.contracts.ComponentValue
+
+open class CheckBox : WebComponent(), ComponentDisabled, ComponentChecked, ComponentValue {
     override val componentClass: Class<*>
         get() = javaClass
 
-    fun check() {}
-    fun uncheck() {}
+    fun check() {
+        defaultCheck(CHECKING, CHECKED, isChecked)
+    }
+
+    fun uncheck() {
+        defaultUncheck(UNCHECKING, UNCHECKED)
+    }
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    override val isChecked: Boolean
+        get() = wrappedElement.isSelected
+
+    override val value: String
+        get() = defaultGetValue()
+
+    companion object {
+        val CHECKING = EventListener<ComponentActionEventArgs>()
+        val CHECKED = EventListener<ComponentActionEventArgs>()
+        val UNCHECKING = EventListener<ComponentActionEventArgs>()
+        val UNCHECKED = EventListener<ComponentActionEventArgs>()
+    }
 }

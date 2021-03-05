@@ -12,7 +12,30 @@
  */
 package solutions.bellatrix.web.components
 
-class InputFile : WebComponent() {
+import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.web.components.contracts.ComponentAccept
+import solutions.bellatrix.web.components.contracts.ComponentMultiple
+import solutions.bellatrix.web.components.contracts.ComponentRequired
+
+open class InputFile : WebComponent(), ComponentRequired, ComponentMultiple, ComponentAccept {
     override val componentClass: Class<*>
         get() = javaClass
+
+    fun upload(file: String) {
+        defaultSetText(UPLOADING, UPLOADED, file)
+    }
+
+    override val isRequired: Boolean
+        get() = defaultGetRequiredAttribute()
+
+    override val isMultiple: Boolean
+        get() = defaultGetMultipleAttribute()
+
+    override val accept: String
+        get() = defaultGetAcceptAttribute()
+
+    companion object {
+        val UPLOADING = EventListener<ComponentActionEventArgs>()
+        val UPLOADED = EventListener<ComponentActionEventArgs>()
+    }
 }

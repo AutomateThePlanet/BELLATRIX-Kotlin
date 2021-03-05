@@ -12,7 +12,50 @@
  */
 package solutions.bellatrix.web.components
 
-class Url : WebComponent() {
+import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.web.components.contracts.*
+
+open class Url : WebComponent(), ComponentDisabled, ComponentValue, ComponentUrl, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxLength, ComponentMinLength, ComponentSize, ComponentPlaceholder {
     override val componentClass: Class<*>
         get() = javaClass
+
+    override fun getUrl(): String {
+        return value
+    }
+
+    override fun setUrl(url: String) {
+       setValue(SETTING_URL, URL_SET, url)
+    }
+
+    override val isAutoComplete: Boolean
+        get() = defaultGetAutoCompleteAttribute()
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    override val maxLength: Int?
+        get() = defaultGetMaxLengthAttribute()
+
+    override val minLength: Int?
+        get() = defaultGetMinLengthAttribute()
+
+    override val placeholder: String
+        get() = defaultGetPlaceholderAttribute()
+
+    override val isReadonly: Boolean
+        get() = defaultGetReadonlyAttribute()
+
+    override val isRequired: Boolean
+        get() = defaultGetRequiredAttribute()
+
+    override val sizeAttribute: Int?
+        get() = defaultGetSizeAttribute()
+
+    override val value: String
+        get() = defaultGetValue()
+
+    companion object {
+        val SETTING_URL = EventListener<ComponentActionEventArgs>()
+        val URL_SET = EventListener<ComponentActionEventArgs>()
+    }
 }

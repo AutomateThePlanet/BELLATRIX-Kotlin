@@ -24,15 +24,13 @@ import solutions.bellatrix.web.infrastructure.testng.WebTest
 import solutions.bellatrix.web.validations.*
 
 @ExecutionBrowser(browser = Browser.CHROME, lifecycle = Lifecycle.REUSE_IF_STARTED)
-class ProductPurchaseTests : WebTest() {
-    @Test
+class ProductPurchaseTests : WebTest() {@Test
     fun completePurchaseSuccessfully_first() {
         app.navigate.to("http://demos.bellatrix.solutions/")
         val addToCartFalcon9 = app.create.byCss<Anchor>("[data-product_id*='28']")
         val blogLink = app.create.byCss<Anchor>("[data-product_id*='28']")
         addToCartFalcon9.click()
-        blogLink.layout.above(addToCartFalcon9).EQ(8).assert()
-//        blogLink.layout() above addToCartFalcon9
+        blogLink.above(addToCartFalcon9).equal(8).validate()
         MainPage.asserts.productBoxLink("", "")
         blogLink.validateHrefIs("http://demos.bellatrix.solutions/")
     }
