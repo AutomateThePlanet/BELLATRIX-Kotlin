@@ -1,6 +1,6 @@
 /*
  * Copyright 2021 Automate The Planet Ltd.
- * Author: Anton Angelov
+ * Author: Teodor Nikolov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
@@ -15,19 +15,27 @@ package solutions.bellatrix.web.components.contracts
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.WebValidator
 
-interface ComponentRel : Component {
-    val rel: String
+interface ComponentTitle : Component {
+    val title: String
 
-    fun validateRelIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, rel, value, "rel")
+    fun validateTitleIs(value: String) {
+        defaultValidateAttributeIs(this as WebComponent, title, value, "title")
     }
 
-    fun validateRelIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, rel, "rel")
+    fun validateTitleIsSet() {
+        defaultValidateAttributeIsSet(this as WebComponent, title, "title")
     }
 
-    fun validateRelNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, rel, "rel")
+    fun validateTitleNotSet() {
+        defaultValidateAttributeNotSet(this as WebComponent, title, "title")
+    }
+
+    fun validateTitleContains(value: String) {
+        defaultValidateAttributeContains(this as WebComponent, title, value, "title")
+    }
+
+    fun validateTitleNotContains(value: String) {
+        defaultValidateAttributeNotContains(this as WebComponent, title, value, "title")
     }
 
     companion object : WebValidator()

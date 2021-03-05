@@ -1,6 +1,6 @@
 /*
  * Copyright 2021 Automate The Planet Ltd.
- * Author: Anton Angelov
+ * Author: Teodor Nikolov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
@@ -15,19 +15,19 @@ package solutions.bellatrix.web.components.contracts
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.WebValidator
 
-interface ComponentRel : Component {
-    val rel: String
+interface ComponentMin : Component {
+    val min: Int?
 
-    fun validateRelIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, rel, value, "rel")
+    fun validateMinIsSet() {
+        defaultValidateAttributeNotNull(this as WebComponent, min, "min")
     }
 
-    fun validateRelIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, rel, "rel")
+    fun validateMinNotSet() {
+        defaultValidateAttributeIsNull(this as WebComponent, min, "min")
     }
 
-    fun validateRelNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, rel, "rel")
+    fun validateMinIs(value: Int) {
+        defaultValidateAttributeIs(this as WebComponent, min, value, "min")
     }
 
     companion object : WebValidator()

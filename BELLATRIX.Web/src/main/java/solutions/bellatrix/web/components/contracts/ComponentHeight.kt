@@ -1,6 +1,6 @@
 /*
  * Copyright 2021 Automate The Planet Ltd.
- * Author: Anton Angelov
+ * Author: Teodor Nikolov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
@@ -15,19 +15,19 @@ package solutions.bellatrix.web.components.contracts
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.WebValidator
 
-interface ComponentRel : Component {
-    val rel: String
+interface ComponentHeight : Component {
+    val height: Int?
 
-    fun validateRelIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, rel, value, "rel")
+    fun validateHeightIs(value: Int) {
+        defaultValidateAttributeIs(this as WebComponent, height, value, "height")
     }
 
-    fun validateRelIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, rel, "rel")
+    fun validateHeightIsSet() {
+        defaultValidateAttributeNotNull(this as WebComponent, height, "height")
     }
 
-    fun validateRelNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, rel, "rel")
+    fun validateHeightNotSet() {
+        defaultValidateAttributeIsNull(this as WebComponent, height, "height")
     }
 
     companion object : WebValidator()
