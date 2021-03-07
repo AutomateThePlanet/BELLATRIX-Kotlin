@@ -21,10 +21,20 @@ import pages.mainpage.MainPage
 import solutions.bellatrix.web.components.*
 import solutions.bellatrix.web.infrastructure.*
 import solutions.bellatrix.web.infrastructure.testng.WebTest
-import solutions.bellatrix.web.validations.*
 
 @ExecutionBrowser(browser = Browser.CHROME, lifecycle = Lifecycle.REUSE_IF_STARTED)
-class ProductPurchaseTests : WebTest() {@Test
+class ProductPurchaseTests : WebTest() {
+    @Test
+    fun sandbox() {
+        app.navigate.to("https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number")
+        val frame = app.create.byId<Frame>("frame_Value")
+        app.browser.switchToFrame(frame)
+        val input = app.create.byXPath<NumberInput>("//input")
+        input.validateNumberIs(42)
+        input.validateMaxNotSet()
+    }
+
+    @Test
     fun completePurchaseSuccessfully_first() {
         app.navigate.to("http://demos.bellatrix.solutions/")
         val addToCartFalcon9 = app.create.byCss<Anchor>("[data-product_id*='28']")

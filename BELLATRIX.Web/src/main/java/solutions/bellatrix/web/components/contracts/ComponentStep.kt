@@ -16,17 +16,17 @@ import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.WebValidator
 
 interface ComponentStep : Component {
-    val step: Int?
+    val step: Double?
 
-    fun validateHeightIs(value: Int) {
+    fun validateStepIs(value: Double) {
         defaultValidateAttributeIs(this as WebComponent, step, value, "step")
     }
 
-    fun validateHeightIsSet() {
+    fun validateStepIsSet() {
         defaultValidateAttributeNotNull(this as WebComponent, step, "step")
     }
 
-    fun validateHeightNotSet() {
+    fun validateStepNotSet() {
         defaultValidateAttributeIsNull(this as WebComponent, step, "step")
     }
 

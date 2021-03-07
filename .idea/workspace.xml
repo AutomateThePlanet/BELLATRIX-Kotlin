@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8245e955-d542-4865-aa33-5a16f0f502e1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_testng_testng_7_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_webjars_jquery_3_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/ColorInput.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/DateInput.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/DateTimeInput.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/EmailInput.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/FileInput.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Frame.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/MonthInput.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/NumberInput.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/PasswordInput.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/PhoneInput.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/TimeInput.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/WeekInput.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Color.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Date.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/DateTimeLocal.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Email.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/InputFile.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Month.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Number.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Phone.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Range.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Range.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Time.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/WebComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/WebComponent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Week.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentMax.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentMax.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentMin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentMin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentNumber.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentNumber.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentPassword.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentPassword.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentRange.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentRange.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentStep.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentStep.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentTabIndex.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/contracts/ComponentTabIndex.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/listeners/HighlightElements.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/listeners/HighlightElements.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/findstrategies/InnerTextContainsFindStrategy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/web/findstrategies/InnerTextContainsFindStrategy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/infrastructure/DriverService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/infrastructure/DriverService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/BrowserService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/BrowserService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/JavaScriptService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/services/JavaScriptService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/validations/WebValidator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/validations/WebValidator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.core/bellatrix.core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/bellatrix.core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/test/java/testng/ProductPurchaseTests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/test/java/testng/ProductPurchaseTests.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/target/classes/testFrameworkSettings.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/target/classes/testFrameworkSettings.dev.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/target/classes/testFrameworkSettings.qa.json" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/target/classes/testFrameworkSettings.qa.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1pKunF6H3VFCAIcZ7zvoDvo9EDG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../BELLATRIX-Java" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="solutions.bellatrix.web.components" />
+    </key>
+  </component>
+  <component name="RunManager" selected="TestNG.ProductPurchaseTests.sandbox">
+    <configuration name="ProductPurchaseTests" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="bellatrix.web.tests" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="testng.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="testng" />
+      <option name="MAIN_CLASS_NAME" value="testng.ProductPurchaseTests" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductPurchaseTests.completePurchaseSuccessfully_first" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="bellatrix.web.tests" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="testng.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="testng" />
+      <option name="MAIN_CLASS_NAME" value="testng.ProductPurchaseTests" />
+      <option name="METHOD_NAME" value="completePurchaseSuccessfully_first" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductPurchaseTests.sandbox" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="bellatrix.web.tests" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="testng.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="testng" />
+      <option name="MAIN_CLASS_NAME" value="testng.ProductPurchaseTests" />
+      <option name="METHOD_NAME" value="sandbox" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.ProductPurchaseTests.sandbox" />
+        <item itemvalue="TestNG.ProductPurchaseTests" />
+        <item itemvalue="TestNG.ProductPurchaseTests.completePurchaseSuccessfully_first" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="added component attributes and validation methods">
+      <created>1614921729710</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1614921729710</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added component attributes and validation methods">
+      <created>1614921741322</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1614921741322</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added bdd logging on attribute validation">
+      <created>1614921797590</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1614921797590</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added and updated web components">
+      <created>1614922257123</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1614922257123</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fixed problem preventing webdriver to start">
+      <created>1614922283344</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1614922283344</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8245e955-d542-4865-aa33-5a16f0f502e1" name="Default Changelist" comment="" />
+      <created>1614944274366</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614944274366</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added component attributes and validation methods" />
+    <MESSAGE value="added bdd logging on attribute validation" />
+    <MESSAGE value="fixed problem preventing webdriver to start" />
+    <MESSAGE value="added and updated web components" />
+    <option name="LAST_COMMIT_MESSAGE" value="added and updated web components" />
+  </component>
+</project>

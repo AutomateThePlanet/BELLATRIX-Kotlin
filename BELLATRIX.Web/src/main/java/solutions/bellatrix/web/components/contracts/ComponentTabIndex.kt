@@ -16,17 +16,17 @@ import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.WebValidator
 
 interface ComponentTabIndex : Component {
-    val tabIndex: Int?
+    val tabIndex: String
 
     fun validateTabIndexNotSet() {
-        defaultValidateAttributeIsNull(this as WebComponent, tabIndex, "tabindex")
+        defaultValidateAttributeNotSet(this as WebComponent, tabIndex, "tabindex")
     }
 
     fun validateTabIndexIsSet() {
-        defaultValidateAttributeNotNull(this as WebComponent, tabIndex, "tabindex")
+        defaultValidateAttributeIsSet(this as WebComponent, tabIndex, "tabindex")
     }
 
-    fun validateTabIndexIs(value: Int) {
+    fun validateTabIndexIs(value: String) {
         defaultValidateAttributeIs(this as WebComponent, tabIndex, value, "tabindex")
     }
 

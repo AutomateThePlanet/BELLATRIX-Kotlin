@@ -14,18 +14,17 @@ package solutions.bellatrix.web.components
 
 import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.web.components.contracts.*
-import kotlin.Number
 
-open class Range : WebComponent(), ComponentDisabled, ComponentValue, ComponentRange, ComponentList, ComponentAutoComplete, ComponentRequired, ComponentMax, ComponentMin, ComponentStep {
+open class WeekInput : WebComponent(), ComponentDisabled, ComponentValue, ComponentWeek, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxText, ComponentMinText, ComponentStep {
     override val componentClass: Class<*>
         get() = javaClass
 
-    override fun getRange(): Double {
-        return value.toDouble()
+    override fun getWeek(): String {
+        return value
     }
 
-    override fun setRange(value: Number) {
-        setValue(SETTING_RANGE, RANGE_SET, value.toString())
+    override fun setWeek(year: Int, weekNumber: Int) {
+        defaultSetWeek(year, weekNumber)
     }
 
     override val isAutoComplete: Boolean
@@ -34,14 +33,14 @@ open class Range : WebComponent(), ComponentDisabled, ComponentValue, ComponentR
     override val isDisabled: Boolean
         get() = defaultGetDisabledAttribute()
 
-    override val list: String
-        get() = defaultGetList()
+    override val max: String
+        get() = defaultGetMaxAttributeAsString()
 
-    override val max: Double?
-        get() = defaultGetMaxAttribute()
+    override val min: String
+        get() = defaultGetMinAttributeAsString()
 
-    override val min: Double?
-        get() = defaultGetMinAttribute()
+    override val isReadonly: Boolean
+        get() = defaultGetReadonlyAttribute()
 
     override val isRequired: Boolean
         get() = defaultGetRequiredAttribute()
@@ -52,8 +51,16 @@ open class Range : WebComponent(), ComponentDisabled, ComponentValue, ComponentR
     override val value: String
         get() = defaultGetValue()
 
+    protected fun defaultSetWeek(year: Int, weekNumber: Int) {
+        if (weekNumber <= 0 || weekNumber > 52) throw IllegalArgumentException("The week number should be between 0 and 53 but you specified: $weekNumber")
+        if (year <= 0) throw IllegalArgumentException("The year should be a positive number but you specified: $year")
+
+        val valueToBeSet = if (weekNumber < 10) "$year-W0$weekNumber" else "$year-W$weekNumber"
+        setValue(SETTING_WEEK, WEEK_SET, valueToBeSet)
+    }
+
     companion object {
-        val SETTING_RANGE = EventListener<ComponentActionEventArgs>()
-        val RANGE_SET = EventListener<ComponentActionEventArgs>()
+        val SETTING_WEEK = EventListener<ComponentActionEventArgs>()
+        val WEEK_SET = EventListener<ComponentActionEventArgs>()
     }
 }

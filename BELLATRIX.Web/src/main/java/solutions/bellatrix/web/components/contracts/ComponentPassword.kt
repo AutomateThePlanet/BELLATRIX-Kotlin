@@ -17,7 +17,7 @@ import solutions.bellatrix.web.validations.WebValidator
 
 interface ComponentPassword : Component {
     fun getPassword(): String
-    fun setPassword(value: Double)
+    fun setPassword(value: String)
 
     fun validatePasswordIs(value: String) {
         defaultValidateAttributeIs(this as WebComponent, getPassword(), value, "password")

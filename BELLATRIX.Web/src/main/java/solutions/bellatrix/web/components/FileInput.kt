@@ -13,37 +13,29 @@
 package solutions.bellatrix.web.components
 
 import solutions.bellatrix.core.plugins.EventListener
-import solutions.bellatrix.web.components.contracts.*
+import solutions.bellatrix.web.components.contracts.ComponentAccept
+import solutions.bellatrix.web.components.contracts.ComponentMultiple
+import solutions.bellatrix.web.components.contracts.ComponentRequired
 
-open class Color : WebComponent(), ComponentDisabled, ComponentValue, ComponentColor, ComponentList, ComponentAutoComplete, ComponentRequired {
+open class FileInput : WebComponent(), ComponentRequired, ComponentMultiple, ComponentAccept {
     override val componentClass: Class<*>
         get() = javaClass
 
-    override fun getColor(): String {
-        return value
+    fun upload(file: String) {
+        defaultSetText(UPLOADING, UPLOADED, file)
     }
-
-    override fun setColor(value: String) {
-        setValue(SETTING_COLOR, COLOR_SET, value)
-    }
-
-    override val isDisabled: Boolean
-        get() = defaultGetDisabledAttribute()
-
-    override val isAutoComplete: Boolean
-        get() = defaultGetAutoCompleteAttribute()
-
-    override val list: String
-        get() = defaultGetList()
 
     override val isRequired: Boolean
         get() = defaultGetRequiredAttribute()
 
-    override val value: String
-        get() = defaultGetValue()
+    override val isMultiple: Boolean
+        get() = defaultGetMultipleAttribute()
+
+    override val accept: String
+        get() = defaultGetAcceptAttribute()
 
     companion object {
-        val SETTING_COLOR = EventListener<ComponentActionEventArgs>()
-        val COLOR_SET = EventListener<ComponentActionEventArgs>()
+        val UPLOADING = EventListener<ComponentActionEventArgs>()
+        val UPLOADED = EventListener<ComponentActionEventArgs>()
     }
 }

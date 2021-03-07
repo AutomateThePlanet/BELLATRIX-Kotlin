@@ -14,17 +14,18 @@ package solutions.bellatrix.web.components
 
 import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.web.components.contracts.*
+import java.lang.IllegalArgumentException
 
-open class Month : WebComponent(), ComponentDisabled, ComponentValue, ComponentMonth, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxText, ComponentMinText, ComponentStep {
+open class DateInput : WebComponent(), ComponentDisabled, ComponentValue, ComponentDate, ComponentAutoComplete, ComponentRequired, ComponentReadonly, ComponentMaxText, ComponentMinText, ComponentStep {
     override val componentClass: Class<*>
         get() = javaClass
 
-    override fun getMonth(): String {
+    override fun getDate(): String {
         return value
     }
 
-    override fun setMonth(year: Int, monthNumber: Int) {
-        defaultSetMonth(year, monthNumber)
+    override fun setDate(year: Int, month: Int, day: Int) {
+        defaultSetDate(year, month, day)
     }
 
     override val isAutoComplete: Boolean
@@ -45,22 +46,24 @@ open class Month : WebComponent(), ComponentDisabled, ComponentValue, ComponentM
     override val isRequired: Boolean
         get() = defaultGetRequiredAttribute()
 
-    override val step: Int
+    override val step: Double?
         get() = defaultGetStepAttribute()
 
     override val value: String
         get() = defaultGetValue()
 
-    protected fun defaultSetMonth(year: Int, monthNumber: Int) {
-        if (monthNumber <= 0 || monthNumber > 12) throw IllegalArgumentException("The month number should be between 0 and 12 but you specified: $monthNumber")
+    protected fun defaultSetDate(year: Int, month: Int, day: Int) {
         if (year <= 0) throw IllegalArgumentException("The year should be a positive number but you specified: $year")
+        if (month <= 0 || month > 12) throw IllegalArgumentException("The month should be between 0 and 12 but you specified: $month")
+        if (day <= 0 || day > 31) throw IllegalArgumentException("The day should be between 0 and 31 but you specified: $day")
 
-        val valueToBeSet = if (monthNumber < 10) "$year-0$monthNumber" else "$year-$monthNumber"
-        setValue(SETTING_MONTH, MONTH_SET, valueToBeSet)
+        var valueToBeSet = if (month < 10) "$year-0$month" else "$year-$month"
+        valueToBeSet = if (day < 10) "$valueToBeSet-0$day" else "$valueToBeSet-$day"
+        setValue(SETTING_DATE, DATE_SET, valueToBeSet)
     }
 
     companion object {
-        val SETTING_MONTH = EventListener<ComponentActionEventArgs>()
-        val MONTH_SET = EventListener<ComponentActionEventArgs>()
+        val SETTING_DATE = EventListener<ComponentActionEventArgs>()
+        val DATE_SET = EventListener<ComponentActionEventArgs>()
     }
 }

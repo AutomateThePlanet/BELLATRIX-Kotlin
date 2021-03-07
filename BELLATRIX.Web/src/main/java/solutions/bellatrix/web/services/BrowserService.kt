@@ -18,6 +18,7 @@ import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.web.configuration.WebSettings
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.WebDriver
+import solutions.bellatrix.web.components.Frame
 
 object BrowserService : WebService() {
     private val javascriptExecutor: JavascriptExecutor
@@ -62,10 +63,8 @@ object BrowserService : WebService() {
         wrappedDriver.switchTo().window(tabName)
     }
 
-    fun switchToFrame(frame: TargetLocator) {
-        if (frame.activeElement() != null) {
-            wrappedDriver.switchTo().frame(frame.activeElement())
-        }
+    fun switchToFrame(frame: Frame) {
+        wrappedDriver.switchTo().frame(frame.findElement())
     }
 
     //    public void ClearSessionStorage() {

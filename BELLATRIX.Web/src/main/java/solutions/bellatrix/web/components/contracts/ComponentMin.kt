@@ -16,7 +16,7 @@ import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.WebValidator
 
 interface ComponentMin : Component {
-    val min: Int?
+    val min: Double?
 
     fun validateMinIsSet() {
         defaultValidateAttributeNotNull(this as WebComponent, min, "min")
@@ -26,8 +26,8 @@ interface ComponentMin : Component {
         defaultValidateAttributeIsNull(this as WebComponent, min, "min")
     }
 
-    fun validateMinIs(value: Int) {
-        defaultValidateAttributeIs(this as WebComponent, min, value, "min")
+    fun validateMinIs(value: Number) {
+        defaultValidateAttributeIs(this as WebComponent, min, value.toDouble(), "min")
     }
 
     companion object : WebValidator()

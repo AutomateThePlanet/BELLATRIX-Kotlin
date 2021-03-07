@@ -14,18 +14,17 @@ package solutions.bellatrix.web.components
 
 import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.web.components.contracts.*
-import java.time.LocalDateTime
 
-open class DateTimeLocal : WebComponent(), ComponentDisabled, ComponentValue, ComponentDateTime, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxText, ComponentMinText, ComponentStep {
+open class MonthInput : WebComponent(), ComponentDisabled, ComponentValue, ComponentMonth, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxText, ComponentMinText, ComponentStep {
     override val componentClass: Class<*>
         get() = javaClass
 
-    override fun getTime(): String {
+    override fun getMonth(): String {
         return value
     }
 
-    override fun setTime(time: LocalDateTime) {
-        setValue(SETTING_TIME, TIME_SET, "${time.year}-${time.monthValue}-${time.dayOfMonth}T${time.hour}:${time.minute}")
+    override fun setMonth(year: Int, monthNumber: Int) {
+        defaultSetMonth(year, monthNumber)
     }
 
     override val isAutoComplete: Boolean
@@ -46,14 +45,22 @@ open class DateTimeLocal : WebComponent(), ComponentDisabled, ComponentValue, Co
     override val isRequired: Boolean
         get() = defaultGetRequiredAttribute()
 
-    override val step: Int
+    override val step: Double?
         get() = defaultGetStepAttribute()
 
     override val value: String
         get() = defaultGetValue()
 
+    protected fun defaultSetMonth(year: Int, monthNumber: Int) {
+        if (monthNumber <= 0 || monthNumber > 12) throw IllegalArgumentException("The month number should be between 0 and 12 but you specified: $monthNumber")
+        if (year <= 0) throw IllegalArgumentException("The year should be a positive number but you specified: $year")
+
+        val valueToBeSet = if (monthNumber < 10) "$year-0$monthNumber" else "$year-$monthNumber"
+        setValue(SETTING_MONTH, MONTH_SET, valueToBeSet)
+    }
+
     companion object {
-        val SETTING_TIME = EventListener<ComponentActionEventArgs>()
-        val TIME_SET = EventListener<ComponentActionEventArgs>()
+        val SETTING_MONTH = EventListener<ComponentActionEventArgs>()
+        val MONTH_SET = EventListener<ComponentActionEventArgs>()
     }
 }

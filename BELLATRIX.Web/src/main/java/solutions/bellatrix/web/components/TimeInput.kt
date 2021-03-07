@@ -15,16 +15,16 @@ package solutions.bellatrix.web.components
 import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.web.components.contracts.*
 
-open class Email : WebComponent(), ComponentDisabled, ComponentValue, ComponentEmail, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxLength, ComponentMinLength, ComponentSize, ComponentPlaceholder {
+open class TimeInput : WebComponent(), ComponentDisabled, ComponentValue, ComponentTime, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxText, ComponentMinText, ComponentStep {
     override val componentClass: Class<*>
         get() = javaClass
 
-    override fun getEmail(): String {
+    override fun getTime(): String {
         return value
     }
 
-    override fun setEmail(email: String) {
-        setValue(SETTING_EMAIL, EMAIL_SET, email)
+    override fun setTime(hours: Int, minutes: Int) {
+        setValue(SETTING_TIME, TIME_SET, "$hours:$minutes:00")
     }
 
     override val isAutoComplete: Boolean
@@ -33,14 +33,11 @@ open class Email : WebComponent(), ComponentDisabled, ComponentValue, ComponentE
     override val isDisabled: Boolean
         get() = defaultGetDisabledAttribute()
 
-    override val maxLength: Int?
-        get() = defaultGetMaxLengthAttribute()
+    override val max: String
+        get() = defaultGetMaxAttributeAsString()
 
-    override val minLength: Int?
-        get() = defaultGetMinLengthAttribute()
-
-    override val placeholder: String
-        get() = defaultGetPlaceholderAttribute()
+    override val min: String
+        get() = defaultGetMinAttributeAsString()
 
     override val isReadonly: Boolean
         get() = defaultGetReadonlyAttribute()
@@ -48,14 +45,14 @@ open class Email : WebComponent(), ComponentDisabled, ComponentValue, ComponentE
     override val isRequired: Boolean
         get() = defaultGetRequiredAttribute()
 
-    override val sizeAttribute: Int?
-        get() = defaultGetSizeAttribute()
+    override val step: Double?
+        get() = defaultGetStepAttribute()
 
     override val value: String
         get() = defaultGetValue()
 
     companion object {
-        val SETTING_EMAIL = EventListener<ComponentActionEventArgs>()
-        val EMAIL_SET = EventListener<ComponentActionEventArgs>()
+        val SETTING_TIME = EventListener<ComponentActionEventArgs>()
+        val TIME_SET = EventListener<ComponentActionEventArgs>()
     }
 }

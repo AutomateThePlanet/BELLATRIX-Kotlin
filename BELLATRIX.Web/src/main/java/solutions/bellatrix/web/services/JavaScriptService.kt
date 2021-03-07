@@ -15,7 +15,6 @@ package solutions.bellatrix.web.services
 import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.WebElement
 import solutions.bellatrix.core.utilities.debugStackTrace
-import java.lang.Exception
 
 object JavaScriptService : WebService() {
     private val javascriptExecutor: JavascriptExecutor
@@ -23,7 +22,7 @@ object JavaScriptService : WebService() {
 
     fun execute(script: String): Any? {
         return try {
-            val result = javascriptExecutor.executeScript(script)
+            javascriptExecutor.executeScript(script)
         } catch (ex: Exception) {
             ex.debugStackTrace()
         }

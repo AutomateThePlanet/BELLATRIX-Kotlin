@@ -15,16 +15,16 @@ package solutions.bellatrix.web.components
 import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.web.components.contracts.*
 
-open class Week : WebComponent(), ComponentDisabled, ComponentValue, ComponentWeek, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxText, ComponentMinText, ComponentStep {
+open class NumberInput : WebComponent(), ComponentDisabled, ComponentValue, ComponentNumber, ComponentAutoComplete, ComponentRequired, ComponentReadonly, ComponentPlaceholder, ComponentMax, ComponentMin, ComponentStep {
     override val componentClass: Class<*>
         get() = javaClass
 
-    override fun getWeek(): String {
-        return value
+    override fun getNumber(): Double {
+        return value.toDouble()
     }
 
-    override fun setWeek(year: Int, weekNumber: Int) {
-        defaultSetWeek(year, weekNumber)
+    override fun setNumber(value: Double) {
+        setValue(SETTING_NUMBER, NUMBER_SET, value.toString())
     }
 
     override val isAutoComplete: Boolean
@@ -33,11 +33,14 @@ open class Week : WebComponent(), ComponentDisabled, ComponentValue, ComponentWe
     override val isDisabled: Boolean
         get() = defaultGetDisabledAttribute()
 
-    override val max: String
-        get() = defaultGetMaxAttributeAsString()
+    override val max: Double?
+        get() = defaultGetMaxAttribute()
 
-    override val min: String
-        get() = defaultGetMinAttributeAsString()
+    override val min: Double?
+        get() = defaultGetMinAttribute()
+
+    override val placeholder: String
+        get() = defaultGetPlaceholderAttribute()
 
     override val isReadonly: Boolean
         get() = defaultGetReadonlyAttribute()
@@ -45,22 +48,14 @@ open class Week : WebComponent(), ComponentDisabled, ComponentValue, ComponentWe
     override val isRequired: Boolean
         get() = defaultGetRequiredAttribute()
 
-    override val step: Int
+    override val step: Double?
         get() = defaultGetStepAttribute()
 
     override val value: String
         get() = defaultGetValue()
 
-    protected fun defaultSetWeek(year: Int, weekNumber: Int) {
-        if (weekNumber <= 0 || weekNumber > 52) throw IllegalArgumentException("The week number should be between 0 and 53 but you specified: $weekNumber")
-        if (year <= 0) throw IllegalArgumentException("The year should be a positive number but you specified: $year")
-
-        val valueToBeSet = if (weekNumber < 10) "$year-W0$weekNumber" else "$year-W$weekNumber"
-        setValue(SETTING_WEEK, WEEK_SET, valueToBeSet)
-    }
-
     companion object {
-        val SETTING_WEEK = EventListener<ComponentActionEventArgs>()
-        val WEEK_SET = EventListener<ComponentActionEventArgs>()
+        val SETTING_NUMBER = EventListener<ComponentActionEventArgs>()
+        val NUMBER_SET = EventListener<ComponentActionEventArgs>()
     }
 }

@@ -121,8 +121,8 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
     override val title: String
         get() = attribute("title") ?: ""
 
-    override val tabIndex: Int?
-        get() = attribute("tabindex")?.toInt()
+    override val tabIndex: String
+        get() = attribute("tabindex") ?: ""
 
     override val accessKey: String
         get() = attribute("accesskey") ?: ""
@@ -339,31 +339,59 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
     }
 
     protected fun defaultGetRowsAttribute(): Int? {
-        return attribute("rows")?.toInt()
+        return try {
+            attribute("rows")?.toInt()
+        } catch (e: NumberFormatException) {
+            null
+        }
     }
 
     protected fun defaultGetColsAttribute(): Int? {
-        return attribute("cols")?.toInt()
+        return try {
+            attribute("cols")?.toInt()
+        } catch (e: NumberFormatException) {
+            null
+        }
     }
 
     protected fun defaultGetMaxLengthAttribute(): Int? {
-        return attribute("maxlength")?.toInt()
+        return try {
+            attribute("maxlength")?.toInt()
+        } catch (e: NumberFormatException) {
+            null
+        }
     }
 
     protected fun defaultGetMinLengthAttribute(): Int? {
-        return attribute("minlength")?.toInt()
+        return try {
+            attribute("minlength")?.toInt()
+        } catch (e: NumberFormatException) {
+            null
+        }
     }
 
     protected fun defaultGetSizeAttribute(): Int? {
-        return attribute("size")?.toInt()
+        return try {
+            attribute("size")?.toInt()
+        } catch (e: NumberFormatException) {
+            null
+        }
     }
 
     protected fun defaultGetHeightAttribute(): Int? {
-        return attribute("height")?.toInt()
+        return try {
+            attribute("height")?.toInt()
+        } catch (e: NumberFormatException) {
+            null
+        }
     }
 
     protected fun defaultGetWidthAttribute(): Int? {
-        return attribute("width")?.toInt()
+        return try {
+            attribute("width")?.toInt()
+        } catch (e: NumberFormatException) {
+            null
+        }
     }
 
     protected fun defaultGetInnerHtmlAttribute(): String {
@@ -382,6 +410,10 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
         return attribute("rel") ?: ""
     }
 
+    protected fun defaultGetName(): String {
+        return attribute("name") ?: ""
+    }
+
     protected fun defaultGetDisabledAttribute(): Boolean {
         return attribute("disabled")?.toBoolean() ?: false
     }
@@ -390,24 +422,36 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
         return findElement().text ?: ""
     }
 
-    protected fun defaultGetMinAttribute(): Int? {
-        return attribute("min")?.toInt()
+    protected fun defaultGetMinAttribute(): Double? {
+        return try {
+            attribute("min")?.toDouble()
+        } catch (e: NumberFormatException) {
+            null
+        }
     }
 
     protected fun defaultGetMinAttributeAsString(): String {
         return attribute("min") ?: ""
     }
 
-    protected fun defaultGetMaxAttribute(): Int? {
-        return attribute("max")?.toInt()
+    protected fun defaultGetMaxAttribute(): Double? {
+        return try {
+            attribute("max")?.toDouble()
+        } catch (e: NumberFormatException) {
+            null
+        }
     }
 
     protected fun defaultGetMaxAttributeAsString(): String {
         return attribute("max") ?: ""
     }
 
-    protected fun defaultGetStepAttribute(): Int {
-        return attribute("step")?.toInt() ?: 0
+    protected fun defaultGetStepAttribute(): Double? {
+        return try {
+            attribute("step")?.toDouble()
+        } catch (e: NumberFormatException) {
+            null
+        }
     }
 
     protected fun defaultGetPlaceholderAttribute(): String {

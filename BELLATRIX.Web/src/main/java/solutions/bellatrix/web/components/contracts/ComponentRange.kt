@@ -16,10 +16,10 @@ import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.WebValidator
 
 interface ComponentRange : Component {
-    fun getRange(): Int
-    fun setRange(value: Int)
+    fun getRange(): Double
+    fun setRange(value: Number)
 
-    fun validateRangeIs(value: Int) {
+    fun validateRangeIs(value: Number) {
         defaultValidateAttributeIs(this as WebComponent, getRange(), value, "range")
     }
 

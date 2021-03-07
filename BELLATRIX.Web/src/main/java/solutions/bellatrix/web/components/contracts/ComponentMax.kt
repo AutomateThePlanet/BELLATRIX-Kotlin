@@ -16,7 +16,7 @@ import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.WebValidator
 
 interface ComponentMax : Component {
-    val max: Int?
+    val max: Double?
 
     fun validateMaxIsSet() {
         defaultValidateAttributeNotNull(this as WebComponent, max, "max")
@@ -26,8 +26,8 @@ interface ComponentMax : Component {
         defaultValidateAttributeIsNull(this as WebComponent, max, "max")
     }
 
-    fun validateMaxIs(value: Int) {
-        defaultValidateAttributeIs(this as WebComponent, max, value, "max")
+    fun validateMaxIs(value: Number) {
+        defaultValidateAttributeIs(this as WebComponent, max, value.toDouble(), "max")
     }
 
     companion object : WebValidator()

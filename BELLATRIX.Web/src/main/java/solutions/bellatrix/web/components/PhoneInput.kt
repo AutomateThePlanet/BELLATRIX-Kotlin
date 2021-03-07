@@ -15,16 +15,16 @@ package solutions.bellatrix.web.components
 import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.web.components.contracts.*
 
-open class Time : WebComponent(), ComponentDisabled, ComponentValue, ComponentTime, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxText, ComponentMinText, ComponentStep {
+open class PhoneInput : WebComponent(), ComponentDisabled, ComponentValue, ComponentPhone, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxLength, ComponentMinLength, ComponentSize, ComponentPlaceholder {
     override val componentClass: Class<*>
         get() = javaClass
 
-    override fun getTime(): String {
+    override fun getPhone(): String {
         return value
     }
 
-    override fun setTime(hours: Int, minutes: Int) {
-        setValue(SETTING_TIME, TIME_SET, "$hours:$minutes:00")
+    override fun setPhone(value: String) {
+        setValue(SETTING_PHONE, PHONE_SET, value)
     }
 
     override val isAutoComplete: Boolean
@@ -33,11 +33,14 @@ open class Time : WebComponent(), ComponentDisabled, ComponentValue, ComponentTi
     override val isDisabled: Boolean
         get() = defaultGetDisabledAttribute()
 
-    override val max: String
-        get() = defaultGetMaxAttributeAsString()
+    override val maxLength: Int?
+        get() = defaultGetMaxLengthAttribute()
 
-    override val min: String
-        get() = defaultGetMinAttributeAsString()
+    override val minLength: Int?
+        get() = defaultGetMinLengthAttribute()
+
+    override val placeholder: String
+        get() = defaultGetPlaceholderAttribute()
 
     override val isReadonly: Boolean
         get() = defaultGetReadonlyAttribute()
@@ -45,14 +48,14 @@ open class Time : WebComponent(), ComponentDisabled, ComponentValue, ComponentTi
     override val isRequired: Boolean
         get() = defaultGetRequiredAttribute()
 
-    override val step: Int?
-        get() = defaultGetStepAttribute()
+    override val sizeAttribute: Int?
+        get() = defaultGetSizeAttribute()
 
     override val value: String
         get() = defaultGetValue()
 
     companion object {
-        val SETTING_TIME = EventListener<ComponentActionEventArgs>()
-        val TIME_SET = EventListener<ComponentActionEventArgs>()
+        val SETTING_PHONE = EventListener<ComponentActionEventArgs>()
+        val PHONE_SET = EventListener<ComponentActionEventArgs>()
     }
 }

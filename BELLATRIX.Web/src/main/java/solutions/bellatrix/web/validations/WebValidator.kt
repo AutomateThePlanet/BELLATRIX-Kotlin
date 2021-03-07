@@ -35,7 +35,7 @@ open class WebValidator {
 
     protected open fun defaultValidateAttributeNotNull(component: WebComponent, property: Any?, attributeName: String) {
         waitUntil({ property != null }, "The control's $attributeName shouldn't be null but was.")
-        WebComponent.VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validate $attributeName is not null"))
+        WebComponent.VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validate $attributeName is set"))
     }
 
     protected open fun defaultValidateAttributeIsSet(component: WebComponent, property: String, attributeName: String) {
