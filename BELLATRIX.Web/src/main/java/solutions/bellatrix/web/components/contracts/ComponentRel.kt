@@ -10,9 +10,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package solutions.bellatrix.web.components.contracts
 
-interface ComponentRel {
+import solutions.bellatrix.web.components.WebComponent
+import solutions.bellatrix.web.validations.WebValidator
+
+interface ComponentRel : Component {
     val rel: String
+
+    fun validateRelIs(value: String) {
+        defaultValidateAttributeIs(this as WebComponent, rel, value, "rel")
+    }
+
+    fun validateRelIsSet() {
+        defaultValidateAttributeIsSet(this as WebComponent, rel, "rel")
+    }
+
+    fun validateRelNotSet() {
+        defaultValidateAttributeNotSet(this as WebComponent, rel, "rel")
+    }
+
+    companion object : WebValidator()
 }

@@ -22,13 +22,12 @@ import solutions.bellatrix.web.infrastructure.DriverService
 import solutions.bellatrix.web.services.JavaScriptService
 import java.lang.Exception
 
-@Throws
 fun WebComponent.highlight() {
     val currentBrowser = DriverService.browserConfiguration().browser
     if (currentBrowser == Browser.CHROME_HEADLESS || currentBrowser == Browser.EDGE_HEADLESS) return
     try {
         val nativeElement = this.wrappedElement
-        val originalElementBorder = nativeElement?.getCssValue("background-color") ?: ""
+        val originalElementBorder = nativeElement.getCssValue("background-color") ?: ""
         JavaScriptService.execute("arguments[0].style.background='yellow'; return;", nativeElement)
         val runnable = Runnable {
             Thread.sleep(100)

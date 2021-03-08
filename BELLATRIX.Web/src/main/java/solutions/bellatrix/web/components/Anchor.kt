@@ -12,12 +12,16 @@
  */
 package solutions.bellatrix.web.components
 
-import solutions.bellatrix.web.components.contracts.*
 import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.web.components.contracts.*
 
-class Anchor : WebComponent(), ComponentHref, ComponentText, ComponentHtml, ComponentTarget, ComponentRel {
+open class Anchor : WebComponent(), ComponentHref, ComponentText, ComponentHtml, ComponentTarget, ComponentRel {
     override val componentClass: Class<*>
         get() = javaClass
+
+    fun click() {
+        defaultClick(CLICKING, CLICKED)
+    }
 
     override val href: String
         get() = defaultGetHref()
@@ -33,79 +37,6 @@ class Anchor : WebComponent(), ComponentHref, ComponentText, ComponentHtml, Comp
 
     override val rel: String
         get() = defaultGetRelAttribute()
-
-    fun click() {
-        defaultClick(CLICKING, CLICKED)
-    }
-
-//    // validate inner HTML
-//    fun validateHtmlIs(value: String) {
-//        defaultValidateAttributeIs(this::html, value, "inner HTML")
-//    }
-//
-//    fun validateHtmlContains(value: String) {
-//        defaultValidateAttributeContains(this::html, value, "inner HTML")
-//    }
-//
-//    fun validateHtmlNotContains(value: String) {
-//        defaultValidateAttributeNotContains(this::html, value, "inner HTML")
-//    }
-//
-//    // validate inner text
-//    fun validateTextIs(value: String) {
-//        defaultValidateAttributeIs(this::text, value, "inner text")
-//    }
-//
-//    fun validateTextIsSet() {
-//        defaultValidateAttributeSet(this::text, "inner text")
-//    }
-//
-//    fun validateTextContains(value: String) {
-//        defaultValidateAttributeContains(this::text, value, "inner text")
-//    }
-//
-//    fun validateTextNotContains(value: String) {
-//        defaultValidateAttributeNotContains(this::text, value, "inner text")
-//    }
-//
-//    // validate HREF
-//    fun validateHrefIs(value: String) {
-//        defaultValidateAttributeIs(this::href, value, "href")
-//    }
-//
-//    fun validateHrefIsSet() {
-//        defaultValidateAttributeSet(this::href, "href")
-//    }
-//
-//    fun validateHrefNotSet() {
-//        defaultValidateAttributeNotSet(this::href, "href")
-//    }
-//
-//    // validate Target
-//    fun validateTargetIs(value: String) {
-//        defaultValidateAttributeIs(this::target, value, "target")
-//    }
-//
-//    fun validateTargetSet() {
-//        defaultValidateAttributeSet(this::target, "target")
-//    }
-//
-//    fun validateTargetNotSet() {
-//        defaultValidateAttributeNotSet(this::target, "target")
-//    }
-//
-//    // validate Rel
-//    fun validateRelIs(value: String) {
-//        defaultValidateAttributeIs(this::rel, value, "rel")
-//    }
-//
-//    fun validateRelSet() {
-//        defaultValidateAttributeSet(this::rel, "rel")
-//    }
-//
-//    fun validateRelNotSet() {
-//        defaultValidateAttributeNotSet(this::rel, "rel")
-//    }
 
     companion object {
         val CLICKING = EventListener<ComponentActionEventArgs>()

@@ -10,9 +10,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package solutions.bellatrix.web.components.contracts
+
+import solutions.bellatrix.web.components.WebComponent
+import solutions.bellatrix.web.validations.WebValidator
 
 interface ComponentHtml : Component {
     val html: String
+
+    fun validateHtmlIs(value: String) {
+        defaultValidateAttributeIs(this as WebComponent, html, value, "inner HTML")
+    }
+
+    fun validateHtmlContains(value: String) {
+        defaultValidateAttributeContains(this as WebComponent, html, value, "inner HTML")
+    }
+
+    fun validateHtmlNotContains(value: String) {
+        defaultValidateAttributeNotContains(this as WebComponent, html, value, "inner HTML")
+    }
+
+    companion object : WebValidator()
 }

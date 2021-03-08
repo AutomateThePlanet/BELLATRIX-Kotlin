@@ -12,7 +12,16 @@
  */
 package solutions.bellatrix.web.components
 
-class Month : WebComponent() {
+import solutions.bellatrix.web.components.contracts.ComponentHtml
+import solutions.bellatrix.web.components.contracts.ComponentText
+
+open class Span : WebComponent(), ComponentText, ComponentHtml {
     override val componentClass: Class<*>
         get() = javaClass
+
+    override val text: String
+        get() = defaultGetText()
+
+    override val html: String
+        get() = defaultGetInnerHtmlAttribute()
 }

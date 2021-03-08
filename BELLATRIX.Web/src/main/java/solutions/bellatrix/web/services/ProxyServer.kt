@@ -12,9 +12,8 @@
  */
 package solutions.bellatrix.web.services
 
-import net.lightbody.bmp.core.har.HarEntry
-import java.lang.ThreadLocal
 import net.lightbody.bmp.BrowserMobProxyServer
+import net.lightbody.bmp.core.har.HarEntry
 import org.testng.Assert
 import java.io.IOException
 import java.net.ServerSocket
@@ -46,7 +45,7 @@ class ProxyServer {
                 }
             } catch (ignored: IOException) {}
 
-            if (port > 0) port
+            if (port > 0) return port
 
             throw RuntimeException("Could not find a free port")
         }
@@ -55,8 +54,7 @@ class ProxyServer {
     fun assertNoErrorCodes() {
         val harEntries = proxyServer.get()!!.har.log.entries
         val areThereErrorCodes = harEntries.stream().anyMatch { r: HarEntry ->
-            (r.response.status > 400
-                    && r.response.status < 599)
+            (r.response.status in 401..598)
         }
         Assert.assertFalse(areThereErrorCodes)
     }

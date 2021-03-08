@@ -10,9 +10,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package solutions.bellatrix.web.components.contracts
 
-interface ComponentText {
+import solutions.bellatrix.web.components.WebComponent
+import solutions.bellatrix.web.validations.WebValidator
+
+interface ComponentText : Component {
     val text: String
+
+    fun validateTextNotSet() {
+        defaultValidateAttributeNotSet(this as WebComponent, text, "inner text")
+    }
+
+    fun validateTextIsSet() {
+        defaultValidateAttributeIsSet(this as WebComponent, text, "inner text")
+    }
+
+    fun validateTextIs(value: String) {
+        defaultValidateAttributeIs(this as WebComponent, text, value, "inner text")
+    }
+
+    fun validateTextContains(value: String) {
+        defaultValidateAttributeContains(this as WebComponent, text, value, "inner text")
+    }
+
+    fun validateTextNotContains(value: String) {
+        defaultValidateAttributeNotContains(this as WebComponent, text, value, "inner text")
+    }
+
+    companion object : WebValidator()
 }

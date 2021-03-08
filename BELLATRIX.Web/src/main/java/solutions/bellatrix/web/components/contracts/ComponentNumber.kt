@@ -1,6 +1,6 @@
 /*
  * Copyright 2021 Automate The Planet Ltd.
- * Author: Anton Angelov
+ * Author: Teodor Nikolov
  * Licensed under the Apache License, Version 2.0 (the "License");
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
@@ -10,9 +10,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.web.components
+package solutions.bellatrix.web.components.contracts
 
-class Email : WebComponent() {
-    override val componentClass: Class<*>
-        get() = javaClass
+import solutions.bellatrix.web.components.WebComponent
+import solutions.bellatrix.web.validations.WebValidator
+
+interface ComponentNumber : Component {
+    fun getNumber(): Double
+    fun setNumber(value: Double)
+
+    fun validateNumberIs(value: Number) {
+        defaultValidateAttributeIs(this as WebComponent, getNumber(), value.toDouble(), "number")
+    }
+
+    companion object : WebValidator()
 }

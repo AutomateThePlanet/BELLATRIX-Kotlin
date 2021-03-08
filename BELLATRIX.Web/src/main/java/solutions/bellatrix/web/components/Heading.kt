@@ -12,9 +12,12 @@
  */
 package solutions.bellatrix.web.components
 
-class Heading : WebComponent() {
+import solutions.bellatrix.web.components.contracts.ComponentText
+
+open class Heading : WebComponent(), ComponentText {
     override val componentClass: Class<*>
         get() = javaClass
-    val text: String
+
+    override val text: String
         get() = defaultGetText()
 }

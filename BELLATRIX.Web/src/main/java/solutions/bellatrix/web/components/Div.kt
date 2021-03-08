@@ -12,9 +12,16 @@
  */
 package solutions.bellatrix.web.components
 
-class Div : WebComponent() {
-    val text: String
-        get() = findElement().text
+import solutions.bellatrix.web.components.contracts.ComponentHtml
+import solutions.bellatrix.web.components.contracts.ComponentText
+
+open class Div : WebComponent(), ComponentText, ComponentHtml {
     override val componentClass: Class<*>
         get() = javaClass
+
+    override val text: String
+        get() = defaultGetText()
+
+    override val html: String
+        get() = defaultGetInnerHtmlAttribute()
 }

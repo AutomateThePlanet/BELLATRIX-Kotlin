@@ -12,7 +12,24 @@
  */
 package solutions.bellatrix.web.components
 
-class Option : WebComponent() {
+import solutions.bellatrix.web.components.contracts.ComponentDisabled
+import solutions.bellatrix.web.components.contracts.ComponentSelected
+import solutions.bellatrix.web.components.contracts.ComponentText
+import solutions.bellatrix.web.components.contracts.ComponentValue
+
+open class Option : WebComponent(), ComponentText, ComponentValue, ComponentDisabled, ComponentSelected {
     override val componentClass: Class<*>
         get() = javaClass
+
+    override val text: String
+        get() = defaultGetText()
+
+    override val value: String
+        get() = defaultGetValue()
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    override val isSelected: Boolean
+        get() = wrappedElement.isSelected
 }

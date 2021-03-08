@@ -12,7 +12,20 @@
  */
 package solutions.bellatrix.web.components
 
-class Progress : WebComponent() {
+import solutions.bellatrix.web.components.contracts.ComponentMaxText
+import solutions.bellatrix.web.components.contracts.ComponentText
+import solutions.bellatrix.web.components.contracts.ComponentValue
+
+open class Progress : WebComponent(), ComponentMaxText, ComponentValue, ComponentText {
     override val componentClass: Class<*>
         get() = javaClass
+
+    override val max: String
+        get() = defaultGetMaxAttributeAsString()
+
+    override val text: String
+        get() = defaultGetText()
+
+    override val value: String
+        get() = defaultGetValue()
 }

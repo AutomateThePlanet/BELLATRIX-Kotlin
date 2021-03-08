@@ -12,7 +12,21 @@
  */
 package solutions.bellatrix.web.components
 
-class Label : WebComponent() {
+import solutions.bellatrix.web.components.contracts.ComponentFor
+import solutions.bellatrix.web.components.contracts.ComponentHtml
+import solutions.bellatrix.web.components.contracts.ComponentText
+
+open class Label : WebComponent(), ComponentText, ComponentHtml, ComponentFor {
     override val componentClass: Class<*>
         get() = javaClass
+
+    override val text: String
+        get() = defaultGetSrcAttribute()
+
+    override val html: String
+        get() = defaultGetSrcAttribute()
+
+    override val forAttribute: String
+        get() = defaultGetForAttribute()
+
 }

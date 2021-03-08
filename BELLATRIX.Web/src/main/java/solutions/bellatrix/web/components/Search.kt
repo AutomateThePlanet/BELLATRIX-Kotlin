@@ -12,7 +12,50 @@
  */
 package solutions.bellatrix.web.components
 
-class Search : WebComponent() {
+import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.web.components.contracts.*
+
+open class Search : WebComponent(), ComponentDisabled, ComponentValue, ComponentSearch, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxLength, ComponentMinLength, ComponentSize, ComponentPlaceholder {
     override val componentClass: Class<*>
         get() = javaClass
+
+    override fun getSearch(): String {
+        return value
+    }
+
+    override fun setSearch(search: String) {
+        this.setValue(SETTING_SEARCH, SEARCH_SET, search)
+    }
+
+    override val isAutoComplete: Boolean
+        get() = defaultGetAutoCompleteAttribute()
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    override val maxLength: Int?
+        get() = defaultGetMaxLengthAttribute()
+
+    override val minLength: Int?
+        get() = defaultGetMinLengthAttribute()
+
+    override val placeholder: String
+        get() = defaultGetPlaceholderAttribute()
+
+    override val isReadonly: Boolean
+        get() = defaultGetReadonlyAttribute()
+
+    override val isRequired: Boolean
+        get() = defaultGetRequiredAttribute()
+
+    override val sizeAttribute: Int?
+        get() = defaultGetSizeAttribute()
+
+    override val value: String
+        get() = defaultGetValue()
+
+    companion object {
+        val SETTING_SEARCH = EventListener<ComponentActionEventArgs>()
+        val SEARCH_SET = EventListener<ComponentActionEventArgs>()
+    }
 }

@@ -58,8 +58,7 @@ object DriverService {
     }
 
     fun wrappedDriver(): WebDriver {
-        val driver = wrappedDriver.get()
-        return driver
+        return wrappedDriver.get()
     }
 
     fun browserConfiguration(): BrowserConfiguration {
@@ -112,7 +111,7 @@ object DriverService {
                 WebDriverManager.chromedriver().setup()
                 val chromeHeadlessOptions = ChromeOptions()
                 addDriverOptions(chromeHeadlessOptions)
-                chromeHeadlessOptions.setHeadless(true);
+                chromeHeadlessOptions.setHeadless(true)
                 chromeHeadlessOptions.setAcceptInsecureCerts(true)
                 chromeHeadlessOptions.addArguments("--log-level=3")
                 System.setProperty("webdriver.chrome.silentOutput", "true")
