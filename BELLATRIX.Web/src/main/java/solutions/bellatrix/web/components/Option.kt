@@ -31,5 +31,5 @@ open class Option : WebComponent(), ComponentText, ComponentValue, ComponentDisa
         get() = defaultGetDisabledAttribute()
 
     override val isSelected: Boolean
-        get() = wrappedElement.isSelected
+        get() = findElement().isSelected
 }

@@ -22,7 +22,7 @@ open class CheckBox : WebComponent(), ComponentDisabled, ComponentChecked, Compo
         get() = javaClass
 
     fun check() {
-        defaultCheck(CHECKING, CHECKED, isChecked)
+        defaultCheck(CHECKING, CHECKED)
     }
 
     fun uncheck() {
@@ -33,7 +33,7 @@ open class CheckBox : WebComponent(), ComponentDisabled, ComponentChecked, Compo
         get() = defaultGetDisabledAttribute()
 
     override val isChecked: Boolean
-        get() = wrappedElement.isSelected
+        get() = findElement().isSelected
 
     override val value: String
         get() = defaultGetValue()

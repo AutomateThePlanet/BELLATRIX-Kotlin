@@ -310,10 +310,10 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
         clicked.broadcast(ComponentActionEventArgs(this))
     }
 
-    protected fun defaultCheck(checking: EventListener<ComponentActionEventArgs>, checked: EventListener<ComponentActionEventArgs>, isChecked: Boolean = true) {
+    protected fun defaultCheck(checking: EventListener<ComponentActionEventArgs>, checked: EventListener<ComponentActionEventArgs>) {
         checking.broadcast(ComponentActionEventArgs(this))
         toExists<WebComponent>().toBeClickable<WebComponent>().waitToBe()
-        if (isChecked && !wrappedElement.isSelected || !isChecked && wrappedElement.isSelected) {
+        if (!findElement().isSelected) {
             javaScriptService.execute("arguments[0].focus();arguments[0].click();", wrappedElement)
         }
         checked.broadcast(ComponentActionEventArgs(this))
@@ -322,7 +322,7 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
     protected fun defaultUncheck(unchecking: EventListener<ComponentActionEventArgs>, unchecked: EventListener<ComponentActionEventArgs>) {
         unchecking.broadcast(ComponentActionEventArgs(this))
         toExists<WebComponent>().toBeClickable<WebComponent>().waitToBe()
-        if (wrappedElement.isSelected) {
+        if (findElement().isSelected) {
             javaScriptService.execute("arguments[0].focus();arguments[0].click();", wrappedElement)
         }
         unchecked.broadcast(ComponentActionEventArgs(this))
