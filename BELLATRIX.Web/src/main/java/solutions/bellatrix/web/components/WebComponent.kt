@@ -494,7 +494,7 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
         return attribute("alt") ?: ""
     }
 
-    protected fun defaultGetSizesSetAttribute(): String {
+    protected fun defaultGetSizesAttribute(): String {
         return attribute("sizes") ?: ""
     }
 

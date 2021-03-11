@@ -13,26 +13,22 @@
 package solutions.bellatrix.web.components
 
 import solutions.bellatrix.core.plugins.EventListener
-import solutions.bellatrix.web.components.contracts.ComponentChecked
-import solutions.bellatrix.web.components.contracts.ComponentDisabled
-import solutions.bellatrix.web.components.contracts.ComponentValue
+import solutions.bellatrix.web.components.contracts.ComponentHtml
+import solutions.bellatrix.web.components.contracts.ComponentText
 
-open class RadioButton : WebComponent(), ComponentDisabled, ComponentValue, ComponentChecked {
+open class Container : WebComponent() {
     override val componentClass: Class<*>
         get() = javaClass
 
     fun click() {
-        defaultClick(CLICKING, CLICKED)
+        defaultClick(Anchor.CLICKING, Anchor.CLICKED)
     }
 
-    override val value: String
-        get() = defaultGetValue()
+    val text: String
+        get() = defaultGetText()
 
-    override val isDisabled: Boolean
-        get() = defaultGetDisabledAttribute()
-
-    override val isChecked: Boolean
-        get() = findElement().isSelected
+    val html: String
+        get() = defaultGetInnerHtmlAttribute()
 
     companion object {
         val CLICKING = EventListener<ComponentActionEventArgs>()
