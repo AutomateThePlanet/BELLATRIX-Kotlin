@@ -10,18 +10,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package junit
+package testng
 
-import org.junit.jupiter.api.Test
 import org.testng.Assert
+import org.testng.annotations.Test
 import solutions.bellatrix.desktop.components.Button
 import solutions.bellatrix.desktop.components.TextField
 import solutions.bellatrix.desktop.infrastructure.ExecutionApp
 import solutions.bellatrix.desktop.infrastructure.Lifecycle
-import solutions.bellatrix.desktop.infrastructure.junit.DesktopTest
+import solutions.bellatrix.desktop.infrastructure.testng.DesktopTest
 
 @ExecutionApp(appPath = "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App", lifecycle = Lifecycle.RESTART_ON_FAIL)
-class ProductPurchaseTests : DesktopTest() {
+class CalculatorTests : DesktopTest() {
     @Test
     fun addition() {
         app.create.byName<Button>("Five").click()
@@ -65,5 +65,5 @@ class ProductPurchaseTests : DesktopTest() {
     }
 
     private val calculatorResultText: String
-        private get() = app.create.byAccessibilityId<TextField>("CalculatorResults").text.replace("Display is", "").trim()
+        get() = app.create.byAccessibilityId<TextField>("CalculatorResults").text.replace("Display is", "").trim()
 }

@@ -10,18 +10,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package testng
+package junit
 
 import org.junit.jupiter.api.Test
-import org.testng.Assert
+import org.junit.jupiter.api.Assertions
 import solutions.bellatrix.desktop.components.Button
 import solutions.bellatrix.desktop.components.TextField
 import solutions.bellatrix.desktop.infrastructure.ExecutionApp
 import solutions.bellatrix.desktop.infrastructure.Lifecycle
-import solutions.bellatrix.desktop.infrastructure.testng.DesktopTest
+import solutions.bellatrix.desktop.infrastructure.junit.DesktopTest
 
 @ExecutionApp(appPath = "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App", lifecycle = Lifecycle.RESTART_ON_FAIL)
-class ProductPurchaseTests : DesktopTest() {
+class CalculatorTests : DesktopTest() {
     @Test
     fun addition() {
         app.create.byName<Button>("Five").click()
@@ -29,7 +29,7 @@ class ProductPurchaseTests : DesktopTest() {
         app.create.byName<Button>("Seven").click()
         app.create.byName<Button>("Equals").click()
         val calculatorResult = calculatorResultText
-        Assert.assertEquals(calculatorResult, "12")
+        Assertions.assertEquals(calculatorResult, "12")
     }
 
     @Test
@@ -41,7 +41,7 @@ class ProductPurchaseTests : DesktopTest() {
         app.create.byAccessibilityId<Button>("num1Button").click()
         app.create.byAccessibilityId<Button>("equalButton").click()
         val calculatorResult = calculatorResultText
-        Assert.assertEquals(calculatorResult, "8")
+        Assertions.assertEquals(calculatorResult, "8")
     }
 
     @Test
@@ -51,7 +51,7 @@ class ProductPurchaseTests : DesktopTest() {
         app.create.byXPath<Button>( "//Button[@Name='Nine']").click()
         app.create.byXPath<Button>("//Button[@Name='Equals']").click()
         val calculatorResult = calculatorResultText
-        Assert.assertEquals(calculatorResult, "81")
+        Assertions.assertEquals(calculatorResult, "81")
     }
 
     @Test
@@ -61,7 +61,7 @@ class ProductPurchaseTests : DesktopTest() {
         app.create.byXPath<Button>("//Button[@AutomationId='num1Button']").click()
         app.create.byXPath<Button>("//Button[@AutomationId='equalButton']").click()
         val calculatorResult = calculatorResultText
-        Assert.assertEquals(calculatorResult, "8")
+        Assertions.assertEquals(calculatorResult, "8")
     }
 
     private val calculatorResultText: String

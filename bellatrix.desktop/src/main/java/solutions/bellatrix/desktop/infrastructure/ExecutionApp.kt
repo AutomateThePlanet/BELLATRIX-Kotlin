@@ -12,9 +12,6 @@
  */
 package solutions.bellatrix.desktop.infrastructure
 
-import java.lang.annotation.Retention
-import java.lang.annotation.RetentionPolicy
-
 @Target(AnnotationTarget.ANNOTATION_CLASS, AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
-@Retention(RetentionPolicy.RUNTIME)
+@kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
 annotation class ExecutionApp(val lifecycle: Lifecycle = Lifecycle.RESTART_EVERY_TIME, val appPath: String = "", val width: Int = 0, val height: Int = 0)
