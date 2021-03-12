@@ -21,7 +21,7 @@ import solutions.bellatrix.desktop.infrastructure.Lifecycle
 import solutions.bellatrix.desktop.infrastructure.testng.DesktopTest
 
 @ExecutionApp(appPath = "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App", lifecycle = Lifecycle.RESTART_ON_FAIL)
-class ProductPurchaseTests : solutions.bellatrix.desktop.infrastructure.junit.DesktopTest() {
+class ProductPurchaseTests : DesktopTest() {
     @Test
     fun addition() {
         app.create.byName<Button>("Five").click()
