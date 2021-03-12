@@ -65,5 +65,5 @@ class ProductPurchaseTests : DesktopTest() {
     }
 
     private val calculatorResultText: String
-        private get() = app.create.byAccessibilityId<TextField>("CalculatorResults").text.replace("Display is", "").trim()
+        get() = app.create.byAccessibilityId<TextField>("CalculatorResults").text.replace("Display is", "").trim()
 }
