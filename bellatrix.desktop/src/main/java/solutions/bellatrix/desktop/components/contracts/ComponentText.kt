@@ -10,19 +10,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.desktop.components.listeners
+package solutions.bellatrix.desktop.components.contracts
 
-import solutions.bellatrix.desktop.components.Anchor
-import solutions.bellatrix.desktop.components.ComponentActionEventArgs
+import solutions.bellatrix.desktop.components.DesktopComponent
 import solutions.bellatrix.desktop.components.validators.DesktopValidator
 
-object BddLogging {
-    private var isBddLoggingTurnedOn = false
-    fun addPlugin() {
-        if (!isBddLoggingTurnedOn) {
-            Anchor.CLICKING.addListener { x: ComponentActionEventArgs -> println(String.format("clicking %s\n", x.component.elementName)) }
-            DesktopValidator.VALIDATED_ATTRIBUTE.addListener { x: ComponentActionEventArgs -> println(x.message) }
-            isBddLoggingTurnedOn = true
-        }
+interface ComponentText : Component {
+    val text: String
+
+    fun validateTextIs(value: String) {
+        defaultValidateAttributeIs(this as DesktopComponent, text, value, "inner text")
     }
+
+    fun validateTextContains(value: String) {
+        defaultValidateAttributeContains(this as DesktopComponent, text, value, "inner text")
+    }
+
+    fun validateTextNotContains(value: String) {
+        defaultValidateAttributeNotContains(this as DesktopComponent, text, value, "inner text")
+    }
+
+    companion object : DesktopValidator()
 }

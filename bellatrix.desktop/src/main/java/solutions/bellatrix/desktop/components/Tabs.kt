@@ -12,22 +12,7 @@
  */
 package solutions.bellatrix.desktop.components
 
-import solutions.bellatrix.core.plugins.EventListener
-import solutions.bellatrix.desktop.components.contracts.ComponentText
-
-class Anchor : DesktopComponent(), ComponentText {
+class Tabs : DesktopComponent() {
     override val componentClass: Class<*>
         get() = javaClass
-
-    fun click() {
-        defaultClick(CLICKING, CLICKED)
-    }
-
-    override val text: String
-        get() = defaultGetText()
-
-    companion object {
-        val CLICKING = EventListener<ComponentActionEventArgs>()
-        val CLICKED = EventListener<ComponentActionEventArgs>()
-    }
 }

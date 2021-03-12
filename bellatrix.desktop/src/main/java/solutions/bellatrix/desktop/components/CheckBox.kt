@@ -12,13 +12,36 @@
  */
 package solutions.bellatrix.desktop.components
 
-import solutions.bellatrix.desktop.components.DesktopComponent
-import solutions.bellatrix.desktop.components.RadioButton
+import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.desktop.components.contracts.ComponentChecked
+import solutions.bellatrix.desktop.components.contracts.ComponentDisabled
 
-class CheckBox : DesktopComponent() {
+class CheckBox : DesktopComponent(), ComponentDisabled, ComponentChecked {
     override val componentClass: Class<*>
         get() = javaClass
 
-    fun check() {}
-    fun uncheck() {}
+    fun check() {
+        if (!findElement().isSelected) {
+            defaultClick(CHECKING, CHECKED)
+        }
+    }
+
+    fun uncheck() {
+        if (findElement().isSelected) {
+            defaultClick(UNCHECKING, UNCHECKED)
+        }
+    }
+
+    override val isChecked: Boolean
+        get() = findElement().isSelected
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    companion object {
+        val CHECKING = EventListener<ComponentActionEventArgs>()
+        val CHECKED = EventListener<ComponentActionEventArgs>()
+        val UNCHECKING = EventListener<ComponentActionEventArgs>()
+        val UNCHECKED = EventListener<ComponentActionEventArgs>()
+    }
 }

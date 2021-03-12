@@ -13,9 +13,9 @@
 package solutions.bellatrix.desktop.components
 
 import solutions.bellatrix.core.plugins.EventListener
-import solutions.bellatrix.desktop.components.contracts.ComponentText
+import solutions.bellatrix.desktop.components.contracts.ComponentDisabled
 
-class Anchor : DesktopComponent(), ComponentText {
+class Expander : DesktopComponent(), ComponentDisabled {
     override val componentClass: Class<*>
         get() = javaClass
 
@@ -23,8 +23,8 @@ class Anchor : DesktopComponent(), ComponentText {
         defaultClick(CLICKING, CLICKED)
     }
 
-    override val text: String
-        get() = defaultGetText()
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
 
     companion object {
         val CLICKING = EventListener<ComponentActionEventArgs>()

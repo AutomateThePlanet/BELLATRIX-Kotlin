@@ -10,12 +10,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.desktop.components
+package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
-import solutions.bellatrix.desktop.components.RadioButton
+import solutions.bellatrix.desktop.components.validators.DesktopValidator
 
-class InputFile : DesktopComponent() {
-    override val componentClass: Class<*>
-        get() = javaClass
+interface ComponentChecked : Component {
+    val isChecked: Boolean
+
+    fun validateIsChecked() {
+        defaultValidateAttributeTrue(this as DesktopComponent, isChecked, "checked")
+    }
+
+    fun validateIsUnchecked() {
+        defaultValidateAttributeTrue(this as DesktopComponent, !isChecked, "unchecked")
+    }
+
+    companion object : DesktopValidator()
 }

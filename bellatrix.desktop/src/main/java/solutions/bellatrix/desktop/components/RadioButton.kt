@@ -13,16 +13,22 @@
 package solutions.bellatrix.desktop.components
 
 import solutions.bellatrix.core.plugins.EventListener
-import solutions.bellatrix.desktop.components.DesktopComponent
-import solutions.bellatrix.desktop.components.RadioButton
+import solutions.bellatrix.desktop.components.contracts.ComponentChecked
+import solutions.bellatrix.desktop.components.contracts.ComponentDisabled
 
-class RadioButton : DesktopComponent() {
+class RadioButton : DesktopComponent(), ComponentDisabled, ComponentChecked {
+    override val componentClass: Class<*>
+        get() = javaClass
+
     fun click() {
         defaultClick(CLICKING, CLICKED)
     }
 
-    override val componentClass: Class<*>
-        get() = javaClass
+    override val isChecked: Boolean
+        get() = findElement().isSelected
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
 
     companion object {
         val CLICKING = EventListener<ComponentActionEventArgs>()

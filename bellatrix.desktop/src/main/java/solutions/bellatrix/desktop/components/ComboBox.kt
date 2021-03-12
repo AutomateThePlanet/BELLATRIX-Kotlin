@@ -12,12 +12,26 @@
  */
 package solutions.bellatrix.desktop.components
 
-import solutions.bellatrix.desktop.components.DesktopComponent
-import solutions.bellatrix.desktop.components.RadioButton
+import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.desktop.components.contracts.ComponentDisabled
+import solutions.bellatrix.desktop.components.contracts.ComponentText
 
-class Heading : DesktopComponent() {
+class ComboBox : DesktopComponent(), ComponentDisabled, ComponentText {
     override val componentClass: Class<*>
         get() = javaClass
-    val text: String
+
+    fun selectByText(value: String) {
+        defaultSelectByText(SELECTING, SELECTED, value)
+    }
+
+    override val text: String
         get() = defaultGetText()
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    companion object {
+        val SELECTING = EventListener<ComponentActionEventArgs>()
+        val SELECTED = EventListener<ComponentActionEventArgs>()
+    }
 }

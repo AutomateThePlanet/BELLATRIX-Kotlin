@@ -10,14 +10,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.desktop.components
+package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
-import solutions.bellatrix.desktop.components.RadioButton
+import solutions.bellatrix.desktop.components.validators.DesktopValidator
 
-class Div : DesktopComponent() {
-    val text: String
-        get() = findElement().text
-    override val componentClass: Class<*>
-        get() = javaClass
+interface ComponentDisabled : Component {
+    val isDisabled: Boolean
+
+    fun validateIsDisabled() {
+        defaultValidateAttributeTrue(this as DesktopComponent, isDisabled, "disabled")
+    }
+
+    fun validateNotDisabled() {
+        defaultValidateAttributeFalse(this as DesktopComponent, isDisabled, "disabled")
+    }
+
+    companion object : DesktopValidator()
 }

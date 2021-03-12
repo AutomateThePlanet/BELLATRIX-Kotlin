@@ -12,10 +12,12 @@
  */
 package solutions.bellatrix.desktop.components
 
-import solutions.bellatrix.desktop.components.DesktopComponent
-import solutions.bellatrix.desktop.components.RadioButton
+import solutions.bellatrix.desktop.components.contracts.ComponentText
 
-class Label : DesktopComponent() {
+class Label : DesktopComponent(), ComponentText {
     override val componentClass: Class<*>
         get() = javaClass
+
+    override val text: String
+        get() = defaultGetText()
 }

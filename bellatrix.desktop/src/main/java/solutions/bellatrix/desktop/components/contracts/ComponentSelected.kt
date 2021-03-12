@@ -10,24 +10,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.desktop.components
+package solutions.bellatrix.desktop.components.contracts
 
-import solutions.bellatrix.core.plugins.EventListener
-import solutions.bellatrix.desktop.components.contracts.ComponentText
+import solutions.bellatrix.desktop.components.DesktopComponent
+import solutions.bellatrix.desktop.components.validators.DesktopValidator
 
-class Anchor : DesktopComponent(), ComponentText {
-    override val componentClass: Class<*>
-        get() = javaClass
+interface ComponentSelected : Component {
+    val isSelected: Boolean
 
-    fun click() {
-        defaultClick(CLICKING, CLICKED)
+    fun validateIsSelected() {
+        defaultValidateAttributeTrue(this as DesktopComponent, isSelected, "selected")
     }
 
-    override val text: String
-        get() = defaultGetText()
-
-    companion object {
-        val CLICKING = EventListener<ComponentActionEventArgs>()
-        val CLICKED = EventListener<ComponentActionEventArgs>()
+    fun validateNotSelected() {
+        defaultValidateAttributeFalse(this as DesktopComponent, isSelected, "selected")
     }
+
+    companion object : DesktopValidator()
 }

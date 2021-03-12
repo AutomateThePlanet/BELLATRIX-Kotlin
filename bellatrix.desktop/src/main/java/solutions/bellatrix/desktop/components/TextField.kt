@@ -13,16 +13,21 @@
 package solutions.bellatrix.desktop.components
 
 import solutions.bellatrix.core.plugins.EventListener
-import solutions.bellatrix.desktop.components.DesktopComponent
+import solutions.bellatrix.desktop.components.contracts.ComponentDisabled
+import solutions.bellatrix.desktop.components.contracts.ComponentText
 
-class TextField : DesktopComponent() {
-    var text: String
+class TextField : DesktopComponent(), ComponentText, ComponentDisabled {
+    override val componentClass: Class<*>
+        get() = javaClass
+
+    override var text: String
         get() = defaultGetText()
         set(value) {
             defaultSetText(SETTING_TEXT, TEXT_SET, value)
         }
-    override val componentClass: Class<*>
-        get() = javaClass
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
 
     companion object {
         val SETTING_TEXT = EventListener<ComponentActionEventArgs>()

@@ -10,12 +10,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.desktop.components
+package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
-import solutions.bellatrix.desktop.components.RadioButton
+import solutions.bellatrix.desktop.components.validators.DesktopValidator
 
-class Search : DesktopComponent() {
-    override val componentClass: Class<*>
-        get() = javaClass
+interface ComponentDate : Component {
+    fun getDate(): String
+
+    fun validateDateIs(value: String) {
+        defaultValidateAttributeIs(this as DesktopComponent, getDate(), value, "date")
+    }
+
+    fun validateDateContains(value: String) {
+        defaultValidateAttributeContains(this as DesktopComponent, getDate(), value, "date")
+    }
+
+    fun validateDateNotContains(value: String) {
+        defaultValidateAttributeNotContains(this as DesktopComponent, getDate(), value, "date")
+    }
+
+    companion object : DesktopValidator()
 }
