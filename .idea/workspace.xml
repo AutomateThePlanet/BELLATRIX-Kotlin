@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8245e955-d542-4865-aa33-5a16f0f502e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.web.tests/bellatrix.web.tests.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.web/bellatrix.web.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_1_4_30_RC.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_1_4_30_RC.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bellatrix.web/src/main/java/solutions/bellatrix/web/components/SearchInput.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.core/bellatrix.core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.core/bellatrix.core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop.tests/bellatrix.desktop.tests.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop.tests/bellatrix.desktop.tests.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/bellatrix.desktop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/bellatrix.desktop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.layout/bellatrix.layout.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.layout/bellatrix.layout.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/breadcrumbsection/Map.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/breadcrumbsection/Map.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/cartpage/Map.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/main/java/pages/cartpage/Map.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/test/java/junit/ProductPurchaseTests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/test/java/junit/ProductPurchaseTests.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.web.tests/src/test/java/testng/ProductPurchaseTests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.web.tests/src/test/java/testng/ProductPurchaseTests.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,11 +38,15 @@
     </option>
   </component>
   <component name="ProjectId" id="1pKunF6H3VFCAIcZ7zvoDvo9EDG" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
@@ -241,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615480101842</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added and updated web components and fixed code formatting">
+      <created>1615528688672</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1615528688672</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -257,15 +256,17 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="added component attributes and validation methods" />
     <MESSAGE value="added bdd logging on attribute validation" />
     <MESSAGE value="fixed problem preventing webdriver to start" />
-    <MESSAGE value="added and updated web components" />
     <MESSAGE value="fixed checkbox checked status and checking functionality" />
     <MESSAGE value="removed test" />
     <MESSAGE value="added viewport and screen components" />
     <MESSAGE value="removed unused file" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed unused file" />
+    <MESSAGE value="added and updated web components" />
+    <MESSAGE value="added and updated web components and fixed code formatting" />
+    <option name="LAST_COMMIT_MESSAGE" value="added and updated web components and fixed code formatting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
