@@ -181,7 +181,7 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
         for (i in 0 until nativeElements.stream().count()) {
             val component: TComponent = InstanceFactory.create()
             component.findStrategy = findStrategy
-            component.elementIndex = i as Int
+            component.elementIndex = i.toInt()
             component.parentWrappedElement = wrappedElement
             componentList.add(component)
         }
@@ -212,7 +212,7 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
     protected fun defaultClick(clicking: EventListener<ComponentActionEventArgs>, clicked: EventListener<ComponentActionEventArgs>) {
         clicking.broadcast(ComponentActionEventArgs(this))
         toExists<DesktopComponent>().toBeClickable<DesktopComponent>().waitToBe()
-        wrappedElement.click()
+        findElement().click()
         clicked.broadcast(ComponentActionEventArgs(this))
     }
 
@@ -236,7 +236,7 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
         return if (parentWrappedElement == null) {
             findStrategy.findAllElements(wrappedDriver)[elementIndex]
         } else {
-            findStrategy.findElement(parentWrappedElement!!) as WebElement
+            findStrategy.findElement(parentWrappedElement!!)
         }
     }
 
