@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8245e955-d542-4865-aa33-5a16f0f502e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Container.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/GridDataItem.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Screen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/SpecialComponents.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Viewport.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Image.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Image.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/RadioButton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/RadioButton.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Search.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/Url.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/WebComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/BELLATRIX.Web/src/main/java/solutions/bellatrix/web/components/WebComponent.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +163,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615385965167</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added viewport and screen components">
+      <created>1615479993948</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1615479993948</updated>
+    </task>
+    <task id="LOCAL-00009" summary="removed unused file">
+      <created>1615480101842</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1615480101842</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -196,7 +199,9 @@
     <MESSAGE value="added and updated web components" />
     <MESSAGE value="fixed checkbox checked status and checking functionality" />
     <MESSAGE value="removed test" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed test" />
+    <MESSAGE value="added viewport and screen components" />
+    <MESSAGE value="removed unused file" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed unused file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
