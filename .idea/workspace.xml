@@ -5,30 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8245e955-d542-4865-aa33-5a16f0f502e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/ComboBox.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/NumberInput.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/RadioGroup.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/SeekBar.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/ToggleButton.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Anchor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/ImageButton.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Button.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Button.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/CheckBox.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/CheckBox.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Div.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Tabs.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Heading.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/IOSComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/IOSComponent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/InputFile.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Label.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Label.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Option.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Grid.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Progress.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Progress.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/RadioButton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/RadioButton.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Search.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Select.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Span.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/TextArea.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/PasswordInput.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/TextField.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/TextField.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components/Time.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/services/TouchActionsService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/services/TouchActionsService.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -316,7 +293,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615889201796</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="implemented TouchActionsService for mobile">
+      <created>1615890508375</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1615890508375</updated>
+    </task>
+    <task id="LOCAL-00019" summary="implemented iOS components and validations">
+      <created>1615890589643</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1615890589643</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -349,7 +340,9 @@
     <MESSAGE value="implemented desktop components" />
     <MESSAGE value="implemented TouchActionsService" />
     <MESSAGE value="implemented android components and validations, optimized imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented android components and validations, optimized imports" />
+    <MESSAGE value="implemented TouchActionsService for mobile" />
+    <MESSAGE value="implemented iOS components and validations" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented iOS components and validations" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
