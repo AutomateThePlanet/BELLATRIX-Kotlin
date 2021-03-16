@@ -12,12 +12,36 @@
  */
 package solutions.bellatrix.ios.components
 
+import solutions.bellatrix.ios.components.contracts.ComponentChecked
 import solutions.bellatrix.ios.components.contracts.ComponentDisabled
+import solutions.bellatrix.ios.components.contracts.ComponentText
+import solutions.bellatrix.core.plugins.EventListener
 
-class Progress : IOSComponent(), ComponentDisabled {
+class ToggleButton : IOSComponent(), ComponentDisabled, ComponentChecked, ComponentText {
     override val componentClass: Class<*>
         get() = javaClass
 
+    fun turnOn() {
+        defaultCheck(TURNING_ON, TURNED_ON)
+    }
+
+    fun turnOff() {
+        defaultUncheck(TURNING_OFF, TURNED_OFF)
+    }
+
+    override val isChecked: Boolean
+        get() = defaultGetCheckedAttribute()
+
     override val isDisabled: Boolean
         get() = defaultGetDisabledAttribute()
+
+    override val text: String
+        get() = defaultGetText()
+
+    companion object {
+        val TURNING_ON = EventListener<ComponentActionEventArgs>()
+        val TURNED_ON = EventListener<ComponentActionEventArgs>()
+        val TURNING_OFF = EventListener<ComponentActionEventArgs>()
+        val TURNED_OFF = EventListener<ComponentActionEventArgs>()
+    }
 }

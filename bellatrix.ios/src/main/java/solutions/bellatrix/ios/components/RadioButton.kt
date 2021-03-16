@@ -12,15 +12,27 @@
  */
 package solutions.bellatrix.ios.components
 
+import solutions.bellatrix.ios.components.contracts.ComponentChecked
+import solutions.bellatrix.ios.components.contracts.ComponentDisabled
+import solutions.bellatrix.ios.components.contracts.ComponentText
 import solutions.bellatrix.core.plugins.EventListener
 
-class RadioButton : IOSComponent() {
+class RadioButton : IOSComponent(), ComponentDisabled, ComponentChecked, ComponentText {
+    override val componentClass: Class<*>
+        get() = javaClass
+
     fun click() {
         defaultClick(CLICKING, CLICKED)
     }
 
-    override val componentClass: Class<*>
-        get() = javaClass
+    override val isChecked: Boolean
+        get() = defaultGetCheckedAttribute()
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    override val text: String
+        get() = defaultGetText()
 
     companion object {
         val CLICKING = EventListener<ComponentActionEventArgs>()

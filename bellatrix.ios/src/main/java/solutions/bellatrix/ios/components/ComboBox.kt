@@ -12,36 +12,42 @@
  */
 package solutions.bellatrix.ios.components
 
-import solutions.bellatrix.ios.components.contracts.ComponentChecked
 import solutions.bellatrix.ios.components.contracts.ComponentDisabled
 import solutions.bellatrix.ios.components.contracts.ComponentText
+import solutions.bellatrix.ios.findstrategies.ClassFindStrategy
+import solutions.bellatrix.ios.findstrategies.ValueContainingFindStrategy
 import solutions.bellatrix.core.plugins.EventListener
 
-class CheckBox : IOSComponent(), ComponentDisabled, ComponentChecked, ComponentText {
+class ComboBox : IOSComponent(), ComponentDisabled, ComponentText {
     override val componentClass: Class<*>
         get() = javaClass
-
-    fun check() {
-        defaultCheck(CHECKING, CHECKED)
-    }
-
-    fun uncheck() {
-        defaultUncheck(UNCHECKING, UNCHECKED)
-    }
-
-    override val isChecked: Boolean
-        get() = defaultGetCheckedAttribute()
 
     override val isDisabled: Boolean
         get() = defaultGetDisabledAttribute()
 
     override val text: String
-        get() = defaultGetText()
+        get() {
+            var result = defaultGetText()
+            if (result.isEmpty()) {
+                val textField = create<TextField, ClassFindStrategy>("XCUIElementTypeTextView")
+                result = textField.text
+            }
+
+            return result
+        }
+
+    fun selectByText(value: String) {
+        SELECTING.broadcast(ComponentActionEventArgs(this))
+        if (findElement().text != value) {
+            findElement().click()
+            val innerElementToClick = create<RadioButton, ValueContainingFindStrategy>(value)
+            innerElementToClick.click()
+        }
+        SELECTED.broadcast(ComponentActionEventArgs(this))
+    }
 
     companion object {
-        val CHECKING = EventListener<ComponentActionEventArgs>()
-        val CHECKED = EventListener<ComponentActionEventArgs>()
-        val UNCHECKING = EventListener<ComponentActionEventArgs>()
-        val UNCHECKED = EventListener<ComponentActionEventArgs>()
+        val SELECTING = EventListener<ComponentActionEventArgs>()
+        val SELECTED = EventListener<ComponentActionEventArgs>()
     }
 }

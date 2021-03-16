@@ -12,37 +12,29 @@
  */
 package solutions.bellatrix.ios.components
 
+import solutions.bellatrix.ios.components.contracts.ComponentDisabled
+import solutions.bellatrix.ios.components.contracts.ComponentNumber
+import solutions.bellatrix.ios.findstrategies.ClassFindStrategy
 import solutions.bellatrix.core.plugins.EventListener
 
-class Anchor : IOSComponent() {
+class NumberInput : IOSComponent(), ComponentDisabled, ComponentNumber {
     override val componentClass: Class<*>
         get() = javaClass
-    val text: String
-        get() = defaultGetText()
 
-    fun click() {
-        defaultClick(CLICKING, CLICKED)
+    override fun getNumber(): Double {
+        val resultText = defaultGetText()
+        return resultText.toDouble()
     }
 
-    // validate inner text
-    fun validateTextIs(value: String) {
-        defaultValidateAttributeIs({ text }, value, "inner text")
+    fun setNumber(value: Number) {
+        defaultSetText(SETTING_NUMBER, NUMBER_SET, value.toString())
     }
 
-    fun validateTextIsSet() {
-        defaultValidateAttributeSet({ text }, "inner text")
-    }
-
-    fun validateTextContains(value: String) {
-        defaultValidateAttributeContains({ text }, value, "inner text")
-    }
-
-    fun validateTextNotContains(value: String) {
-        defaultValidateAttributeNotContains({ text }, value, "inner text")
-    }
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
 
     companion object {
-        val CLICKING = EventListener<ComponentActionEventArgs>()
-        val CLICKED = EventListener<ComponentActionEventArgs>()
+        val SETTING_NUMBER = EventListener<ComponentActionEventArgs>()
+        val NUMBER_SET = EventListener<ComponentActionEventArgs>()
     }
 }

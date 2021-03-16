@@ -12,7 +12,13 @@
  */
 package solutions.bellatrix.ios.components
 
-class InputFile : IOSComponent() {
+import solutions.bellatrix.ios.findstrategies.ClassFindStrategy
+
+class Tabs : IOSComponent() {
     override val componentClass: Class<*>
         get() = javaClass
+
+    inline fun <reified TComponent : IOSComponent> getAll(searchClass: String): List<TComponent> {
+        return createAll<TComponent, ClassFindStrategy>(searchClass)
+    }
 }

@@ -12,9 +12,13 @@
  */
 package solutions.bellatrix.ios.components
 
-class Heading : IOSComponent() {
+import solutions.bellatrix.ios.findstrategies.ClassFindStrategy
+
+class Grid : IOSComponent() {
     override val componentClass: Class<*>
         get() = javaClass
-    val text: String
-        get() = defaultGetText()
+
+    inline fun <reified TComponent : IOSComponent> getAll(searchClass: String): List<TComponent> {
+        return createAll<TComponent, ClassFindStrategy>(searchClass)
+    }
 }

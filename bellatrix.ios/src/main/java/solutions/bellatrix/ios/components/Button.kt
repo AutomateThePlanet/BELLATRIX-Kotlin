@@ -12,34 +12,23 @@
  */
 package solutions.bellatrix.ios.components
 
+import solutions.bellatrix.ios.components.contracts.ComponentDisabled
+import solutions.bellatrix.ios.components.contracts.ComponentText
 import solutions.bellatrix.core.plugins.EventListener
 
-class Button : IOSComponent() {
+class Button : IOSComponent(), ComponentDisabled, ComponentText {
     override val componentClass: Class<*>
         get() = javaClass
-    val text: String
-        get() = defaultGetText()
 
     fun click() {
         defaultClick(CLICKING, CLICKED)
     }
 
-    // validate inner text
-    fun validateTextIs(value: String?) {
-        defaultValidateAttributeIs({ text }, value!!, "inner text")
-    }
+    override val text: String
+        get() = defaultGetText()
 
-    fun validateTextIsSet() {
-        defaultValidateAttributeSet({ text }, "inner text")
-    }
-
-    fun validateTextContains(value: String?) {
-        defaultValidateAttributeContains({ text }, value!!, "inner text")
-    }
-
-    fun validateTextNotContains(value: String?) {
-        defaultValidateAttributeNotContains({ text }, value!!, "inner text")
-    }
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
 
     companion object {
         val CLICKING = EventListener<ComponentActionEventArgs>()

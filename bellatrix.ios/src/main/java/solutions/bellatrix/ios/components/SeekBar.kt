@@ -13,11 +13,28 @@
 package solutions.bellatrix.ios.components
 
 import solutions.bellatrix.ios.components.contracts.ComponentDisabled
+import solutions.bellatrix.ios.services.TouchActionsService
+import solutions.bellatrix.core.plugins.EventListener
 
-class Progress : IOSComponent(), ComponentDisabled {
+class SeekBar : IOSComponent(), ComponentDisabled {
     override val componentClass: Class<*>
         get() = javaClass
 
+    fun set(percentage: Number) {
+        SETTING_PERCENTAGE.broadcast(ComponentActionEventArgs(this, percentage.toString()))
+        val end = findElement().size.getWidth()
+        val y = findElement().location.getY()
+        val touchActionsService = TouchActionsService
+        val moveTo = (percentage as Double / 100 * end).toInt()
+        touchActionsService.press(moveTo, y).release().perform()
+        PERCENTAGE_SET.broadcast(ComponentActionEventArgs(this, percentage.toString()))
+    }
+
     override val isDisabled: Boolean
         get() = defaultGetDisabledAttribute()
+
+    companion object {
+        val SETTING_PERCENTAGE = EventListener<ComponentActionEventArgs>()
+        val PERCENTAGE_SET = EventListener<ComponentActionEventArgs>()
+    }
 }

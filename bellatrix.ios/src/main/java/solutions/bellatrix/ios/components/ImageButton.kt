@@ -12,9 +12,26 @@
  */
 package solutions.bellatrix.ios.components
 
-class Div : IOSComponent() {
-    val text: String
-        get() = findElement().text
+import solutions.bellatrix.ios.components.contracts.ComponentDisabled
+import solutions.bellatrix.ios.components.contracts.ComponentText
+import solutions.bellatrix.core.plugins.EventListener
+
+class ImageButton : IOSComponent(), ComponentDisabled, ComponentText {
     override val componentClass: Class<*>
         get() = javaClass
+
+    fun click() {
+        defaultClick(CLICKING, CLICKED)
+    }
+
+    override val text: String
+        get() = defaultGetText()
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    companion object {
+        val CLICKING = EventListener<ComponentActionEventArgs>()
+        val CLICKED = EventListener<ComponentActionEventArgs>()
+    }
 }

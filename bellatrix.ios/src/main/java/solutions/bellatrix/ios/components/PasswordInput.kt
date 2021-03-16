@@ -12,7 +12,26 @@
  */
 package solutions.bellatrix.ios.components
 
-class Search : IOSComponent() {
+import solutions.bellatrix.ios.components.contracts.ComponentDisabled
+import solutions.bellatrix.core.plugins.EventListener
+
+class PasswordInput : IOSComponent(), ComponentDisabled {
     override val componentClass: Class<*>
         get() = javaClass
+
+    fun getPassword(): String {
+        return defaultGetText()
+    }
+
+    fun setPassword(value: String) {
+        defaultSetText(SETTING_PASSWORD, PASSWORD_SET, value)
+    }
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    companion object {
+        val SETTING_PASSWORD = EventListener<ComponentActionEventArgs>()
+        val PASSWORD_SET = EventListener<ComponentActionEventArgs>()
+    }
 }
