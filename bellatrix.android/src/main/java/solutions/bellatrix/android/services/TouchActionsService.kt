@@ -101,12 +101,12 @@ object TouchActionsService : MobileService() {
         return this
     }
 
-    fun swipe(startx: Int, starty: Int, endx: Int, endy: Int, duration: Int): TouchActionsService {
+    fun swipe(startX: Int, startY: Int, endX: Int, endY: Int, duration: Int): TouchActionsService {
         val touchAction: TouchAction<*> = PlatformTouchAction(DriverService.getWrappedAndroidDriver())
         touchAction
-                .press(PointOption.point(startx, starty))
+                .press(PointOption.point(startX, startY))
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(duration.toLong())))
-                .moveTo(PointOption.point(endx, endy))
+                .moveTo(PointOption.point(endX, endY))
                 .release().perform()
         wrappedMultiAction.add(touchAction)
         return this
