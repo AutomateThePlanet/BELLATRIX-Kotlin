@@ -12,9 +12,6 @@
  */
 package solutions.bellatrix.core.utilities
 
-import java.lang.Runnable
-import kotlin.jvm.Volatile
-
 class UserThread : Runnable {
     @Volatile
     private var exit = false

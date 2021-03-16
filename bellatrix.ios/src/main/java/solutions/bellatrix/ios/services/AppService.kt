@@ -13,7 +13,6 @@
 package solutions.bellatrix.ios.services
 
 import solutions.bellatrix.core.utilities.RuntimeInformation
-import java.lang.Exception
 import java.time.Duration
 
 object AppService : MobileService() {

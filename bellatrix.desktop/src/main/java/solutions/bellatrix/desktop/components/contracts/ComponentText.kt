@@ -13,7 +13,7 @@
 package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
-import solutions.bellatrix.desktop.components.validators.DesktopValidator
+import solutions.bellatrix.desktop.validations.ComponentValidator
 
 interface ComponentText : Component {
     val text: String
@@ -30,5 +30,5 @@ interface ComponentText : Component {
         defaultValidateAttributeNotContains(this as DesktopComponent, text, value, "inner text")
     }
 
-    companion object : DesktopValidator()
+    companion object : ComponentValidator()
 }

@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentMultiple : Component {
     val isMultiple: Boolean
@@ -26,5 +26,5 @@ interface ComponentMultiple : Component {
         defaultValidateAttributeFalse(this as WebComponent, isMultiple, "multiple")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

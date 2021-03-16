@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentTime : Component {
     fun getTime(): String
@@ -31,5 +31,5 @@ interface ComponentTime : Component {
         defaultValidateAttributeNotContains(this as WebComponent, getTime(), value, "time")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

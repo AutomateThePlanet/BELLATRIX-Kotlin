@@ -12,10 +12,9 @@
  */
 package solutions.bellatrix.desktop.infrastructure
 
+import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.core.plugins.Plugin
 import solutions.bellatrix.core.utilities.FileDownloader.downloadToUsersFolder
-import java.lang.ThreadLocal
-import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.desktop.configuration.DesktopSettings
 
 class DownloadDemoAppsPlugin : Plugin() {

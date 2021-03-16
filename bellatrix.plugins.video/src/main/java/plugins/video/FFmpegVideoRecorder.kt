@@ -15,7 +15,6 @@ package plugins.video
 import org.apache.commons.io.FilenameUtils
 import solutions.bellatrix.core.utilities.FileDownloader
 import solutions.bellatrix.core.utilities.RuntimeInformation
-import java.lang.Exception
 import java.nio.file.Paths
 
 class FFmpegVideoRecorder : AutoCloseable {

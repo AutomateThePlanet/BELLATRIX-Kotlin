@@ -15,11 +15,9 @@ package solutions.bellatrix.desktop.infrastructure
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.core.plugins.Plugin
 import solutions.bellatrix.core.plugins.TestResult
-import solutions.bellatrix.core.utilities.UserHomePathNormalizer
 import solutions.bellatrix.core.utilities.UserHomePathNormalizer.normalizePath
 import solutions.bellatrix.core.utilities.debugStackTrace
 import solutions.bellatrix.desktop.configuration.DesktopSettings
-import java.lang.Exception
 import java.lang.reflect.Method
 
 class AppLifecyclePlugin : Plugin() {

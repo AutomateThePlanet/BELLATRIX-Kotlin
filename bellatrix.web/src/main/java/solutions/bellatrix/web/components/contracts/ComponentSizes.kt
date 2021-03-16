@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentSizes : Component {
     val sizes: String
@@ -37,5 +37,5 @@ interface ComponentSizes : Component {
     fun validateSizesNotContains(value: String) {
         defaultValidateAttributeNotContains(this as WebComponent, sizes, value, "sizes")
     }
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

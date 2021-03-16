@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentMinText : Component {
     val min: String
@@ -30,5 +30,5 @@ interface ComponentMinText : Component {
         defaultValidateAttributeNotNull(this as WebComponent, min, "min")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

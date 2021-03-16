@@ -12,7 +12,6 @@
  */
 package solutions.bellatrix.core.plugins
 
-import java.lang.Exception
 import java.lang.reflect.Method
 
 open class Plugin {

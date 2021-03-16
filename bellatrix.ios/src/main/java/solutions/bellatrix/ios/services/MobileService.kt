@@ -12,9 +12,9 @@
  */
 package solutions.bellatrix.ios.services
 
-import solutions.bellatrix.ios.infrastructure.DriverService.getWrappedIOSDriver
-import io.appium.java_client.ios.IOSDriver
 import io.appium.java_client.MobileElement
+import io.appium.java_client.ios.IOSDriver
+import solutions.bellatrix.ios.infrastructure.DriverService.getWrappedIOSDriver
 
 abstract class MobileService {
     val wrappedIOSDriver: IOSDriver<MobileElement>

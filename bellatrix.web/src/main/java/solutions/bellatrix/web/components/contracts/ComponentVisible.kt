@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentVisible : Component {
     val isVisible: Boolean
@@ -26,5 +26,5 @@ interface ComponentVisible : Component {
         defaultValidateAttributeFalse(this as WebComponent, isVisible, "visible")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

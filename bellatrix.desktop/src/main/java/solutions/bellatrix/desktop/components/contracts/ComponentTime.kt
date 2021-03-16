@@ -13,7 +13,7 @@
 package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
-import solutions.bellatrix.desktop.components.validators.DesktopValidator
+import solutions.bellatrix.desktop.validations.ComponentValidator
 
 interface ComponentTime : Component {
     fun getTime(): String
@@ -30,5 +30,5 @@ interface ComponentTime : Component {
         defaultValidateAttributeNotContains(this as DesktopComponent, getTime(), value, "time")
     }
 
-    companion object : DesktopValidator()
+    companion object : ComponentValidator()
 }

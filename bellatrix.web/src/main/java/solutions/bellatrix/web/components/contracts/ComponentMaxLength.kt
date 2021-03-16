@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentMaxLength : Component {
     val maxLength: Int?
@@ -30,5 +30,5 @@ interface ComponentMaxLength : Component {
         defaultValidateAttributeIs(this as WebComponent, maxLength, value, "max length")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentRequired : Component {
     val isRequired: Boolean
@@ -26,5 +26,5 @@ interface ComponentRequired : Component {
         defaultValidateAttributeFalse(this as WebComponent, isRequired, "required")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

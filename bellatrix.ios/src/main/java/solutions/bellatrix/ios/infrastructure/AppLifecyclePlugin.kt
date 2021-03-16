@@ -18,7 +18,6 @@ import solutions.bellatrix.core.plugins.TestResult
 import solutions.bellatrix.core.utilities.UserHomePathNormalizer
 import solutions.bellatrix.core.utilities.debugStackTrace
 import solutions.bellatrix.ios.configuration.IOSSettings
-import java.lang.Exception
 import java.lang.reflect.Method
 
 class AppLifecyclePlugin : Plugin() {

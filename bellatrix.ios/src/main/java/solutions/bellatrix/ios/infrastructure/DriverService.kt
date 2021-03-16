@@ -12,21 +12,20 @@
  */
 package solutions.bellatrix.ios.infrastructure
 
-import java.lang.ThreadLocal
-import java.util.HashMap
 import io.appium.java_client.MobileElement
 import io.appium.java_client.ios.IOSDriver
 import io.appium.java_client.remote.MobileCapabilityType
-import solutions.bellatrix.core.configuration.ConfigurationService
-import java.util.concurrent.TimeUnit
-import org.openqa.selenium.remote.DesiredCapabilities
-import java.net.MalformedURLException
-import solutions.bellatrix.ios.configuration.IOSSettings
 import org.openqa.selenium.MutableCapabilities
 import org.openqa.selenium.Platform
+import org.openqa.selenium.remote.DesiredCapabilities
+import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.core.utilities.debugStackTrace
 import solutions.bellatrix.ios.configuration.GridSettings
+import solutions.bellatrix.ios.configuration.IOSSettings
+import java.net.MalformedURLException
 import java.net.URL
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 object DriverService {
     private var disposed: ThreadLocal<Boolean> = ThreadLocal()

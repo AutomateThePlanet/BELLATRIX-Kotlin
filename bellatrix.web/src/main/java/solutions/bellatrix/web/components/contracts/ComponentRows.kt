@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentRows : Component {
     val rows: Int?
@@ -30,5 +30,5 @@ interface ComponentRows : Component {
         defaultValidateAttributeIsNull(this as WebComponent, rows, "rows")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

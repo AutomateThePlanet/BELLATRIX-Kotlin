@@ -13,7 +13,7 @@
 package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
-import solutions.bellatrix.desktop.components.validators.DesktopValidator
+import solutions.bellatrix.desktop.validations.ComponentValidator
 
 interface ComponentDisabled : Component {
     val isDisabled: Boolean
@@ -26,5 +26,5 @@ interface ComponentDisabled : Component {
         defaultValidateAttributeFalse(this as DesktopComponent, isDisabled, "disabled")
     }
 
-    companion object : DesktopValidator()
+    companion object : ComponentValidator()
 }

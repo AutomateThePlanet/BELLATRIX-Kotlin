@@ -12,8 +12,8 @@
  */
 package solutions.bellatrix.core.utilities
 
-import java.io.File
 import java.io.BufferedWriter
+import java.io.File
 import java.io.FileWriter
 import java.nio.file.Files
 

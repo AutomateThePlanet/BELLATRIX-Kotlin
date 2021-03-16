@@ -12,10 +12,10 @@
  */
 package solutions.bellatrix.desktop.services
 
-import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
-import solutions.bellatrix.desktop.components.DesktopComponent
 import solutions.bellatrix.core.utilities.InstanceFactory
+import solutions.bellatrix.desktop.components.DesktopComponent
 import solutions.bellatrix.desktop.findstrategies.*
+import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
 
 object ComponentCreateService : DesktopService() {
     inline fun <reified TComponent : DesktopComponent> byAccessibilityId(accessibilityId: String): TComponent {

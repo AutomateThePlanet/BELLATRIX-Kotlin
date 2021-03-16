@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentMin : Component {
     val min: Double?
@@ -30,5 +30,5 @@ interface ComponentMin : Component {
         defaultValidateAttributeIs(this as WebComponent, min, value.toDouble(), "min")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

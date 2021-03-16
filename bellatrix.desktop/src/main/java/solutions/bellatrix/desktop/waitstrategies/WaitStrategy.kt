@@ -12,13 +12,13 @@
  */
 package solutions.bellatrix.desktop.waitstrategies
 
-import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
-import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.By
 import org.openqa.selenium.SearchContext
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
+import org.openqa.selenium.support.ui.WebDriverWait
 import solutions.bellatrix.desktop.findstrategies.FindStrategy
+import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
 import java.util.function.Function
 
 abstract class WaitStrategy {

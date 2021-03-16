@@ -25,13 +25,15 @@ import solutions.bellatrix.core.utilities.InstanceFactory
 import solutions.bellatrix.core.utilities.debugStackTrace
 import solutions.bellatrix.ios.components.contracts.Component
 import solutions.bellatrix.ios.configuration.IOSSettings
+import solutions.bellatrix.ios.findstrategies.*
 import solutions.bellatrix.ios.infrastructure.DriverService
 import solutions.bellatrix.ios.services.AppService
 import solutions.bellatrix.ios.services.ComponentCreateService
 import solutions.bellatrix.ios.services.ComponentWaitService
+import solutions.bellatrix.ios.waitstrategies.ToBeClickableWaitStrategy
+import solutions.bellatrix.ios.waitstrategies.ToBeVisibleWaitStrategy
 import solutions.bellatrix.ios.waitstrategies.ToExistsWaitStrategy
-import solutions.bellatrix.ios.waitstrategies.*
-import solutions.bellatrix.ios.findstrategies.*
+import solutions.bellatrix.ios.waitstrategies.WaitStrategy
 import java.util.*
 import java.util.function.Function
 import java.util.function.Supplier

@@ -12,10 +12,9 @@
  */
 package solutions.bellatrix.ios.infrastructure
 
-import solutions.bellatrix.core.utilities.FileDownloader.downloadToUsersFolder
-import java.lang.ThreadLocal
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.core.plugins.Plugin
+import solutions.bellatrix.core.utilities.FileDownloader.downloadToUsersFolder
 import solutions.bellatrix.ios.configuration.IOSSettings
 
 class DownloadDemoAppsPlugin : Plugin() {

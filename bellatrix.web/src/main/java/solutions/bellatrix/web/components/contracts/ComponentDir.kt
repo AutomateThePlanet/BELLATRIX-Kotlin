@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentDir : Component {
     val dir: String
@@ -30,5 +30,5 @@ interface ComponentDir : Component {
         defaultValidateAttributeNotSet(this as WebComponent, dir, "dir")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

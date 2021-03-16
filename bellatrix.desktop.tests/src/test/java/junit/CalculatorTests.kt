@@ -12,8 +12,8 @@
  */
 package junit
 
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Test
 import solutions.bellatrix.desktop.components.Button
 import solutions.bellatrix.desktop.components.TextField
 import solutions.bellatrix.desktop.infrastructure.ExecutionApp

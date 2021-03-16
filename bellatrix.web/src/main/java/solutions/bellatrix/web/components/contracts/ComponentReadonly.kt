@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentReadonly : Component {
     val isReadonly: Boolean
@@ -26,5 +26,5 @@ interface ComponentReadonly : Component {
         defaultValidateAttributeFalse(this as WebComponent, isReadonly, "readonly")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }
