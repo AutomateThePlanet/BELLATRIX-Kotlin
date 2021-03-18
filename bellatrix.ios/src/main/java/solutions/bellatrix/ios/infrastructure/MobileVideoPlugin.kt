@@ -12,12 +12,12 @@
  */
 package solutions.bellatrix.ios.infrastructure
 
-import solutions.bellatrix.core.utilities.UserHomePathNormalizer.normalizePath
 import plugins.video.VideoPlugin
 import solutions.bellatrix.core.configuration.ConfigurationService
+import solutions.bellatrix.core.utilities.UserHomePathNormalizer.normalizePath
 import solutions.bellatrix.ios.configuration.IOSSettings
 import java.io.File
-import java.util.UUID
+import java.util.*
 
 class MobileVideoPlugin(isEnabled: Boolean?) : VideoPlugin(isEnabled!!) {
     override val outputFolder: String

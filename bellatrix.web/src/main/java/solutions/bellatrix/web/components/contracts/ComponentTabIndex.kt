@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentTabIndex : Component {
     val tabIndex: String
@@ -30,5 +30,5 @@ interface ComponentTabIndex : Component {
         defaultValidateAttributeIs(this as WebComponent, tabIndex, value, "tabindex")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

@@ -12,14 +12,12 @@
  */
 package solutions.bellatrix.desktop.infrastructure
 
-import solutions.bellatrix.core.utilities.UserHomePathNormalizer.normalizePath
 import plugins.video.VideoPlugin
 import solutions.bellatrix.core.configuration.ConfigurationService
+import solutions.bellatrix.core.utilities.UserHomePathNormalizer.normalizePath
 import solutions.bellatrix.desktop.configuration.DesktopSettings
-import solutions.bellatrix.core.utilities.UserHomePathNormalizer
 import java.io.File
-import java.util.UUID
-import solutions.bellatrix.desktop.infrastructure.DesktopVideoPlugin
+import java.util.*
 
 class DesktopVideoPlugin(isEnabled: Boolean?) : VideoPlugin(isEnabled!!) {
     override val outputFolder: String

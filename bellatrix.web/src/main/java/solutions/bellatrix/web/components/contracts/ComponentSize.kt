@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentSize : Component {
     val sizeAttribute: Int?
@@ -30,5 +30,5 @@ interface ComponentSize : Component {
         defaultValidateAttributeIsNull(this as WebComponent, sizeAttribute, "size")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

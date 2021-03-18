@@ -13,30 +13,28 @@
 package solutions.bellatrix.core.plugins.junit
 
 import org.junit.Rule
-import solutions.bellatrix.core.plugins.PluginExecutionEngine.preBeforeTest
-import solutions.bellatrix.core.plugins.PluginExecutionEngine.postBeforeTest
-import solutions.bellatrix.core.plugins.PluginExecutionEngine.beforeTestFailed
-import solutions.bellatrix.core.plugins.PluginExecutionEngine.preBeforeClass
-import solutions.bellatrix.core.plugins.PluginExecutionEngine.postBeforeClass
-import solutions.bellatrix.core.plugins.PluginExecutionEngine.beforeClassFailed
-import solutions.bellatrix.core.plugins.PluginExecutionEngine.preAfterTest
-import solutions.bellatrix.core.plugins.PluginExecutionEngine.postAfterTest
-import solutions.bellatrix.core.plugins.PluginExecutionEngine.afterTestFailed
-import solutions.bellatrix.core.plugins.PluginExecutionEngine.preAfterClass
-import solutions.bellatrix.core.plugins.PluginExecutionEngine.postAfterClass
-import solutions.bellatrix.core.plugins.PluginExecutionEngine.afterClassFailed
-import solutions.bellatrix.core.plugins.PluginExecutionEngine
+import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.TestInfo
-import org.junit.jupiter.api.AfterEach
-import java.lang.ThreadLocal
-import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.extension.TestWatcher
 import org.junit.runner.Description
 import solutions.bellatrix.core.plugins.Plugin
+import solutions.bellatrix.core.plugins.PluginExecutionEngine
+import solutions.bellatrix.core.plugins.PluginExecutionEngine.afterClassFailed
+import solutions.bellatrix.core.plugins.PluginExecutionEngine.afterTestFailed
+import solutions.bellatrix.core.plugins.PluginExecutionEngine.beforeClassFailed
+import solutions.bellatrix.core.plugins.PluginExecutionEngine.beforeTestFailed
+import solutions.bellatrix.core.plugins.PluginExecutionEngine.postAfterClass
+import solutions.bellatrix.core.plugins.PluginExecutionEngine.postAfterTest
+import solutions.bellatrix.core.plugins.PluginExecutionEngine.postBeforeClass
+import solutions.bellatrix.core.plugins.PluginExecutionEngine.postBeforeTest
+import solutions.bellatrix.core.plugins.PluginExecutionEngine.preAfterClass
+import solutions.bellatrix.core.plugins.PluginExecutionEngine.preAfterTest
+import solutions.bellatrix.core.plugins.PluginExecutionEngine.preBeforeClass
+import solutions.bellatrix.core.plugins.PluginExecutionEngine.preBeforeTest
 import solutions.bellatrix.core.plugins.TestResult
-import java.lang.Exception
-import java.util.ArrayList
+import java.util.*
 
 open class BaseTest {
     companion object {

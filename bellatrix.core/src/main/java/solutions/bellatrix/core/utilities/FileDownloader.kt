@@ -12,10 +12,10 @@
  */
 package solutions.bellatrix.core.utilities
 
-import java.nio.file.Paths
 import java.io.FileOutputStream
 import java.net.URL
 import java.nio.channels.Channels
+import java.nio.file.Paths
 
 object FileDownloader {
     fun download(url: String, fullFilePath: String) {

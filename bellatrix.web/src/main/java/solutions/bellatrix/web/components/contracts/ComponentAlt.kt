@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentAlt : Component {
     val alt: String
@@ -30,5 +30,5 @@ interface ComponentAlt : Component {
         defaultValidateAttributeNotSet(this as WebComponent, alt, "alt")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

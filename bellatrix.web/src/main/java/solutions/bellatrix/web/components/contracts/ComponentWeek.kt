@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentWeek : Component {
     fun getWeek(): String
@@ -23,5 +23,5 @@ interface ComponentWeek : Component {
         defaultValidateAttributeIs(this as WebComponent, getWeek(), value, "week")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

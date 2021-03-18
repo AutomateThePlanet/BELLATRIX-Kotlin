@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentHeight : Component {
     val height: Int?
@@ -30,5 +30,5 @@ interface ComponentHeight : Component {
         defaultValidateAttributeIsNull(this as WebComponent, height, "height")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

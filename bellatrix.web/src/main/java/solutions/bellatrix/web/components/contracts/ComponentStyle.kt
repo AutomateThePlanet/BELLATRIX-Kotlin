@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentStyle : Component {
     val style: String
@@ -38,5 +38,5 @@ interface ComponentStyle : Component {
         defaultValidateAttributeNotContains(this as WebComponent, style, value, "style")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

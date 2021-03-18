@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentNumber : Component {
     fun getNumber(): Double
@@ -23,5 +23,5 @@ interface ComponentNumber : Component {
         defaultValidateAttributeIs(this as WebComponent, getNumber(), value.toDouble(), "number")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

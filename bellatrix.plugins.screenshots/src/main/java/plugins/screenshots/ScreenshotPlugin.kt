@@ -15,7 +15,6 @@ package plugins.screenshots
 import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.core.plugins.Plugin
 import solutions.bellatrix.core.plugins.TestResult
-import java.lang.Exception
 import java.lang.reflect.Method
 import java.nio.file.Paths
 

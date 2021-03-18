@@ -12,14 +12,13 @@
  */
 package solutions.bellatrix.ios.waitstrategies
 
-import solutions.bellatrix.ios.infrastructure.DriverService.getWrappedIOSDriver
+import io.appium.java_client.MobileElement
+import io.appium.java_client.ios.IOSDriver
+import org.openqa.selenium.WebDriver
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.ios.configuration.IOSSettings
-import io.appium.java_client.ios.IOSDriver
-import io.appium.java_client.MobileElement
-import org.openqa.selenium.WebDriver
 import solutions.bellatrix.ios.findstrategies.FindStrategy
-import java.lang.Exception
+import solutions.bellatrix.ios.infrastructure.DriverService.getWrappedIOSDriver
 import java.util.function.Function
 
 class ToExistsWaitStrategy : WaitStrategy {

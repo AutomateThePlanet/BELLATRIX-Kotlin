@@ -12,15 +12,15 @@
  */
 package solutions.bellatrix.desktop.waitstrategies
 
-import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
-import solutions.bellatrix.core.configuration.ConfigurationService
-import solutions.bellatrix.desktop.configuration.DesktopSettings
 import io.appium.java_client.windows.WindowsDriver
 import org.openqa.selenium.NoSuchElementException
 import org.openqa.selenium.StaleElementReferenceException
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
+import solutions.bellatrix.core.configuration.ConfigurationService
+import solutions.bellatrix.desktop.configuration.DesktopSettings
 import solutions.bellatrix.desktop.findstrategies.FindStrategy
+import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
 import java.util.function.Function
 
 class ToBeClickableWaitStrategy : WaitStrategy {

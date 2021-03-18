@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentSearch : Component {
     fun getSearch(): String
@@ -31,5 +31,5 @@ interface ComponentSearch : Component {
         defaultValidateAttributeNotContains(this as WebComponent, getSearch(), value, "search")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

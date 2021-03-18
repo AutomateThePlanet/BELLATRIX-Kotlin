@@ -13,8 +13,6 @@
 package solutions.bellatrix.ios.services
 
 import org.openqa.selenium.WebDriverException
-import io.appium.java_client.android.nativekey.AndroidKey
-import io.appium.java_client.android.nativekey.KeyEvent
 
 object KeyboardService : MobileService() {
     fun hideKeyboard() {

@@ -12,9 +12,6 @@
  */
 package solutions.bellatrix.desktop.configuration
 
-import lombok.Getter
-import lombok.Setter
-
 data class TimeoutSettings(
         val sleepInterval: Long = 30,
         val implicitWaitTimeout: Long = 5,

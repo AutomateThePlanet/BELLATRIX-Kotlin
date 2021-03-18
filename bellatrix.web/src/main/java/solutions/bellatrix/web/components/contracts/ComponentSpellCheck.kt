@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentSpellCheck : Component {
     val spellcheck: Boolean
@@ -26,5 +26,5 @@ interface ComponentSpellCheck : Component {
         defaultValidateAttributeFalse(this as WebComponent, spellcheck, "spellcheck")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

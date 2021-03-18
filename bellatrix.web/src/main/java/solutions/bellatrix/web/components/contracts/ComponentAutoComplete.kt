@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentAutoComplete : Component {
     val isAutoComplete: Boolean
@@ -26,5 +26,5 @@ interface ComponentAutoComplete : Component {
         defaultValidateAttributeFalse(this as WebComponent, isAutoComplete, "autocomplete")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

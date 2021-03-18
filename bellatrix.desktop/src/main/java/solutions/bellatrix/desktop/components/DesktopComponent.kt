@@ -284,6 +284,7 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
         val CREATED_ELEMENT = EventListener<ComponentActionEventArgs>()
         val CREATING_ELEMENTS = EventListener<ComponentActionEventArgs>()
         val CREATED_ELEMENTS = EventListener<ComponentActionEventArgs>()
+        val VALIDATED_ATTRIBUTE = EventListener<ComponentActionEventArgs>()
     }
 
     init {

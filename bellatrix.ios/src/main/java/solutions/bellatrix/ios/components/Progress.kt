@@ -12,7 +12,12 @@
  */
 package solutions.bellatrix.ios.components
 
-class Progress : IOSComponent() {
+import solutions.bellatrix.ios.components.contracts.ComponentDisabled
+
+class Progress : IOSComponent(), ComponentDisabled {
     override val componentClass: Class<*>
         get() = javaClass
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
 }

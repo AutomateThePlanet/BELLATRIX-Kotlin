@@ -12,14 +12,12 @@
  */
 package solutions.bellatrix.core.configuration
 
-import java.util.Properties
-import java.io.IOException
-import com.google.gson.JsonParser
 import com.google.gson.Gson
+import com.google.gson.JsonParser
 import org.apache.commons.io.IOUtils
-import java.lang.Exception
-import java.lang.StringBuilder
+import java.io.IOException
 import java.nio.charset.StandardCharsets
+import java.util.*
 
 object ConfigurationService {
     inline fun <reified TConfigSection> get(): TConfigSection {

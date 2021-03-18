@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentSrcSet : Component {
     val srcset: String
@@ -38,5 +38,5 @@ interface ComponentSrcSet : Component {
         defaultValidateAttributeNotContains(this as WebComponent, srcset, value, "srcset")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

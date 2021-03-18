@@ -13,7 +13,7 @@
 package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
-import solutions.bellatrix.desktop.components.validators.DesktopValidator
+import solutions.bellatrix.desktop.validations.ComponentValidator
 
 interface ComponentVisible : Component {
     val isVisible: Boolean
@@ -26,5 +26,5 @@ interface ComponentVisible : Component {
         defaultValidateAttributeFalse(this as DesktopComponent, isVisible, "visible")
     }
 
-    companion object : DesktopValidator()
+    companion object : ComponentValidator()
 }

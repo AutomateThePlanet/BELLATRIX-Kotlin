@@ -12,16 +12,16 @@
  */
 package solutions.bellatrix.desktop.infrastructure
 
-import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
-import plugins.screenshots.ScreenshotPlugin
 import org.apache.commons.io.FileUtils
-import java.io.File
-import org.openqa.selenium.TakesScreenshot
 import org.openqa.selenium.OutputType
-import java.nio.file.Paths
+import org.openqa.selenium.TakesScreenshot
+import plugins.screenshots.ScreenshotPlugin
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.desktop.configuration.DesktopSettings
-import java.util.UUID
+import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
+import java.io.File
+import java.nio.file.Paths
+import java.util.*
 
 class DesktopScreenshotPlugin(isEnabled: Boolean) : ScreenshotPlugin(isEnabled) {
     override fun takeScreenshot(screenshotSaveDir: String, filename: String) {

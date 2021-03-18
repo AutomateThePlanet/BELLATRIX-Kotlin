@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentStep : Component {
     val step: Double?
@@ -30,5 +30,5 @@ interface ComponentStep : Component {
         defaultValidateAttributeIsNull(this as WebComponent, step, "step")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

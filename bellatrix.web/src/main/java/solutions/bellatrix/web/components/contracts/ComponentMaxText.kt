@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentMaxText : Component {
     val max: String
@@ -30,5 +30,5 @@ interface ComponentMaxText : Component {
         defaultValidateAttributeNotNull(this as WebComponent, max, "max")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

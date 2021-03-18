@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentColor : Component {
     fun getColor(): String
@@ -23,5 +23,5 @@ interface ComponentColor : Component {
         defaultValidateAttributeIs(this as WebComponent, getColor(), value, "color")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

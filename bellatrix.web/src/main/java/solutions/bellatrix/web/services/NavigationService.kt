@@ -12,7 +12,6 @@
  */
 package solutions.bellatrix.web.services
 
-import org.openqa.selenium.WebDriver
 import org.openqa.selenium.support.ui.WebDriverWait
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.web.configuration.WebSettings

@@ -20,7 +20,6 @@ import solutions.bellatrix.core.utilities.debugStackTrace
 import solutions.bellatrix.desktop.configuration.DesktopSettings
 import solutions.bellatrix.desktop.configuration.GridSettings
 import java.io.File
-import java.lang.Exception
 import java.net.MalformedURLException
 import java.net.URL
 import java.util.concurrent.TimeUnit

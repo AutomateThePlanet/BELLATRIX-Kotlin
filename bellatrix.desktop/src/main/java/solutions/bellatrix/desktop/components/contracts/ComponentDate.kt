@@ -13,7 +13,7 @@
 package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
-import solutions.bellatrix.desktop.components.validators.DesktopValidator
+import solutions.bellatrix.desktop.validations.ComponentValidator
 
 interface ComponentDate : Component {
     fun getDate(): String
@@ -30,5 +30,5 @@ interface ComponentDate : Component {
         defaultValidateAttributeNotContains(this as DesktopComponent, getDate(), value, "date")
     }
 
-    companion object : DesktopValidator()
+    companion object : ComponentValidator()
 }

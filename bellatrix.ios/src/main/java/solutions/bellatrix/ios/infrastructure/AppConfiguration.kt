@@ -13,9 +13,9 @@
 package solutions.bellatrix.ios.infrastructure
 
 import org.jsoup.internal.StringUtil
-import java.util.HashMap
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.ios.configuration.IOSSettings
+import java.util.*
 
 class AppConfiguration {
     lateinit var appPath: String

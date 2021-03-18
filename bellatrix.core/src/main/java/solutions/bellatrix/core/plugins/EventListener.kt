@@ -12,7 +12,7 @@
  */
 package solutions.bellatrix.core.plugins
 
-import java.util.HashSet
+import java.util.*
 import java.util.function.Consumer
 
 class EventListener<TArgs> {

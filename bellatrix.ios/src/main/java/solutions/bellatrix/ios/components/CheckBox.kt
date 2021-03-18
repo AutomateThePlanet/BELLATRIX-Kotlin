@@ -12,10 +12,36 @@
  */
 package solutions.bellatrix.ios.components
 
-class CheckBox : IOSComponent() {
+import solutions.bellatrix.ios.components.contracts.ComponentChecked
+import solutions.bellatrix.ios.components.contracts.ComponentDisabled
+import solutions.bellatrix.ios.components.contracts.ComponentText
+import solutions.bellatrix.core.plugins.EventListener
+
+class CheckBox : IOSComponent(), ComponentDisabled, ComponentChecked, ComponentText {
     override val componentClass: Class<*>
         get() = javaClass
 
-    fun check() {}
-    fun uncheck() {}
+    fun check() {
+        defaultCheck(CHECKING, CHECKED)
+    }
+
+    fun uncheck() {
+        defaultUncheck(UNCHECKING, UNCHECKED)
+    }
+
+    override val isChecked: Boolean
+        get() = defaultGetCheckedAttribute()
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    override val text: String
+        get() = defaultGetText()
+
+    companion object {
+        val CHECKING = EventListener<ComponentActionEventArgs>()
+        val CHECKED = EventListener<ComponentActionEventArgs>()
+        val UNCHECKING = EventListener<ComponentActionEventArgs>()
+        val UNCHECKED = EventListener<ComponentActionEventArgs>()
+    }
 }

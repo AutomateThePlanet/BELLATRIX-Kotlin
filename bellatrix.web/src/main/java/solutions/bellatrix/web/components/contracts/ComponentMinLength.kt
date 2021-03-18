@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentMinLength : Component {
     val minLength: Int?
@@ -30,5 +30,5 @@ interface ComponentMinLength : Component {
         defaultValidateAttributeNotNull(this as WebComponent, minLength, "min length")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

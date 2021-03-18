@@ -12,9 +12,9 @@
  */
 package solutions.bellatrix.desktop.services
 
-import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
 import io.appium.java_client.windows.WindowsDriver
 import org.openqa.selenium.WebElement
+import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
 
 abstract class DesktopService {
     val wrappedDriver: WindowsDriver<WebElement>

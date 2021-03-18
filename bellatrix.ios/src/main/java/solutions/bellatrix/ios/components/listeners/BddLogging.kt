@@ -13,8 +13,8 @@
 package solutions.bellatrix.ios.components.listeners
 
 import solutions.bellatrix.ios.components.Anchor
-import solutions.bellatrix.ios.components.IOSComponent
 import solutions.bellatrix.ios.components.ComponentActionEventArgs
+import solutions.bellatrix.ios.components.IOSComponent
 
 object BddLogging {
     private var isBddLoggingTurnedOn = false

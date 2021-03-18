@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentLongDesc : Component {
     val longdesc: String
@@ -38,5 +38,5 @@ interface ComponentLongDesc : Component {
         defaultValidateAttributeNotContains(this as WebComponent, longdesc, value, "longdesc")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

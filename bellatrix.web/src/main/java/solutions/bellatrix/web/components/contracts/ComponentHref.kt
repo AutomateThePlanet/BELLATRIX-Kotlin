@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentHref : Component {
     val href: String
@@ -38,5 +38,5 @@ interface ComponentHref : Component {
         defaultValidateAttributeNotContains(this as WebComponent, href, value, "href")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

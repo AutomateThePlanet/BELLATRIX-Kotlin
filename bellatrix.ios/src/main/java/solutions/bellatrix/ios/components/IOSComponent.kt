@@ -25,13 +25,15 @@ import solutions.bellatrix.core.utilities.InstanceFactory
 import solutions.bellatrix.core.utilities.debugStackTrace
 import solutions.bellatrix.ios.components.contracts.Component
 import solutions.bellatrix.ios.configuration.IOSSettings
+import solutions.bellatrix.ios.findstrategies.*
 import solutions.bellatrix.ios.infrastructure.DriverService
 import solutions.bellatrix.ios.services.AppService
 import solutions.bellatrix.ios.services.ComponentCreateService
 import solutions.bellatrix.ios.services.ComponentWaitService
+import solutions.bellatrix.ios.waitstrategies.ToBeClickableWaitStrategy
+import solutions.bellatrix.ios.waitstrategies.ToBeVisibleWaitStrategy
 import solutions.bellatrix.ios.waitstrategies.ToExistsWaitStrategy
-import solutions.bellatrix.ios.waitstrategies.*
-import solutions.bellatrix.ios.findstrategies.*
+import solutions.bellatrix.ios.waitstrategies.WaitStrategy
 import java.util.*
 import java.util.function.Function
 import java.util.function.Supplier
@@ -59,7 +61,7 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
 
     fun hover() {
         HOVERING.broadcast(ComponentActionEventArgs(this))
-        val action: Actions = Actions(wrappedDriver)
+        val action = Actions(wrappedDriver)
         action.moveToElement(findElement()).build().perform()
         HOVERED.broadcast(ComponentActionEventArgs(this))
     }
@@ -172,7 +174,7 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
         for (i in 0 until nativeElements.stream().count()) {
             val component: TComponent = InstanceFactory.create()
             component.findStrategy = findStrategy
-            component.elementIndex = i as Int
+            component.elementIndex = i.toInt()
             component.parentWrappedElement = wrappedElement
             componentList.add(component)
         }
@@ -207,8 +209,31 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
         clicked.broadcast(ComponentActionEventArgs(this))
     }
 
+    protected fun defaultCheck(clicking: EventListener<ComponentActionEventArgs>, clicked: EventListener<ComponentActionEventArgs>) {
+        clicking.broadcast(ComponentActionEventArgs(this))
+        toExists<IOSComponent>().toBeClickable<IOSComponent>().waitToBe()
+        if (!this.defaultGetCheckedAttribute()) {
+            findElement().click()
+        }
+        clicked.broadcast(ComponentActionEventArgs(this))
+    }
+
+    protected fun defaultUncheck(clicking: EventListener<ComponentActionEventArgs>, clicked: EventListener<ComponentActionEventArgs>) {
+        clicking.broadcast(ComponentActionEventArgs(this))
+        toExists<IOSComponent>().toBeClickable<IOSComponent>().waitToBe()
+        if (this.defaultGetCheckedAttribute()) {
+            findElement().click()
+        }
+        clicked.broadcast(ComponentActionEventArgs(this))
+    }
+
     protected fun defaultGetDisabledAttribute(): Boolean {
         val valueAttr = Optional.ofNullable(getAttribute("disabled")).orElse("false")
+        return valueAttr.toLowerCase(Locale.ROOT) === "true"
+    }
+
+    protected fun defaultGetCheckedAttribute(): Boolean {
+        val valueAttr = Optional.ofNullable(getAttribute("checked")).orElse("false")
         return valueAttr.toLowerCase(Locale.ROOT) === "true"
     }
 
@@ -256,7 +281,7 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
             //            swipe.put("direction", "down"); // "up", "right", "left"
             //            swipe.put("element", element.getId());
             //            js.executeScript("mobile:swipe", swipe);
-            val action: Actions = Actions(wrappedDriver)
+            val action = Actions(wrappedDriver)
             action.moveToElement(wrappedElement).perform()
             if (shouldWait) {
                 Thread.sleep(500)
@@ -268,41 +293,6 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
             ex.debugStackTrace()
         }
         SCROLLED_TO_VISIBLE.broadcast(ComponentActionEventArgs(this))
-    }
-
-    protected fun defaultValidateAttributeSet(supplier: Supplier<String>, attributeName: String) {
-        waitUntil({ d: SearchContext? -> !StringUtils.isEmpty(supplier.get()) }, String.format("The control's %s shouldn't be empty but was.", attributeName))
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, "", String.format("validate %s is empty", attributeName)))
-    }
-
-    protected fun defaultValidateAttributeNotSet(supplier: Supplier<String>, attributeName: String) {
-        waitUntil({ d: SearchContext? -> StringUtils.isEmpty(supplier.get()) }, String.format("The control's %s should be null but was '%s'.", attributeName, supplier.get()))
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, "", String.format("validate %s is null", attributeName)))
-    }
-
-    protected fun defaultValidateAttributeIs(supplier: Supplier<String>, value: String, attributeName: String) {
-        waitUntil({ d: SearchContext? -> supplier.get().strip() == value }, String.format("The control's %s should be '%s' but was '%s'.", attributeName, value, supplier.get()))
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, value, String.format("validate %s is %s", attributeName, value)))
-    }
-
-    protected fun defaultValidateAttributeContains(supplier: Supplier<String>, value: String, attributeName: String) {
-        waitUntil({ d: SearchContext? -> supplier.get().strip().contains(value) }, String.format("The control's %s should contain '%s' but was '%s'.", attributeName, value, supplier.get()))
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, value, String.format("validate %s contains %s", attributeName, value)))
-    }
-
-    protected fun defaultValidateAttributeNotContains(supplier: Supplier<String>, value: String, attributeName: String) {
-        waitUntil({ d: SearchContext? -> !supplier.get().strip().contains(value) }, String.format("The control's %s shouldn't contain '%s' but was '%s'.", attributeName, value, supplier.get()))
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, value, String.format("validate %s doesn't contain %s", attributeName, value)))
-    }
-
-    private fun waitUntil(waitCondition: Function<SearchContext, Boolean>, exceptionMessage: String) {
-        val webDriverWait = WebDriverWait(DriverService.getWrappedIOSDriver(), IOSSettings.timeoutSettings.validationsTimeout, IOSSettings.timeoutSettings.sleepInterval)
-        try {
-            webDriverWait.until<Boolean>(waitCondition)
-        } catch (ex: TimeoutException) {
-            ex.debugStackTrace()
-            throw ex
-        }
     }
 
     companion object {

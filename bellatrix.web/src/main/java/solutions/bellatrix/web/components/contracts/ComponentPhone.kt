@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentPhone : Component {
     fun getPhone(): String
@@ -31,5 +31,5 @@ interface ComponentPhone : Component {
         defaultValidateAttributeNotContains(this as WebComponent, getPhone(), value, "phone")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

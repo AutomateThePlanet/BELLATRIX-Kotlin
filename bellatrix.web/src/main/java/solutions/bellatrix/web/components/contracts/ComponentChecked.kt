@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentChecked : Component {
     val isChecked: Boolean
@@ -26,5 +26,5 @@ interface ComponentChecked : Component {
         defaultValidateAttributeTrue(this as WebComponent, !isChecked, "unchecked")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

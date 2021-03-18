@@ -5,30 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8245e955-d542-4865-aa33-5a16f0f502e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/contracts/ComponentChecked.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/contracts/ComponentDate.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/contracts/ComponentDisabled.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/contracts/ComponentSelected.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/contracts/ComponentText.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/contracts/ComponentTime.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/contracts/ComponentVisible.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/validators/DesktopValidator.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Anchor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Anchor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Button.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Button.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/CheckBox.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/CheckBox.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/DesktopComponent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Div.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/ComboBox.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Heading.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Date.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Image.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Image.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/InputFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Expander.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Label.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Label.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Option.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/ListBox.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/RadioButton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/RadioButton.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Search.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Password.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Select.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Menu.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Span.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/Tabs.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/listeners/BddLogging.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bellatrix.desktop/src/main/java/solutions/bellatrix/desktop/components/listeners/BddLogging.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="web-components-fixes" />
+        <entry key="$PROJECT_DIR$" value="desktop-components-impl" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -77,19 +54,27 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/bellatrix.web.tests" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bellatrix.ios/src/main/java/solutions/bellatrix/ios/components" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.545977" />
     <property name="settings.editor.selected.configurable" value="project.kotlinCompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Work\Desktop\Repos\BELLATRIX-Kotlin\bellatrix.ios\src\main\java\solutions\bellatrix\ios\components" />
+      <recent name="C:\Users\Work\Desktop\Repos\BELLATRIX-Kotlin\bellatrix.ios\src\main\java\solutions\bellatrix\ios\components\contracts" />
+      <recent name="C:\Users\Work\Desktop\Repos\BELLATRIX-Kotlin\bellatrix.ios\src\main\java\solutions\bellatrix\ios" />
+      <recent name="C:\Users\Work\Desktop\Repos\BELLATRIX-Kotlin\bellatrix.android\src\main\java\solutions\bellatrix\ios\components\contracts" />
+    </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="solutions.bellatrix.android.components" />
+      <recent name="solutions.bellatrix.android.components.contracts" />
       <recent name="solutions.bellatrix.desktop.components.contracts" />
       <recent name="solutions.bellatrix.web.components" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.CalculatorTests">
+  <component name="RunManager" selected="JUnit.CalculatorTests">
     <configuration name="CalculatorTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bellatrix.desktop.tests" />
       <extension name="coverage">
@@ -172,8 +157,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.CalculatorTests" />
         <item itemvalue="JUnit.CalculatorTests" />
+        <item itemvalue="TestNG.CalculatorTests" />
         <item itemvalue="JUnit.ProductPurchaseTests.addition" />
         <item itemvalue="TestNG.ProductPurchaseTests" />
         <item itemvalue="JUnit.ProductPurchaseTests" />
@@ -287,7 +272,42 @@
       <option name="project" value="LOCAL" />
       <updated>1615535788989</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="implemented desktop components">
+      <created>1615541022712</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1615541022712</updated>
+    </task>
+    <task id="LOCAL-00016" summary="implemented TouchActionsService">
+      <created>1615888785156</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1615888785156</updated>
+    </task>
+    <task id="LOCAL-00017" summary="implemented android components and validations, optimized imports">
+      <created>1615889201796</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1615889201796</updated>
+    </task>
+    <task id="LOCAL-00018" summary="implemented TouchActionsService for mobile">
+      <created>1615890508375</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1615890508375</updated>
+    </task>
+    <task id="LOCAL-00019" summary="implemented iOS components and validations">
+      <created>1615890589643</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1615890589643</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -317,7 +337,12 @@
     <MESSAGE value="fixed testng base test class" />
     <MESSAGE value="removed redundant modifier on getter" />
     <MESSAGE value="fixed tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed tests" />
+    <MESSAGE value="implemented desktop components" />
+    <MESSAGE value="implemented TouchActionsService" />
+    <MESSAGE value="implemented android components and validations, optimized imports" />
+    <MESSAGE value="implemented TouchActionsService for mobile" />
+    <MESSAGE value="implemented iOS components and validations" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented iOS components and validations" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

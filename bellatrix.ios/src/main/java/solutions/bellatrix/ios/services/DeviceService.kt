@@ -12,10 +12,10 @@
  */
 package solutions.bellatrix.ios.services
 
+import org.openqa.selenium.Rotatable
+import org.openqa.selenium.ScreenOrientation
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import org.openqa.selenium.ScreenOrientation
-import org.openqa.selenium.Rotatable
 
 object DeviceService : MobileService() {
     val deviceTime: LocalDateTime

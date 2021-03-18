@@ -14,7 +14,6 @@ package solutions.bellatrix.core.utilities
 
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.core.configuration.TroubleshootingSettings
-import java.lang.Exception
 
 fun Exception.debugStackTrace() {
     if (ConfigurationService.get<TroubleshootingSettings>().debugInformationEnabled) {

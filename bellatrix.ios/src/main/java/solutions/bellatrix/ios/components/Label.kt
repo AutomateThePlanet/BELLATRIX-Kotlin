@@ -12,7 +12,12 @@
  */
 package solutions.bellatrix.ios.components
 
-class Label : IOSComponent() {
+import solutions.bellatrix.ios.components.contracts.ComponentText
+
+class Label : IOSComponent(), ComponentText {
     override val componentClass: Class<*>
         get() = javaClass
+
+    override val text: String
+        get() = defaultGetText()
 }

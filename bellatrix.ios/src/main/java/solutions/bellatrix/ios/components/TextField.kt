@@ -12,16 +12,28 @@
  */
 package solutions.bellatrix.ios.components
 
+import solutions.bellatrix.ios.components.contracts.ComponentDisabled
+import solutions.bellatrix.ios.components.contracts.ComponentText
 import solutions.bellatrix.core.plugins.EventListener
 
-class TextField : IOSComponent() {
-    var text: String
-        get() = defaultGetText()
-        set(value) {
-            defaultSetText(SETTING_TEXT, TEXT_SET, value)
-        }
+class TextField : IOSComponent(), ComponentDisabled, ComponentText {
     override val componentClass: Class<*>
         get() = javaClass
+
+    @JvmName("getTextFromTextField")
+    fun getText(): String {
+        return text
+    }
+
+    fun setText(value: String) {
+        defaultSetText(SETTING_TEXT, TEXT_SET, value)
+    }
+
+    override val isDisabled: Boolean
+        get() = defaultGetDisabledAttribute()
+
+    override val text: String
+        get() = defaultGetText()
 
     companion object {
         val SETTING_TEXT = EventListener<ComponentActionEventArgs>()

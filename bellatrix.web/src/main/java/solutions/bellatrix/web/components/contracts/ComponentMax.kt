@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentMax : Component {
     val max: Double?
@@ -30,5 +30,5 @@ interface ComponentMax : Component {
         defaultValidateAttributeIs(this as WebComponent, max, value.toDouble(), "max")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }

@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.validations.WebValidator
+import solutions.bellatrix.web.validations.ComponentValidator
 
 interface ComponentPassword : Component {
     fun getPassword(): String
@@ -31,5 +31,5 @@ interface ComponentPassword : Component {
         defaultValidateAttributeNotContains(this as WebComponent, getPassword(), value, "password")
     }
 
-    companion object : WebValidator()
+    companion object : ComponentValidator()
 }
