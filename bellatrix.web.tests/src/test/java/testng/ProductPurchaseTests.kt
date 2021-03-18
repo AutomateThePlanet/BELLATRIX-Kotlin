@@ -18,22 +18,14 @@ import pages.cartpage.CartPage
 import pages.checkoutpage.CheckoutPage
 import pages.checkoutpage.PurchaseInfo
 import pages.mainpage.MainPage
-import solutions.bellatrix.web.components.*
-import solutions.bellatrix.web.infrastructure.*
+import solutions.bellatrix.web.components.Anchor
+import solutions.bellatrix.web.infrastructure.Browser
+import solutions.bellatrix.web.infrastructure.ExecutionBrowser
+import solutions.bellatrix.web.infrastructure.Lifecycle
 import solutions.bellatrix.web.infrastructure.testng.WebTest
 
 @ExecutionBrowser(browser = Browser.CHROME, lifecycle = Lifecycle.REUSE_IF_STARTED)
 class ProductPurchaseTests : WebTest() {
-    @Test
-    fun sandbox() {
-        app.navigate.to("https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number")
-        val frame = app.create.byId<Frame>("frame_Value")
-        app.browser.switchToFrame(frame)
-        val input = app.create.byXPath<NumberInput>("//input")
-        input.validateNumberIs(42)
-        input.validateMaxNotSet()
-    }
-
     @Test
     fun completePurchaseSuccessfully_first() {
         app.navigate.to("http://demos.bellatrix.solutions/")

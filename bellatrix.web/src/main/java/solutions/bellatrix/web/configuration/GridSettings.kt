@@ -10,11 +10,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pages.breadcrumbsection
+package solutions.bellatrix.web.configuration
 
-import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.pages.PageMap
+import java.util.*
 
-class Map : PageMap() {
-    val breadcrumb: WebComponent = create.byCss("woocommerce-breadcrumb")
+class GridSettings {
+    var providerName: String = ""
+    var url: String = ""
+    var arguments: List<HashMap<String, String>> = ArrayList<HashMap<String, String>>()
 }

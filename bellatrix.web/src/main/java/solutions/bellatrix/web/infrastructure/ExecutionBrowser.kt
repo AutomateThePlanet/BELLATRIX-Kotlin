@@ -10,11 +10,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pages.breadcrumbsection
+package solutions.bellatrix.web.infrastructure
 
-import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.pages.PageMap
+import org.openqa.selenium.Platform
 
-class Map : PageMap() {
-    val breadcrumb: WebComponent = create.byCss("woocommerce-breadcrumb")
-}
+@Target(AnnotationTarget.ANNOTATION_CLASS, AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
+@kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+annotation class ExecutionBrowser(val browser: Browser = Browser.CHROME, val lifecycle: Lifecycle = Lifecycle.RESTART_EVERY_TIME, val browserVersion: Int = 0, val platform: Platform = Platform.ANY, val width: Int = 0, val height: Int = 0)

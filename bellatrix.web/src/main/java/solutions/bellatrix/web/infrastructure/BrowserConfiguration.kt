@@ -10,11 +10,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pages.breadcrumbsection
+package solutions.bellatrix.web.infrastructure
 
-import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.pages.PageMap
+import org.openqa.selenium.Platform
+import java.util.*
 
-class Map : PageMap() {
-    val breadcrumb: WebComponent = create.byCss("woocommerce-breadcrumb")
+data class BrowserConfiguration(
+        val browser: Browser,
+        val lifecycle: Lifecycle,
+        val version: Int = 0,
+        val height: Int = 0,
+        val width: Int = 0,
+        val platform: Platform = Platform.ANY) {
+    var driverOptions: HashMap<String, String> = HashMap()
 }

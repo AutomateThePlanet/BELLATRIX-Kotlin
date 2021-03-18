@@ -10,11 +10,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pages.breadcrumbsection
+package solutions.bellatrix.web.services
 
 import solutions.bellatrix.web.components.WebComponent
-import solutions.bellatrix.web.pages.PageMap
+import solutions.bellatrix.web.infrastructure.DriverService.wrappedDriver
+import solutions.bellatrix.web.waitstrategies.WaitStrategy
 
-class Map : PageMap() {
-    val breadcrumb: WebComponent = create.byCss("woocommerce-breadcrumb")
+object ComponentWaitService : WebService() {
+    fun wait(component: WebComponent, waitStrategy: WaitStrategy) {
+        if (component.parentWrappedElement == null) {
+            waitStrategy.waitUntil(wrappedDriver(), component.findStrategy.convert())
+        } else {
+            waitStrategy.waitUntil(component.parentWrappedElement!!, component.findStrategy.convert())
+        }
+    }
 }
