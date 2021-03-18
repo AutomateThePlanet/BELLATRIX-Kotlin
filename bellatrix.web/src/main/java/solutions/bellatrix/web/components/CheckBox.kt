@@ -22,7 +22,7 @@ open class CheckBox : WebComponent(), ComponentDisabled, ComponentChecked, Compo
         get() = javaClass
 
     fun check() {
-        defaultCheck(CHECKING, CHECKED, isChecked)
+        defaultCheck(CHECKING, CHECKED)
     }
 
     fun uncheck() {
