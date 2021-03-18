@@ -16,7 +16,11 @@ import java.lang.reflect.ParameterizedType
 
 object InstanceFactory {
     inline fun <reified T> create(): T {
-        return T::class.java.constructors[0].newInstance() as T
+        return try {
+            T::class.java.constructors[0].newInstance() as T
+        } catch (ex: Exception) {
+            T::class.objectInstance!!
+        }
     }
 
     inline fun <T> createByClass(tclass: Class<T>): T {
@@ -24,10 +28,10 @@ object InstanceFactory {
     }
 
     inline fun <reified T> create(vararg args: Any): T {
-        try {
-            return T::class.java.constructors[0].newInstance(args) as T
+        return try {
+            T::class.java.constructors[0].newInstance(args) as T
         } catch (ex: Exception) {
-            return T::class.java.constructors[0].newInstance(args) as T
+            T::class.java.constructors[0].newInstance(args) as T
         }
     }
 
