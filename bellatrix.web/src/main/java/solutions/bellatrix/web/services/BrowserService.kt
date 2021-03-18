@@ -14,10 +14,19 @@ package solutions.bellatrix.web.services
 
 import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.edge.EdgeDriver
+import org.openqa.selenium.firefox.FirefoxDriver
+import org.openqa.selenium.ie.InternetExplorerDriver
+import org.openqa.selenium.opera.OperaDriver
+import org.openqa.selenium.safari.SafariDriver
 import org.openqa.selenium.support.ui.WebDriverWait
 import solutions.bellatrix.core.configuration.ConfigurationService
+import solutions.bellatrix.core.utilities.InstanceFactory
 import solutions.bellatrix.web.components.Frame
 import solutions.bellatrix.web.configuration.WebSettings
+import solutions.bellatrix.web.infrastructure.Browser
+import solutions.bellatrix.web.infrastructure.BrowserConfiguration
 
 object BrowserService : WebService() {
     private val javascriptExecutor: JavascriptExecutor
@@ -66,75 +75,66 @@ object BrowserService : WebService() {
         wrappedDriver.switchTo().frame(frame.findElement())
     }
 
-    //    public void ClearSessionStorage() {
-    //        var browserConfig = ServicesCollection.Current.Resolve < BrowserConfiguration > ();
-    //        switch (browserConfig.BrowserType) {
-    //            case BrowserType.NotSet:
-    //                break;
-    //            case BrowserType.Chrome:
-    //            case BrowserType.ChromeHeadless:
-    //                var chromeDriver = (ChromeDriver) WrappedDriver;
-    //                chromeDriver.WebStorage.SessionStorage.Clear();
-    //                break;
-    //            case BrowserType.Firefox:
-    //            case BrowserType.FirefoxHeadless:
-    //                var firefoxDriver = (FirefoxDriver) WrappedDriver;
-    //                firefoxDriver.WebStorage.SessionStorage.Clear();
-    //                break;
-    //            case BrowserType.InternetExplorer:
-    //                var ieDriver = (InternetExplorerDriver) WrappedDriver;
-    //                ieDriver.WebStorage.SessionStorage.Clear();
-    //                break;
-    //            case BrowserType.Edge:
-    //            case BrowserType.EdgeHeadless:
-    //                var edgeDriver = (EdgeDriver) WrappedDriver;
-    //                edgeDriver.WebStorage.SessionStorage.Clear();
-    //                break;
-    //            case BrowserType.Opera:
-    //                var operaDriver = (OperaDriver) WrappedDriver;
-    //                operaDriver.WebStorage.SessionStorage.Clear();
-    //                break;
-    //            case BrowserType.Safari:
-    //                var safariDriver = (SafariDriver) WrappedDriver;
-    //                safariDriver.WebStorage.SessionStorage.Clear();
-    //                break;
-    //        }
-    //    }
-    //
-    //    public void ClearLocalStorage() {
-    //        var browserConfig = ServicesCollection.Current.Resolve < BrowserConfiguration > ();
-    //        switch (browserConfig.BrowserType) {
-    //            case BrowserType.NotSet:
-    //                break;
-    //            case BrowserType.Chrome:
-    //            case BrowserType.ChromeHeadless:
-    //                var chromeDriver = (ChromeDriver) WrappedDriver;
-    //                chromeDriver.WebStorage.LocalStorage.Clear();
-    //                break;
-    //            case BrowserType.Firefox:
-    //            case BrowserType.FirefoxHeadless:
-    //                var firefoxDriver = (FirefoxDriver) WrappedDriver;
-    //                firefoxDriver.WebStorage.LocalStorage.Clear();
-    //                break;
-    //            case BrowserType.InternetExplorer:
-    //                var ieDriver = (InternetExplorerDriver) WrappedDriver;
-    //                ieDriver.WebStorage.LocalStorage.Clear();
-    //                break;
-    //            case BrowserType.Edge:
-    //            case BrowserType.EdgeHeadless:
-    //                var edgeDriver = (EdgeDriver) WrappedDriver;
-    //                edgeDriver.WebStorage.LocalStorage.Clear();
-    //                break;
-    //            case BrowserType.Opera:
-    //                var operaDriver = (OperaDriver) WrappedDriver;
-    //                operaDriver.WebStorage.LocalStorage.Clear();
-    //                break;
-    //            case BrowserType.Safari:
-    //                var safariDriver = (SafariDriver) WrappedDriver;
-    //                safariDriver.WebStorage.LocalStorage.Clear();
-    //                break;
-    //        }
-    //    }
+    fun clearSessionStorage() {
+        val browserConfig = InstanceFactory.create<BrowserConfiguration>()
+        when (browserConfig.browser) {
+            Browser.CHROME, Browser.CHROME_HEADLESS -> {
+                val chromeDriver = wrappedDriver as ChromeDriver
+                chromeDriver.sessionStorage.clear()
+            }
+            Browser.FIREFOX, Browser.FIREFOX_HEADLESS -> {
+                val firefoxDriver = wrappedDriver as FirefoxDriver
+                firefoxDriver.sessionStorage.clear()
+            }
+            Browser.INTERNET_EXPLORER -> {
+                val ieDriver = wrappedDriver as InternetExplorerDriver
+                (ieDriver as JavascriptExecutor).executeScript("sessionStorage.clear()")
+            }
+            Browser.EDGE, Browser.EDGE_HEADLESS -> {
+                val edgeDriver = wrappedDriver as EdgeDriver
+                (edgeDriver as JavascriptExecutor).executeScript("sessionStorage.clear()")
+            }
+            Browser.OPERA -> {
+                val operaDriver = wrappedDriver as OperaDriver
+                operaDriver.sessionStorage.clear()
+            }
+            Browser.SAFARI -> {
+                val safariDriver = wrappedDriver as SafariDriver
+                (safariDriver as JavascriptExecutor).executeScript("sessionStorage.clear()")
+            }
+        }
+    }
+
+    fun clearLocalStorage() {
+        val browserConfig = InstanceFactory.create<BrowserConfiguration>()
+        when (browserConfig.browser) {
+            Browser.CHROME, Browser.CHROME_HEADLESS -> {
+                val chromeDriver = wrappedDriver as ChromeDriver
+                chromeDriver.localStorage.clear()
+            }
+            Browser.FIREFOX, Browser.FIREFOX_HEADLESS -> {
+                val firefoxDriver = wrappedDriver as FirefoxDriver
+                firefoxDriver.localStorage.clear()
+            }
+            Browser.INTERNET_EXPLORER -> {
+                val ieDriver = wrappedDriver as InternetExplorerDriver
+                (ieDriver as JavascriptExecutor).executeScript("localStorage.clear()")
+            }
+            Browser.EDGE, Browser.EDGE_HEADLESS -> {
+                val edgeDriver = wrappedDriver as EdgeDriver
+                (edgeDriver as JavascriptExecutor).executeScript("localStorage.clear()")
+            }
+            Browser.OPERA -> {
+                val operaDriver = wrappedDriver as OperaDriver
+                operaDriver.localStorage.clear()
+            }
+            Browser.SAFARI -> {
+                val safariDriver = wrappedDriver as SafariDriver
+                (safariDriver as JavascriptExecutor).executeScript("localStorage.clear()")
+            }
+        }
+    }
+
     fun waitForAjax() {
         val ajaxTimeout = ConfigurationService.get<WebSettings>().timeoutSettings.waitForAjaxTimeout
         val sleepInterval = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
@@ -147,11 +147,11 @@ object BrowserService : WebService() {
         val ajaxTimeout = ConfigurationService.get<WebSettings>().timeoutSettings.waitForAjaxTimeout
         val sleepInterval = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
         val webDriverWait = WebDriverWait(wrappedDriver, (ajaxTimeout + additionalTimeoutInSeconds), sleepInterval)
-        webDriverWait.until { d: WebDriver? ->
+        webDriverWait.until {
             val script = String.format("return performance.getEntriesByType('resource').filter(item => item.initiatorType == 'xmlhttprequest' && item.name.toLowerCase().includes('%s'))[0] !== undefined;", requestPartialUrl)
             val result = javascriptExecutor.executeScript(script) as String
             if (result === "True") {
-                true
+                return@until true
             }
             false
         }
@@ -177,7 +177,7 @@ object BrowserService : WebService() {
         val webDriverWait = WebDriverWait(wrappedDriver, angularTimeout, sleepInterval)
         val isAngular5 = javascriptExecutor.executeScript("return getAllAngularRootElements()[0].attributes['ng-version']") as String
         if (isAngular5.isBlank()) {
-            webDriverWait.until { d: WebDriver? -> javascriptExecutor.executeScript("return window.getAllAngularTestabilities().findIndex(x=>!x.isStable()) === -1") as Boolean }
+            webDriverWait.until { javascriptExecutor.executeScript("return window.getAllAngularTestabilities().findIndex(x=>!x.isStable()) === -1") as Boolean }
         } else {
             val isAngularDefined = javascriptExecutor.executeScript("return window.angular === undefined") as Boolean
             if (!isAngularDefined) {
