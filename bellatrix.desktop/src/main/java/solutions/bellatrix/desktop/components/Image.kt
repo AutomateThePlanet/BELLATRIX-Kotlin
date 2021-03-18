@@ -12,9 +12,6 @@
  */
 package solutions.bellatrix.desktop.components
 
-import solutions.bellatrix.desktop.components.DesktopComponent
-import solutions.bellatrix.desktop.components.RadioButton
-
 class Image : DesktopComponent() {
     override val componentClass: Class<*>
         get() = javaClass

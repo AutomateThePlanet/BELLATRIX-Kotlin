@@ -12,23 +12,19 @@
  */
 package solutions.bellatrix.desktop.components
 
-import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
-import layout.LayoutComponentValidationsBuilder
-import org.openqa.selenium.WebElement
 import io.appium.java_client.windows.WindowsDriver
-import solutions.bellatrix.desktop.services.AppService
-import solutions.bellatrix.desktop.configuration.DesktopSettings
-import solutions.bellatrix.core.utilities.InstanceFactory
-import org.apache.commons.lang3.StringUtils
+import layout.LayoutComponentValidationsBuilder
 import org.openqa.selenium.*
 import org.openqa.selenium.interactions.Actions
-import java.lang.InterruptedException
-import org.openqa.selenium.support.ui.WebDriverWait
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.core.utilities.InstanceFactory
 import solutions.bellatrix.core.utilities.debugStackTrace
 import solutions.bellatrix.desktop.components.contracts.Component
+import solutions.bellatrix.desktop.configuration.DesktopSettings
 import solutions.bellatrix.desktop.findstrategies.*
+import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
+import solutions.bellatrix.desktop.services.AppService
 import solutions.bellatrix.desktop.services.ComponentCreateService
 import solutions.bellatrix.desktop.services.ComponentWaitService
 import solutions.bellatrix.desktop.waitstrategies.ToBeClickableWaitStrategy
@@ -36,8 +32,6 @@ import solutions.bellatrix.desktop.waitstrategies.ToBeVisibleWaitStrategy
 import solutions.bellatrix.desktop.waitstrategies.ToExistsWaitStrategy
 import solutions.bellatrix.desktop.waitstrategies.WaitStrategy
 import java.util.*
-import java.util.function.Function
-import java.util.function.Supplier
 
 open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
     override lateinit var wrappedElement: WebElement
@@ -232,6 +226,12 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
         valueSet.broadcast(ComponentActionEventArgs(this))
     }
 
+    protected open fun defaultSelectByText(settingValue: EventListener<ComponentActionEventArgs>, valueSet: EventListener<ComponentActionEventArgs>, value: String) {
+        settingValue.broadcast(ComponentActionEventArgs(this))
+        if (defaultGetText() != value) findElement().sendKeys(value)
+        valueSet.broadcast(ComponentActionEventArgs(this))
+    }
+
     private fun findNativeElement(): WebElement {
         return if (parentWrappedElement == null) {
             findStrategy.findAllElements(wrappedDriver)[elementIndex]
@@ -274,41 +274,6 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
         SCROLLED_TO_VISIBLE.broadcast(ComponentActionEventArgs(this))
     }
 
-    protected fun defaultValidateAttributeSet(supplier: Supplier<String>, attributeName: String) {
-        waitUntil({ d: SearchContext? -> !StringUtils.isEmpty(supplier.get()) }, String.format("The control's %s shouldn't be empty but was.", attributeName))
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, "", String.format("validate %s is empty", attributeName)))
-    }
-
-    protected fun defaultValidateAttributeNotSet(supplier: Supplier<String>, attributeName: String) {
-        waitUntil({ d: SearchContext? -> StringUtils.isEmpty(supplier.get()) }, String.format("The control's %s should be null but was '%s'.", attributeName, supplier.get()))
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, "", String.format("validate %s is null", attributeName)))
-    }
-
-    protected fun defaultValidateAttributeIs(supplier: Supplier<String>, value: String, attributeName: String) {
-        waitUntil({ d: SearchContext? -> supplier.get().strip() == value }, String.format("The control's %s should be '%s' but was '%s'.", attributeName, value, supplier.get()))
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, value, String.format("validate %s is %s", attributeName, value)))
-    }
-
-    protected fun defaultValidateAttributeContains(supplier: Supplier<String>, value: String, attributeName: String) {
-        waitUntil({ d: SearchContext? -> supplier.get().strip().contains(value) }, String.format("The control's %s should contain '%s' but was '%s'.", attributeName, value, supplier.get()))
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, value, String.format("validate %s contains %s", attributeName, value)))
-    }
-
-    protected fun defaultValidateAttributeNotContains(supplier: Supplier<String>, value: String, attributeName: String) {
-        waitUntil({ d: SearchContext? -> !supplier.get().strip().contains(value) }, String.format("The control's %s shouldn't contain '%s' but was '%s'.", attributeName, value, supplier.get()))
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(this, value, String.format("validate %s doesn't contain %s", attributeName, value)))
-    }
-
-    private fun waitUntil(waitCondition: Function<SearchContext, Boolean>, exceptionMessage: String) {
-        val webDriverWait = WebDriverWait(getWrappedDriver(), desktopSettings.timeoutSettings.validationsTimeout, desktopSettings.timeoutSettings.sleepInterval)
-        try {
-            webDriverWait.until(waitCondition)
-        } catch (ex: TimeoutException) {
-            ex.debugStackTrace()
-            throw ex
-        }
-    }
-
     companion object {
         val HOVERING = EventListener<ComponentActionEventArgs>()
         val HOVERED = EventListener<ComponentActionEventArgs>()
@@ -319,7 +284,6 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
         val CREATED_ELEMENT = EventListener<ComponentActionEventArgs>()
         val CREATING_ELEMENTS = EventListener<ComponentActionEventArgs>()
         val CREATED_ELEMENTS = EventListener<ComponentActionEventArgs>()
-        val VALIDATED_ATTRIBUTE = EventListener<ComponentActionEventArgs>()
     }
 
     init {

@@ -10,14 +10,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.desktop.components
+package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
-import solutions.bellatrix.desktop.components.RadioButton
+import solutions.bellatrix.desktop.components.validators.DesktopValidator
 
-class Span : DesktopComponent() {
-    val text: String
-        get() = findElement().text
-    override val componentClass: Class<*>
-        get() = javaClass
+interface ComponentTime : Component {
+    fun getTime(): String
+
+    fun validateTimeIs(value: String) {
+        defaultValidateAttributeIs(this as DesktopComponent, getTime(), value, "time")
+    }
+
+    fun validateTimeContains(value: String) {
+        defaultValidateAttributeContains(this as DesktopComponent, getTime(), value, "time")
+    }
+
+    fun validateTimeNotContains(value: String) {
+        defaultValidateAttributeNotContains(this as DesktopComponent, getTime(), value, "time")
+    }
+
+    companion object : DesktopValidator()
 }

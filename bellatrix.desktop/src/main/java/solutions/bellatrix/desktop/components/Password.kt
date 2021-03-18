@@ -13,21 +13,21 @@
 package solutions.bellatrix.desktop.components
 
 import solutions.bellatrix.core.plugins.EventListener
-import solutions.bellatrix.desktop.components.contracts.ComponentText
 
-class Anchor : DesktopComponent(), ComponentText {
+class Password : DesktopComponent() {
     override val componentClass: Class<*>
         get() = javaClass
 
-    fun click() {
-        defaultClick(CLICKING, CLICKED)
+    fun setPassword(password: String) {
+        defaultSetText(SETTING_PASSWORD, PASSWORD_SET, password)
     }
 
-    override val text: String
-        get() = defaultGetText()
+    fun getPassword(): String {
+        return defaultGetText()
+    }
 
     companion object {
-        val CLICKING = EventListener<ComponentActionEventArgs>()
-        val CLICKED = EventListener<ComponentActionEventArgs>()
+        val SETTING_PASSWORD = EventListener<ComponentActionEventArgs>()
+        val PASSWORD_SET = EventListener<ComponentActionEventArgs>()
     }
 }
