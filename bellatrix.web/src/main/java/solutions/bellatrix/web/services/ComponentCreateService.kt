@@ -50,35 +50,35 @@ object ComponentCreateService : WebService() {
         return create<TComponent, InnerTextContainsFindStrategy>(innerText)
     }
 
-    inline fun <reified TComponent : WebComponent> allByyId(id: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> allById(id: String): List<TComponent> {
         return createAll<TComponent, IdFindStrategy>(id)
     }
 
-    inline fun <reified TComponent : WebComponent> allByyCss(css: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> allByCss(css: String): List<TComponent> {
         return createAll<TComponent, CssFindStrategy>(css)
     }
 
-    inline fun <reified TComponent : WebComponent> allByyClass(cclass: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> allByClass(cclass: String): List<TComponent> {
         return createAll<TComponent, ClassFindStrategy>(cclass)
     }
 
-    inline fun <reified TComponent : WebComponent> allByyXPath(xpath: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> allByXPath(xpath: String): List<TComponent> {
         return createAll<TComponent, XPathFindStrategy>(xpath)
     }
 
-    inline fun <reified TComponent : WebComponent> allByyLinkText(linkText: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> allByLinkText(linkText: String): List<TComponent> {
         return createAll<TComponent, LinkTextFindStrategy>(linkText)
     }
 
-    inline fun <reified TComponent : WebComponent> allByyTag(tag: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> allByTag(tag: String): List<TComponent> {
         return createAll<TComponent, TagFindStrategy>(tag)
     }
 
-    inline fun <reified TComponent : WebComponent> allByyIdContaining(idContaining: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> allByIdContaining(idContaining: String): List<TComponent> {
         return createAll<TComponent, IdContainingFindStrategy>(idContaining)
     }
 
-    inline fun <reified TComponent : WebComponent> allByyInnerTextContaining(innerText: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> allByInnerTextContaining(innerText: String): List<TComponent> {
         return createAll<TComponent, InnerTextContainsFindStrategy>(innerText)
     }
 
