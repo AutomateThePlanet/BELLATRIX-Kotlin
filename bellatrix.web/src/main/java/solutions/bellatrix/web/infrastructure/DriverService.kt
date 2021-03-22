@@ -26,6 +26,8 @@ import org.openqa.selenium.opera.OperaDriver
 import org.openqa.selenium.opera.OperaOptions
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.remote.RemoteWebDriver
+import org.openqa.selenium.safari.SafariDriver
+import org.openqa.selenium.safari.SafariOptions
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.web.configuration.GridSettings
 import solutions.bellatrix.web.configuration.WebSettings
@@ -162,7 +164,14 @@ object DriverService {
                 val driver = OperaDriver(operaOptions)
                 driver
             }
-            Browser.SAFARI -> throw InvalidArgumentException("BELLATRIX doesn't support Safari.")
+            Browser.SAFARI -> {
+                System.setProperty("WebDriver.safari.driver","/usr/bin/safaridriver")
+                val safariOptions = SafariOptions()
+                addDriverOptions(safariOptions)
+                if (shouldCaptureHttpTraffic) safariOptions.setProxy(proxyConfig)
+                val driver = SafariDriver(safariOptions)
+                driver
+            }
             Browser.INTERNET_EXPLORER -> {
                 WebDriverManager.iedriver().setup()
                 val internetExplorerOptions = InternetExplorerOptions()
@@ -198,6 +207,11 @@ object DriverService {
                 addGridOptions(chromeOptions, gridSettings)
                 caps.setCapability(ChromeOptions.CAPABILITY, chromeOptions)
             }
+            Browser.EDGE_HEADLESS, Browser.EDGE -> {
+                val edgeOptions = EdgeOptions()
+                addGridOptions(edgeOptions, gridSettings)
+                caps.setCapability(ChromeOptions.CAPABILITY, edgeOptions)
+            }
             Browser.FIREFOX_HEADLESS, Browser.FIREFOX -> {
                 val firefoxOptions = FirefoxOptions()
                 addGridOptions(firefoxOptions, gridSettings)
@@ -209,7 +223,9 @@ object DriverService {
                 caps.setCapability(ChromeOptions.CAPABILITY, operaOptions)
             }
             Browser.SAFARI -> {
-                throw InvalidArgumentException("BELLATRIX doesn't support Safari.")
+                val safariOptions = SafariOptions()
+                addGridOptions(safariOptions, gridSettings)
+                SafariOptions.fromCapabilities(safariOptions)
             }
             Browser.INTERNET_EXPLORER -> {
                 val ieOptions = InternetExplorerOptions()
