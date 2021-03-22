@@ -14,15 +14,16 @@ package solutions.bellatrix.web.services
 
 import org.openqa.selenium.support.ui.WebDriverWait
 import solutions.bellatrix.core.configuration.ConfigurationService
+import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.web.configuration.WebSettings
 
 object NavigationService : WebService() {
-    // TODO: UrlNotNavigatedEvent
     fun to(url: String?) {
         wrappedDriver.navigate().to(url)
     }
 
-    fun NavigateToLocalPage(filePath: String?) {
+    fun navigateToLocalPage(filePath: String) {
+
 //        var assembly = Assembly.GetExecutingAssembly();
 //        string path = Path.GetDirectoryName(assembly.Location);
 //
@@ -32,7 +33,7 @@ object NavigationService : WebService() {
 //        {
 //            pageFilePath = string.Concat("file:///", pageFilePath);
 //        }
-
+//
 //        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
 //        {
 //            pageFilePath = pageFilePath.Replace('\\', '/').Replace("file:////", "file://////").Replace(" ", "%20");
@@ -55,7 +56,7 @@ object NavigationService : WebService() {
             val webDriverWait = WebDriverWait(wrappedDriver, waitForPartialTimeout, sleepInterval)
             webDriverWait.until { wrappedDriver.currentUrl.contains(partialUrl) }
         } catch (ex: Exception) {
-//            UrlNotNavigatedEvent?.Invoke(this, new UrlNotNavigatedEventArgs(ex));
+            URL_NOT_NAVIGATED.broadcast(WebServiceEventArgs(this, partialUrl, ex.message ?: ""))
             throw ex
         }
     }
@@ -91,4 +92,6 @@ object NavigationService : WebService() {
 //                URLDecoder.decode(value, "UTF-8")
 //        )
 //    }
+
+    val URL_NOT_NAVIGATED = EventListener<WebServiceEventArgs>()
 }
