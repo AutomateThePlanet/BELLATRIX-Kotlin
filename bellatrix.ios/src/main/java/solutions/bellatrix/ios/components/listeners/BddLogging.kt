@@ -12,7 +12,7 @@
  */
 package solutions.bellatrix.ios.components.listeners
 
-import solutions.bellatrix.ios.components.Anchor
+import solutions.bellatrix.ios.components.Button
 import solutions.bellatrix.ios.components.ComponentActionEventArgs
 import solutions.bellatrix.ios.components.IOSComponent
 
@@ -20,7 +20,7 @@ object BddLogging {
     private var isBddLoggingTurnedOn = false
     fun addPlugin() {
         if (!isBddLoggingTurnedOn) {
-            Anchor.CLICKING.addListener { x -> println("clicking ${x.component.elementName}\n" ) }
+            Button.CLICKING.addListener { x -> println("clicking ${x.component.elementName}\n" ) }
             IOSComponent.VALIDATED_ATTRIBUTE.addListener { x: ComponentActionEventArgs -> println(x.message) }
             isBddLoggingTurnedOn = true
         }

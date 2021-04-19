@@ -14,6 +14,8 @@ package testng
 
 import org.testng.annotations.Test
 import solutions.bellatrix.ios.components.Button
+import solutions.bellatrix.ios.components.Label
+import solutions.bellatrix.ios.components.TextField
 import solutions.bellatrix.ios.infrastructure.ExecutionApp
 import solutions.bellatrix.ios.infrastructure.Lifecycle
 import solutions.bellatrix.ios.infrastructure.testng.IOSTest
@@ -22,7 +24,13 @@ import solutions.bellatrix.ios.infrastructure.testng.IOSTest
 class ProductPurchaseTests : IOSTest() {
     @Test
     fun buttonClicked_when_callClickMethod() {
+        val integerA = app.create.byName<TextField>("IntegerA")
+        val integerB = app.create.byName<TextField>("IntegerB")
         val button = app.create.byName<Button>("ComputeSumButton")
+        val result = app.create.byName<Label>("Answer")
+        integerA.setText("100")
+        integerB.setText("333")
         button.click()
+        result.validateTextIs("433")
     }
 }

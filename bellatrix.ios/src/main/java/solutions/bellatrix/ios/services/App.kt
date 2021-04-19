@@ -25,8 +25,8 @@ object App : AutoCloseable {
     val touch = TouchActionsService
     val web = WebServiceFacade
 
-    fun addDriverOptions(key: String?, value: String?) {
-        DriverService.addDriverOptions(key!!, value!!)
+    fun addDriverOptions(key: String, value: String) {
+        DriverService.addDriverOptions(key, value)
     }
 
     override fun close() {

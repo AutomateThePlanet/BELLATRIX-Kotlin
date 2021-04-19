@@ -67,7 +67,7 @@ object DriverService {
 
     private fun initializeDriverGridMode(gridSettings: GridSettings): IOSDriver<MobileElement> {
         val caps = DesiredCapabilities()
-        caps.setCapability("platform", Platform.WIN10)
+        caps.setCapability("platform", Platform.MAC)
         caps.setCapability("version", "latest")
         var driver: IOSDriver<MobileElement> = try {
             IOSDriver<MobileElement>(URL(gridSettings.url), caps)
@@ -80,7 +80,8 @@ object DriverService {
 
     private fun initializeDriverRegularMode(serviceUrl: String): IOSDriver<MobileElement> {
         val caps = DesiredCapabilities()
-        caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
+        caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "IOS")
+        caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest")
         caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, getAppConfiguration().iosVersion)
         caps.setCapability(MobileCapabilityType.DEVICE_NAME, getAppConfiguration().deviceName)
         if (getAppConfiguration().mobileWebExecution) {
