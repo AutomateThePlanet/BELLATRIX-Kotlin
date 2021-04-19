@@ -17,8 +17,8 @@ import org.openqa.selenium.OutputType
 import org.openqa.selenium.TakesScreenshot
 import plugins.screenshots.ScreenshotPlugin
 import solutions.bellatrix.core.configuration.ConfigurationService
-import solutions.bellatrix.ios.configuration.AndroidSettings
-import solutions.bellatrix.ios.infrastructure.DriverService.getWrappedAndroidDriver
+import solutions.bellatrix.android.configuration.AndroidSettings
+import solutions.bellatrix.android.infrastructure.DriverService.getWrappedAndroidDriver
 import java.io.File
 import java.nio.file.Paths
 import java.util.*

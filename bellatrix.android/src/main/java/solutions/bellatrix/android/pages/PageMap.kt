@@ -12,7 +12,7 @@
  */
 package solutions.bellatrix.android.pages
 
-import solutions.bellatrix.ios.services.ComponentCreateService
+import solutions.bellatrix.android.services.ComponentCreateService
 
 abstract class PageMap {
     val create = ComponentCreateService

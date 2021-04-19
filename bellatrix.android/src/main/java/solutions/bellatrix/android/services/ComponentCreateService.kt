@@ -13,10 +13,10 @@
 package solutions.bellatrix.android.services
 
 import solutions.bellatrix.core.utilities.InstanceFactory
-import solutions.bellatrix.ios.components.AndroidComponent
-import solutions.bellatrix.ios.findstrategies.*
-import solutions.bellatrix.ios.findstrategies.FindStrategy
-import solutions.bellatrix.ios.infrastructure.DriverService
+import solutions.bellatrix.android.components.AndroidComponent
+import solutions.bellatrix.android.findstrategies.*
+import solutions.bellatrix.android.findstrategies.FindStrategy
+import solutions.bellatrix.android.infrastructure.DriverService
 
 object ComponentCreateService : MobileService() {
     inline fun <reified TComponent : AndroidComponent> byId(id: String): TComponent {

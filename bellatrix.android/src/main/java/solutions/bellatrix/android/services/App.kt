@@ -12,7 +12,7 @@
  */
 package solutions.bellatrix.android.services
 
-import solutions.bellatrix.ios.infrastructure.DriverService
+import solutions.bellatrix.android.infrastructure.DriverService
 
 object App : AutoCloseable {
     private var disposed = false

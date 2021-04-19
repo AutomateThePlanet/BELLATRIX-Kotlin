@@ -12,7 +12,7 @@
  */
 package solutions.bellatrix.android.waitstrategies
 
-import solutions.bellatrix.ios.components.AndroidComponent
+import solutions.bellatrix.android.components.AndroidComponent
 
 object WaitStrategyElementsExtensions {
     fun toExists1(element: AndroidComponent): AndroidComponent {

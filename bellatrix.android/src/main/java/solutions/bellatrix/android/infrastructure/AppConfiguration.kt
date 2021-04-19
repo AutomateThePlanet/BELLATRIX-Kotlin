@@ -14,7 +14,7 @@ package solutions.bellatrix.android.infrastructure
 
 import org.jsoup.internal.StringUtil
 import solutions.bellatrix.core.configuration.ConfigurationService
-import solutions.bellatrix.ios.configuration.AndroidSettings
+import solutions.bellatrix.android.configuration.AndroidSettings
 import java.util.*
 
 class AppConfiguration {

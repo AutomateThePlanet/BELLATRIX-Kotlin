@@ -15,7 +15,7 @@ package solutions.bellatrix.android.infrastructure
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.core.plugins.Plugin
 import solutions.bellatrix.core.utilities.FileDownloader.downloadToUsersFolder
-import solutions.bellatrix.ios.configuration.AndroidSettings
+import solutions.bellatrix.android.configuration.AndroidSettings
 
 class DownloadDemoAppsPlugin : Plugin() {
     companion object {

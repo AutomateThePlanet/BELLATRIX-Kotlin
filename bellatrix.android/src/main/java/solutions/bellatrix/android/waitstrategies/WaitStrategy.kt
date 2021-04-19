@@ -17,8 +17,8 @@ import org.openqa.selenium.SearchContext
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.ui.WebDriverWait
-import solutions.bellatrix.ios.findstrategies.FindStrategy
-import solutions.bellatrix.ios.infrastructure.DriverService
+import solutions.bellatrix.android.findstrategies.FindStrategy
+import solutions.bellatrix.android.infrastructure.DriverService
 import java.util.function.Function
 
 abstract class WaitStrategy {
