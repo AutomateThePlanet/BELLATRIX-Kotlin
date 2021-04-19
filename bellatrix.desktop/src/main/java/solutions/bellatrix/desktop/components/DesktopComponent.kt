@@ -12,6 +12,7 @@
  */
 package solutions.bellatrix.desktop.components
 
+import io.appium.java_client.MobileElement
 import io.appium.java_client.windows.WindowsDriver
 import layout.LayoutComponentValidationsBuilder
 import org.openqa.selenium.*
@@ -34,7 +35,16 @@ import solutions.bellatrix.desktop.waitstrategies.WaitStrategy
 import java.util.*
 
 open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
-    override lateinit var wrappedElement: WebElement
+    protected var wrappedElementHolder: WebElement? = null
+    override val wrappedElement: WebElement
+        get() {
+            return try {
+                wrappedElementHolder?.isDisplayed
+                wrappedElementHolder ?: findElement()
+            } catch (ex: StaleElementReferenceException) {
+                findElement()
+            }
+        }
     var parentWrappedElement: WebElement? = null
     var elementIndex = 0
     override lateinit var findStrategy: FindStrategy
@@ -191,7 +201,7 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
             for (waitStrategy in waitStrategies) {
                 componentWaitService.wait(this, waitStrategy)
             }
-            wrappedElement = findNativeElement()
+            wrappedElementHolder = findNativeElement()
             scrollToMakeElementVisible(wrappedElement)
             addArtificialDelay()
             waitStrategies.clear()

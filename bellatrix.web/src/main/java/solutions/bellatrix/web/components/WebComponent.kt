@@ -37,7 +37,16 @@ import java.nio.charset.StandardCharsets
 import java.util.*
 
 abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, ComponentStyle, ComponentTitle, ComponentHtmlClass, ComponentVisible, ComponentTabIndex, ComponentAccessKey, ComponentDir, ComponentLang {
-    override lateinit var wrappedElement: WebElement
+    protected var wrappedElementHolder: WebElement? = null
+    override val wrappedElement: WebElement
+        get() {
+            return try {
+                wrappedElementHolder?.isDisplayed
+                wrappedElementHolder ?: findElement()
+            } catch (ex: StaleElementReferenceException) {
+                findElement()
+            }
+        }
     var parentWrappedElement: WebElement? = null
     var elementIndex = 0
     override lateinit var findStrategy: FindStrategy
@@ -286,7 +295,7 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
             for (waitStrategy in waitStrategies) {
                 componentWaitService.wait(this, waitStrategy)
             }
-            wrappedElement = findNativeElement()
+            wrappedElementHolder = findNativeElement()
             scrollToMakeElementVisible(wrappedElement)
             if (webSettings.waitUntilReadyOnElementFound) {
                 browserService.waitForAjax()

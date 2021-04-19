@@ -18,6 +18,6 @@ import solutions.bellatrix.web.findstrategies.FindStrategy
 
 interface Component : LayoutComponent {
     val componentClass: Class<*>
-    var wrappedElement: WebElement
+    val wrappedElement: WebElement
     var findStrategy: FindStrategy
 }

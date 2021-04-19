@@ -13,6 +13,7 @@
 package solutions.bellatrix.ios.components
 
 import io.appium.java_client.MobileElement
+import io.appium.java_client.android.AndroidElement
 import io.appium.java_client.ios.IOSDriver
 import layout.LayoutComponentValidationsBuilder
 import org.apache.commons.lang3.StringUtils
@@ -39,7 +40,16 @@ import java.util.function.Function
 import java.util.function.Supplier
 
 open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
-    override lateinit var wrappedElement: MobileElement
+    protected var wrappedElementHolder: MobileElement? = null
+    override val wrappedElement: MobileElement
+        get() {
+            return try {
+                wrappedElementHolder?.isDisplayed
+                wrappedElementHolder ?: findElement()
+            } catch (ex: StaleElementReferenceException) {
+                findElement()
+            }
+        }
     var parentWrappedElement: MobileElement? = null
     var elementIndex = 0
     override lateinit var findStrategy: FindStrategy
@@ -70,10 +80,10 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
         get() = javaClass
 
     override val location: Point
-        get() = findElement().getLocation()
+        get() = findElement().location
 
     override val size: Dimension
-        get() = findElement().getSize()
+        get() = findElement().size
 
     fun getAttribute(name: String): String {
         return findElement().getAttribute(name)
@@ -190,7 +200,7 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
             for (waitStrategy in waitStrategies) {
                 componentWaitService.wait(this, waitStrategy)
             }
-            wrappedElement = findNativeElement()
+            wrappedElementHolder = findNativeElement()
             scrollToMakeElementVisible(wrappedElement)
             addArtificialDelay()
             waitStrategies.clear()
