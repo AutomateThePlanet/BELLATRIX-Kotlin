@@ -86,7 +86,6 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
         val CREATED_ELEMENT = EventListener<ComponentActionEventArgs>()
         val CREATING_ELEMENTS = EventListener<ComponentActionEventArgs>()
         val CREATED_ELEMENTS = EventListener<ComponentActionEventArgs>()
-        val VALIDATED_ATTRIBUTE = EventListener<ComponentActionEventArgs>()
     }
 
     override val elementName: String

@@ -315,7 +315,6 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
         val CREATED_ELEMENT: EventListener<ComponentActionEventArgs> = EventListener()
         val CREATING_ELEMENTS: EventListener<ComponentActionEventArgs> = EventListener()
         val CREATED_ELEMENTS: EventListener<ComponentActionEventArgs> = EventListener()
-        val VALIDATED_ATTRIBUTE: EventListener<ComponentActionEventArgs> = EventListener()
     }
 
     init {
