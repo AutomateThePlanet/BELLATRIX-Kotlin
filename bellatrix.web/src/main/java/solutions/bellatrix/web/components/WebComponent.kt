@@ -314,7 +314,7 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
     protected fun defaultClick(clicking: EventListener<ComponentActionEventArgs>, clicked: EventListener<ComponentActionEventArgs>) {
         clicking.broadcast(ComponentActionEventArgs(this))
         toExists<WebComponent>().toBeClickable<WebComponent>().waitToBe()
-        javaScriptService.execute("arguments[0].focus();arguments[0].click();", wrappedElement)
+        javaScriptService.execute("arguments[0].focus();arguments[0].click();arguments[0].dispatchEvent(new Event('click'));", wrappedElement)
         clicked.broadcast(ComponentActionEventArgs(this))
     }
 
@@ -322,7 +322,7 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
         checking.broadcast(ComponentActionEventArgs(this))
         toExists<WebComponent>().toBeClickable<WebComponent>().waitToBe()
         if (!findElement().isSelected) {
-            javaScriptService.execute("arguments[0].focus();arguments[0].click();", wrappedElement)
+            javaScriptService.execute("arguments[0].focus();arguments[0].click();arguments[0].dispatchEvent(new Event('click'));", wrappedElement)
         }
         checked.broadcast(ComponentActionEventArgs(this))
     }
@@ -331,7 +331,7 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
         unchecking.broadcast(ComponentActionEventArgs(this))
         toExists<WebComponent>().toBeClickable<WebComponent>().waitToBe()
         if (findElement().isSelected) {
-            javaScriptService.execute("arguments[0].focus();arguments[0].click();", wrappedElement)
+            javaScriptService.execute("arguments[0].focus();arguments[0].click();arguments[0].dispatchEvent(new Event('click'));", wrappedElement)
         }
         unchecked.broadcast(ComponentActionEventArgs(this))
     }
