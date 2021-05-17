@@ -14,16 +14,25 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentChecked : Component {
     val isChecked: Boolean
 
     fun validateIsChecked() {
-        defaultValidateAttributeTrue(this as WebComponent, isChecked, "checked")
+        try {
+            defaultValidateAttributeTrue(this as WebComponent, isChecked, "checked")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateIsUnchecked() {
-        defaultValidateAttributeTrue(this as WebComponent, !isChecked, "unchecked")
+        try {
+            defaultValidateAttributeTrue(this as WebComponent, !isChecked, "unchecked")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

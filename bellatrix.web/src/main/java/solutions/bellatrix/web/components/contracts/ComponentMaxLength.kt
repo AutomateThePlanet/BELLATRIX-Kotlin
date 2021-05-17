@@ -14,20 +14,33 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentMaxLength : Component {
     val maxLength: Int?
 
     fun validateMaxLengthIsSet() {
-        defaultValidateAttributeNotNull(this as WebComponent, maxLength, "max length")
+        try {
+            defaultValidateAttributeNotNull(this as WebComponent, maxLength, "max length")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateMaxLengthNotSet() {
-        defaultValidateAttributeIsNull(this as WebComponent, maxLength, "max length")
+        try {
+            defaultValidateAttributeIsNull(this as WebComponent, maxLength, "max length")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateMaxLengthIs(value: Int) {
-        defaultValidateAttributeIs(this as WebComponent, maxLength, value, "max length")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, maxLength, value, "max length")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

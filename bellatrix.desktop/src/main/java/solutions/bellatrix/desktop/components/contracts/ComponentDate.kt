@@ -14,20 +14,33 @@ package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
 import solutions.bellatrix.desktop.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentDate : Component {
     fun getDate(): String
 
     fun validateDateIs(value: String) {
-        defaultValidateAttributeIs(this as DesktopComponent, getDate(), value, "date")
+        try {
+            defaultValidateAttributeIs(this as DesktopComponent, getDate(), value, "date")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateDateContains(value: String) {
-        defaultValidateAttributeContains(this as DesktopComponent, getDate(), value, "date")
+        try {
+            defaultValidateAttributeContains(this as DesktopComponent, getDate(), value, "date")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateDateNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as DesktopComponent, getDate(), value, "date")
+        try {
+            defaultValidateAttributeNotContains(this as DesktopComponent, getDate(), value, "date")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

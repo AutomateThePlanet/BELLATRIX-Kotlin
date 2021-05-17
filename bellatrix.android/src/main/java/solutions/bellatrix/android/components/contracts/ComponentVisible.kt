@@ -14,16 +14,25 @@ package solutions.bellatrix.android.components.contracts
 
 import solutions.bellatrix.android.components.AndroidComponent
 import solutions.bellatrix.android.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentVisible : Component {
     val isVisible: Boolean
 
     fun validateIsChecked() {
-        defaultValidateAttributeTrue(this as AndroidComponent, isVisible, "visible")
+        try {
+            defaultValidateAttributeTrue(this as AndroidComponent, isVisible, "visible")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateIsUnchecked() {
-        defaultValidateAttributeFalse(this as AndroidComponent, isVisible, "visible")
+        try {
+            defaultValidateAttributeFalse(this as AndroidComponent, isVisible, "visible")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

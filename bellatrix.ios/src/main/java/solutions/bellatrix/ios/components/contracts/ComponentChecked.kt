@@ -14,16 +14,25 @@ package solutions.bellatrix.ios.components.contracts
 
 import solutions.bellatrix.ios.components.IOSComponent
 import solutions.bellatrix.ios.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentChecked : Component {
     val isChecked: Boolean
 
     fun validateIsChecked() {
-        defaultValidateAttributeTrue(this as IOSComponent, isChecked, "checked")
+        try {
+            defaultValidateAttributeTrue(this as IOSComponent, isChecked, "checked")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateIsUnchecked() {
-        defaultValidateAttributeTrue(this as IOSComponent, !isChecked, "unchecked")
+        try {
+            defaultValidateAttributeTrue(this as IOSComponent, !isChecked, "unchecked")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

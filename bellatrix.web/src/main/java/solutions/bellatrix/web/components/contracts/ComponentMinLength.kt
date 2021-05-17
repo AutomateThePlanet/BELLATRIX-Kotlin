@@ -14,20 +14,33 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentMinLength : Component {
     val minLength: Int?
 
     fun validateMinLengthIsSet() {
-        defaultValidateAttributeNotNull(this as WebComponent, minLength, "min length")
+        try {
+            defaultValidateAttributeNotNull(this as WebComponent, minLength, "min length")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateMinLengthNotSet() {
-        defaultValidateAttributeIsNull(this as WebComponent, minLength, "min length")
+        try {
+            defaultValidateAttributeIsNull(this as WebComponent, minLength, "min length")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateMinLengthNotNull() {
-        defaultValidateAttributeNotNull(this as WebComponent, minLength, "min length")
+        try {
+            defaultValidateAttributeNotNull(this as WebComponent, minLength, "min length")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

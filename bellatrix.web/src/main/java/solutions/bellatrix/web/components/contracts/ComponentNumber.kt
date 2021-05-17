@@ -14,13 +14,18 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentNumber : Component {
     fun getNumber(): Double
     fun setNumber(value: Double)
 
     fun validateNumberIs(value: Number) {
-        defaultValidateAttributeIs(this as WebComponent, getNumber(), value.toDouble(), "number")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, getNumber(), value.toDouble(), "number")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

@@ -14,20 +14,33 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentMax : Component {
     val max: Double?
 
     fun validateMaxIsSet() {
-        defaultValidateAttributeNotNull(this as WebComponent, max, "max")
+        try {
+            defaultValidateAttributeNotNull(this as WebComponent, max, "max")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateMaxNotSet() {
-        defaultValidateAttributeIsNull(this as WebComponent, max, "max")
+        try {
+            defaultValidateAttributeIsNull(this as WebComponent, max, "max")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateMaxIs(value: Number) {
-        defaultValidateAttributeIs(this as WebComponent, max, value.toDouble(), "max")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, max, value.toDouble(), "max")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

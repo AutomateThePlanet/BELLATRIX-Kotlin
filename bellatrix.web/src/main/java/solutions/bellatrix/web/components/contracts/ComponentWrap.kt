@@ -14,20 +14,33 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentWrap : Component {
     val wrap: String
 
     fun validateWrapIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, wrap, value, "wrap")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, wrap, value, "wrap")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateWrapIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, wrap, "wrap")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, wrap, "wrap")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateWrapNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, wrap, "wrap")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, wrap, "wrap")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

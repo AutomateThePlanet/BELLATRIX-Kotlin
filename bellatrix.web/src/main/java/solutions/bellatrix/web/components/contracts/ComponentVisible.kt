@@ -14,16 +14,25 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentVisible : Component {
     val isVisible: Boolean
 
     fun validateIsVisible() {
-        defaultValidateAttributeTrue(this as WebComponent, isVisible, "visible")
+        try {
+            defaultValidateAttributeTrue(this as WebComponent, isVisible, "visible")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateNotVisible() {
-        defaultValidateAttributeFalse(this as WebComponent, isVisible, "visible")
+        try {
+            defaultValidateAttributeFalse(this as WebComponent, isVisible, "visible")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

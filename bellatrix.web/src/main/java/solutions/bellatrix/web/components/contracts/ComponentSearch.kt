@@ -14,21 +14,34 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentSearch : Component {
     fun getSearch(): String
     fun setSearch(search: String)
 
     fun validateSearchIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, getSearch(), value, "search")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, getSearch(), value, "search")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateSearchContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, getSearch(), value, "search")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, getSearch(), value, "search")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateSearchNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, getSearch(), value, "search")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, getSearch(), value, "search")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

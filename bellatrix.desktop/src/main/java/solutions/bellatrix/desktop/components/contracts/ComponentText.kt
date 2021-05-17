@@ -14,20 +14,33 @@ package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
 import solutions.bellatrix.desktop.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentText : Component {
     val text: String
 
     fun validateTextIs(value: String) {
-        defaultValidateAttributeIs(this as DesktopComponent, text, value, "inner text")
+        try {
+            defaultValidateAttributeIs(this as DesktopComponent, text, value, "inner text")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTextContains(value: String) {
-        defaultValidateAttributeContains(this as DesktopComponent, text, value, "inner text")
+        try {
+            defaultValidateAttributeContains(this as DesktopComponent, text, value, "inner text")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTextNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as DesktopComponent, text, value, "inner text")
+        try {
+            defaultValidateAttributeNotContains(this as DesktopComponent, text, value, "inner text")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

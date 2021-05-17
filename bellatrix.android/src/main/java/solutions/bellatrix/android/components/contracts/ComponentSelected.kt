@@ -14,16 +14,25 @@ package solutions.bellatrix.android.components.contracts
 
 import solutions.bellatrix.android.components.AndroidComponent
 import solutions.bellatrix.android.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentSelected : Component {
     val isSelected: Boolean
 
     fun validateIsSelected() {
-        defaultValidateAttributeTrue(this as AndroidComponent, isSelected, "selected")
+        try {
+            defaultValidateAttributeTrue(this as AndroidComponent, isSelected, "selected")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateNotSelected() {
-        defaultValidateAttributeFalse(this as AndroidComponent, isSelected, "selected")
+        try {
+            defaultValidateAttributeFalse(this as AndroidComponent, isSelected, "selected")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

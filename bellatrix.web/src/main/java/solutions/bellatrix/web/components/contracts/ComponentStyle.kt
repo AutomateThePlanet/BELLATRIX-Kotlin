@@ -14,28 +14,49 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentStyle : Component {
     val style: String
 
     fun validateStyleNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, style, "style")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, style, "style")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateStyleIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, style, "style")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, style, "style")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateStyleIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, style, value, "style")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, style, value, "style")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateStyleContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, style, value, "style")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, style, value, "style")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateStyleNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, style, value, "style")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, style, value, "style")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

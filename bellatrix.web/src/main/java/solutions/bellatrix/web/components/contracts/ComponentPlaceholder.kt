@@ -14,28 +14,49 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentPlaceholder : Component {
     val placeholder: String
 
     fun validatePlaceholderIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, placeholder, value, "placeholder")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, placeholder, value, "placeholder")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validatePlaceholderIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, placeholder, "placeholder")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, placeholder, "placeholder")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validatePlaceholderNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, placeholder, "placeholder")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, placeholder, "placeholder")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validatePlaceholderContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, placeholder, value, "placeholder")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, placeholder, value, "placeholder")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validatePlaceholderNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, placeholder, value, "placeholder")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, placeholder, value, "placeholder")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

@@ -14,28 +14,49 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentTitle : Component {
     val title: String
 
     fun validateTitleIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, title, value, "title")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, title, value, "title")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTitleIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, title, "title")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, title, "title")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTitleNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, title, "title")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, title, "title")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTitleContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, title, value, "title")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, title, value, "title")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTitleNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, title, value, "title")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, title, value, "title")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

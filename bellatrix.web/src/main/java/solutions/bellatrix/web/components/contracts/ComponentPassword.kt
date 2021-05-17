@@ -14,21 +14,34 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentPassword : Component {
     fun getPassword(): String
     fun setPassword(value: String)
 
     fun validatePasswordIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, getPassword(), value, "password")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, getPassword(), value, "password")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validatePasswordContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, getPassword(), value, "password")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, getPassword(), value, "password")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validatePasswordNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, getPassword(), value, "password")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, getPassword(), value, "password")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

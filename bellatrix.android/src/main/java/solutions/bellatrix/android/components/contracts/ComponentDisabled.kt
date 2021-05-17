@@ -14,16 +14,25 @@ package solutions.bellatrix.android.components.contracts
 
 import solutions.bellatrix.android.components.AndroidComponent
 import solutions.bellatrix.android.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentDisabled : Component {
     val isDisabled: Boolean
 
     fun validateIsDisabled() {
-        defaultValidateAttributeTrue(this as AndroidComponent, isDisabled, "disabled")
+        try {
+            defaultValidateAttributeTrue(this as AndroidComponent, isDisabled, "disabled")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateNotDisabled() {
-        defaultValidateAttributeFalse(this as AndroidComponent, isDisabled, "disabled")
+        try {
+            defaultValidateAttributeFalse(this as AndroidComponent, isDisabled, "disabled")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

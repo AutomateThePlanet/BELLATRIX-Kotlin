@@ -14,28 +14,49 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentLongDesc : Component {
     val longdesc: String
 
     fun validateLongDescIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, longdesc, value, "longdesc")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, longdesc, value, "longdesc")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateLongDescIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, longdesc, "longdesc")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, longdesc, "longdesc")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateLongDescNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, longdesc, "longdesc")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, longdesc, "longdesc")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateLongDescContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, longdesc, value, "longdesc")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, longdesc, value, "longdesc")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateLongDescNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, longdesc, value, "longdesc")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, longdesc, value, "longdesc")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

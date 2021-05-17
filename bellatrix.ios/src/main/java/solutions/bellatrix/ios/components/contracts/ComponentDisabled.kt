@@ -14,16 +14,25 @@ package solutions.bellatrix.ios.components.contracts
 
 import solutions.bellatrix.ios.components.IOSComponent
 import solutions.bellatrix.ios.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentDisabled : Component {
     val isDisabled: Boolean
 
     fun validateIsDisabled() {
-        defaultValidateAttributeTrue(this as IOSComponent, isDisabled, "disabled")
+        try {
+            defaultValidateAttributeTrue(this as IOSComponent, isDisabled, "disabled")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateNotDisabled() {
-        defaultValidateAttributeFalse(this as IOSComponent, isDisabled, "disabled")
+        try {
+            defaultValidateAttributeFalse(this as IOSComponent, isDisabled, "disabled")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

@@ -14,21 +14,34 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentEmail : Component {
     fun getEmail(): String
     fun setEmail(email: String)
 
     fun validateEmailIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, getEmail(), value, "email")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, getEmail(), value, "email")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateEmailContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, getEmail(), value, "email")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, getEmail(), value, "email")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateEmailNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, getEmail(), value, "email")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, getEmail(), value, "email")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

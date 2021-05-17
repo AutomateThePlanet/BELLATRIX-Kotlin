@@ -14,6 +14,7 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 import java.time.LocalDateTime
 
 interface ComponentDateTime : Component {
@@ -21,15 +22,27 @@ interface ComponentDateTime : Component {
     fun setTime(time: LocalDateTime)
 
     fun validateTimeIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, getTime(), value, "time")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, getTime(), value, "time")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTimeContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, getTime(), value, "time")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, getTime(), value, "time")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTimeNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, getTime(), value, "time")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, getTime(), value, "time")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

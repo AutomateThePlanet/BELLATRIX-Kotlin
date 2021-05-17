@@ -14,20 +14,33 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentAlt : Component {
     val alt: String
 
     fun validateAltIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, alt, value, "alt")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, alt, value, "alt")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateAltIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, alt, "alt")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, alt, "alt")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateAltNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, alt, "alt")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, alt, "alt")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

@@ -14,16 +14,25 @@ package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
 import solutions.bellatrix.desktop.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentVisible : Component {
     val isVisible: Boolean
 
     fun validateIsChecked() {
-        defaultValidateAttributeTrue(this as DesktopComponent, isVisible, "visible")
+        try {
+            defaultValidateAttributeTrue(this as DesktopComponent, isVisible, "visible")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateIsUnchecked() {
-        defaultValidateAttributeFalse(this as DesktopComponent, isVisible, "visible")
+        try {
+            defaultValidateAttributeFalse(this as DesktopComponent, isVisible, "visible")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

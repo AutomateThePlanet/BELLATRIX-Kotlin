@@ -14,28 +14,49 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentHtmlClass : Component {
     val htmlClass: String
 
     fun validateClassNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, htmlClass, "class")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, htmlClass, "class")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateClassIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, htmlClass, "class")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, htmlClass, "class")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateClassIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, htmlClass, value, "class")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, htmlClass, value, "class")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateClassContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, htmlClass, value, "class")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, htmlClass, value, "class")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateClassNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, htmlClass, value, "class")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, htmlClass, value, "class")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

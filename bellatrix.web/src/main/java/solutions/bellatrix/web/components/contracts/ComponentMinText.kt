@@ -14,20 +14,33 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentMinText : Component {
     val min: String
 
     fun validateMinTextNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, min, "min")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, min, "min")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateMinTextIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, min, "min")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, min, "min")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateMinTextIs() {
-        defaultValidateAttributeNotNull(this as WebComponent, min, "min")
+        try {
+            defaultValidateAttributeNotNull(this as WebComponent, min, "min")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

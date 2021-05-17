@@ -14,16 +14,25 @@ package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
 import solutions.bellatrix.desktop.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentChecked : Component {
     val isChecked: Boolean
 
     fun validateIsChecked() {
-        defaultValidateAttributeTrue(this as DesktopComponent, isChecked, "checked")
+        try {
+            defaultValidateAttributeTrue(this as DesktopComponent, isChecked, "checked")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateIsUnchecked() {
-        defaultValidateAttributeTrue(this as DesktopComponent, !isChecked, "unchecked")
+        try {
+            defaultValidateAttributeTrue(this as DesktopComponent, !isChecked, "unchecked")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

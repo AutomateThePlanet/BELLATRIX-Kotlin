@@ -14,28 +14,49 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentText : Component {
     val text: String
 
     fun validateTextNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, text, "inner text")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, text, "inner text")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTextIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, text, "inner text")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, text, "inner text")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTextIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, text, value, "inner text")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, text, value, "inner text")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTextContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, text, value, "inner text")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, text, value, "inner text")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTextNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, text, value, "inner text")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, text, value, "inner text")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

@@ -14,28 +14,49 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentSrcSet : Component {
     val srcset: String
 
     fun validateSrcSetIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, srcset, value, "srcset")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, srcset, value, "srcset")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateSrcSetIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, srcset, "srcset")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, srcset, "srcset")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateSrcSetNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, srcset, "srcset")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, srcset, "srcset")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateSrcSetContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, srcset, value, "srcset")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, srcset, value, "srcset")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateSrcSetNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, srcset, value, "srcset")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, srcset, value, "srcset")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

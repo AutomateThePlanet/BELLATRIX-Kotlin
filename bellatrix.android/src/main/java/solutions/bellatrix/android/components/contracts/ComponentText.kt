@@ -14,20 +14,33 @@ package solutions.bellatrix.android.components.contracts
 
 import solutions.bellatrix.android.components.AndroidComponent
 import solutions.bellatrix.android.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentText : Component {
     val text: String
 
     fun validateTextIs(value: String) {
-        defaultValidateAttributeIs(this as AndroidComponent, text, value, "inner text")
+        try {
+            defaultValidateAttributeIs(this as AndroidComponent, text, value, "inner text")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTextContains(value: String) {
-        defaultValidateAttributeContains(this as AndroidComponent, text, value, "inner text")
+        try {
+            defaultValidateAttributeContains(this as AndroidComponent, text, value, "inner text")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTextNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as AndroidComponent, text, value, "inner text")
+        try {
+            defaultValidateAttributeNotContains(this as AndroidComponent, text, value, "inner text")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

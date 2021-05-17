@@ -14,16 +14,25 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentSelected : Component {
     val isSelected: Boolean
 
     fun validateIsSelected() {
-        defaultValidateAttributeTrue(this as WebComponent, isSelected, "selected")
+        try {
+            defaultValidateAttributeTrue(this as WebComponent, isSelected, "selected")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateNotSelected() {
-        defaultValidateAttributeFalse(this as WebComponent, isSelected, "selected")
+        try {
+            defaultValidateAttributeFalse(this as WebComponent, isSelected, "selected")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()
