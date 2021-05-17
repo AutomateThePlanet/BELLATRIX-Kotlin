@@ -12,8 +12,8 @@
  */
 package solutions.bellatrix.android.services
 
-import solutions.bellatrix.ios.components.AndroidComponent
-import solutions.bellatrix.ios.waitstrategies.WaitStrategy
+import solutions.bellatrix.android.components.AndroidComponent
+import solutions.bellatrix.android.waitstrategies.WaitStrategy
 
 object ComponentWaitService : MobileService() {
     fun wait(component: AndroidComponent, waitStrategy: WaitStrategy) {

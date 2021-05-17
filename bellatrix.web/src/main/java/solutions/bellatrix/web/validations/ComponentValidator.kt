@@ -17,6 +17,7 @@ import org.openqa.selenium.SearchContext
 import org.openqa.selenium.TimeoutException
 import org.openqa.selenium.support.ui.WebDriverWait
 import solutions.bellatrix.core.configuration.ConfigurationService
+import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.web.components.ComponentActionEventArgs
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.configuration.WebSettings
@@ -30,52 +31,52 @@ open class ComponentValidator {
 
     protected open fun defaultValidateAttributeIsNull(component: WebComponent, property: Any?, attributeName: String) {
         waitUntil({ property == null }, "The control's $attributeName should be null but was '$property'.")
-        WebComponent.VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validate $attributeName is null"))
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validate $attributeName is null"))
     }
 
     protected open fun defaultValidateAttributeNotNull(component: WebComponent, property: Any?, attributeName: String) {
         waitUntil({ property != null }, "The control's $attributeName shouldn't be null but was.")
-        WebComponent.VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validate $attributeName is set"))
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validate $attributeName is set"))
     }
 
     protected open fun defaultValidateAttributeIsSet(component: WebComponent, property: String, attributeName: String) {
         waitUntil({ !StringUtils.isEmpty(property) }, "The control's $attributeName shouldn't be empty but was.")
-        WebComponent.VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validate $attributeName is set"))
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validate $attributeName is set"))
     }
 
     protected open fun defaultValidateAttributeNotSet(component: WebComponent, property: String, attributeName: String) {
         waitUntil({ StringUtils.isEmpty(property) }, "The control's $attributeName should be null but was '$property'.")
-        WebComponent.VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validate $attributeName is null"))
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validate $attributeName is null"))
     }
 
     protected open fun defaultValidateAttributeIs(component: WebComponent, property: String, value: String, attributeName: String) {
         waitUntil({ property.trim() == value }, "The control's $attributeName should be '$value' but was '$property'.")
-        WebComponent.VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value, "validate $attributeName is '$value'"))
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value, "validate $attributeName is '$value'"))
     }
 
     protected open fun defaultValidateAttributeIs(component: WebComponent, property: Number?, value: Number, attributeName: String) {
         waitUntil({ property == value }, "The control's $attributeName should be '$value' but was '$property'.")
-        WebComponent.VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value.toString(), "validate $attributeName is '$value'"))
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value.toString(), "validate $attributeName is '$value'"))
     }
 
     protected open fun defaultValidateAttributeContains(component: WebComponent, property: String, value: String, attributeName: String) {
         waitUntil({ property.trim().contains(value) }, "The control's $attributeName should contain '$value' but was '$property'.")
-        WebComponent.VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value, "validate $attributeName contains '$value'"))
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value, "validate $attributeName contains '$value'"))
     }
 
     protected open fun defaultValidateAttributeNotContains(component: WebComponent, property: String, value: String, attributeName: String) {
         waitUntil({ !property.trim().contains(value) }, "The control's $attributeName shouldn't contain '$value' but was '$property'.")
-        WebComponent.VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value, "validate $attributeName doesn't contain '$value'"))
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value, "validate $attributeName doesn't contain '$value'"))
     }
 
     protected open fun defaultValidateAttributeTrue(component: WebComponent, property: Boolean, attributeName: String) {
         waitUntil({ property }, "The control should be '$attributeName' but wasn't.")
-        WebComponent.VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validate is $attributeName"))
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validate is $attributeName"))
     }
 
     protected open fun defaultValidateAttributeFalse(component: WebComponent, property: Boolean, attributeName: String) {
         waitUntil({ !property }, "The control shouldn't be '$attributeName' but was.")
-        WebComponent.VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validate not $attributeName"))
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validate not $attributeName"))
     }
 
     private fun waitUntil(waitCondition: Function<SearchContext, Boolean>, exceptionMessage: String) {
@@ -86,5 +87,9 @@ open class ComponentValidator {
             val validationExceptionMessage = "$exceptionMessage The test failed on URL: ${browserService.url}"
             throw TimeoutException(validationExceptionMessage, ex)
         }
+    }
+
+    companion object {
+        val VALIDATED_ATTRIBUTE = EventListener<ComponentActionEventArgs>()
     }
 }

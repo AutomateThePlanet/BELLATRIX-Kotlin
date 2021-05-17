@@ -28,7 +28,7 @@ open class Select : WebComponent(), ComponentDisabled, ComponentRequired, Compon
         val optionComponent: Option = InstanceFactory.create()
         optionComponent.findStrategy = findStrategy
         optionComponent.elementIndex = 0
-        optionComponent.wrappedElement = nativeSelect.firstSelectedOption
+        wrappedElementHolder = nativeSelect.firstSelectedOption
         return optionComponent
     }
 
@@ -40,7 +40,7 @@ open class Select : WebComponent(), ComponentDisabled, ComponentRequired, Compon
                 val optionComponent: Option = InstanceFactory.create()
                 optionComponent.findStrategy = findStrategy
                 optionComponent.elementIndex = 0
-                optionComponent.wrappedElement = nativeOption
+                wrappedElementHolder = nativeOption
                 options.add(optionComponent)
             }
             return options

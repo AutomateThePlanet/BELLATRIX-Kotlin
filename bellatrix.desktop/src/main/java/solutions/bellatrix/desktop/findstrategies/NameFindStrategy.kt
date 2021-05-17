@@ -12,7 +12,6 @@
  */
 package solutions.bellatrix.desktop.findstrategies
 
-import io.appium.java_client.MobileElement
 import io.appium.java_client.windows.WindowsDriver
 import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
@@ -26,11 +25,11 @@ class NameFindStrategy(value: String) : FindStrategy(value) {
         return driver.findElementsByName(value)
     }
 
-    override fun findElement(element: WebElement): MobileElement {
+    override fun findElement(element: WebElement): WebElement {
         return element.findElement(By.name(value))
     }
 
-    override fun findAllElements(element: WebElement): List<MobileElement> {
+    override fun findAllElements(element: WebElement): List<WebElement> {
         return element.findElements(By.name(value))
     }
 

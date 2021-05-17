@@ -15,6 +15,7 @@ package solutions.bellatrix.web.services
 import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.WebElement
 import solutions.bellatrix.core.utilities.debugStackTrace
+import solutions.bellatrix.web.components.WebComponent
 
 object JavaScriptService : WebService() {
     private val javascriptExecutor: JavascriptExecutor
@@ -47,6 +48,10 @@ object JavaScriptService : WebService() {
             ex.debugStackTrace()
             ""
         }
+    }
+
+    fun <TComponent : WebComponent> execute(script: String, component: TComponent): String? {
+        return execute(script, component.findElement())
     }
 
     fun execute(script: String, nativeElement: WebElement): String? {

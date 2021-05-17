@@ -13,6 +13,7 @@
 package solutions.bellatrix.ios.components
 
 import io.appium.java_client.MobileElement
+import io.appium.java_client.android.AndroidElement
 import io.appium.java_client.ios.IOSDriver
 import layout.LayoutComponentValidationsBuilder
 import org.apache.commons.lang3.StringUtils
@@ -39,7 +40,16 @@ import java.util.function.Function
 import java.util.function.Supplier
 
 open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
-    override lateinit var wrappedElement: MobileElement
+    protected var wrappedElementHolder: MobileElement? = null
+    override val wrappedElement: MobileElement
+        get() {
+            return try {
+                wrappedElementHolder?.isDisplayed
+                wrappedElementHolder ?: findElement()
+            } catch (ex: StaleElementReferenceException) {
+                findElement()
+            }
+        }
     var parentWrappedElement: MobileElement? = null
     var elementIndex = 0
     override lateinit var findStrategy: FindStrategy
@@ -70,10 +80,10 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
         get() = javaClass
 
     override val location: Point
-        get() = findElement().getLocation()
+        get() = findElement().location
 
     override val size: Dimension
-        get() = findElement().getSize()
+        get() = findElement().size
 
     fun getAttribute(name: String): String {
         return findElement().getAttribute(name)
@@ -190,13 +200,13 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
             for (waitStrategy in waitStrategies) {
                 componentWaitService.wait(this, waitStrategy)
             }
-            wrappedElement = findNativeElement()
+            wrappedElementHolder = findNativeElement()
             scrollToMakeElementVisible(wrappedElement)
             addArtificialDelay()
             waitStrategies.clear()
         } catch (ex: WebDriverException) {
             ex.debugStackTrace()
-            print(String.format("\n\nThe element: \n Name: '%s', \n Locator: '%s = %s', \nWas not found on the page or didn't fulfill the specified conditions.\n\n", componentClass.simpleName, findStrategy.toString(), findStrategy.value))
+            print("\n\nThe component: \n Name: '${componentClass.simpleName}', \n Locator: '$findStrategy', \nWas not found on the page or didn't fulfill the specified conditions.\n\n")
         }
         RETURNING_WRAPPED_ELEMENT.broadcast(ComponentActionEventArgs(this))
         return wrappedElement
@@ -305,7 +315,6 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
         val CREATED_ELEMENT: EventListener<ComponentActionEventArgs> = EventListener()
         val CREATING_ELEMENTS: EventListener<ComponentActionEventArgs> = EventListener()
         val CREATED_ELEMENTS: EventListener<ComponentActionEventArgs> = EventListener()
-        val VALIDATED_ATTRIBUTE: EventListener<ComponentActionEventArgs> = EventListener()
     }
 
     init {

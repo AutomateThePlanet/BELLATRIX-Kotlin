@@ -12,8 +12,6 @@
  */
 package solutions.bellatrix.desktop.infrastructure
 
-import java.util.*
-
 class AppConfiguration(val lifecycle: Lifecycle, val appPath: String) {
     val height = 0
     val width = 0

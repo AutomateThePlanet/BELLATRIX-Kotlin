@@ -16,6 +16,7 @@ import plugins.screenshots.ScreenshotPlugin
 import ru.yandex.qatools.ashot.AShot
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies
 import solutions.bellatrix.core.configuration.ConfigurationService
+import solutions.bellatrix.core.utilities.UserHomePathNormalizer.normalizePath
 import solutions.bellatrix.web.configuration.WebSettings
 import java.io.File
 import java.nio.file.Paths
@@ -23,7 +24,7 @@ import java.util.*
 import javax.imageio.ImageIO
 
 class WebScreenshotPlugin(isEnabled: Boolean) : ScreenshotPlugin(isEnabled) {
-    protected override fun takeScreenshot(screenshotSaveDir: String, filename: String) {
+    override fun takeScreenshot(screenshotSaveDir: String, filename: String) {
         val screenshot = AShot()
                 .shootingStrategy(ShootingStrategies.viewportPasting(100))
                 .takeScreenshot(DriverService.wrappedDriver())
@@ -31,13 +32,10 @@ class WebScreenshotPlugin(isEnabled: Boolean) : ScreenshotPlugin(isEnabled) {
         ImageIO.write(screenshot.image, "png", destFile)
     }
 
-    protected override val outputFolder: String
-        protected get() {
+    override val outputFolder: String
+        get() {
             var saveLocation: String = ConfigurationService.get<WebSettings>().screenshotsSaveLocation
-            if (saveLocation.startsWith("user.home")) {
-                val userHomeDir = System.getProperty("user.home")
-                saveLocation = saveLocation.replace("user.home", userHomeDir)
-            }
+            saveLocation = normalizePath(saveLocation)
             val directory = File(saveLocation)
             if (!directory.exists()) {
                 directory.mkdirs()
@@ -45,7 +43,7 @@ class WebScreenshotPlugin(isEnabled: Boolean) : ScreenshotPlugin(isEnabled) {
             return saveLocation
         }
 
-    protected override fun getUniqueFileName(testName: String): String {
+    override fun getUniqueFileName(testName: String): String {
         return testName + UUID.randomUUID().toString() + ".png"
     }
 

@@ -37,7 +37,16 @@ import java.nio.charset.StandardCharsets
 import java.util.*
 
 abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, ComponentStyle, ComponentTitle, ComponentHtmlClass, ComponentVisible, ComponentTabIndex, ComponentAccessKey, ComponentDir, ComponentLang {
-    override lateinit var wrappedElement: WebElement
+    protected var wrappedElementHolder: WebElement? = null
+    override val wrappedElement: WebElement
+        get() {
+            return try {
+                wrappedElementHolder?.isDisplayed
+                wrappedElementHolder ?: findElement()
+            } catch (ex: StaleElementReferenceException) {
+                findElement()
+            }
+        }
     var parentWrappedElement: WebElement? = null
     var elementIndex = 0
     override lateinit var findStrategy: FindStrategy
@@ -77,7 +86,6 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
         val CREATED_ELEMENT = EventListener<ComponentActionEventArgs>()
         val CREATING_ELEMENTS = EventListener<ComponentActionEventArgs>()
         val CREATED_ELEMENTS = EventListener<ComponentActionEventArgs>()
-        val VALIDATED_ATTRIBUTE = EventListener<ComponentActionEventArgs>()
     }
 
     override val elementName: String
@@ -286,7 +294,7 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
             for (waitStrategy in waitStrategies) {
                 componentWaitService.wait(this, waitStrategy)
             }
-            wrappedElement = findNativeElement()
+            wrappedElementHolder = findNativeElement()
             scrollToMakeElementVisible(wrappedElement)
             if (webSettings.waitUntilReadyOnElementFound) {
                 browserService.waitForAjax()
@@ -297,7 +305,7 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
             addArtificialDelay()
             waitStrategies.clear()
         } catch (ex: WebDriverException) {
-            print(String.format("\n\nThe element: \n Name: '%s', \n Locator: '%s = %s', \nWas not found on the page or didn't fulfill the specified conditions.\n\n", componentClass.simpleName, findStrategy.toString(), findStrategy.value))
+            print("\n\nThe component: \n Name: '${componentClass.simpleName}', \n Locator: '$findStrategy', \nWas not found on the page or didn't fulfill the specified conditions.\n\n")
         }
         RETURNING_WRAPPED_ELEMENT.broadcast(ComponentActionEventArgs(this))
         return wrappedElement

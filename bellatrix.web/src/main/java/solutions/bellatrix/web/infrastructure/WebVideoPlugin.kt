@@ -14,6 +14,7 @@ package solutions.bellatrix.web.infrastructure
 
 import plugins.video.VideoPlugin
 import solutions.bellatrix.core.configuration.ConfigurationService
+import solutions.bellatrix.core.utilities.UserHomePathNormalizer.normalizePath
 import solutions.bellatrix.web.configuration.WebSettings
 import java.io.File
 import java.util.*
@@ -27,12 +28,9 @@ class WebVideoPlugin(isEnabled: Boolean) : VideoPlugin(isEnabled) {
     }
 
     override val outputFolder: String
-        protected get() {
+        get() {
             var saveLocation: String = ConfigurationService.get<WebSettings>().videosSaveLocation
-            if (saveLocation.startsWith("user.home")) {
-                val userHomeDir = System.getProperty("user.home")
-                saveLocation = saveLocation.replace("user.home", userHomeDir)
-            }
+            saveLocation = normalizePath(saveLocation)
             val directory = File(saveLocation)
             if (!directory.exists()) {
                 directory.mkdirs()

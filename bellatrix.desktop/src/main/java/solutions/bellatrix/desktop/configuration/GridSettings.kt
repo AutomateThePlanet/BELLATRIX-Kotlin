@@ -12,8 +12,6 @@
  */
 package solutions.bellatrix.desktop.configuration
 
-import java.util.*
-
 class GridSettings {
     var providerName: String = ""
     var url: String = ""

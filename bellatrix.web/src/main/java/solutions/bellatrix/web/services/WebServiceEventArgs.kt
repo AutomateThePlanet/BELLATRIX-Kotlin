@@ -10,10 +10,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.android.pages
+package solutions.bellatrix.web.services
 
-import solutions.bellatrix.android.services.ComponentCreateService
-
-abstract class PageMap {
-    val create = ComponentCreateService
+class WebServiceEventArgs (val service: WebService, val actionValue: String, val message: String) {
+    constructor(service: WebService) : this(service, "", "") {
+    }
 }

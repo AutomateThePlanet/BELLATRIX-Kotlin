@@ -46,6 +46,7 @@ class AppConfiguration {
             this.appPath = appPath
         }
         this.lifecycle = lifecycle
+        this.mobileWebExecution = false
 
         appiumOptions = HashMap()
     }

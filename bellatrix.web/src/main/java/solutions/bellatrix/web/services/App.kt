@@ -12,7 +12,9 @@
  */
 package solutions.bellatrix.web.services
 
+import solutions.bellatrix.core.utilities.InstanceFactory
 import solutions.bellatrix.web.infrastructure.DriverService
+import solutions.bellatrix.web.pages.WebPage
 
 object App : AutoCloseable {
     private var disposed = false
@@ -30,15 +32,15 @@ object App : AutoCloseable {
         DriverService.addDriverOptions(key, value)
     }
 
-//    inline fun <reified TPage : WebPage<*, *>> goTo(): TPage {
-//        val page = InstanceFactory.create<TPage>()
-//        page.open()
-//        return page
-//    }
-//
-//    inline fun <reified TPage : WebPage<*, *>> create(): TPage {
-//        return InstanceFactory.create<TPage>()
-//    }
+    inline fun <reified TPage : WebPage<*, *>> goTo(): TPage {
+        val page = InstanceFactory.create<TPage>()
+        page.open()
+        return page
+    }
+
+    inline fun <reified TPage : WebPage<*, *>> create(): TPage {
+        return InstanceFactory.create<TPage>()
+    }
 
     override fun close() {
         if (disposed) {

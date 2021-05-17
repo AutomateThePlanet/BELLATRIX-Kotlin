@@ -34,7 +34,16 @@ import solutions.bellatrix.desktop.waitstrategies.WaitStrategy
 import java.util.*
 
 open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
-    override lateinit var wrappedElement: WebElement
+    protected var wrappedElementHolder: WebElement? = null
+    override val wrappedElement: WebElement
+        get() {
+            return try {
+                wrappedElementHolder?.isDisplayed
+                wrappedElementHolder ?: findElement()
+            } catch (ex: StaleElementReferenceException) {
+                findElement()
+            }
+        }
     var parentWrappedElement: WebElement? = null
     var elementIndex = 0
     override lateinit var findStrategy: FindStrategy
@@ -191,13 +200,13 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
             for (waitStrategy in waitStrategies) {
                 componentWaitService.wait(this, waitStrategy)
             }
-            wrappedElement = findNativeElement()
+            wrappedElementHolder = findNativeElement()
             scrollToMakeElementVisible(wrappedElement)
             addArtificialDelay()
             waitStrategies.clear()
         } catch (ex: WebDriverException) {
             ex.debugStackTrace()
-            print(String.format("\n\nThe element: \n Name: '%s', \n Locator: '%s = %s', \nWas not found on the page or didn't fulfill the specified conditions.\n\n", componentClass.simpleName, findStrategy.toString(), findStrategy.value))
+            print("\n\nThe component: \n Name: '${componentClass.simpleName}', \n Locator: '$findStrategy', \nWas not found on the page or didn't fulfill the specified conditions.\n\n")
         }
         RETURNING_WRAPPED_ELEMENT.broadcast(ComponentActionEventArgs(this))
         return wrappedElement
@@ -284,7 +293,6 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
         val CREATED_ELEMENT = EventListener<ComponentActionEventArgs>()
         val CREATING_ELEMENTS = EventListener<ComponentActionEventArgs>()
         val CREATED_ELEMENTS = EventListener<ComponentActionEventArgs>()
-        val VALIDATED_ATTRIBUTE = EventListener<ComponentActionEventArgs>()
     }
 
     init {

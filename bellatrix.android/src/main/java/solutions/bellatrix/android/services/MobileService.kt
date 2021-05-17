@@ -14,7 +14,7 @@ package solutions.bellatrix.android.services
 
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
-import solutions.bellatrix.ios.infrastructure.DriverService.getWrappedAndroidDriver
+import solutions.bellatrix.android.infrastructure.DriverService.getWrappedAndroidDriver
 
 abstract class MobileService {
     val wrappedAndroidDriver: AndroidDriver<MobileElement>

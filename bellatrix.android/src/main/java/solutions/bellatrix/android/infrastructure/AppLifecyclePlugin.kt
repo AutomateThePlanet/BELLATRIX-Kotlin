@@ -17,7 +17,7 @@ import solutions.bellatrix.core.plugins.Plugin
 import solutions.bellatrix.core.plugins.TestResult
 import solutions.bellatrix.core.utilities.UserHomePathNormalizer
 import solutions.bellatrix.core.utilities.debugStackTrace
-import solutions.bellatrix.ios.configuration.AndroidSettings
+import solutions.bellatrix.android.configuration.AndroidSettings
 import java.lang.reflect.Method
 
 class AppLifecyclePlugin : Plugin() {

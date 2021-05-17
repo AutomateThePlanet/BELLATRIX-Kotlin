@@ -12,13 +12,11 @@
  */
 package solutions.bellatrix.core.plugins.junit
 
-import org.junit.Rule
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.TestInfo
-import org.junit.jupiter.api.extension.TestWatcher
-import org.junit.runner.Description
+import org.junit.jupiter.api.extension.ExtendWith
 import solutions.bellatrix.core.plugins.Plugin
 import solutions.bellatrix.core.plugins.PluginExecutionEngine
 import solutions.bellatrix.core.plugins.PluginExecutionEngine.afterClassFailed
@@ -36,9 +34,10 @@ import solutions.bellatrix.core.plugins.PluginExecutionEngine.preBeforeTest
 import solutions.bellatrix.core.plugins.TestResult
 import java.util.*
 
+@ExtendWith(TestResultListener::class)
 open class BaseTest {
     companion object {
-        private val CURRENT_TEST_RESULT = ThreadLocal<TestResult>()
+        val CURRENT_TEST_RESULT = ThreadLocal<TestResult>()
         private val CONFIGURATION_EXECUTED = ThreadLocal<Boolean>()
         private val ALREADY_EXECUTED_BEFORE_CLASSES = ThreadLocal<MutableList<String>>()
 
@@ -62,17 +61,6 @@ open class BaseTest {
 
     fun addPlugin(plugin: Plugin) {
         PluginExecutionEngine.addPlugin(plugin)
-    }
-
-    @Rule
-    var watchman: TestWatcher = object : TestWatcher {
-        protected fun failed(description: Description) {
-            CURRENT_TEST_RESULT.set(TestResult.FAILURE)
-        }
-
-        protected fun succeeded(description: Description) {
-            CURRENT_TEST_RESULT.set(TestResult.SUCCESS)
-        }
     }
 
     @BeforeEach

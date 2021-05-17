@@ -13,10 +13,7 @@
 package solutions.bellatrix.core.plugins.testng
 
 import org.testng.ITestResult
-import org.testng.annotations.AfterClass
-import org.testng.annotations.AfterMethod
-import org.testng.annotations.BeforeClass
-import org.testng.annotations.BeforeMethod
+import org.testng.annotations.*
 import solutions.bellatrix.core.plugins.Plugin
 import solutions.bellatrix.core.plugins.PluginExecutionEngine
 import solutions.bellatrix.core.plugins.PluginExecutionEngine.afterClassFailed
@@ -33,8 +30,10 @@ import solutions.bellatrix.core.plugins.PluginExecutionEngine.preBeforeClass
 import solutions.bellatrix.core.plugins.PluginExecutionEngine.preBeforeTest
 import solutions.bellatrix.core.plugins.TestResult
 
+@Listeners(TestResultListener::class)
 open class BaseTest {
     companion object {
+        val CURRENT_TEST_RESULT = ThreadLocal<TestResult>()
         private val CONFIGURATION_EXECUTED = ThreadLocal<Boolean>()
     }
 
@@ -68,9 +67,9 @@ open class BaseTest {
         try {
             val testClass: Class<out BaseTest> = this.javaClass
             val methodInfo = testClass.getMethod(testResult.method.methodName)
-            preBeforeTest(convertToTestResult(testResult), methodInfo)
+            preBeforeTest(CURRENT_TEST_RESULT.get(), methodInfo)
             beforeMethod()
-            postBeforeTest(convertToTestResult(testResult), methodInfo)
+            postBeforeTest(CURRENT_TEST_RESULT.get(), methodInfo)
         } catch (e: Exception) {
             beforeTestFailed(e)
         }
@@ -81,9 +80,9 @@ open class BaseTest {
         try {
             val testClass: Class<out BaseTest> = this.javaClass
             val methodInfo = testClass.getMethod(testResult.method.methodName)
-            preAfterTest(convertToTestResult(testResult), methodInfo)
+            preAfterTest(CURRENT_TEST_RESULT.get(), methodInfo)
             afterMethod()
-            postAfterTest(convertToTestResult(testResult), methodInfo)
+            postAfterTest(CURRENT_TEST_RESULT.get(), methodInfo)
         } catch (e: Exception) {
             afterTestFailed(e)
         }
@@ -106,12 +105,4 @@ open class BaseTest {
     protected open fun afterClass() {}
     protected open fun beforeMethod() {}
     protected open fun afterMethod() {}
-
-    private fun convertToTestResult(testResult: ITestResult): TestResult {
-        return if (testResult.status == ITestResult.SUCCESS) {
-            TestResult.FAILURE
-        } else {
-            TestResult.SUCCESS
-        }
-    }
 }

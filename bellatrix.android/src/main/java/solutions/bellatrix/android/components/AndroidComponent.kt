@@ -15,10 +15,7 @@ package solutions.bellatrix.android.components
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import layout.LayoutComponentValidationsBuilder
-import org.openqa.selenium.Dimension
-import org.openqa.selenium.ElementNotInteractableException
-import org.openqa.selenium.Point
-import org.openqa.selenium.WebDriverException
+import org.openqa.selenium.*
 import org.openqa.selenium.interactions.Actions
 import solutions.bellatrix.android.components.contracts.Component
 import solutions.bellatrix.android.configuration.AndroidSettings
@@ -38,7 +35,16 @@ import solutions.bellatrix.core.utilities.debugStackTrace
 import java.util.*
 
 open class AndroidComponent : LayoutComponentValidationsBuilder(), Component {
-    override lateinit var wrappedElement: MobileElement
+    protected var wrappedElementHolder: MobileElement? = null
+    override val wrappedElement: MobileElement
+        get() {
+            return try {
+                wrappedElementHolder?.isDisplayed
+                wrappedElementHolder ?: findElement()
+            } catch (ex: StaleElementReferenceException) {
+                findElement()
+            }
+        }
     var parentWrappedElement: MobileElement? = null
     var elementIndex = 0
     override lateinit var findStrategy: FindStrategy
@@ -165,13 +171,13 @@ open class AndroidComponent : LayoutComponentValidationsBuilder(), Component {
             for (waitStrategy in waitStrategies) {
                 componentWaitService.wait(this, waitStrategy)
             }
-            wrappedElement = findNativeElement()
+            wrappedElementHolder = findNativeElement()
             scrollToMakeElementVisible(wrappedElement)
             addArtificialDelay()
             waitStrategies.clear()
         } catch (ex: WebDriverException) {
             ex.debugStackTrace()
-            print(String.format("\n\nThe element: \n Name: '%s', \n Locator: '%s = %s', \nWas not found on the page or didn't fulfill the specified conditions.\n\n", componentClass.simpleName, findStrategy.toString(), findStrategy.value))
+            print("\n\nThe component: \n Name: '${componentClass.simpleName}', \n Locator: '$findStrategy', \nWas not found on the page or didn't fulfill the specified conditions.\n\n")
         }
         RETURNING_WRAPPED_ELEMENT.broadcast(ComponentActionEventArgs(this))
         return wrappedElement
@@ -280,7 +286,6 @@ open class AndroidComponent : LayoutComponentValidationsBuilder(), Component {
         val CREATED_ELEMENT: EventListener<ComponentActionEventArgs> = EventListener()
         val CREATING_ELEMENTS: EventListener<ComponentActionEventArgs> = EventListener()
         val CREATED_ELEMENTS: EventListener<ComponentActionEventArgs> = EventListener()
-        val VALIDATED_ATTRIBUTE: EventListener<ComponentActionEventArgs> = EventListener()
     }
 
     init {

@@ -13,14 +13,14 @@
 package solutions.bellatrix.web.components.listeners
 
 import solutions.bellatrix.web.components.Anchor
-import solutions.bellatrix.web.components.WebComponent
+import solutions.bellatrix.web.validations.ComponentValidator
 
 object BddLogging {
     private var isBddLoggingTurnedOn = false
     fun addPlugin() {
         if (!isBddLoggingTurnedOn) {
             Anchor.CLICKING.addListener { println("clicking ${it.component.elementName}\n") }
-            WebComponent.VALIDATED_ATTRIBUTE.addListener { println(it.message) }
+            ComponentValidator.VALIDATED_ATTRIBUTE.addListener { println(it.message) }
             isBddLoggingTurnedOn = true
         }
     }

@@ -12,8 +12,8 @@
  */
 package solutions.bellatrix.android.pages
 
-import solutions.bellatrix.ios.services.AppService
-import solutions.bellatrix.ios.services.ComponentCreateService
+import solutions.bellatrix.android.services.AppService
+import solutions.bellatrix.android.services.ComponentCreateService
 
 abstract class AndroidPage<MapT : PageMap, AssertsT : PageAsserts<MapT>> {
     val appService = AppService
