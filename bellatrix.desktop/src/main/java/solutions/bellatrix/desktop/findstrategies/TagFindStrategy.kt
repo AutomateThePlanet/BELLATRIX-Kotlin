@@ -26,11 +26,11 @@ class TagFindStrategy(value: String) : FindStrategy(value) {
         return driver.findElementsByTagName(value)
     }
 
-    override fun findElement(element: WebElement): MobileElement {
+    override fun findElement(element: WebElement): WebElement {
         return element.findElement(By.tagName(value))
     }
 
-    override fun findAllElements(element: WebElement): List<MobileElement> {
+    override fun findAllElements(element: WebElement): List<WebElement> {
         return element.findElements(By.tagName(value))
     }
 

@@ -19,6 +19,6 @@ import org.openqa.selenium.WebElement
 abstract class FindStrategy protected constructor(val value: String) {
     abstract fun findElement(driver: WindowsDriver<WebElement>): WebElement
     abstract fun findAllElements(driver: WindowsDriver<WebElement>): List<WebElement>
-    abstract fun findElement(element: WebElement): MobileElement
-    abstract fun findAllElements(element: WebElement): List<MobileElement>
+    abstract fun findElement(element: WebElement): WebElement
+    abstract fun findAllElements(element: WebElement): List<WebElement>
 }

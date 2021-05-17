@@ -26,11 +26,11 @@ class ClassFindStrategy(value: String) : FindStrategy(value) {
         return driver.findElementsByClassName(value)
     }
 
-    override fun findElement(element: WebElement): MobileElement {
+    override fun findElement(element: WebElement): WebElement {
         return element.findElement(By.className(value))
     }
 
-    override fun findAllElements(element: WebElement): List<MobileElement> {
+    override fun findAllElements(element: WebElement): List<WebElement> {
         return element.findElements(By.className(value))
     }
 
