@@ -13,7 +13,7 @@
 package solutions.bellatrix.desktop.infrastructure.testng
 
 import solutions.bellatrix.core.plugins.testng.BaseTest
-import solutions.bellatrix.desktop.components.listeners.BddLogging.addPlugin
+import solutions.bellatrix.desktop.components.listeners.BddLogging
 import solutions.bellatrix.desktop.infrastructure.AppLifecyclePlugin
 import solutions.bellatrix.desktop.infrastructure.DesktopScreenshotPlugin
 import solutions.bellatrix.desktop.infrastructure.DesktopVideoPlugin
@@ -29,6 +29,6 @@ open class DesktopTest : BaseTest() {
         addPlugin(DesktopScreenshotPlugin.of())
         addPlugin(DesktopVideoPlugin.of())
         addPlugin(DownloadDemoAppsPlugin.of())
-        addPlugin()
+        addListener(BddLogging::class)
     }
 }

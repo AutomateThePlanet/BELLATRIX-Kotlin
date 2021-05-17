@@ -32,10 +32,11 @@ import solutions.bellatrix.core.plugins.PluginExecutionEngine.preAfterTest
 import solutions.bellatrix.core.plugins.PluginExecutionEngine.preBeforeClass
 import solutions.bellatrix.core.plugins.PluginExecutionEngine.preBeforeTest
 import solutions.bellatrix.core.plugins.TestResult
+import solutions.bellatrix.core.plugins.UsesPlugins
 import java.util.*
 
 @ExtendWith(TestResultListener::class)
-open class BaseTest {
+open class BaseTest : UsesPlugins() {
     companion object {
         val CURRENT_TEST_RESULT = ThreadLocal<TestResult>()
         private val CONFIGURATION_EXECUTED = ThreadLocal<Boolean>()
@@ -57,10 +58,6 @@ open class BaseTest {
     init {
         CONFIGURATION_EXECUTED.set(false)
         ALREADY_EXECUTED_BEFORE_CLASSES.set(ArrayList())
-    }
-
-    fun addPlugin(plugin: Plugin) {
-        PluginExecutionEngine.addPlugin(plugin)
     }
 
     @BeforeEach

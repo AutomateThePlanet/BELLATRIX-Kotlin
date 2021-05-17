@@ -14,11 +14,12 @@ package solutions.bellatrix.android.components.listeners
 
 import solutions.bellatrix.android.components.Button
 import solutions.bellatrix.android.components.ComponentActionEventArgs
+import solutions.bellatrix.core.plugins.Listener
 import solutions.bellatrix.web.validations.ComponentValidator
 
-object BddLogging {
+object BddLogging : Listener() {
     private var isBddLoggingTurnedOn = false
-    fun addPlugin() {
+    override fun addListener() {
         if (!isBddLoggingTurnedOn) {
             Button.CLICKING.addListener { println("clicking ${it.component.elementName}\n") }
             ComponentValidator.VALIDATED_ATTRIBUTE.addListener { println(it.message) }

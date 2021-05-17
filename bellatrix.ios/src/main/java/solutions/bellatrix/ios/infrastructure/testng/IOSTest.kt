@@ -13,7 +13,7 @@
 package solutions.bellatrix.ios.infrastructure.testng
 
 import solutions.bellatrix.core.plugins.testng.BaseTest
-import solutions.bellatrix.ios.components.listeners.BddLogging.addPlugin
+import solutions.bellatrix.ios.components.listeners.BddLogging
 import solutions.bellatrix.ios.infrastructure.AppLifecyclePlugin
 import solutions.bellatrix.ios.infrastructure.DownloadDemoAppsPlugin
 import solutions.bellatrix.ios.infrastructure.MobileScreenshotPlugin
@@ -29,6 +29,6 @@ open class IOSTest : BaseTest() {
         addPlugin(MobileScreenshotPlugin.of())
         addPlugin(MobileVideoPlugin.of())
         addPlugin(DownloadDemoAppsPlugin.of())
-        addPlugin()
+        addListener(BddLogging::class)
     }
 }

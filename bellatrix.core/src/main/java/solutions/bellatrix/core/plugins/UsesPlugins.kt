@@ -10,19 +10,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.web.components.listeners
+package solutions.bellatrix.core.plugins
 
-import solutions.bellatrix.core.plugins.Listener
-import solutions.bellatrix.web.components.Anchor
-import solutions.bellatrix.web.validations.ComponentValidator
+import solutions.bellatrix.core.utilities.SingletonFactory
+import kotlin.reflect.KClass
 
-object BddLogging : Listener() {
-    private var isBddLoggingTurnedOn = false
-    override fun addListener() {
-        if (!isBddLoggingTurnedOn) {
-            Anchor.CLICKING.addListener { println("clicking ${it.component.elementName}\n") }
-            ComponentValidator.VALIDATED_ATTRIBUTE.addListener { println(it.message) }
-            isBddLoggingTurnedOn = true
-        }
+abstract class UsesPlugins {
+    fun addPlugin(plugin: Plugin) {
+        PluginExecutionEngine.addPlugin(plugin)
+    }
+
+    inline fun <reified T : Listener> addListener(listener: KClass<T>, vararg args: Any?) {
+        SingletonFactory.getInstance<T>(listener, args).addListener()
     }
 }
