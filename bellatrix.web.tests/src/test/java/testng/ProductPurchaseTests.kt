@@ -33,7 +33,7 @@ class ProductPurchaseTests : WebTest() {
         val blogLink = app.create.byCss<Anchor>("[data-product_id*='28']")
         addToCartFalcon9.click()
         blogLink.above(addToCartFalcon9).equal(8).validate()
-        MainPage.asserts.productBoxLink("", "")
+        MainPage.asserts.productBoxLink("Falcon 9", "http://demos.bellatrix.solutions/product/falcon-9/")
         blogLink.validateHrefIs("http://demos.bellatrix.solutions/")
     }
 
