@@ -13,7 +13,7 @@
 package solutions.bellatrix.web.components
 
 import layout.LayoutComponentValidationsBuilder
-import org.apache.commons.lang3.StringEscapeUtils
+import org.apache.commons.text.StringEscapeUtils
 import org.openqa.selenium.*
 import org.openqa.selenium.support.ui.Select
 import solutions.bellatrix.core.configuration.ConfigurationService
@@ -524,6 +524,7 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
 
     protected fun defaultSetText(settingValue: EventListener<ComponentActionEventArgs>, valueSet: EventListener<ComponentActionEventArgs>, value: String) {
         settingValue.broadcast(ComponentActionEventArgs(this))
+        findElement().click()
         findElement().clear()
         findElement().sendKeys(value)
         valueSet.broadcast(ComponentActionEventArgs(this))
