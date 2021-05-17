@@ -13,7 +13,6 @@
 package solutions.bellatrix.desktop.components.listeners
 
 import solutions.bellatrix.desktop.components.Anchor
-import solutions.bellatrix.desktop.components.ComponentActionEventArgs
 import solutions.bellatrix.desktop.validations.ComponentValidator
 
 object BddLogging {
