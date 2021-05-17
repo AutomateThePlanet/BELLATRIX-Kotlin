@@ -19,6 +19,7 @@ import plugins.screenshots.ScreenshotPlugin
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.android.configuration.AndroidSettings
 import solutions.bellatrix.android.infrastructure.DriverService.getWrappedAndroidDriver
+import solutions.bellatrix.core.utilities.UserHomePathNormalizer.normalizePath
 import java.io.File
 import java.nio.file.Paths
 import java.util.*
@@ -31,12 +32,9 @@ class MobileScreenshotPlugin(isEnabled: Boolean?) : ScreenshotPlugin(isEnabled!!
     }
 
     override val outputFolder: String
-        protected get() {
+        get() {
             var saveLocation: String = ConfigurationService.get<AndroidSettings>().screenshotsSaveLocation
-            if (saveLocation.startsWith("user.home")) {
-                val userHomeDir = System.getProperty("user.home")
-                saveLocation = saveLocation.replace("user.home", userHomeDir)
-            }
+            saveLocation = normalizePath(saveLocation)
             val directory = File(saveLocation)
             if (!directory.exists()) {
                 directory.mkdirs()
