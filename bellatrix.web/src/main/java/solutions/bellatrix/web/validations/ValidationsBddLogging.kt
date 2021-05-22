@@ -19,7 +19,7 @@ object ValidationsBddLogging : Listener() {
     override fun addListener() {
         if (!isBddLoggingTurnedOn) {
             Validator.VALIDATED_EVENT.addListener { println("${it.message}\n") }
-            Validator.VALIDATED_EXCEPTION_TROWED_EVENT.addListener { println("${it.exception}\n") }
+            Validator.VALIDATED_EXCEPTION_THROWN_EVENT.addListener { println("${it.exception}\n") }
             isBddLoggingTurnedOn = true
         }
     }

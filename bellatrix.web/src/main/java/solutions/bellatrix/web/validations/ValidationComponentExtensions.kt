@@ -66,7 +66,7 @@ fun <TComponent : ComponentHtml> TComponent.validateHtmlContains(expected: Strin
 }
 
 object Validator {
-    val VALIDATED_EXCEPTION_TROWED_EVENT = EventListener<ComponentNotFulfillingValidateConditionEventArgs>()
+    val VALIDATED_EXCEPTION_THROWN_EVENT = EventListener<ComponentNotFulfillingValidateConditionEventArgs>()
     val VALIDATED_EVENT = EventListener<ValidationEventArgs>()
 
     fun <TComponent : Component> waitUntil(
@@ -89,7 +89,7 @@ object Validator {
             VALIDATED_EVENT.broadcast(ValidationEventArgs(component, successMessage, actionValue))
         } catch (ex: WebDriverException) {
             val elementPropertyValidateException = ElementPropertyValidateException(exceptionMessage, DriverService.wrappedDriver().currentUrl)
-            VALIDATED_EXCEPTION_TROWED_EVENT.broadcast(ComponentNotFulfillingValidateConditionEventArgs(ex))
+            VALIDATED_EXCEPTION_THROWN_EVENT.broadcast(ComponentNotFulfillingValidateConditionEventArgs(ex))
             throw elementPropertyValidateException
         }
     }
