@@ -13,15 +13,42 @@
 package solutions.bellatrix.web.components.listeners
 
 import solutions.bellatrix.core.plugins.Listener
-import solutions.bellatrix.web.components.Anchor
+import solutions.bellatrix.core.utilities.Log
+import solutions.bellatrix.web.components.*
 import solutions.bellatrix.web.validations.ComponentValidator
 
 object BddLogging : Listener() {
     private var isBddLoggingTurnedOn = false
     override fun addListener() {
         if (!isBddLoggingTurnedOn) {
-            Anchor.CLICKING.addListener { println("clicking ${it.component.elementName}\n") }
-            ComponentValidator.VALIDATED_ATTRIBUTE.addListener { println(it.message) }
+            Anchor.CLICKING.addListener { Log.info("clicking ${it.component.elementName}}") }
+            Button.CLICKING.addListener { Log.info("clicking ${it.component.elementName}}") }
+            CheckBox.CHECKING.addListener { Log.info("checking ${it.component.elementName}}") }
+            CheckBox.UNCHECKING.addListener { Log.info("unchecking ${it.component.elementName}}") }
+            ColorInput.SETTING_COLOR.addListener { Log.info("setting '${it.actionValue}' in ${it.component.elementName}}") }
+            DateInput.SETTING_DATE.addListener { Log.info("setting '${it.actionValue}' in ${it.component.elementName}}") }
+            DateTimeInput.SETTING_TIME.addListener { Log.info("setting '${it.actionValue}' in ${it.component.elementName}}") }
+            EmailInput.SETTING_EMAIL.addListener { Log.info("typing '${it.actionValue}' in ${it.component.elementName}}") }
+            FileInput.UPLOADING.addListener { Log.info("uploading '${it.actionValue}' to ${it.component.elementName}}") }
+            MonthInput.SETTING_MONTH.addListener { Log.info("setting '${it.actionValue}' in ${it.component.elementName}}") }
+            NumberInput.SETTING_NUMBER.addListener { Log.info("typing '${it.actionValue}' in ${it.component.elementName}}") }
+            PasswordInput.SETTING_PASSWORD.addListener { Log.info("typing '${it.actionValue}' in ${it.component.elementName}}") }
+            PhoneInput.SETTING_PHONE.addListener { Log.info("typing '${it.actionValue}' in ${it.component.elementName}}") }
+            RadioButton.CLICKING.addListener { Log.info("clicking ${it.component.elementName}}") }
+            Range.SETTING_RANGE.addListener { Log.info("setting '${it.actionValue}' in ${it.component.elementName}}") }
+            Reset.CLICKING.addListener { Log.info("clicking ${it.component.elementName}}") }
+            SearchInput.SETTING_SEARCH.addListener { Log.info("typing '${it.actionValue}' in ${it.component.elementName}}") }
+            Select.SELECTING.addListener { Log.info("selecting '${it.actionValue}' from ${it.component.elementName}}") }
+            TextArea.SETTING_TEXT.addListener { Log.info("typing '${it.actionValue}' in ${it.component.elementName}}") }
+            TextField.SETTING_TEXT.addListener { Log.info("typing '${it.actionValue}' in ${it.component.elementName}}") }
+            TimeInput.SETTING_TIME.addListener { Log.info("setting '${it.actionValue}' in ${it.component.elementName}}") }
+            UrlInput.SETTING_URL.addListener { Log.info("typing '${it.actionValue}' in ${it.component.elementName}}") }
+            WeekInput.SETTING_WEEK.addListener { Log.info("setting '${it.actionValue}' in ${it.component.elementName}}") }
+            WebComponent.HOVERING.addListener { Log.info("hovering ${it.component.elementName}}") }
+            WebComponent.FOCUSING.addListener { Log.info("focusing ${it.component.elementName}}") }
+            WebComponent.SCROLLING_TO_VISIBLE.addListener { Log.info("scrolling to ${it.component.elementName}}") }
+            WebComponent.SETTING_ATTRIBUTE.addListener { Log.info("setting ${it.actionValue} to '${it.message}' in ${it.component.elementName}") }
+            ComponentValidator.VALIDATING_ATTRIBUTE.addListener { Log.info(it.message) }
             isBddLoggingTurnedOn = true
         }
     }
