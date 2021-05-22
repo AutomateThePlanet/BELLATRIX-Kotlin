@@ -12,7 +12,6 @@
  */
 package solutions.bellatrix.core.plugins
 
-import solutions.bellatrix.core.utilities.SingletonFactory
 import kotlin.reflect.KClass
 
 abstract class UsesPlugins {
@@ -20,7 +19,7 @@ abstract class UsesPlugins {
         PluginExecutionEngine.addPlugin(plugin)
     }
 
-    inline fun <reified T : Listener> addListener(listener: KClass<T>, vararg args: Any?) {
-        SingletonFactory.getInstance<T>(listener, args).addListener()
+    inline fun <reified T : Listener> addListener(listener: KClass<T>) {
+        listener.objectInstance?.addListener()
     }
 }
