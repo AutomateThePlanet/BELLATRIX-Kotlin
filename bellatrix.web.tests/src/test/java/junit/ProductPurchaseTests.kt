@@ -47,13 +47,13 @@ class ProductPurchaseTests : WebTest() {
     @Test
     fun falcon9LinkAddsCorrectProduct() {
         MainPage.open()
-        MainPage.asserts.productBoxLink("Falcon 9", "http://demos.bellatrix.solutions/product/falcon-9/")
+        MainPage.asserts.productBoxLink("Falcon 9", "http://demos.bellatrix.solutions/?add-to-cart=28")
     }
 
     @Test
     fun saturnVLinkAddsCorrectProduct() {
         MainPage.open()
-        MainPage.asserts.productBoxLink("Saturn V", "http://demos.bellatrix.solutions/product/saturn-v/")
+        MainPage.asserts.productBoxLink("Saturn V", "http://demos.bellatrix.solutions/?add-to-cart=26")
     }
 
     @Test
