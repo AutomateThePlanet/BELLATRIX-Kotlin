@@ -45,6 +45,8 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
                 wrappedElementHolder ?: findElement()
             } catch (ex: StaleElementReferenceException) {
                 findElement()
+            } catch (ex: NoSuchElementException) {
+                findElement()
             }
         }
     var parentWrappedElement: WebElement? = null
