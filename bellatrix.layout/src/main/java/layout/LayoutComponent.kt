@@ -16,7 +16,7 @@ import org.openqa.selenium.Dimension
 import org.openqa.selenium.Point
 
 interface LayoutComponent {
-    val elementName: String
+    val componentName: String
     val location: Point
     val size: Dimension
 }

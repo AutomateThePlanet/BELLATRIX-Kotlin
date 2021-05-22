@@ -57,7 +57,7 @@ open class AndroidComponent : LayoutComponentValidationsBuilder(), Component {
         protected set
     private val waitStrategies: MutableList<WaitStrategy>
     private val androidSettings: AndroidSettings
-    override val elementName: String
+    override val componentName: String
         get() = String.format("%s (%s)", componentClass.simpleName, findStrategy.toString())
 
     fun waitToBe() {

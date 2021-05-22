@@ -62,7 +62,7 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
         protected set
     private val waitStrategies: MutableList<WaitStrategy>
     private val IOSSettings: IOSSettings
-    override val elementName: String
+    override val componentName: String
         get() = String.format("%s (%s)", componentClass.simpleName, findStrategy.toString())
 
     fun waitToBe() {

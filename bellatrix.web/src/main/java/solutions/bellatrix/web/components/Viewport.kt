@@ -17,6 +17,6 @@ class Viewport : LayoutComponent {
         size = Dimension(viewportWidth, viewportHeight)
     }
 
-    override val elementName: String
+    override val componentName: String
         get() = "Screen"
 }

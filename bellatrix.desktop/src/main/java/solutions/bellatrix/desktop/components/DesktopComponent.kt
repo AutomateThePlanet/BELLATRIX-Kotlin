@@ -56,7 +56,7 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
         protected set
     private val waitStrategies: MutableList<WaitStrategy>
     private val desktopSettings: DesktopSettings
-    override val elementName: String
+    override val componentName: String
         get() = String.format("%s (%s)", componentClass.simpleName, findStrategy.toString())
 
     fun waitToBe() {

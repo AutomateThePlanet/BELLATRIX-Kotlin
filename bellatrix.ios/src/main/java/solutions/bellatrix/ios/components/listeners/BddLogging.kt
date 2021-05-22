@@ -14,15 +14,13 @@ package solutions.bellatrix.ios.components.listeners
 
 import solutions.bellatrix.core.plugins.Listener
 import solutions.bellatrix.ios.components.Button
-import solutions.bellatrix.ios.components.ComponentActionEventArgs
-import solutions.bellatrix.ios.components.IOSComponent
 import solutions.bellatrix.web.validations.ComponentValidator
 
 object BddLogging : Listener() {
     private var isBddLoggingTurnedOn = false
     override fun addListener() {
         if (!isBddLoggingTurnedOn) {
-            Button.CLICKING.addListener { println("clicking ${it.component.elementName}\n") }
+            Button.CLICKING.addListener { println("clicking ${it.component.componentName}\n") }
             ComponentValidator.VALIDATED_ATTRIBUTE.addListener { println(it.message) }
             isBddLoggingTurnedOn = true
         }

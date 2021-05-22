@@ -203,24 +203,24 @@ abstract class LayoutComponentValidationsBuilder() : LayoutComponent {
     }
 
     private fun getLayoutComponentsNames(layoutComponents: Array<out LayoutComponent>): String {
-        val comparingComponentsNames: String = Arrays.stream(layoutComponents).skip(0).map({ x: LayoutComponent -> x.elementName }).collect(Collectors.joining(","))
+        val comparingComponentsNames: String = Arrays.stream(layoutComponents).skip(0).map({ x: LayoutComponent -> x.componentName }).collect(Collectors.joining(","))
         return comparingComponentsNames
     }
 
     private fun buildNotificationAlignValidationMessage(componentNames: String, expected: Int, validationType: LayoutOptions): String {
-        return String.format("validate %s is %s %s %d px ", elementName, validationType, componentNames, expected)
+        return String.format("validate %s is %s %s %d px ", componentName, validationType, componentNames, expected)
     }
 
     private fun buildFailedAlignValidationMessage(componentNames: String, expected: Int, validationType: LayoutOptions): String {
-        return String.format("%s should be %s %s %d px but was not. ", elementName, validationType, componentNames, expected)
+        return String.format("%s should be %s %s %d px but was not. ", componentName, validationType, componentNames, expected)
     }
 
     private fun buildNotificationValidationMessage(secondLayoutComponent: LayoutComponent, validationType: LayoutOptions): String {
-        return String.format("validate %s is %s of %s ", elementName, validationType, secondLayoutComponent.elementName)
+        return String.format("validate %s is %s of %s ", componentName, validationType, secondLayoutComponent.componentName)
     }
 
     private fun buildFailedValidationMessage(secondLayoutComponent: LayoutComponent, validationType: LayoutOptions): String {
-        return String.format("%s should be %s of %s ", elementName, validationType, secondLayoutComponent.elementName)
+        return String.format("%s should be %s of %s ", componentName, validationType, secondLayoutComponent.componentName)
     }
 
     private fun calculateRightOfDistance(component: LayoutComponent, secondComponent: LayoutComponent): Double {

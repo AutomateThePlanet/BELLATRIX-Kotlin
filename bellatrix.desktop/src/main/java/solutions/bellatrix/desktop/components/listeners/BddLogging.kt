@@ -20,7 +20,7 @@ object BddLogging : Listener() {
     private var isBddLoggingTurnedOn = false
     override fun addListener() {
         if (!isBddLoggingTurnedOn) {
-            Anchor.CLICKING.addListener { println("clicking ${it.component.elementName}\n") }
+            Anchor.CLICKING.addListener { println("clicking ${it.component.componentName}\n") }
             ComponentValidator.VALIDATED_ATTRIBUTE.addListener { println(it.message) }
             isBddLoggingTurnedOn = true
         }

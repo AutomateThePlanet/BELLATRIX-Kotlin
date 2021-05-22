@@ -90,7 +90,7 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
         val CREATED_ELEMENTS = EventListener<ComponentActionEventArgs>()
     }
 
-    override val elementName: String
+    override val componentName: String
         get() = "${componentClass.simpleName} ($findStrategy)"
 
     fun waitToBe() {
