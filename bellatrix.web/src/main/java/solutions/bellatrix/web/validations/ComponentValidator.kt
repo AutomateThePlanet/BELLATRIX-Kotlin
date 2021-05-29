@@ -13,94 +13,116 @@
 package solutions.bellatrix.web.validations
 
 import org.apache.commons.lang3.StringUtils
-import org.openqa.selenium.SearchContext
 import org.openqa.selenium.TimeoutException
-import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.support.ui.FluentWait
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.core.utilities.Log
 import solutions.bellatrix.web.components.ComponentActionEventArgs
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.configuration.WebSettings
 import solutions.bellatrix.web.infrastructure.DriverService
 import solutions.bellatrix.web.services.BrowserService
-import java.util.function.Function
+import java.time.Duration
+import java.util.function.BooleanSupplier
+import java.util.function.Supplier
 
 open class ComponentValidator {
-    private val webSettings = ConfigurationService.get<WebSettings>()
+    private val timeoutSettings = ConfigurationService.get<WebSettings>().timeoutSettings
     private val browserService = BrowserService
 
-    protected open fun defaultValidateAttributeIsNull(component: WebComponent, property: Any?, attributeName: String) {
-        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validating $attributeName is null"))
-        waitUntil({ property == null }, "The control's $attributeName should be null but was '$property'.")
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validated $attributeName is null"))
+    open fun defaultValidateAttributeIsNull(component: WebComponent, supplier: Supplier<Any?>, attributeName: String) {
+        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, message = "validating ${component.componentName}'s $attributeName is null"))
+        waitUntil({ supplier.get() == null }, component, attributeName, "null", supplier, "be")
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, message = "validated ${component.componentName}'s $attributeName is null"))
     }
 
-    protected open fun defaultValidateAttributeNotNull(component: WebComponent, property: Any?, attributeName: String) {
-        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validating $attributeName is set"))
-        waitUntil({ property != null }, "The control's $attributeName shouldn't be null but was.")
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validated $attributeName is set"))
+    open fun defaultValidateAttributeNotNull(component: WebComponent, supplier: Supplier<Any?>, attributeName: String) {
+        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, message = "validating ${component.componentName}'s $attributeName is set"))
+        waitUntil({ supplier.get() != null }, component, attributeName, "not null", { "null" }, "not be")
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, message = "validated ${component.componentName}'s $attributeName is set"))
     }
 
-    protected open fun defaultValidateAttributeIsSet(component: WebComponent, property: String, attributeName: String) {
-        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validating $attributeName is set"))
-        waitUntil({ !StringUtils.isEmpty(property) }, "The control's $attributeName shouldn't be empty but was.")
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validated $attributeName is set"))
+    open fun defaultValidateAttributeIsSet(component: WebComponent, supplier: Supplier<String>, attributeName: String) {
+        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, message = "validating ${component.componentName}'s $attributeName is set"))
+        waitUntil({ !StringUtils.isEmpty(supplier.get()) }, component, attributeName, "set", { "not set" }, "be")
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, message = "validated ${component.componentName}'s $attributeName is set"))
     }
 
-    protected open fun defaultValidateAttributeNotSet(component: WebComponent, property: String, attributeName: String) {
-        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validating $attributeName is null"))
-        waitUntil({ StringUtils.isEmpty(property) }, "The control's $attributeName should be null but was '$property'.")
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validated $attributeName is null"))
+    open fun defaultValidateAttributeNotSet(component: WebComponent, supplier: Supplier<String>, attributeName: String) {
+        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, message = "validating ${component.componentName}'s $attributeName is null"))
+        waitUntil({ StringUtils.isEmpty(supplier.get()) }, component, attributeName, "not set", supplier, "be")
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, message = "validated ${component.componentName}'s $attributeName is null"))
     }
 
-    protected open fun defaultValidateAttributeIs(component: WebComponent, property: String, value: String, attributeName: String) {
-        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value, "validating $attributeName is '$value'"))
-        waitUntil({ property.trim() == value }, "The control's $attributeName should be '$value' but was '$property'.")
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value, "validated $attributeName is '$value'"))
+    open fun defaultValidateAttributeIs(component: WebComponent, supplier: Supplier<String>, value: String, attributeName: String) {
+        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, value, message = "validating ${component.componentName}'s $attributeName is '$value'"))
+        waitUntil({ supplier.get().trim() == value }, component, attributeName, value, supplier, "be")
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, value, message = "validated ${component.componentName}'s $attributeName is '$value'"))
     }
 
-    protected open fun defaultValidateAttributeIs(component: WebComponent, property: Number?, value: Number, attributeName: String) {
-        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value.toString(), "validating $attributeName is '$value'"))
-        waitUntil({ property == value }, "The control's $attributeName should be '$value' but was '$property'.")
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value.toString(), "validated $attributeName is '$value'"))
+    open fun defaultValidateAttributeIs(component: WebComponent, supplier: Supplier<Number>, value: Number, attributeName: String) {
+        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, value.toString(), message = "validating ${component.componentName}'s $attributeName is '$value'"))
+        waitUntil({ supplier.get() == value }, component, attributeName, value.toString(), supplier, "be")
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, value.toString(), message = "validated ${component.componentName}'s $attributeName is '$value'"))
     }
 
-    protected open fun defaultValidateAttributeContains(component: WebComponent, property: String, value: String, attributeName: String) {
-        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value, "validating $attributeName contains '$value'"))
-        waitUntil({ property.trim().contains(value) }, "The control's $attributeName should contain '$value' but was '$property'.")
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value, "validated $attributeName contains '$value'"))
+    open fun defaultValidateAttributeContains(component: WebComponent, supplier: Supplier<String>, value: String, attributeName: String) {
+        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, value, message = "validating ${component.componentName}'s $attributeName contains '$value'"))
+        waitUntil({ supplier.get().trim().contains(value) }, component, attributeName, value, supplier, "contain")
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, value, message = "validated ${component.componentName}'s $attributeName contains '$value'"))
     }
 
-    protected open fun defaultValidateAttributeNotContains(component: WebComponent, property: String, value: String, attributeName: String) {
-        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value, "validating $attributeName doesn't contain '$value'"))
-        waitUntil({ !property.trim().contains(value) }, "The control's $attributeName shouldn't contain '$value' but was '$property'.")
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, value, "validated $attributeName doesn't contain '$value'"))
+    open fun defaultValidateAttributeNotContains(component: WebComponent, supplier: Supplier<String>, value: String, attributeName: String) {
+        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, value, message = "validating ${component.componentName}'s $attributeName doesn't contain '$value'"))
+        waitUntil({ !supplier.get().trim().contains(value) }, component, attributeName, value, supplier, "not contain")
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, value, message = "validated ${component.componentName}'s $attributeName doesn't contain '$value'"))
     }
 
-    protected open fun defaultValidateAttributeTrue(component: WebComponent, property: Boolean, attributeName: String) {
-        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validating is $attributeName"))
-        waitUntil({ property }, "The control should be '$attributeName' but wasn't.")
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validated is $attributeName"))
+    open fun defaultValidateAttributeTrue(component: WebComponent, supplier: BooleanSupplier, attributeName: String) {
+        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, message = "validating ${component.componentName} is $attributeName"))
+        waitUntil(supplier, component, attributeName, "true", { "false" }, "be")
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, message = "validated ${component.componentName} is $attributeName"))
     }
 
-    protected open fun defaultValidateAttributeFalse(component: WebComponent, property: Boolean, attributeName: String) {
-        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validating not $attributeName"))
-        waitUntil({ !property }, "The control shouldn't be '$attributeName' but was.")
-        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, "", "validated not $attributeName"))
+    open fun defaultValidateAttributeFalse(component: WebComponent, supplier: BooleanSupplier, attributeName: String) {
+        VALIDATING_ATTRIBUTE.broadcast(ComponentActionEventArgs(component, message = "validating ${component.componentName} is not $attributeName"))
+        waitUntil({ !supplier.asBoolean }, component, attributeName, "false", { "true" }, "be")
+        VALIDATED_ATTRIBUTE.broadcast(ComponentActionEventArgs(component = component, message = "validated ${component.componentName} is not $attributeName"))
     }
 
-    private fun waitUntil(waitCondition: Function<SearchContext, Boolean>, exceptionMessage: String) {
-        val webDriverWait = WebDriverWait(DriverService.wrappedDriver(), webSettings.timeoutSettings.validationsTimeout, webSettings.timeoutSettings.sleepInterval)
+    private fun <T> waitUntil(condition: BooleanSupplier, component: WebComponent, attributeName: String, value: String, supplier: Supplier<T>, prefix: String) {
+        val validationTimeout = timeoutSettings.validationsTimeout
+        val sleepInterval = timeoutSettings.sleepInterval
+
+        val wait: FluentWait<WebDriver> = FluentWait(DriverService.wrappedDriver())
+            .withTimeout(Duration.ofSeconds(validationTimeout))
+            .pollingEvery(Duration.ofSeconds(if (sleepInterval > 0) sleepInterval else 1))
+
         try {
-            webDriverWait.until(waitCondition)
+            wait.until {
+                component.findElement()
+                condition.asBoolean
+            }
         } catch (ex: TimeoutException) {
-            val validationExceptionMessage = "$exceptionMessage The test failed on URL: ${browserService.url}"
-            throw TimeoutException(validationExceptionMessage, ex)
+            val error = String.format(
+                "\u001B[0mThe %s of \u001B[1m%s \u001B[2m(%s)\u001B[0m%n" +
+                        "  Should %s: \"\u001B[1m%s\u001B[0m\"%n" +
+                        "  %" + prefix.length + "sBut was: \"\u001B[1m%s\u001B[0m\"%n" +
+                        "Test failed on URL: \u001B[1m%s\u001B[0m",
+                attributeName, component.componentClass.simpleName, component.findStrategy,
+                prefix, value,
+                "", supplier.get().toString().replace("%n".toRegex(), "%n" + String.format("%" + (prefix.length + 12) + "s", " ")),
+                browserService.url
+            )
+            Log.error("%n%n%s%n%n", error)
+            throw AssertionError(error, ex)
         }
     }
 
     companion object {
-        val VALIDATED_ATTRIBUTE = EventListener<ComponentActionEventArgs>()
         val VALIDATING_ATTRIBUTE = EventListener<ComponentActionEventArgs>()
+        val VALIDATED_ATTRIBUTE = EventListener<ComponentActionEventArgs>()
     }
 }
