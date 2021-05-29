@@ -16,7 +16,10 @@ import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.core.configuration.TroubleshootingSettings
 
 fun Exception.debugStackTrace() {
-    if (ConfigurationService.get<TroubleshootingSettings>().debugInformationEnabled) {
-        this.printStackTrace()
+    try {
+        if (ConfigurationService.get<TroubleshootingSettings>().debugInformationEnabled) {
+            this.printStackTrace()
+        }
+    } catch (ignored: NoSuchMethodException) {
     }
 }
