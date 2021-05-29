@@ -12,11 +12,10 @@
  */
 package pages.checkoutpage
 
-import org.testng.Assert
 import solutions.bellatrix.web.pages.PageAsserts
 
 class Asserts(override val map: Map) : PageAsserts<Map>() {
     fun orderReceived() {
-        Assert.assertEquals(map.receivedMessage.text, "Order received")
+        map.receivedMessage.validateTextIs("Order received")
     }
 }
