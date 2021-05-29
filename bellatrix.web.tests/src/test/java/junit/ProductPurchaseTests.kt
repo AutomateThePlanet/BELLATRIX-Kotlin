@@ -26,15 +26,19 @@ import solutions.bellatrix.web.infrastructure.junit.WebTest
 
 @ExecutionBrowser(browser = Browser.CHROME, lifecycle = Lifecycle.REUSE_IF_STARTED)
 class ProductPurchaseTests : WebTest() {
+    override fun afterMethod() {
+        app.cookies.deleteAll()
+    }
+
     @Test
     fun completePurchaseSuccessfully_first() {
         app.navigate.to("http://demos.bellatrix.solutions/")
         val addToCartFalcon9 = app.create.byCss<Anchor>("[data-product_id*='28']")
-        val blogLink = app.create.byCss<Anchor>("[data-product_id*='28']")
+        val blogLink = app.create.byLinkText<Anchor>("Blog")
         addToCartFalcon9.click()
-        blogLink.above(addToCartFalcon9).equal(8).validate()
-        MainPage.asserts.productBoxLink("Falcon 9", "http://demos.bellatrix.solutions/product/falcon-9/")
-        blogLink.validateHrefIs("http://demos.bellatrix.solutions/")
+        blogLink.above(addToCartFalcon9).validate()
+        MainPage.asserts.productBoxLink("Falcon 9", "http://demos.bellatrix.solutions/?add-to-cart=28")
+        blogLink.validateHrefIs("http://demos.bellatrix.solutions/blog/")
     }
 
     @Test
