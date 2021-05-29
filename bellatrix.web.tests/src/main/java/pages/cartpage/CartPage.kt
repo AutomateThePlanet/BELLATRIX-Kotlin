@@ -19,16 +19,13 @@ object CartPage : WebPage<Map, Asserts>() {
     override val url: String = "http://demos.bellatrix.solutions/cart/"
 
     override fun waitForPageLoad() {
-        map.couponCodeTextField.toExists<TextField>().waitToBe()
+        map.couponCodeTextField.toExist<TextField>().waitToBe()
     }
 
     override val map: Map
         get() = Map()
     override val asserts: Asserts
         get() = Asserts(map)
-
-    val total: String = map.totalSpan.text
-    val messageNotification: String = map.messageAlert.text
 
     fun applyCoupon(coupon: String) {
         map.couponCodeTextField.setText(coupon)
