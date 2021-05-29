@@ -52,13 +52,13 @@ object DriverService {
     fun start(configuration: AppConfiguration): AndroidDriver<MobileElement> {
         appConfiguration.set(configuration)
         disposed.set(false)
-        val androidSettings: AndroidSettings = ConfigurationService.get<AndroidSettings>()
-        val executionType: String = androidSettings.executionType
+        val androidSettings = ConfigurationService.get<AndroidSettings>()
+        val executionType = androidSettings.executionType
         var driver: AndroidDriver<MobileElement> = if (executionType.equals("regular")) {
             initializeDriverRegularMode(androidSettings.serviceUrl)
         } else {
-            val gridSettings = androidSettings.gridSettings.stream().filter { g -> g.providerName.equals(executionType.toLowerCase()) }.findFirst()
-            initializeDriverGridMode(androidSettings.gridSettings.stream().filter { g -> g.providerName.equals(executionType.toLowerCase()) }.findFirst().get())
+            val gridSettings = androidSettings.gridSettings.stream().filter { g -> g.providerName.equals(executionType.lowercase(Locale.getDefault())) }.findFirst()
+            initializeDriverGridMode(androidSettings.gridSettings.stream().filter { g -> g.providerName.equals(executionType.lowercase(Locale.getDefault())) }.findFirst().get())
         }
         
         driver.manage().timeouts().implicitlyWait(androidSettings.timeoutSettings.implicitWaitTimeout, TimeUnit.SECONDS)
