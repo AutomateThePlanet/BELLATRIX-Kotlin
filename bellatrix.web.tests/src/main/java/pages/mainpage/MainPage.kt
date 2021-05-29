@@ -21,7 +21,7 @@ object MainPage : WebPage<Map, Asserts>() {
     override val asserts = Asserts(map)
 
     override fun waitForPageLoad() {
-        map.addToCartFalcon9.toExists<Anchor>().waitToBe()
+        map.addToCartFalcon9.toExist<Anchor>().waitToBe()
     }
 
     fun addRocketToShoppingCart(rocketName: String) {
