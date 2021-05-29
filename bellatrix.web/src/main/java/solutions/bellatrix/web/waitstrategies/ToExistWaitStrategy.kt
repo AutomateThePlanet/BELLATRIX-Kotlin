@@ -18,7 +18,7 @@ import org.openqa.selenium.SearchContext
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.web.configuration.WebSettings
 
-class ToExistsWaitStrategy : WaitStrategy {
+class ToExistWaitStrategy : WaitStrategy {
     constructor() : super() {
         timeoutInterval = ConfigurationService.get<WebSettings>().timeoutSettings.elementToExistTimeout
         sleepInterval = ConfigurationService.get<WebSettings>().timeoutSettings.sleepInterval
@@ -40,8 +40,8 @@ class ToExistsWaitStrategy : WaitStrategy {
     }
 
     companion object {
-        fun of(): ToExistsWaitStrategy {
-            return ToExistsWaitStrategy()
+        fun of(): ToExistWaitStrategy {
+            return ToExistWaitStrategy()
         }
     }
 }
