@@ -15,13 +15,14 @@ package solutions.bellatrix.web.components.contracts
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
 import java.lang.reflect.InvocationTargetException
+import java.util.function.Supplier
 
 interface ComponentCols : Component {
     val cols: Int?
 
     fun validateColsIs(value: Int) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, cols, value, "cols")
+            defaultValidateAttributeIs(this as WebComponent, Supplier<Number> { cols }, value, "cols")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +30,7 @@ interface ComponentCols : Component {
 
     fun validateColsIsSet() {
         try {
-            defaultValidateAttributeNotNull(this as WebComponent, cols, "cols")
+            defaultValidateAttributeNotNull(this as WebComponent, { cols }, "cols")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +38,7 @@ interface ComponentCols : Component {
 
     fun validateColsNotSet() {
         try {
-            defaultValidateAttributeIsNull(this as WebComponent, cols, "cols")
+            defaultValidateAttributeIsNull(this as WebComponent, { cols }, "cols")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

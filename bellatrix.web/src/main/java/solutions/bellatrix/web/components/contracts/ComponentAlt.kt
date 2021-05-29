@@ -21,7 +21,7 @@ interface ComponentAlt : Component {
 
     fun validateAltIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, alt, value, "alt")
+            defaultValidateAttributeIs(this as WebComponent, { alt }, value, "alt")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentAlt : Component {
 
     fun validateAltIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, alt, "alt")
+            defaultValidateAttributeIsSet(this as WebComponent, { alt }, "alt")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentAlt : Component {
 
     fun validateAltNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, alt, "alt")
+            defaultValidateAttributeNotSet(this as WebComponent, { alt }, "alt")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

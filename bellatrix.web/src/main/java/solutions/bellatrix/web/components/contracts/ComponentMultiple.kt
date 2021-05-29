@@ -21,7 +21,7 @@ interface ComponentMultiple : Component {
 
     fun validateIsMultiple() {
         try {
-            defaultValidateAttributeTrue(this as WebComponent, isMultiple, "multiple")
+            defaultValidateAttributeTrue(this as WebComponent, { isMultiple }, "multiple")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentMultiple : Component {
 
     fun validateNotMultiple() {
         try {
-            defaultValidateAttributeFalse(this as WebComponent, isMultiple, "multiple")
+            defaultValidateAttributeFalse(this as WebComponent, { isMultiple }, "multiple")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

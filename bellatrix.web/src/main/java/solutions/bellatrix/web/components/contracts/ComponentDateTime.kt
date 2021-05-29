@@ -23,7 +23,7 @@ interface ComponentDateTime : Component {
 
     fun validateTimeIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, getTime(), value, "time")
+            defaultValidateAttributeIs(this as WebComponent, { getTime() }, value, "time")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -31,7 +31,7 @@ interface ComponentDateTime : Component {
 
     fun validateTimeContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, getTime(), value, "time")
+            defaultValidateAttributeContains(this as WebComponent, { getTime() }, value, "time")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -39,7 +39,7 @@ interface ComponentDateTime : Component {
 
     fun validateTimeNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, getTime(), value, "time")
+            defaultValidateAttributeNotContains(this as WebComponent, { getTime() }, value, "time")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

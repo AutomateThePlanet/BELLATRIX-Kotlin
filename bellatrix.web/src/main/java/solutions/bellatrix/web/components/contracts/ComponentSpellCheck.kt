@@ -21,7 +21,7 @@ interface ComponentSpellCheck : Component {
 
     fun validateSpellCheckOn() {
         try {
-            defaultValidateAttributeTrue(this as WebComponent, spellcheck, "spellcheck")
+            defaultValidateAttributeTrue(this as WebComponent, { spellcheck }, "spellcheck")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentSpellCheck : Component {
 
     fun validateSpellCheckOff() {
         try {
-            defaultValidateAttributeFalse(this as WebComponent, spellcheck, "spellcheck")
+            defaultValidateAttributeFalse(this as WebComponent, { spellcheck }, "spellcheck")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

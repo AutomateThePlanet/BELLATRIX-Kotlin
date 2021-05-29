@@ -21,7 +21,7 @@ interface ComponentDisabled : Component {
 
     fun validateIsDisabled() {
         try {
-            defaultValidateAttributeTrue(this as WebComponent, isDisabled, "disabled")
+            defaultValidateAttributeTrue(this as WebComponent, { isDisabled }, "disabled")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentDisabled : Component {
 
     fun validateNotDisabled() {
         try {
-            defaultValidateAttributeFalse(this as WebComponent, isDisabled, "disabled")
+            defaultValidateAttributeFalse(this as WebComponent, { isDisabled }, "disabled")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

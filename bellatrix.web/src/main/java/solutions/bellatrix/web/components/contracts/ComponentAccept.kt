@@ -21,7 +21,7 @@ interface ComponentAccept : Component {
 
     fun validateAcceptIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, accept, value, "accept")
+            defaultValidateAttributeIs(this as WebComponent, { accept }, value, "accept")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentAccept : Component {
 
     fun validateAcceptIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, accept, "accept")
+            defaultValidateAttributeIsSet(this as WebComponent, { accept }, "accept")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentAccept : Component {
 
     fun validateAcceptNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, accept, "accept")
+            defaultValidateAttributeNotSet(this as WebComponent, { accept }, "accept")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

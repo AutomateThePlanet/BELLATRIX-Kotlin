@@ -21,7 +21,7 @@ interface ComponentTarget : Component {
 
     fun validateTargetIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, target, value, "target")
+            defaultValidateAttributeIs(this as WebComponent, { target }, value, "target")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentTarget : Component {
 
     fun validateTargetIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, target, "target")
+            defaultValidateAttributeIsSet(this as WebComponent, { target }, "target")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentTarget : Component {
 
     fun validateTargetNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, target, "target")
+            defaultValidateAttributeNotSet(this as WebComponent, { target }, "target")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

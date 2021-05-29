@@ -21,7 +21,7 @@ interface ComponentSelected : Component {
 
     fun validateIsSelected() {
         try {
-            defaultValidateAttributeTrue(this as WebComponent, isSelected, "selected")
+            defaultValidateAttributeTrue(this as WebComponent, { isSelected }, "selected")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentSelected : Component {
 
     fun validateNotSelected() {
         try {
-            defaultValidateAttributeFalse(this as WebComponent, isSelected, "selected")
+            defaultValidateAttributeFalse(this as WebComponent, { isSelected }, "selected")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

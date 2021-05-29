@@ -21,7 +21,7 @@ interface ComponentStyle : Component {
 
     fun validateStyleNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, style, "style")
+            defaultValidateAttributeNotSet(this as WebComponent, { style }, "style")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentStyle : Component {
 
     fun validateStyleIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, style, "style")
+            defaultValidateAttributeIsSet(this as WebComponent, { style }, "style")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentStyle : Component {
 
     fun validateStyleIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, style, value, "style")
+            defaultValidateAttributeIs(this as WebComponent, { style }, value, "style")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -45,7 +45,7 @@ interface ComponentStyle : Component {
 
     fun validateStyleContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, style, value, "style")
+            defaultValidateAttributeContains(this as WebComponent, { style }, value, "style")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -53,7 +53,7 @@ interface ComponentStyle : Component {
 
     fun validateStyleNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, style, value, "style")
+            defaultValidateAttributeNotContains(this as WebComponent, { style }, value, "style")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

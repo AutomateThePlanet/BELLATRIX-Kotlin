@@ -21,7 +21,7 @@ interface ComponentMaxText : Component {
 
     fun validateMaxTextNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, max, "max")
+            defaultValidateAttributeNotSet(this as WebComponent, { max }, "max")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentMaxText : Component {
 
     fun validateMaxTextIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, max, "max")
+            defaultValidateAttributeIsSet(this as WebComponent, { max }, "max")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentMaxText : Component {
 
     fun validateMaxTextIs() {
         try {
-            defaultValidateAttributeNotNull(this as WebComponent, max, "max")
+            defaultValidateAttributeNotNull(this as WebComponent, { max }, "max")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

@@ -21,7 +21,7 @@ interface ComponentList : Component {
 
     fun validateListIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, list, value, "list")
+            defaultValidateAttributeIs(this as WebComponent, { list }, value, "list")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentList : Component {
 
     fun validateListIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, list, "list")
+            defaultValidateAttributeIsSet(this as WebComponent, { list }, "list")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentList : Component {
 
     fun validateListNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, list, "list")
+            defaultValidateAttributeNotSet(this as WebComponent, { list }, "list")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -45,7 +45,7 @@ interface ComponentList : Component {
 
     fun validateListContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, list, value, "list")
+            defaultValidateAttributeContains(this as WebComponent, { list }, value, "list")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -53,7 +53,7 @@ interface ComponentList : Component {
 
     fun validateListNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, list, value, "list")
+            defaultValidateAttributeNotContains(this as WebComponent, { list }, value, "list")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

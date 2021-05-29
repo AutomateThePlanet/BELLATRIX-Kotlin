@@ -21,7 +21,7 @@ interface ComponentMinText : Component {
 
     fun validateMinTextNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, min, "min")
+            defaultValidateAttributeNotSet(this as WebComponent, { min }, "min")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentMinText : Component {
 
     fun validateMinTextIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, min, "min")
+            defaultValidateAttributeIsSet(this as WebComponent, { min }, "min")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentMinText : Component {
 
     fun validateMinTextIs() {
         try {
-            defaultValidateAttributeNotNull(this as WebComponent, min, "min")
+            defaultValidateAttributeNotNull(this as WebComponent, { min }, "min")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

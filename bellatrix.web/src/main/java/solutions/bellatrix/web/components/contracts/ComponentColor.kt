@@ -22,7 +22,7 @@ interface ComponentColor : Component {
 
     fun validateColorIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, getColor(), value, "color")
+            defaultValidateAttributeIs(this as WebComponent, { getColor() }, value, "color")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

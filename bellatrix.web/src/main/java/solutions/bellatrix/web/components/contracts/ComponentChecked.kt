@@ -21,7 +21,7 @@ interface ComponentChecked : Component {
 
     fun validateIsChecked() {
         try {
-            defaultValidateAttributeTrue(this as WebComponent, isChecked, "checked")
+            defaultValidateAttributeTrue(this as WebComponent, { isChecked }, "checked")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentChecked : Component {
 
     fun validateIsUnchecked() {
         try {
-            defaultValidateAttributeTrue(this as WebComponent, !isChecked, "unchecked")
+            defaultValidateAttributeTrue(this as WebComponent, { !isChecked }, "unchecked")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

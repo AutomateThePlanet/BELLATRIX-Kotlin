@@ -21,7 +21,7 @@ interface ComponentHref : Component {
 
     fun validateHrefIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, href, value, "href")
+            defaultValidateAttributeIs(this as WebComponent, { href }, value, "href")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentHref : Component {
 
     fun validateHrefIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, href, "href")
+            defaultValidateAttributeIsSet(this as WebComponent, { href }, "href")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentHref : Component {
 
     fun validateHrefNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, href, "href")
+            defaultValidateAttributeNotSet(this as WebComponent, { href }, "href")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -45,7 +45,7 @@ interface ComponentHref : Component {
 
     fun validateHrefContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, href, value, "href")
+            defaultValidateAttributeContains(this as WebComponent, { href }, value, "href")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -53,7 +53,7 @@ interface ComponentHref : Component {
 
     fun validateHrefNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, href, value, "href")
+            defaultValidateAttributeNotContains(this as WebComponent, { href }, value, "href")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

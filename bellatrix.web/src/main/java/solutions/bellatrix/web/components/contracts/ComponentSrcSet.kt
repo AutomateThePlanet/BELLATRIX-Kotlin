@@ -21,7 +21,7 @@ interface ComponentSrcSet : Component {
 
     fun validateSrcSetIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, srcset, value, "srcset")
+            defaultValidateAttributeIs(this as WebComponent, { srcset }, value, "srcset")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentSrcSet : Component {
 
     fun validateSrcSetIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, srcset, "srcset")
+            defaultValidateAttributeIsSet(this as WebComponent, { srcset }, "srcset")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentSrcSet : Component {
 
     fun validateSrcSetNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, srcset, "srcset")
+            defaultValidateAttributeNotSet(this as WebComponent, { srcset }, "srcset")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -45,7 +45,7 @@ interface ComponentSrcSet : Component {
 
     fun validateSrcSetContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, srcset, value, "srcset")
+            defaultValidateAttributeContains(this as WebComponent, { srcset }, value, "srcset")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -53,7 +53,7 @@ interface ComponentSrcSet : Component {
 
     fun validateSrcSetNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, srcset, value, "srcset")
+            defaultValidateAttributeNotContains(this as WebComponent, { srcset }, value, "srcset")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

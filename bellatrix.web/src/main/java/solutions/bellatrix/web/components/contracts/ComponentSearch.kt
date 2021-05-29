@@ -22,7 +22,7 @@ interface ComponentSearch : Component {
 
     fun validateSearchIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, getSearch(), value, "search")
+            defaultValidateAttributeIs(this as WebComponent, { getSearch() }, value, "search")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -30,7 +30,7 @@ interface ComponentSearch : Component {
 
     fun validateSearchContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, getSearch(), value, "search")
+            defaultValidateAttributeContains(this as WebComponent, { getSearch() }, value, "search")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -38,7 +38,7 @@ interface ComponentSearch : Component {
 
     fun validateSearchNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, getSearch(), value, "search")
+            defaultValidateAttributeNotContains(this as WebComponent, { getSearch() }, value, "search")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

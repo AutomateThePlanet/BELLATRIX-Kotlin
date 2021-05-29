@@ -21,7 +21,7 @@ interface ComponentText : Component {
 
     fun validateTextNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, text, "inner text")
+            defaultValidateAttributeNotSet(this as WebComponent, { text }, "inner text")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentText : Component {
 
     fun validateTextIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, text, "inner text")
+            defaultValidateAttributeIsSet(this as WebComponent, { text }, "inner text")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentText : Component {
 
     fun validateTextIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, text, value, "inner text")
+            defaultValidateAttributeIs(this as WebComponent, { text }, value, "inner text")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -45,7 +45,7 @@ interface ComponentText : Component {
 
     fun validateTextContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, text, value, "inner text")
+            defaultValidateAttributeContains(this as WebComponent, { text }, value, "inner text")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -53,7 +53,7 @@ interface ComponentText : Component {
 
     fun validateTextNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, text, value, "inner text")
+            defaultValidateAttributeNotContains(this as WebComponent, { text }, value, "inner text")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

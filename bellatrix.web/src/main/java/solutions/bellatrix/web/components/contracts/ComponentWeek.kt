@@ -22,7 +22,7 @@ interface ComponentWeek : Component {
 
     fun validateWeekIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, getWeek(), value, "week")
+            defaultValidateAttributeIs(this as WebComponent, { getWeek() }, value, "week")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

@@ -22,7 +22,7 @@ interface ComponentEmail : Component {
 
     fun validateEmailIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, getEmail(), value, "email")
+            defaultValidateAttributeIs(this as WebComponent, { getEmail() }, value, "email")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -30,7 +30,7 @@ interface ComponentEmail : Component {
 
     fun validateEmailContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, getEmail(), value, "email")
+            defaultValidateAttributeContains(this as WebComponent, { getEmail() }, value, "email")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -38,7 +38,7 @@ interface ComponentEmail : Component {
 
     fun validateEmailNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, getEmail(), value, "email")
+            defaultValidateAttributeNotContains(this as WebComponent, { getEmail() }, value, "email")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

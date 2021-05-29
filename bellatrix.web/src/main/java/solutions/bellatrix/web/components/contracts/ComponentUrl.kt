@@ -22,7 +22,7 @@ interface ComponentUrl : Component {
 
     fun validateUrlIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, getUrl(), value, "URL")
+            defaultValidateAttributeIs(this as WebComponent, { getUrl() }, value, "URL")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -30,7 +30,7 @@ interface ComponentUrl : Component {
 
     fun validateUrlContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, getUrl(), value, "URL")
+            defaultValidateAttributeContains(this as WebComponent, { getUrl() }, value, "URL")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -38,7 +38,7 @@ interface ComponentUrl : Component {
 
     fun validateUrlNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, getUrl(), value, "URL")
+            defaultValidateAttributeNotContains(this as WebComponent, { getUrl() }, value, "URL")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

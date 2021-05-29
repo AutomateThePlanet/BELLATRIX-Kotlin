@@ -21,7 +21,7 @@ interface ComponentWrap : Component {
 
     fun validateWrapIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, wrap, value, "wrap")
+            defaultValidateAttributeIs(this as WebComponent, { wrap }, value, "wrap")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentWrap : Component {
 
     fun validateWrapIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, wrap, "wrap")
+            defaultValidateAttributeIsSet(this as WebComponent, { wrap }, "wrap")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentWrap : Component {
 
     fun validateWrapNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, wrap, "wrap")
+            defaultValidateAttributeNotSet(this as WebComponent, { wrap }, "wrap")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

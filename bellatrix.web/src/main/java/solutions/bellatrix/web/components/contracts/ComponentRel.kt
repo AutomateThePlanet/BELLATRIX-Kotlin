@@ -21,7 +21,7 @@ interface ComponentRel : Component {
 
     fun validateRelIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, rel, value, "rel")
+            defaultValidateAttributeIs(this as WebComponent, { rel }, value, "rel")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentRel : Component {
 
     fun validateRelIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, rel, "rel")
+            defaultValidateAttributeIsSet(this as WebComponent, { rel }, "rel")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentRel : Component {
 
     fun validateRelNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, rel, "rel")
+            defaultValidateAttributeNotSet(this as WebComponent, { rel }, "rel")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

@@ -22,7 +22,7 @@ interface ComponentPassword : Component {
 
     fun validatePasswordIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, getPassword(), value, "password")
+            defaultValidateAttributeIs(this as WebComponent, { getPassword() }, value, "password")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -30,7 +30,7 @@ interface ComponentPassword : Component {
 
     fun validatePasswordContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, getPassword(), value, "password")
+            defaultValidateAttributeContains(this as WebComponent, { getPassword() }, value, "password")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -38,7 +38,7 @@ interface ComponentPassword : Component {
 
     fun validatePasswordNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, getPassword(), value, "password")
+            defaultValidateAttributeNotContains(this as WebComponent, { getPassword() }, value, "password")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

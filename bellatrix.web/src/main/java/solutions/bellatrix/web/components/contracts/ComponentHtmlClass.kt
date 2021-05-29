@@ -21,7 +21,7 @@ interface ComponentHtmlClass : Component {
 
     fun validateClassNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, htmlClass, "class")
+            defaultValidateAttributeNotSet(this as WebComponent, { htmlClass }, "class")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentHtmlClass : Component {
 
     fun validateClassIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, htmlClass, "class")
+            defaultValidateAttributeIsSet(this as WebComponent, { htmlClass }, "class")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentHtmlClass : Component {
 
     fun validateClassIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, htmlClass, value, "class")
+            defaultValidateAttributeIs(this as WebComponent, { htmlClass }, value, "class")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -45,7 +45,7 @@ interface ComponentHtmlClass : Component {
 
     fun validateClassContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, htmlClass, value, "class")
+            defaultValidateAttributeContains(this as WebComponent, { htmlClass }, value, "class")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -53,7 +53,7 @@ interface ComponentHtmlClass : Component {
 
     fun validateClassNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, htmlClass, value, "class")
+            defaultValidateAttributeNotContains(this as WebComponent, { htmlClass }, value, "class")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

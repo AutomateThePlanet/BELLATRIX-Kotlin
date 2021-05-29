@@ -15,13 +15,14 @@ package solutions.bellatrix.web.components.contracts
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
 import java.lang.reflect.InvocationTargetException
+import java.util.function.Supplier
 
 interface ComponentMaxLength : Component {
     val maxLength: Int?
 
     fun validateMaxLengthIsSet() {
         try {
-            defaultValidateAttributeNotNull(this as WebComponent, maxLength, "max length")
+            defaultValidateAttributeNotNull(this as WebComponent, { maxLength }, "max length")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +30,7 @@ interface ComponentMaxLength : Component {
 
     fun validateMaxLengthNotSet() {
         try {
-            defaultValidateAttributeIsNull(this as WebComponent, maxLength, "max length")
+            defaultValidateAttributeIsNull(this as WebComponent, { maxLength }, "max length")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +38,7 @@ interface ComponentMaxLength : Component {
 
     fun validateMaxLengthIs(value: Int) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, maxLength, value, "max length")
+            defaultValidateAttributeIs(this as WebComponent, Supplier<Number> { maxLength }, value, "max length")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

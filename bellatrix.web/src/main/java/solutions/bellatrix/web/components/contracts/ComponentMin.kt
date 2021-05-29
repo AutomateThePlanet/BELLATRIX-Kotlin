@@ -15,13 +15,14 @@ package solutions.bellatrix.web.components.contracts
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
 import java.lang.reflect.InvocationTargetException
+import java.util.function.Supplier
 
 interface ComponentMin : Component {
     val min: Double?
 
     fun validateMinIsSet() {
         try {
-            defaultValidateAttributeNotNull(this as WebComponent, min, "min")
+            defaultValidateAttributeNotNull(this as WebComponent, { min }, "min")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +30,7 @@ interface ComponentMin : Component {
 
     fun validateMinNotSet() {
         try {
-            defaultValidateAttributeIsNull(this as WebComponent, min, "min")
+            defaultValidateAttributeIsNull(this as WebComponent, { min }, "min")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +38,7 @@ interface ComponentMin : Component {
 
     fun validateMinIs(value: Number) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, min, value.toDouble(), "min")
+            defaultValidateAttributeIs(this as WebComponent, Supplier<Number> { min }, value.toDouble(), "min")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

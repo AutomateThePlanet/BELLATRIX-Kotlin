@@ -21,7 +21,7 @@ interface ComponentTabIndex : Component {
 
     fun validateTabIndexNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, tabIndex, "tabindex")
+            defaultValidateAttributeNotSet(this as WebComponent, { tabIndex }, "tabindex")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentTabIndex : Component {
 
     fun validateTabIndexIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, tabIndex, "tabindex")
+            defaultValidateAttributeIsSet(this as WebComponent, { tabIndex }, "tabindex")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentTabIndex : Component {
 
     fun validateTabIndexIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, tabIndex, value, "tabindex")
+            defaultValidateAttributeIs(this as WebComponent, { tabIndex }, value, "tabindex")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

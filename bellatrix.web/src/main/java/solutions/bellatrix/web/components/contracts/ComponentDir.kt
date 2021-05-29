@@ -21,7 +21,7 @@ interface ComponentDir : Component {
 
     fun validateDirIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, dir, value, "dir")
+            defaultValidateAttributeIs(this as WebComponent, { dir }, value, "dir")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentDir : Component {
 
     fun validateDirIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, dir, "dir")
+            defaultValidateAttributeIsSet(this as WebComponent, { dir }, "dir")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentDir : Component {
 
     fun validateDirNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, dir, "dir")
+            defaultValidateAttributeNotSet(this as WebComponent, { dir }, "dir")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

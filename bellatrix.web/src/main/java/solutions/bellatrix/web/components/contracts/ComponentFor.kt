@@ -21,7 +21,7 @@ interface ComponentFor : Component {
 
     fun validateForIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, forAttribute, value, "for")
+            defaultValidateAttributeIs(this as WebComponent, { forAttribute }, value, "for")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentFor : Component {
 
     fun validateForIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, forAttribute, "for")
+            defaultValidateAttributeIsSet(this as WebComponent, { forAttribute }, "for")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentFor : Component {
 
     fun validateForNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, forAttribute, "for")
+            defaultValidateAttributeNotSet(this as WebComponent, { forAttribute }, "for")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

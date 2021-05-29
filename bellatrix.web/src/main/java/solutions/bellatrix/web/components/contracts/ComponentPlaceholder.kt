@@ -21,7 +21,7 @@ interface ComponentPlaceholder : Component {
 
     fun validatePlaceholderIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, placeholder, value, "placeholder")
+            defaultValidateAttributeIs(this as WebComponent, { placeholder }, value, "placeholder")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentPlaceholder : Component {
 
     fun validatePlaceholderIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, placeholder, "placeholder")
+            defaultValidateAttributeIsSet(this as WebComponent, { placeholder }, "placeholder")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentPlaceholder : Component {
 
     fun validatePlaceholderNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, placeholder, "placeholder")
+            defaultValidateAttributeNotSet(this as WebComponent, { placeholder }, "placeholder")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -45,7 +45,7 @@ interface ComponentPlaceholder : Component {
 
     fun validatePlaceholderContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, placeholder, value, "placeholder")
+            defaultValidateAttributeContains(this as WebComponent, { placeholder }, value, "placeholder")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -53,7 +53,7 @@ interface ComponentPlaceholder : Component {
 
     fun validatePlaceholderNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, placeholder, value, "placeholder")
+            defaultValidateAttributeNotContains(this as WebComponent, { placeholder }, value, "placeholder")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

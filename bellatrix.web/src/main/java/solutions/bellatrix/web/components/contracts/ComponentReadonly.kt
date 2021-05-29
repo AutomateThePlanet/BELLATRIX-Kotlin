@@ -21,7 +21,7 @@ interface ComponentReadonly : Component {
 
     fun validateIsReadonly() {
         try {
-            defaultValidateAttributeTrue(this as WebComponent, isReadonly, "readonly")
+            defaultValidateAttributeTrue(this as WebComponent, { isReadonly }, "readonly")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentReadonly : Component {
 
     fun validateNotReadonly() {
         try {
-            defaultValidateAttributeFalse(this as WebComponent, isReadonly, "readonly")
+            defaultValidateAttributeFalse(this as WebComponent, { isReadonly }, "readonly")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

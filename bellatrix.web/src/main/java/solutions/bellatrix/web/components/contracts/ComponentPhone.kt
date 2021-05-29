@@ -22,7 +22,7 @@ interface ComponentPhone : Component {
 
     fun validatePhoneIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, getPhone(), value, "phone")
+            defaultValidateAttributeIs(this as WebComponent, { getPhone() }, value, "phone")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -30,7 +30,7 @@ interface ComponentPhone : Component {
 
     fun validatePhoneContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, getPhone(), value, "phone")
+            defaultValidateAttributeContains(this as WebComponent, { getPhone() }, value, "phone")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -38,7 +38,7 @@ interface ComponentPhone : Component {
 
     fun validatePhoneNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, getPhone(), value, "phone")
+            defaultValidateAttributeNotContains(this as WebComponent, { getPhone() }, value, "phone")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

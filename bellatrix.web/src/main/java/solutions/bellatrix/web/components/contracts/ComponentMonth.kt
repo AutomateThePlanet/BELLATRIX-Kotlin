@@ -22,7 +22,7 @@ interface ComponentMonth : Component {
 
     fun validateMonthIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, getMonth(), value, "month")
+            defaultValidateAttributeIs(this as WebComponent, { getMonth() }, value, "month")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

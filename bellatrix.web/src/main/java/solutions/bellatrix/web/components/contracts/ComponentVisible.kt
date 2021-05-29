@@ -21,7 +21,7 @@ interface ComponentVisible : Component {
 
     fun validateIsVisible() {
         try {
-            defaultValidateAttributeTrue(this as WebComponent, isVisible, "visible")
+            defaultValidateAttributeTrue(this as WebComponent, { isVisible }, "visible")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentVisible : Component {
 
     fun validateNotVisible() {
         try {
-            defaultValidateAttributeFalse(this as WebComponent, isVisible, "visible")
+            defaultValidateAttributeFalse(this as WebComponent, { isVisible }, "visible")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

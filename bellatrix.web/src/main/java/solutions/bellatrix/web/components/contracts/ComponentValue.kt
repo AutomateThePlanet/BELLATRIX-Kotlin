@@ -21,7 +21,7 @@ interface ComponentValue : Component {
 
     fun validateValueIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, this.value, value, "value")
+            defaultValidateAttributeIs(this as WebComponent, { this.value }, value, "value")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentValue : Component {
 
     fun validateValueContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, this.value, value, "value")
+            defaultValidateAttributeContains(this as WebComponent, { this.value }, value, "value")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentValue : Component {
 
     fun validateValueNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, this.value, value, "value")
+            defaultValidateAttributeNotContains(this as WebComponent, { this.value }, value, "value")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

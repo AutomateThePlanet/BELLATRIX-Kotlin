@@ -21,7 +21,7 @@ interface ComponentSizes : Component {
 
     fun validateSizesIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, sizes, value, "sizes")
+            defaultValidateAttributeIs(this as WebComponent, { sizes }, value, "sizes")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentSizes : Component {
 
     fun validateSizesIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, sizes, "sizes")
+            defaultValidateAttributeIsSet(this as WebComponent, { sizes }, "sizes")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentSizes : Component {
 
     fun validateSizesNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, sizes, "sizes")
+            defaultValidateAttributeNotSet(this as WebComponent, { sizes }, "sizes")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -45,7 +45,7 @@ interface ComponentSizes : Component {
 
     fun validateSizesContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, sizes, value, "sizes")
+            defaultValidateAttributeContains(this as WebComponent, { sizes }, value, "sizes")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -53,7 +53,7 @@ interface ComponentSizes : Component {
 
     fun validateSizesNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, sizes, value, "sizes")
+            defaultValidateAttributeNotContains(this as WebComponent, { sizes }, value, "sizes")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

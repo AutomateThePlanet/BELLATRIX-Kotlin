@@ -21,7 +21,7 @@ interface ComponentAutoComplete : Component {
 
     fun validateAutoCompleteOn() {
         try {
-            defaultValidateAttributeTrue(this as WebComponent, isAutoComplete, "autocomplete")
+            defaultValidateAttributeTrue(this as WebComponent, { isAutoComplete }, "autocomplete")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentAutoComplete : Component {
 
     fun validateAutoCompleteOff() {
         try {
-            defaultValidateAttributeFalse(this as WebComponent, isAutoComplete, "autocomplete")
+            defaultValidateAttributeFalse(this as WebComponent, { isAutoComplete }, "autocomplete")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

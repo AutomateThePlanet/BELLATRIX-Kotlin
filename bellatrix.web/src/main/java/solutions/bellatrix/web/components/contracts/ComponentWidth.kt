@@ -15,13 +15,14 @@ package solutions.bellatrix.web.components.contracts
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
 import java.lang.reflect.InvocationTargetException
+import java.util.function.Supplier
 
 interface ComponentWidth : Component {
     val width: Int?
 
     fun validateWidthIs(value: Int) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, width, value, "width")
+            defaultValidateAttributeIs(this as WebComponent, Supplier<Number> { width }, value, "width")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +30,7 @@ interface ComponentWidth : Component {
 
     fun validateWidthIsSet() {
         try {
-            defaultValidateAttributeNotNull(this as WebComponent, width, "width")
+            defaultValidateAttributeNotNull(this as WebComponent, { width }, "width")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +38,7 @@ interface ComponentWidth : Component {
 
     fun validateWidthNotSet() {
         try {
-            defaultValidateAttributeIsNull(this as WebComponent, width, "width")
+            defaultValidateAttributeIsNull(this as WebComponent, { width }, "width")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

@@ -21,7 +21,7 @@ interface ComponentRequired : Component {
 
     fun validateIsRequired() {
         try {
-            defaultValidateAttributeTrue(this as WebComponent, isRequired, "required")
+            defaultValidateAttributeTrue(this as WebComponent, { isRequired }, "required")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentRequired : Component {
 
     fun validateNotRequired() {
         try {
-            defaultValidateAttributeFalse(this as WebComponent, isRequired, "required")
+            defaultValidateAttributeFalse(this as WebComponent, { isRequired }, "required")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

@@ -15,13 +15,14 @@ package solutions.bellatrix.web.components.contracts
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
 import java.lang.reflect.InvocationTargetException
+import java.util.function.Supplier
 
 interface ComponentHeight : Component {
     val height: Int?
 
     fun validateHeightIs(value: Int) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, height, value, "height")
+            defaultValidateAttributeIs(this as WebComponent, Supplier<Number> { height }, value, "height")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +30,7 @@ interface ComponentHeight : Component {
 
     fun validateHeightIsSet() {
         try {
-            defaultValidateAttributeNotNull(this as WebComponent, height, "height")
+            defaultValidateAttributeNotNull(this as WebComponent, { height }, "height")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +38,7 @@ interface ComponentHeight : Component {
 
     fun validateHeightNotSet() {
         try {
-            defaultValidateAttributeIsNull(this as WebComponent, height, "height")
+            defaultValidateAttributeIsNull(this as WebComponent, { height }, "height")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

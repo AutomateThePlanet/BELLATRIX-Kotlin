@@ -21,7 +21,7 @@ interface ComponentHtml : Component {
 
     fun validateHtmlIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, html, value, "inner HTML")
+            defaultValidateAttributeIs(this as WebComponent, { html }, value, "inner HTML")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentHtml : Component {
 
     fun validateHtmlContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, html, value, "inner HTML")
+            defaultValidateAttributeContains(this as WebComponent, { html }, value, "inner HTML")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentHtml : Component {
 
     fun validateHtmlNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, html, value, "inner HTML")
+            defaultValidateAttributeNotContains(this as WebComponent, { html }, value, "inner HTML")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

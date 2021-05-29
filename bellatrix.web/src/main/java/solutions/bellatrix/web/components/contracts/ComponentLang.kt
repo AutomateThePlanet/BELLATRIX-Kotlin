@@ -21,7 +21,7 @@ interface ComponentLang : Component {
 
     fun validateLangIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, lang, value, "lang")
+            defaultValidateAttributeIs(this as WebComponent, { lang }, value, "lang")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentLang : Component {
 
     fun validateLangIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, lang, "lang")
+            defaultValidateAttributeIsSet(this as WebComponent, { lang }, "lang")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentLang : Component {
 
     fun validateLangNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, lang, "lang")
+            defaultValidateAttributeNotSet(this as WebComponent, { lang }, "lang")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

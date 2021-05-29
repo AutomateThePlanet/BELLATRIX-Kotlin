@@ -21,7 +21,7 @@ interface ComponentMinLength : Component {
 
     fun validateMinLengthIsSet() {
         try {
-            defaultValidateAttributeNotNull(this as WebComponent, minLength, "min length")
+            defaultValidateAttributeNotNull(this as WebComponent, { minLength }, "min length")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentMinLength : Component {
 
     fun validateMinLengthNotSet() {
         try {
-            defaultValidateAttributeIsNull(this as WebComponent, minLength, "min length")
+            defaultValidateAttributeIsNull(this as WebComponent, { minLength }, "min length")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentMinLength : Component {
 
     fun validateMinLengthNotNull() {
         try {
-            defaultValidateAttributeNotNull(this as WebComponent, minLength, "min length")
+            defaultValidateAttributeNotNull(this as WebComponent, { minLength }, "min length")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

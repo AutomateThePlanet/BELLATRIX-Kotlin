@@ -22,7 +22,7 @@ interface ComponentNumber : Component {
 
     fun validateNumberIs(value: Number) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, getNumber(), value.toDouble(), "number")
+            defaultValidateAttributeIs(this as WebComponent, { getNumber() }, value.toDouble(), "number")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

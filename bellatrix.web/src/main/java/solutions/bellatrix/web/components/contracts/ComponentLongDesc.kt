@@ -21,7 +21,7 @@ interface ComponentLongDesc : Component {
 
     fun validateLongDescIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, longdesc, value, "longdesc")
+            defaultValidateAttributeIs(this as WebComponent, { longdesc }, value, "longdesc")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentLongDesc : Component {
 
     fun validateLongDescIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, longdesc, "longdesc")
+            defaultValidateAttributeIsSet(this as WebComponent, { longdesc }, "longdesc")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentLongDesc : Component {
 
     fun validateLongDescNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, longdesc, "longdesc")
+            defaultValidateAttributeNotSet(this as WebComponent, { longdesc }, "longdesc")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -45,7 +45,7 @@ interface ComponentLongDesc : Component {
 
     fun validateLongDescContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, longdesc, value, "longdesc")
+            defaultValidateAttributeContains(this as WebComponent, { longdesc }, value, "longdesc")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -53,7 +53,7 @@ interface ComponentLongDesc : Component {
 
     fun validateLongDescNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, longdesc, value, "longdesc")
+            defaultValidateAttributeNotContains(this as WebComponent, { longdesc }, value, "longdesc")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

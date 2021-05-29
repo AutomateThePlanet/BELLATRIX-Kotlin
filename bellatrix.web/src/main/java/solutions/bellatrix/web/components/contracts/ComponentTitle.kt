@@ -21,7 +21,7 @@ interface ComponentTitle : Component {
 
     fun validateTitleIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, title, value, "title")
+            defaultValidateAttributeIs(this as WebComponent, { title }, value, "title")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentTitle : Component {
 
     fun validateTitleIsSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, title, "title")
+            defaultValidateAttributeIsSet(this as WebComponent, { title }, "title")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentTitle : Component {
 
     fun validateTitleNotSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, title, "title")
+            defaultValidateAttributeNotSet(this as WebComponent, { title }, "title")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -45,7 +45,7 @@ interface ComponentTitle : Component {
 
     fun validateTitleContains(value: String) {
         try {
-            defaultValidateAttributeContains(this as WebComponent, title, value, "title")
+            defaultValidateAttributeContains(this as WebComponent, { title }, value, "title")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -53,7 +53,7 @@ interface ComponentTitle : Component {
 
     fun validateTitleNotContains(value: String) {
         try {
-            defaultValidateAttributeNotContains(this as WebComponent, title, value, "title")
+            defaultValidateAttributeNotContains(this as WebComponent, { title }, value, "title")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

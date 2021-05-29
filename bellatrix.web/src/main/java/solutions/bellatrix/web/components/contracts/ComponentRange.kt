@@ -22,7 +22,7 @@ interface ComponentRange : Component {
 
     fun validateRangeIs(value: Number) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, getRange(), value, "range")
+            defaultValidateAttributeIs(this as WebComponent, { getRange() }, value, "range")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }

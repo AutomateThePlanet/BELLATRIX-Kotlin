@@ -21,7 +21,7 @@ interface ComponentAccessKey : Component {
 
     fun validateAccessKeyIs(value: String) {
         try {
-            defaultValidateAttributeIs(this as WebComponent, accessKey, value, "accesskey")
+            defaultValidateAttributeIs(this as WebComponent, { accessKey }, value, "accesskey")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -29,7 +29,7 @@ interface ComponentAccessKey : Component {
 
     fun validateAccessKeyIsSet() {
         try {
-            defaultValidateAttributeNotSet(this as WebComponent, accessKey, "accesskey")
+            defaultValidateAttributeNotSet(this as WebComponent, { accessKey }, "accesskey")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
@@ -37,7 +37,7 @@ interface ComponentAccessKey : Component {
 
     fun validateAccessKeyNotSet() {
         try {
-            defaultValidateAttributeIsSet(this as WebComponent, accessKey, "accesskey")
+            defaultValidateAttributeIsSet(this as WebComponent, { accessKey }, "accesskey")
         } catch (e: InvocationTargetException) {
             throw e.cause!!
         }
