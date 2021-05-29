@@ -12,8 +12,7 @@
  */
 package solutions.bellatrix.web.services
 
-import org.openqa.selenium.JavascriptExecutor
-import org.openqa.selenium.WebElement
+import org.openqa.selenium.*
 import solutions.bellatrix.core.utilities.debugStackTrace
 import solutions.bellatrix.web.components.WebComponent
 
@@ -58,6 +57,12 @@ object JavaScriptService : WebService() {
         return try {
             val result = javascriptExecutor.executeScript(script, nativeElement)
             if (result != null) result as String else null
+        } catch (ex: NoSuchSessionException) {
+            throw ex
+        } catch (ex: StaleElementReferenceException) {
+            ""
+        } catch (ex: NoSuchElementException) {
+            ""
         } catch (ex: Exception) {
             ex.debugStackTrace()
             ""
