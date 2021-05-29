@@ -23,7 +23,8 @@ class Map : PageMap() {
     val applyCouponButton: Button = create.byCss("[value*='Apply coupon']")
     val quantityBox: TextField = create.byCss("[class*='input-text qty text']")
     val updateCart: Button = create.byCss("[value*='Update cart']")
-    val totalSpan: Div = create.byCss("[class*='woocommerce-message']")
-    val messageAlert: Span = create.byXPath("//*[@class='order-total']//span")
-    val proceedToCheckout: Button = create.byXPath("[class*='checkout-button button alt wc-forward']")
+    val messageAlert: Div = create.byCss("[class*='woocommerce-message']")
+    val totalSpan: Span = create.byXPath("//*[@class='order-total']//span")
+    val proceedToCheckout: Button = create.byCss("[class*='checkout-button button alt wc-forward']")
+
 }

@@ -12,8 +12,6 @@
  */
 package pages.searchsection
 
-import solutions.bellatrix.web.components.Anchor
-import solutions.bellatrix.web.components.Button
 import solutions.bellatrix.web.components.TextField
 import solutions.bellatrix.web.pages.PageMap
 
