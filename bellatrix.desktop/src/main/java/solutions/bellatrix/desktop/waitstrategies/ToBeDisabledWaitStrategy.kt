@@ -13,6 +13,8 @@
 package solutions.bellatrix.desktop.waitstrategies
 
 import io.appium.java_client.windows.WindowsDriver
+import org.openqa.selenium.NoSuchElementException
+import org.openqa.selenium.StaleElementReferenceException
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import solutions.bellatrix.core.configuration.ConfigurationService
@@ -21,31 +23,33 @@ import solutions.bellatrix.desktop.findstrategies.FindStrategy
 import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
 import java.util.function.Function
 
-class ToExistsWaitStrategy : WaitStrategy {
+class ToBeDisabledWaitStrategy : WaitStrategy {
     constructor() {
-        timeoutInterval = ConfigurationService.get<DesktopSettings>().timeoutSettings.elementToExistTimeout
+        timeoutInterval = ConfigurationService.get<DesktopSettings>().timeoutSettings.elementToBeVisibleTimeout
         sleepInterval = ConfigurationService.get<DesktopSettings>().timeoutSettings.sleepInterval
     }
 
     constructor(timeoutIntervalSeconds: Long, sleepIntervalSeconds: Long) : super(timeoutIntervalSeconds, sleepIntervalSeconds) {}
 
     override fun <TFindStrategy : FindStrategy> waitUntil(findStrategy: TFindStrategy) {
-        val func = Function { w: WebDriver -> elementExists(getWrappedDriver(), findStrategy) }
+        val func = Function { w: WebDriver -> elementIsDisabled(getWrappedDriver(), findStrategy) }
         waitUntil(func)
     }
 
-    private fun <TFindStrategy : FindStrategy> elementExists(searchContext: WindowsDriver<WebElement>, findStrategy: TFindStrategy): Boolean {
+    private fun <TFindStrategy : FindStrategy> elementIsDisabled(searchContext: WindowsDriver<WebElement>, findStrategy: TFindStrategy): Boolean {
+        val element = findStrategy.findElement(searchContext)
         return try {
-            val element = findStrategy.findElement(searchContext)
-            element != null
-        } catch (e: Exception) {
+            !element.isEnabled
+        } catch (e: StaleElementReferenceException) {
+            false
+        } catch (e: NoSuchElementException) {
             false
         }
     }
 
     companion object {
-        fun of(): ToExistsWaitStrategy {
-            return ToExistsWaitStrategy()
+        fun of(): ToBeDisabledWaitStrategy {
+            return ToBeDisabledWaitStrategy()
         }
     }
 }

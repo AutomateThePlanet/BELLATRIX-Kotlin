@@ -27,10 +27,7 @@ import solutions.bellatrix.desktop.infrastructure.DriverService.getWrappedDriver
 import solutions.bellatrix.desktop.services.AppService
 import solutions.bellatrix.desktop.services.ComponentCreateService
 import solutions.bellatrix.desktop.services.ComponentWaitService
-import solutions.bellatrix.desktop.waitstrategies.ToBeClickableWaitStrategy
-import solutions.bellatrix.desktop.waitstrategies.ToBeVisibleWaitStrategy
-import solutions.bellatrix.desktop.waitstrategies.ToExistsWaitStrategy
-import solutions.bellatrix.desktop.waitstrategies.WaitStrategy
+import solutions.bellatrix.desktop.waitstrategies.*
 import java.util.*
 
 open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
@@ -85,8 +82,26 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
         waitStrategies.add(waitStrategy)
     }
 
-    fun <TElementType : DesktopComponent> toExists(): TElementType {
-        val waitStrategy = ToExistsWaitStrategy()
+    fun <TElementType : DesktopComponent> toExist(): TElementType {
+        val waitStrategy = ToExistWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : DesktopComponent> toNotExist(): TElementType {
+        val waitStrategy = ToNotExistWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : DesktopComponent> toBeVisible(): TElementType {
+        val waitStrategy = ToBeVisibleWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : DesktopComponent> toNotBeVisible(): TElementType {
+        val waitStrategy = ToNotBeVisibleWaitStrategy()
         ensureState(waitStrategy)
         return this as TElementType
     }
@@ -97,8 +112,58 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
         return this as TElementType
     }
 
-    fun <TElementType : DesktopComponent> toBeVisible(): TElementType {
-        val waitStrategy = ToBeVisibleWaitStrategy()
+    fun <TElementType : DesktopComponent> toBeDisabled(): TElementType {
+        val waitStrategy = ToBeDisabledWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : DesktopComponent> toHaveContent(): TElementType {
+        val waitStrategy = ToHaveContentWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : DesktopComponent> toExist(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToExistWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : DesktopComponent> toNotExist(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToNotExistWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : DesktopComponent> toBeVisible(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy =
+            ToBeVisibleWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : DesktopComponent> toNotBeVisible(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToNotBeVisibleWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : DesktopComponent> toBeClickable(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy =
+            ToBeClickableWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : DesktopComponent> toBeDisabled(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToBeDisabledWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : DesktopComponent> toHaveContent(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToHaveContentWaitStrategy(timeoutInterval, sleepInterval)
         ensureState(waitStrategy)
         return this as TElementType
     }
@@ -194,7 +259,7 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
 
     fun findElement(): WebElement {
         if (waitStrategies.stream().count() == 0L) {
-            waitStrategies.add(ToExistsWaitStrategy())
+            waitStrategies.add(ToExistWaitStrategy())
         }
         try {
             for (waitStrategy in waitStrategies) {
@@ -214,7 +279,7 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
 
     protected fun defaultClick(clicking: EventListener<ComponentActionEventArgs>, clicked: EventListener<ComponentActionEventArgs>) {
         clicking.broadcast(ComponentActionEventArgs(this))
-        toExists<DesktopComponent>().toBeClickable<DesktopComponent>().waitToBe()
+        toExist<DesktopComponent>().toBeClickable<DesktopComponent>().waitToBe()
         findElement().click()
         clicked.broadcast(ComponentActionEventArgs(this))
     }
@@ -273,7 +338,7 @@ open class DesktopComponent : LayoutComponentValidationsBuilder(), Component {
             action.moveToElement(wrappedElement).perform()
             if (shouldWait) {
                 Thread.sleep(500)
-                toExists<DesktopComponent>().waitToBe()
+                toExist<DesktopComponent>().waitToBe()
             }
         } catch (ex: ElementNotInteractableException) {
             ex.debugStackTrace()

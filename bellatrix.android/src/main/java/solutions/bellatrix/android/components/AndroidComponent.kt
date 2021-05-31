@@ -88,8 +88,26 @@ open class AndroidComponent : LayoutComponentValidationsBuilder(), Component {
         waitStrategies.add(waitStrategy)
     }
 
-    fun <TElementType : AndroidComponent> toExists(): TElementType {
-        val waitStrategy = ToExistsWaitStrategy()
+    fun <TElementType : AndroidComponent> toExist(): TElementType {
+        val waitStrategy = ToExistWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : AndroidComponent> toNotExist(): TElementType {
+        val waitStrategy = ToNotExistWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : AndroidComponent> toBeVisible(): TElementType {
+        val waitStrategy = ToBeVisibleWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : AndroidComponent> toNotBeVisible(): TElementType {
+        val waitStrategy = ToNotBeVisibleWaitStrategy()
         ensureState(waitStrategy)
         return this as TElementType
     }
@@ -100,8 +118,58 @@ open class AndroidComponent : LayoutComponentValidationsBuilder(), Component {
         return this as TElementType
     }
 
-    fun <TElementType : AndroidComponent> toBeVisible(): TElementType {
-        val waitStrategy = ToBeVisibleWaitStrategy()
+    fun <TElementType : AndroidComponent> toBeDisabled(): TElementType {
+        val waitStrategy = ToBeDisabledWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : AndroidComponent> toHaveContent(): TElementType {
+        val waitStrategy = ToHaveContentWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : AndroidComponent> toExist(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToExistWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : AndroidComponent> toNotExist(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToNotExistWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : AndroidComponent> toBeVisible(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy =
+            ToBeVisibleWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : AndroidComponent> toNotBeVisible(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToNotBeVisibleWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : AndroidComponent> toBeClickable(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy =
+            ToBeClickableWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : AndroidComponent> toBeDisabled(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToBeDisabledWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : AndroidComponent> toHaveContent(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToHaveContentWaitStrategy(timeoutInterval, sleepInterval)
         ensureState(waitStrategy)
         return this as TElementType
     }
@@ -185,14 +253,14 @@ open class AndroidComponent : LayoutComponentValidationsBuilder(), Component {
 
     protected fun defaultClick(clicking: EventListener<ComponentActionEventArgs>, clicked: EventListener<ComponentActionEventArgs>) {
         clicking.broadcast(ComponentActionEventArgs(this))
-        toExists<AndroidComponent>().toBeClickable<AndroidComponent>().waitToBe()
+        toExist<AndroidComponent>().toBeClickable<AndroidComponent>().waitToBe()
         findElement().click()
         clicked.broadcast(ComponentActionEventArgs(this))
     }
 
     protected fun defaultCheck(clicking: EventListener<ComponentActionEventArgs>, clicked: EventListener<ComponentActionEventArgs>) {
         clicking.broadcast(ComponentActionEventArgs(this))
-        toExists<AndroidComponent>().toBeClickable<AndroidComponent>().waitToBe()
+        toExist<AndroidComponent>().toBeClickable<AndroidComponent>().waitToBe()
         if (!this.defaultGetCheckedAttribute()) {
             findElement().click()
         }
@@ -201,7 +269,7 @@ open class AndroidComponent : LayoutComponentValidationsBuilder(), Component {
 
     protected fun defaultUncheck(clicking: EventListener<ComponentActionEventArgs>, clicked: EventListener<ComponentActionEventArgs>) {
         clicking.broadcast(ComponentActionEventArgs(this))
-        toExists<AndroidComponent>().toBeClickable<AndroidComponent>().waitToBe()
+        toExist<AndroidComponent>().toBeClickable<AndroidComponent>().waitToBe()
         if (this.defaultGetCheckedAttribute()) {
             findElement().click()
         }
@@ -266,7 +334,7 @@ open class AndroidComponent : LayoutComponentValidationsBuilder(), Component {
             action.moveToElement(wrappedElement).perform()
             if (shouldWait) {
                 Thread.sleep(500)
-                toExists<AndroidComponent>().waitToBe()
+                toExist<AndroidComponent>().waitToBe()
             }
         } catch (ex: ElementNotInteractableException) {
             ex.debugStackTrace()
