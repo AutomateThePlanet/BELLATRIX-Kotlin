@@ -14,12 +14,12 @@ package solutions.bellatrix.web.findstrategies
 
 import org.openqa.selenium.By
 
-class ClassFindStrategy(value: String) : FindStrategy(value) {
+class ValueContainingFindStrategy(value: String) : FindStrategy(value) {
     override fun convert(): By {
-        return By.className(value)
+        return By.cssSelector("[value*='$value']")
     }
 
     override fun toString(): String {
-        return "class = $value"
+        return "value containing $value"
     }
 }

@@ -267,12 +267,32 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
         return create<TComponent, IdFindStrategy>(id)
     }
 
+    inline fun <reified TComponent : WebComponent> createByAttributeContaining(attributeName: String, value: String): TComponent {
+        return create<TComponent, AttributeContainingFindStrategy>(attributeName, value)
+    }
+
+    inline fun <reified TComponent : WebComponent> createByIdEndingWith(idEnding: String): TComponent {
+        return create<TComponent, IdEndingWithFindStrategy>(idEnding)
+    }
+
     inline fun <reified TComponent : WebComponent> createByCss(css: String): TComponent {
         return create<TComponent, CssFindStrategy>(css)
     }
 
-    inline fun <reified TComponent : WebComponent> createByClass(cclass: String): TComponent {
-        return create<TComponent, ClassFindStrategy>(cclass)
+    inline fun <reified TComponent : WebComponent> createByClass(className: String): TComponent {
+        return create<TComponent, ClassFindStrategy>(className)
+    }
+
+    inline fun <reified TComponent : WebComponent> createByName(name: String): TComponent {
+        return create<TComponent, NameFindStrategy>(name)
+    }
+
+    inline fun <reified TComponent : WebComponent> createByValueContaining(valueContaining: String): TComponent {
+        return create<TComponent, ValueContainingFindStrategy>(valueContaining)
+    }
+
+    inline fun <reified TComponent : WebComponent> createByClassContaining(classNameContaining: String): TComponent {
+        return create<TComponent, ClassContainingFindStrategy>(classNameContaining)
     }
 
     inline fun <reified TComponent : WebComponent> createByXPath(xpath: String): TComponent {
@@ -281,6 +301,10 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
 
     inline fun <reified TComponent : WebComponent> createByLinkText(linkText: String): TComponent {
         return create<TComponent, LinkTextFindStrategy>(linkText)
+    }
+
+    inline fun <reified TComponent : WebComponent> createByLinkTextContaining(linkTextContaining: String): TComponent {
+        return create<TComponent, LinkTextContainingFindStrategy>(linkTextContaining)
     }
 
     inline fun <reified TComponent : WebComponent> createByTag(tag: String): TComponent {
@@ -292,19 +316,39 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
     }
 
     inline fun <reified TComponent : WebComponent> createByInnerTextContaining(innerText: String): TComponent {
-        return create<TComponent, InnerTextContainsFindStrategy>(innerText)
+        return create<TComponent, InnerTextContainingFindStrategy>(innerText)
     }
 
     inline fun <reified TComponent : WebComponent> createAllById(id: String): List<TComponent> {
         return createAll<TComponent, IdFindStrategy>(id)
     }
 
-    inline fun <reified TComponent : WebComponent> createAllByCss(css: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> createAllByAttributeContaining(attributeName: String, value: String): List<TComponent> {
+        return createAll<TComponent, AttributeContainingFindStrategy>(attributeName, value)
+    }
+
+    inline fun <reified TComponent : WebComponent> createAllByIdEndingWith(idEnding: String): List<TComponent> {
+        return createAll<TComponent, IdEndingWithFindStrategy>(idEnding)
+    }
+
+    inline fun <reified TComponent : WebComponent> createAllBbyCss(css: String): List<TComponent> {
         return createAll<TComponent, CssFindStrategy>(css)
     }
 
-    inline fun <reified TComponent : WebComponent> createAllByClass(cclass: String): List<TComponent> {
-        return createAll<TComponent, ClassFindStrategy>(cclass)
+    inline fun <reified TComponent : WebComponent> createAllByClass(className: String): List<TComponent> {
+        return createAll<TComponent, ClassFindStrategy>(className)
+    }
+
+    inline fun <reified TComponent : WebComponent> createAllByName(name: String): List<TComponent> {
+        return createAll<TComponent, NameFindStrategy>(name)
+    }
+
+    inline fun <reified TComponent : WebComponent> createAllByValueContaining(valueContaining: String): List<TComponent> {
+        return createAll<TComponent, ValueContainingFindStrategy>(valueContaining)
+    }
+
+    inline fun <reified TComponent : WebComponent> createAllByClassContaining(classNameContaining: String): List<TComponent> {
+        return createAll<TComponent, ClassContainingFindStrategy>(classNameContaining)
     }
 
     inline fun <reified TComponent : WebComponent> createAllByXPath(xpath: String): List<TComponent> {
@@ -313,6 +357,10 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
 
     inline fun <reified TComponent : WebComponent> createAllByLinkText(linkText: String): List<TComponent> {
         return createAll<TComponent, LinkTextFindStrategy>(linkText)
+    }
+
+    inline fun <reified TComponent : WebComponent> createAllByLinkTextContaining(linkTextContaining: String): List<TComponent> {
+        return createAll<TComponent, LinkTextContainingFindStrategy>(linkTextContaining)
     }
 
     inline fun <reified TComponent : WebComponent> createAllByTag(tag: String): List<TComponent> {
@@ -324,22 +372,22 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
     }
 
     inline fun <reified TComponent : WebComponent> createAllByInnerTextContaining(innerText: String): List<TComponent> {
-        return createAll<TComponent, InnerTextContainsFindStrategy>(innerText)
+        return createAll<TComponent, InnerTextContainingFindStrategy>(innerText)
     }
 
-    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> create(value: String): TComponent {
+    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> create(vararg values: String): TComponent {
         CREATING_ELEMENT.broadcast(ComponentActionEventArgs(this))
         findElement()
-        val findStrategy = InstanceFactory.create<TFindStrategy>(value)
+        val findStrategy = InstanceFactory.create<TFindStrategy>(values)
         this.findStrategy = findStrategy
         this.parentWrappedElement = wrappedElement
         CREATED_ELEMENT.broadcast(ComponentActionEventArgs(this))
         return this as TComponent
     }
 
-    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> createAll(value: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> createAll(vararg values: String): List<TComponent> {
         CREATING_ELEMENTS.broadcast(ComponentActionEventArgs(this))
-        val findStrategy = InstanceFactory.create<TFindStrategy>(value)
+        val findStrategy = InstanceFactory.create<TFindStrategy>(values)
         findElement()
         val nativeElements = wrappedElement.findElements(findStrategy.convert())
         val componentList = mutableListOf<TComponent>()

@@ -14,12 +14,12 @@ package solutions.bellatrix.web.findstrategies
 
 import org.openqa.selenium.By
 
-class ClassFindStrategy(value: String) : FindStrategy(value) {
+class IdEndingWithFindStrategy(value: String) : FindStrategy(value) {
     override fun convert(): By {
-        return By.className(value)
+        return By.cssSelector("[id$='$value']")
     }
 
     override fun toString(): String {
-        return "class = $value"
+        return "id ending with $value"
     }
 }

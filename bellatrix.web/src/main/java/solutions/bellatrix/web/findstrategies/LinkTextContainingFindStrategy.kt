@@ -14,12 +14,12 @@ package solutions.bellatrix.web.findstrategies
 
 import org.openqa.selenium.By
 
-class ClassFindStrategy(value: String) : FindStrategy(value) {
+class LinkTextContainingFindStrategy(value: String?) : FindStrategy(value!!) {
     override fun convert(): By {
-        return By.className(value)
+        return By.xpath("//a[contains(text(), '$value')]")
     }
 
     override fun toString(): String {
-        return "class = $value"
+        return "link text containing $value"
     }
 }
