@@ -130,16 +130,24 @@ object ComponentCreateService : WebService() {
         return createAll<TComponent, InnerTextContainingFindStrategy>(innerText)
     }
 
-    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> create(vararg values: String): TComponent {
-        val findStrategy = TFindStrategy::class.java.constructors[0].newInstance(values) as TFindStrategy
+    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> create(value: String, arg: String? = null): TComponent {
+        val findStrategy: TFindStrategy = if (arg != null) {
+            TFindStrategy::class.java.constructors[0].newInstance(value, arg) as TFindStrategy
+        } else {
+            TFindStrategy::class.java.constructors[0].newInstance(value) as TFindStrategy
+        }
         val component: TComponent = InstanceFactory.create()
         component.findStrategy = findStrategy
         component.parentWrappedElement = null
         return component
     }
 
-    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> createAll(vararg values: String): List<TComponent> {
-        val findStrategy = TFindStrategy::class.java.constructors[0].newInstance(values) as TFindStrategy
+    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> createAll(value: String, arg: String? = null): List<TComponent> {
+        val findStrategy: TFindStrategy = if (arg != null) {
+            TFindStrategy::class.java.constructors[0].newInstance(value, arg) as TFindStrategy
+        } else {
+            TFindStrategy::class.java.constructors[0].newInstance(value) as TFindStrategy
+        }
         val nativeElements = wrappedDriver().findElements(findStrategy.convert())
         val componentList = mutableListOf<TComponent>()
         for (i in 0 until nativeElements.count()) {
