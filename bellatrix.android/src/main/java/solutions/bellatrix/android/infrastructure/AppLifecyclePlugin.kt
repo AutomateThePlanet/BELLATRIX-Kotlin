@@ -15,7 +15,7 @@ package solutions.bellatrix.android.infrastructure
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.core.plugins.Plugin
 import solutions.bellatrix.core.plugins.TestResult
-import solutions.bellatrix.core.utilities.UserHomePathNormalizer
+import solutions.bellatrix.core.utilities.PathNormalizer
 import solutions.bellatrix.core.utilities.debugStackTrace
 import solutions.bellatrix.android.configuration.AndroidSettings
 import java.lang.reflect.Method
@@ -128,7 +128,7 @@ class AppLifecyclePlugin : Plugin() {
         val executionAppAnnotation = type.getDeclaredAnnotation(ExecutionApp::class.java) as ExecutionApp
         if (executionAppAnnotation == null) {
             var defaultAppPath: String = ConfigurationService.get<AndroidSettings>().defaultAppPath
-            defaultAppPath = UserHomePathNormalizer.normalizePath(defaultAppPath)
+            defaultAppPath = PathNormalizer.normalizePath(defaultAppPath)
             val defaultLifecycle: Lifecycle = Lifecycle.fromText(ConfigurationService.get<AndroidSettings>().defaultLifeCycle)
             val defaultAppPackage: String = ConfigurationService.get<AndroidSettings>().defaultAppPackage
             val defaultAppActivity: String = ConfigurationService.get<AndroidSettings>().defaultAppPackage

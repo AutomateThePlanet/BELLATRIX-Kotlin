@@ -19,7 +19,7 @@ import plugins.screenshots.ScreenshotPlugin
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.android.configuration.AndroidSettings
 import solutions.bellatrix.android.infrastructure.DriverService.getWrappedAndroidDriver
-import solutions.bellatrix.core.utilities.UserHomePathNormalizer.normalizePath
+import solutions.bellatrix.core.utilities.PathNormalizer.normalizePath
 import java.io.File
 import java.nio.file.Paths
 import java.util.*

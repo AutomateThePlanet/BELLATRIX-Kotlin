@@ -15,7 +15,7 @@ package solutions.bellatrix.ios.infrastructure
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.core.plugins.Plugin
 import solutions.bellatrix.core.plugins.TestResult
-import solutions.bellatrix.core.utilities.UserHomePathNormalizer
+import solutions.bellatrix.core.utilities.PathNormalizer
 import solutions.bellatrix.core.utilities.debugStackTrace
 import solutions.bellatrix.ios.configuration.IOSSettings
 import java.lang.reflect.Method
@@ -128,7 +128,7 @@ class AppLifecyclePlugin : Plugin() {
         val executionAppAnnotation = type.getDeclaredAnnotation(ExecutionApp::class.java) as ExecutionApp
         if (executionAppAnnotation == null) {
             var defaultAppPath: String = ConfigurationService.get<IOSSettings>().defaultAppPath
-            defaultAppPath = UserHomePathNormalizer.normalizePath(defaultAppPath)
+            defaultAppPath = PathNormalizer.normalizePath(defaultAppPath)
             val defaultLifecycle: Lifecycle = Lifecycle.fromText(ConfigurationService.get<IOSSettings>().defaultLifeCycle)
             val defaultDeviceName: String = ConfigurationService.get<IOSSettings>().defaultDeviceName
             val defaultIosVersion: String = ConfigurationService.get<IOSSettings>().defaultIosVersion

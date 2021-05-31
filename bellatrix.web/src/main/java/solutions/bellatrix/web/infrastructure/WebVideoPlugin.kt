@@ -14,7 +14,7 @@ package solutions.bellatrix.web.infrastructure
 
 import plugins.video.VideoPlugin
 import solutions.bellatrix.core.configuration.ConfigurationService
-import solutions.bellatrix.core.utilities.UserHomePathNormalizer.normalizePath
+import solutions.bellatrix.core.utilities.PathNormalizer.normalizePath
 import solutions.bellatrix.web.configuration.WebSettings
 import java.io.File
 import java.util.*
