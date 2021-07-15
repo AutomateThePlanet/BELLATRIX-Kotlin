@@ -16,7 +16,7 @@ import plugins.screenshots.ScreenshotPlugin
 import ru.yandex.qatools.ashot.AShot
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies
 import solutions.bellatrix.core.configuration.ConfigurationService
-import solutions.bellatrix.core.utilities.UserHomePathNormalizer.normalizePath
+import solutions.bellatrix.core.utilities.PathNormalizer.normalizePath
 import solutions.bellatrix.web.configuration.WebSettings
 import java.io.File
 import java.nio.file.Paths

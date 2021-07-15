@@ -14,20 +14,34 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
+import java.util.function.Supplier
 
 interface ComponentCols : Component {
     val cols: Int?
 
     fun validateColsIs(value: Int) {
-        defaultValidateAttributeIs(this as WebComponent, cols, value, "cols")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, Supplier<Number> { cols }, value, "cols")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateColsIsSet() {
-        defaultValidateAttributeNotNull(this as WebComponent, cols, "cols")
+        try {
+            defaultValidateAttributeNotNull(this as WebComponent, { cols }, "cols")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateColsNotSet() {
-        defaultValidateAttributeIsNull(this as WebComponent, cols, "cols")
+        try {
+            defaultValidateAttributeIsNull(this as WebComponent, { cols }, "cols")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

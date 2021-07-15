@@ -29,8 +29,8 @@ open class WebTest : BaseTest() {
         addPlugin(BrowserLifecyclePlugin.of())
         addPlugin(WebScreenshotPlugin.of())
         addPlugin(WebVideoPlugin.of())
-        BddLogging.addPlugin()
-        ValidationsBddLogging.addPlugin()
-        HighlightElements.addPlugin()
+        addListener(BddLogging::class)
+        addListener(ValidationsBddLogging::class)
+        addListener(HighlightElements::class)
     }
 }

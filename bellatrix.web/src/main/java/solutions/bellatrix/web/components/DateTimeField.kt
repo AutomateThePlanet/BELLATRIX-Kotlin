@@ -14,17 +14,18 @@ package solutions.bellatrix.web.components
 
 import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.web.components.contracts.*
+import java.time.LocalDateTime
 
-open class PhoneInput : WebComponent(), ComponentDisabled, ComponentValue, ComponentPhone, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxLength, ComponentMinLength, ComponentSize, ComponentPlaceholder {
+open class DateTimeField : WebComponent(), ComponentDisabled, ComponentValue, ComponentDateTime, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxText, ComponentMinText, ComponentStep {
     override val componentClass: Class<*>
         get() = javaClass
 
-    override fun getPhone(): String {
+    override fun getTime(): String {
         return value
     }
 
-    override fun setPhone(value: String) {
-        setValue(SETTING_PHONE, PHONE_SET, value)
+    override fun setTime(time: LocalDateTime) {
+        setValue(SETTING_TIME, TIME_SET, "${time.year}-${time.monthValue}-${time.dayOfMonth}T${time.hour}:${time.minute}")
     }
 
     override val isAutoComplete: Boolean
@@ -33,14 +34,11 @@ open class PhoneInput : WebComponent(), ComponentDisabled, ComponentValue, Compo
     override val isDisabled: Boolean
         get() = defaultGetDisabledAttribute()
 
-    override val maxLength: Int?
-        get() = defaultGetMaxLengthAttribute()
+    override val max: String
+        get() = defaultGetMaxAttributeAsString()
 
-    override val minLength: Int?
-        get() = defaultGetMinLengthAttribute()
-
-    override val placeholder: String
-        get() = defaultGetPlaceholderAttribute()
+    override val min: String
+        get() = defaultGetMinAttributeAsString()
 
     override val isReadonly: Boolean
         get() = defaultGetReadonlyAttribute()
@@ -48,14 +46,14 @@ open class PhoneInput : WebComponent(), ComponentDisabled, ComponentValue, Compo
     override val isRequired: Boolean
         get() = defaultGetRequiredAttribute()
 
-    override val sizeAttribute: Int?
-        get() = defaultGetSizeAttribute()
+    override val step: Double?
+        get() = defaultGetStepAttribute()
 
     override val value: String
         get() = defaultGetValue()
 
     companion object {
-        val SETTING_PHONE = EventListener<ComponentActionEventArgs>()
-        val PHONE_SET = EventListener<ComponentActionEventArgs>()
+        val SETTING_TIME = EventListener<ComponentActionEventArgs>()
+        val TIME_SET = EventListener<ComponentActionEventArgs>()
     }
 }

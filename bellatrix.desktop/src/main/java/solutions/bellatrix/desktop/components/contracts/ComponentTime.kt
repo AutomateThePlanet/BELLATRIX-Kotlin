@@ -14,20 +14,33 @@ package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
 import solutions.bellatrix.desktop.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentTime : Component {
     fun getTime(): String
 
     fun validateTimeIs(value: String) {
-        defaultValidateAttributeIs(this as DesktopComponent, getTime(), value, "time")
+        try {
+            defaultValidateAttributeIs(this as DesktopComponent, getTime(), value, "time")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTimeContains(value: String) {
-        defaultValidateAttributeContains(this as DesktopComponent, getTime(), value, "time")
+        try {
+            defaultValidateAttributeContains(this as DesktopComponent, getTime(), value, "time")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTimeNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as DesktopComponent, getTime(), value, "time")
+        try {
+            defaultValidateAttributeNotContains(this as DesktopComponent, getTime(), value, "time")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

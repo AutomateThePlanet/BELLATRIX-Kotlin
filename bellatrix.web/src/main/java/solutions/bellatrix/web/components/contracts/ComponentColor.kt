@@ -14,13 +14,18 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentColor : Component {
     fun getColor(): String
     fun setColor(value: String)
 
     fun validateColorIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, getColor(), value, "color")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, { getColor() }, value, "color")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

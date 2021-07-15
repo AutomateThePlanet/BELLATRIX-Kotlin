@@ -10,28 +10,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.android.components
+package solutions.bellatrix.desktop.components
 
-import solutions.bellatrix.android.components.contracts.ComponentDisabled
 import solutions.bellatrix.core.plugins.EventListener
+import solutions.bellatrix.desktop.components.contracts.ComponentDisabled
+import solutions.bellatrix.desktop.components.contracts.ComponentTime
 
-class PasswordInput : AndroidComponent(), ComponentDisabled {
+class TimeInput : DesktopComponent(), ComponentDisabled, ComponentTime {
     override val componentClass: Class<*>
         get() = javaClass
 
-    fun getPassword(): String {
-        return defaultGetText()
+    fun setTime(hours: Int, minutes: Int) {
+        defaultSetText(SETTING_TIME, TIME_SET, "$hours:$minutes:00")
     }
 
-    fun setPassword(value: String) {
-        defaultSetText(SETTING_PASSWORD, PASSWORD_SET, value)
+    override fun getTime(): String {
+        return defaultGetText()
     }
 
     override val isDisabled: Boolean
         get() = defaultGetDisabledAttribute()
 
     companion object {
-        val SETTING_PASSWORD = EventListener<ComponentActionEventArgs>()
-        val PASSWORD_SET = EventListener<ComponentActionEventArgs>()
+        val SETTING_TIME = EventListener<ComponentActionEventArgs>()
+        val TIME_SET = EventListener<ComponentActionEventArgs>()
     }
 }

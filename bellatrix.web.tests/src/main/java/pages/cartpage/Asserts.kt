@@ -12,15 +12,14 @@
  */
 package pages.cartpage
 
-import org.testng.Assert
 import solutions.bellatrix.web.pages.PageAsserts
 
 class Asserts(override val map: Map) : PageAsserts<Map>() {
     fun couponAppliedSuccessfully() {
-        Assert.assertEquals(map.messageAlert.text, "Coupon code applied successfully.")
+        map.messageAlert.validateTextIs("Coupon code applied successfully.")
     }
 
-    fun totalPrice(expectedPrice: String?) {
-        Assert.assertEquals(map.totalSpan.text, expectedPrice)
+    fun totalPrice(expectedPrice: String) {
+        map.totalSpan.validateTextIs(expectedPrice)
     }
 }

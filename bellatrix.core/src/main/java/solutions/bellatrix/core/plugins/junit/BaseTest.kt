@@ -17,8 +17,6 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.TestInfo
 import org.junit.jupiter.api.extension.ExtendWith
-import solutions.bellatrix.core.plugins.Plugin
-import solutions.bellatrix.core.plugins.PluginExecutionEngine
 import solutions.bellatrix.core.plugins.PluginExecutionEngine.afterClassFailed
 import solutions.bellatrix.core.plugins.PluginExecutionEngine.afterTestFailed
 import solutions.bellatrix.core.plugins.PluginExecutionEngine.beforeClassFailed
@@ -32,10 +30,12 @@ import solutions.bellatrix.core.plugins.PluginExecutionEngine.preAfterTest
 import solutions.bellatrix.core.plugins.PluginExecutionEngine.preBeforeClass
 import solutions.bellatrix.core.plugins.PluginExecutionEngine.preBeforeTest
 import solutions.bellatrix.core.plugins.TestResult
+import solutions.bellatrix.core.plugins.UsesPlugins
+import sun.misc.Unsafe
 import java.util.*
 
 @ExtendWith(TestResultListener::class)
-open class BaseTest {
+open class BaseTest : UsesPlugins() {
     companion object {
         val CURRENT_TEST_RESULT = ThreadLocal<TestResult>()
         private val CONFIGURATION_EXECUTED = ThreadLocal<Boolean>()
@@ -55,12 +55,17 @@ open class BaseTest {
     }
 
     init {
+        try {
+            val theUnsafe = Unsafe::class.java.getDeclaredField("theUnsafe")
+            theUnsafe.isAccessible = true
+            val u = theUnsafe[null] as Unsafe
+            val cls = Class.forName("jdk.internal.module.IllegalAccessLogger")
+            val logger = cls.getDeclaredField("logger")
+            u.putObjectVolatile(cls, u.staticFieldOffset(logger), null)
+        } catch (ignored: java.lang.Exception) {
+        }
         CONFIGURATION_EXECUTED.set(false)
         ALREADY_EXECUTED_BEFORE_CLASSES.set(ArrayList())
-    }
-
-    fun addPlugin(plugin: Plugin) {
-        PluginExecutionEngine.addPlugin(plugin)
     }
 
     @BeforeEach
@@ -109,7 +114,7 @@ open class BaseTest {
     }
 
     protected open fun configure() {}
-    protected fun beforeAll() {}
-    protected fun beforeMethod() {}
-    protected fun afterMethod() {}
+    protected open fun beforeAll() {}
+    protected open fun beforeMethod() {}
+    protected open fun afterMethod() {}
 }

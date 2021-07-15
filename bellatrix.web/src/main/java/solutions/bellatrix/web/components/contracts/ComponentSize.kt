@@ -14,20 +14,34 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
+import java.util.function.Supplier
 
 interface ComponentSize : Component {
     val sizeAttribute: Int?
 
     fun validateSizeIs(value: Int) {
-        defaultValidateAttributeIs(this as WebComponent, sizeAttribute, value, "size")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, Supplier<Number> { sizeAttribute }, value, "size")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateSizeIsSet() {
-        defaultValidateAttributeNotNull(this as WebComponent, sizeAttribute, "size")
+        try {
+            defaultValidateAttributeNotNull(this as WebComponent, { sizeAttribute }, "size")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateSizeNotSet() {
-        defaultValidateAttributeIsNull(this as WebComponent, sizeAttribute, "size")
+        try {
+            defaultValidateAttributeIsNull(this as WebComponent, { sizeAttribute }, "size")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

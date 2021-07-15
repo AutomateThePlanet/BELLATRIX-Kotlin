@@ -14,28 +14,49 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentSrc : Component {
     val src: String
 
     fun validateHrefIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, src, value, "src")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, { src }, value, "src")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateHrefIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, src, "src")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, { src }, "src")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateHrefNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, src, "src")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, { src }, "src")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateHrefContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, src, value, "src")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, { src }, value, "src")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateHrefNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, src, value, "src")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, { src }, value, "src")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

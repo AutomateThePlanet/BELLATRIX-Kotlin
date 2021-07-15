@@ -14,16 +14,25 @@ package solutions.bellatrix.ios.components.contracts
 
 import solutions.bellatrix.ios.components.IOSComponent
 import solutions.bellatrix.ios.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentOn : Component {
     val isOn: Boolean
 
     fun validateIsOn() {
-        defaultValidateAttributeTrue(this as IOSComponent, isOn, "on")
+        try {
+            defaultValidateAttributeTrue(this as IOSComponent, isOn, "on")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateIsOff() {
-        defaultValidateAttributeTrue(this as IOSComponent, !isOn, "off")
+        try {
+            defaultValidateAttributeTrue(this as IOSComponent, !isOn, "off")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

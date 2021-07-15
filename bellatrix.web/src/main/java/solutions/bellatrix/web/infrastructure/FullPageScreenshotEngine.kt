@@ -21,7 +21,6 @@ import solutions.bellatrix.core.utilities.TempFileWriter.writeStringToTempFile
 import solutions.bellatrix.web.configuration.WebSettings
 import solutions.bellatrix.web.services.JavaScriptService
 import java.io.File
-import java.lang.Boolean
 
 object FullPageScreenshotEngine {
     private const val GENERATE_SCREENSHOT_JS = "function genScreenshot () {var canvasImgContentDecoded; html2canvas(document.body).then(function(canvas) { window.canvasImgContentDecoded = canvas.toDataURL(\"image/png\"); });}genScreenshot();"
@@ -37,7 +36,7 @@ object FullPageScreenshotEngine {
         webDriverWait.until { wd: WebDriver ->
             val response = JavaScriptService.execute("return (typeof canvasImgContentDecoded === 'undefined' || canvasImgContentDecoded === null)") as String
             if (StringUtils.isEmpty(response)) return@until false
-            Boolean.parseBoolean(response)
+            response.toBoolean()
         }
         webDriverWait.until { wd: WebDriver -> !StringUtils.isEmpty(JavaScriptService.execute("return canvasImgContentDecoded;") as String) }
         var pngContent = JavaScriptService.execute("return canvasImgContentDecoded;") as String

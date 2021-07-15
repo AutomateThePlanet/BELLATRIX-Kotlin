@@ -14,16 +14,25 @@ package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
 import solutions.bellatrix.desktop.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentDisabled : Component {
     val isDisabled: Boolean
 
     fun validateIsDisabled() {
-        defaultValidateAttributeTrue(this as DesktopComponent, isDisabled, "disabled")
+        try {
+            defaultValidateAttributeTrue(this as DesktopComponent, isDisabled, "disabled")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateNotDisabled() {
-        defaultValidateAttributeFalse(this as DesktopComponent, isDisabled, "disabled")
+        try {
+            defaultValidateAttributeFalse(this as DesktopComponent, isDisabled, "disabled")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

@@ -14,16 +14,25 @@ package solutions.bellatrix.android.components.contracts
 
 import solutions.bellatrix.android.components.AndroidComponent
 import solutions.bellatrix.android.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentChecked : Component {
     val isChecked: Boolean
 
     fun validateIsChecked() {
-        defaultValidateAttributeTrue(this as AndroidComponent, isChecked, "checked")
+        try {
+            defaultValidateAttributeTrue(this as AndroidComponent, isChecked, "checked")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateIsUnchecked() {
-        defaultValidateAttributeTrue(this as AndroidComponent, !isChecked, "unchecked")
+        try {
+            defaultValidateAttributeTrue(this as AndroidComponent, !isChecked, "unchecked")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

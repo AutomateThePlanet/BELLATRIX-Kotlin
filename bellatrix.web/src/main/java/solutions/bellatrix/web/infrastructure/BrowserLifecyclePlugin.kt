@@ -20,17 +20,10 @@ import java.lang.reflect.Method
 
 class BrowserLifecyclePlugin : Plugin() {
     companion object {
-        private var currentBrowserConfiguration: ThreadLocal<BrowserConfiguration>
-        private var previousBrowserConfiguration: ThreadLocal<BrowserConfiguration>
-        private var isBrowserStartedDuringPreBeforeClass: ThreadLocal<Boolean>
-        private var isBrowserStartedCorrectly: ThreadLocal<Boolean>
-
-        init {
-            currentBrowserConfiguration = ThreadLocal()
-            previousBrowserConfiguration = ThreadLocal()
-            isBrowserStartedDuringPreBeforeClass = ThreadLocal()
-            isBrowserStartedCorrectly = ThreadLocal()
-        }
+        private var currentBrowserConfiguration: ThreadLocal<BrowserConfiguration> = ThreadLocal()
+        private var previousBrowserConfiguration: ThreadLocal<BrowserConfiguration> = ThreadLocal()
+        private var isBrowserStartedDuringPreBeforeClass: ThreadLocal<Boolean> = ThreadLocal()
+        private var isBrowserStartedCorrectly: ThreadLocal<Boolean> = ThreadLocal()
 
         fun of(): BrowserLifecyclePlugin {
             return BrowserLifecyclePlugin()

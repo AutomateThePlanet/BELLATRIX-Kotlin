@@ -14,16 +14,25 @@ package solutions.bellatrix.desktop.components.contracts
 
 import solutions.bellatrix.desktop.components.DesktopComponent
 import solutions.bellatrix.desktop.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentSelected : Component {
     val isSelected: Boolean
 
     fun validateIsSelected() {
-        defaultValidateAttributeTrue(this as DesktopComponent, isSelected, "selected")
+        try {
+            defaultValidateAttributeTrue(this as DesktopComponent, isSelected, "selected")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateNotSelected() {
-        defaultValidateAttributeFalse(this as DesktopComponent, isSelected, "selected")
+        try {
+            defaultValidateAttributeFalse(this as DesktopComponent, isSelected, "selected")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

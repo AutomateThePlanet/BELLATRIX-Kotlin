@@ -14,28 +14,49 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentSizes : Component {
     val sizes: String
 
     fun validateSizesIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, sizes, value, "sizes")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, { sizes }, value, "sizes")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateSizesIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, sizes, "sizes")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, { sizes }, "sizes")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateSizesNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, sizes, "sizes")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, { sizes }, "sizes")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateSizesContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, sizes, value, "sizes")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, { sizes }, value, "sizes")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateSizesNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, sizes, value, "sizes")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, { sizes }, value, "sizes")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
     companion object : ComponentValidator()
 }

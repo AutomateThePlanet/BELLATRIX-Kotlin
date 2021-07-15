@@ -14,21 +14,34 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentUrl : Component {
     fun getUrl(): String
     fun setUrl(url: String)
 
     fun validateUrlIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, getUrl(), value, "URL")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, { getUrl() }, value, "URL")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateUrlContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, getUrl(), value, "URL")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, { getUrl() }, value, "URL")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateUrlNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, getUrl(), value, "URL")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, { getUrl() }, value, "URL")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

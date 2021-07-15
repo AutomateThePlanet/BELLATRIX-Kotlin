@@ -14,20 +14,33 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentTabIndex : Component {
     val tabIndex: String
 
     fun validateTabIndexNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, tabIndex, "tabindex")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, { tabIndex }, "tabindex")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTabIndexIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, tabIndex, "tabindex")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, { tabIndex }, "tabindex")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTabIndexIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, tabIndex, value, "tabindex")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, { tabIndex }, value, "tabindex")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

@@ -12,12 +12,14 @@
  */
 package solutions.bellatrix.web.validations
 
-object ValidationsBddLogging {
+import solutions.bellatrix.core.plugins.Listener
+
+object ValidationsBddLogging : Listener() {
     private var isBddLoggingTurnedOn = false
-    fun addPlugin() {
+    override fun addListener() {
         if (!isBddLoggingTurnedOn) {
             Validator.VALIDATED_EVENT.addListener { println("${it.message}\n") }
-            Validator.VALIDATED_EXCEPTION_TROWED_EVENT.addListener { println("${it.exception}\n") }
+            Validator.VALIDATED_EXCEPTION_THROWN_EVENT.addListener { println("${it.exception}\n") }
             isBddLoggingTurnedOn = true
         }
     }

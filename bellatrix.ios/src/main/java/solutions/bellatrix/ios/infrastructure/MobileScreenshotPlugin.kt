@@ -17,7 +17,7 @@ import org.openqa.selenium.OutputType
 import org.openqa.selenium.TakesScreenshot
 import plugins.screenshots.ScreenshotPlugin
 import solutions.bellatrix.core.configuration.ConfigurationService
-import solutions.bellatrix.core.utilities.UserHomePathNormalizer.normalizePath
+import solutions.bellatrix.core.utilities.PathNormalizer.normalizePath
 import solutions.bellatrix.ios.configuration.IOSSettings
 import solutions.bellatrix.ios.infrastructure.DriverService.getWrappedIOSDriver
 import java.io.File
@@ -32,7 +32,7 @@ class MobileScreenshotPlugin(isEnabled: Boolean?) : ScreenshotPlugin(isEnabled!!
     }
 
     override val outputFolder: String
-        protected get() {
+        get() {
             var saveLocation: String = ConfigurationService.get<IOSSettings>().screenshotsSaveLocation
             saveLocation = normalizePath(saveLocation)
             val directory = File(saveLocation)

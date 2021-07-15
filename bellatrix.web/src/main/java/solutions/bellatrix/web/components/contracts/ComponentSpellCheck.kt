@@ -14,16 +14,25 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentSpellCheck : Component {
     val spellcheck: Boolean
 
     fun validateSpellCheckOn() {
-        defaultValidateAttributeTrue(this as WebComponent, spellcheck, "spellcheck")
+        try {
+            defaultValidateAttributeTrue(this as WebComponent, { spellcheck }, "spellcheck")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateSpellCheckOff() {
-        defaultValidateAttributeFalse(this as WebComponent, spellcheck, "spellcheck")
+        try {
+            defaultValidateAttributeFalse(this as WebComponent, { spellcheck }, "spellcheck")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

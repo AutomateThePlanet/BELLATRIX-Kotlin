@@ -28,7 +28,7 @@ import solutions.bellatrix.web.infrastructure.DriverService
 fun <TComponent : ComponentHref> TComponent.validateHrefIs(expected: String, validationsTimeout: Int? = null, sleepInterval: Int? = null) {
     Validator.waitUntil({ this.href.trim() == expected },
             this,
-            "validate ${this.elementName} href is '$expected'",
+            "validate ${this.componentName} href is '$expected'",
             "The component's href should be '$expected' but was '$this.href'.",
             expected,
             validationsTimeout,
@@ -38,7 +38,7 @@ fun <TComponent : ComponentHref> TComponent.validateHrefIs(expected: String, val
 fun <TComponent : ComponentHref> TComponent.validateHrefIsSet(validationsTimeout: Int? = null, sleepInterval: Int? = null) {
     Validator.waitUntil({ !this.href.trim().isBlank() },
             this,
-            "validate ${this.elementName} href is set",
+            "validate ${this.componentName} href is set",
             "The component's href shouldn't be empty but was.",
             null,
             validationsTimeout,
@@ -48,7 +48,7 @@ fun <TComponent : ComponentHref> TComponent.validateHrefIsSet(validationsTimeout
 fun <TComponent : ComponentHtml> TComponent.validateHtmlIs(expected: String, validationsTimeout: Int? = null, sleepInterval: Int? = null) {
     Validator.waitUntil({ this.html == expected },
             this,
-            "validate ${this.elementName} HTML is '$expected'",
+            "validate ${this.componentName} HTML is '$expected'",
             "The component's HTML should be '$expected' but was '${this.html}'.",
             expected,
             validationsTimeout,
@@ -58,7 +58,7 @@ fun <TComponent : ComponentHtml> TComponent.validateHtmlIs(expected: String, val
 fun <TComponent : ComponentHtml> TComponent.validateHtmlContains(expected: String, validationsTimeout: Int? = null, sleepInterval: Int? = null) {
     Validator.waitUntil({ this.html.contains(expected) },
             this,
-            "validate ${this.elementName} HTML contains '$expected'",
+            "validate ${this.componentName} HTML contains '$expected'",
             "The component's HTML should contain '$expected' but was '${this.html}'.",
             expected,
             validationsTimeout,
@@ -66,7 +66,7 @@ fun <TComponent : ComponentHtml> TComponent.validateHtmlContains(expected: Strin
 }
 
 object Validator {
-    val VALIDATED_EXCEPTION_TROWED_EVENT = EventListener<ComponentNotFulfillingValidateConditionEventArgs>()
+    val VALIDATED_EXCEPTION_THROWN_EVENT = EventListener<ComponentNotFulfillingValidateConditionEventArgs>()
     val VALIDATED_EVENT = EventListener<ValidationEventArgs>()
 
     fun <TComponent : Component> waitUntil(
@@ -89,7 +89,7 @@ object Validator {
             VALIDATED_EVENT.broadcast(ValidationEventArgs(component, successMessage, actionValue))
         } catch (ex: WebDriverException) {
             val elementPropertyValidateException = ElementPropertyValidateException(exceptionMessage, DriverService.wrappedDriver().currentUrl)
-            VALIDATED_EXCEPTION_TROWED_EVENT.broadcast(ComponentNotFulfillingValidateConditionEventArgs(ex))
+            VALIDATED_EXCEPTION_THROWN_EVENT.broadcast(ComponentNotFulfillingValidateConditionEventArgs(ex))
             throw elementPropertyValidateException
         }
     }

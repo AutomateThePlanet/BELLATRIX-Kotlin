@@ -12,7 +12,5 @@
  */
 package solutions.bellatrix.web.components
 
-class ComponentActionEventArgs (val component: WebComponent, val actionValue: String, val message: String) {
-    constructor(component: WebComponent) : this(component, "", "") {
-    }
+class ComponentActionEventArgs (val component: WebComponent, val actionValue: String = "", val message: String = "") {
 }

@@ -14,6 +14,8 @@ package solutions.bellatrix.android.waitstrategies
 
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
+import org.openqa.selenium.NoSuchElementException
+import org.openqa.selenium.StaleElementReferenceException
 import org.openqa.selenium.WebDriver
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.android.configuration.AndroidSettings
@@ -21,31 +23,33 @@ import solutions.bellatrix.android.findstrategies.FindStrategy
 import solutions.bellatrix.android.infrastructure.DriverService.getWrappedAndroidDriver
 import java.util.function.Function
 
-class ToExistsWaitStrategy : WaitStrategy {
+class ToNotBeVisibleWaitStrategy : WaitStrategy {
     constructor() {
-        timeoutInterval = ConfigurationService.get<AndroidSettings>().timeoutSettings.elementToExistTimeout
+        timeoutInterval = ConfigurationService.get<AndroidSettings>().timeoutSettings.elementNotToBeVisibleTimeout
         sleepInterval = ConfigurationService.get<AndroidSettings>().timeoutSettings.sleepInterval
     }
 
     constructor(timeoutIntervalSeconds: Long, sleepIntervalSeconds: Long) : super(timeoutIntervalSeconds, sleepIntervalSeconds) {}
 
     override fun <TFindStrategy : FindStrategy> waitUntil(findStrategy: TFindStrategy) {
-        val func = Function { w: WebDriver -> elementExists(getWrappedAndroidDriver(), findStrategy) }
+        val func = Function { w: WebDriver -> elementIsInvisible(getWrappedAndroidDriver(), findStrategy) }
         waitUntil(func)
     }
 
-    private fun <TFindStrategy : FindStrategy> elementExists(searchContext: AndroidDriver<MobileElement>, findStrategy: TFindStrategy): Boolean {
+    private fun <TFindStrategy : FindStrategy> elementIsInvisible(searchContext: AndroidDriver<MobileElement>, findStrategy: TFindStrategy): Boolean {
+        val element = findStrategy.findElement(searchContext)
         return try {
-            val element = findStrategy.findElement(searchContext)
-            element != null
-        } catch (e: Exception) {
-            false
+            element != null && !element.isDisplayed
+        } catch (e: StaleElementReferenceException) {
+            true
+        } catch (e: NoSuchElementException) {
+            true
         }
     }
 
     companion object {
-        fun of(): ToExistsWaitStrategy {
-            return ToExistsWaitStrategy()
+        fun of(): ToNotBeVisibleWaitStrategy {
+            return ToNotBeVisibleWaitStrategy()
         }
     }
 }

@@ -14,16 +14,25 @@ package solutions.bellatrix.ios.components.contracts
 
 import solutions.bellatrix.ios.components.IOSComponent
 import solutions.bellatrix.ios.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentVisible : Component {
     val isVisible: Boolean
 
     fun validateIsChecked() {
-        defaultValidateAttributeTrue(this as IOSComponent, isVisible, "visible")
+        try {
+            defaultValidateAttributeTrue(this as IOSComponent, isVisible, "visible")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateIsUnchecked() {
-        defaultValidateAttributeFalse(this as IOSComponent, isVisible, "visible")
+        try {
+            defaultValidateAttributeFalse(this as IOSComponent, isVisible, "visible")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

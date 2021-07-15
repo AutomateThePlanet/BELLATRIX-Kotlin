@@ -14,16 +14,25 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentReadonly : Component {
     val isReadonly: Boolean
 
     fun validateIsReadonly() {
-        defaultValidateAttributeTrue(this as WebComponent, isReadonly, "readonly")
+        try {
+            defaultValidateAttributeTrue(this as WebComponent, { isReadonly }, "readonly")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateNotReadonly() {
-        defaultValidateAttributeFalse(this as WebComponent, isReadonly, "readonly")
+        try {
+            defaultValidateAttributeFalse(this as WebComponent, { isReadonly }, "readonly")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

@@ -14,20 +14,33 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentAccept : Component {
     val accept: String
 
     fun validateAcceptIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, accept, value, "accept")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, { accept }, value, "accept")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateAcceptIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, accept, "accept")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, { accept }, "accept")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateAcceptNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, accept, "accept")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, { accept }, "accept")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

@@ -14,20 +14,33 @@ package solutions.bellatrix.android.components.contracts
 
 import solutions.bellatrix.android.components.AndroidComponent
 import solutions.bellatrix.android.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentTime : Component {
     fun getTime(): String
 
     fun validateTimeIs(value: String) {
-        defaultValidateAttributeIs(this as AndroidComponent, getTime(), value, "time")
+        try {
+            defaultValidateAttributeIs(this as AndroidComponent, getTime(), value, "time")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTimeContains(value: String) {
-        defaultValidateAttributeContains(this as AndroidComponent, getTime(), value, "time")
+        try {
+            defaultValidateAttributeContains(this as AndroidComponent, getTime(), value, "time")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateTimeNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as AndroidComponent, getTime(), value, "time")
+        try {
+            defaultValidateAttributeNotContains(this as AndroidComponent, getTime(), value, "time")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

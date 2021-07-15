@@ -14,28 +14,49 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentList : Component {
     val list: String
 
     fun validateListIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, list, value, "list")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, { list }, value, "list")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateListIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, list, "list")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, { list }, "list")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateListNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, list, "list")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, { list }, "list")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateListContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, list, value, "list")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, { list }, value, "list")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateListNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, list, value, "list")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, { list }, value, "list")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

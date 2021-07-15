@@ -14,13 +14,18 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentDate : Component {
     fun getDate(): String
     fun setDate(year: Int, month: Int, day: Int)
 
     fun validateDateIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, getDate(), value, "date")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, { getDate() }, value, "date")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

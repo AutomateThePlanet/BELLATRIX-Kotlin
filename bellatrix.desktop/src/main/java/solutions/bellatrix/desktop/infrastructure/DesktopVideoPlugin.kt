@@ -14,14 +14,14 @@ package solutions.bellatrix.desktop.infrastructure
 
 import plugins.video.VideoPlugin
 import solutions.bellatrix.core.configuration.ConfigurationService
-import solutions.bellatrix.core.utilities.UserHomePathNormalizer.normalizePath
+import solutions.bellatrix.core.utilities.PathNormalizer.normalizePath
 import solutions.bellatrix.desktop.configuration.DesktopSettings
 import java.io.File
 import java.util.*
 
 class DesktopVideoPlugin(isEnabled: Boolean?) : VideoPlugin(isEnabled!!) {
     override val outputFolder: String
-        protected get() {
+        get() {
             var saveLocation: String = ConfigurationService.get<DesktopSettings>().videosSaveLocation
             saveLocation = normalizePath(saveLocation)
             val directory = File(saveLocation)

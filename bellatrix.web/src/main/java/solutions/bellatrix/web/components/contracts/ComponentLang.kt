@@ -14,20 +14,33 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentLang : Component {
     val lang: String
 
     fun validateLangIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, lang, value, "lang")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, { lang }, value, "lang")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateLangIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, lang, "lang")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, { lang }, "lang")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateLangNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, lang, "lang")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, { lang }, "lang")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

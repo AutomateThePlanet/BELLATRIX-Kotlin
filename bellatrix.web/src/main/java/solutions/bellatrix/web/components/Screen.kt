@@ -15,6 +15,6 @@ class Screen : LayoutComponent {
         size = browserService.wrappedDriver.manage().window().size
     }
 
-    override val elementName: String
+    override val componentName: String
         get() = "Screen"
 }

@@ -10,20 +10,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.android.waitstrategies
+package solutions.bellatrix.core.plugins
 
-import solutions.bellatrix.android.components.AndroidComponent
+import kotlin.reflect.KClass
 
-object WaitStrategyElementsExtensions {
-    fun toExists1(element: AndroidComponent): AndroidComponent {
-        val waitStrategy = ToExistsWaitStrategy()
-        element.ensureState(waitStrategy)
-        return element
+abstract class UsesPlugins {
+    fun addPlugin(plugin: Plugin) {
+        PluginExecutionEngine.addPlugin(plugin)
     }
 
-    fun toExists1(element: AndroidComponent, timeoutInterval: Int, sleepInterval: Int): AndroidComponent {
-        val waitStrategy = ToExistsWaitStrategy(timeoutInterval.toLong(), sleepInterval.toLong())
-        element.ensureState(waitStrategy)
-        return element
+    inline fun <reified T : Listener> addListener(listener: KClass<T>) {
+        listener.objectInstance?.addListener()
     }
 }

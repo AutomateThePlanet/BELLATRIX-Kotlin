@@ -14,7 +14,7 @@ package solutions.bellatrix.web.findstrategies
 
 import org.openqa.selenium.By
 
-class InnerTextContainsFindStrategy(value: String?) : FindStrategy(value!!) {
+class InnerTextContainingFindStrategy(value: String?) : FindStrategy(value!!) {
     override fun convert(): By {
         return By.xpath("//*[contains(text(), '$value')]")
     }

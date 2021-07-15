@@ -14,16 +14,25 @@ package solutions.bellatrix.android.components.contracts
 
 import solutions.bellatrix.android.components.AndroidComponent
 import solutions.bellatrix.android.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentOn : Component {
     val isOn: Boolean
 
     fun validateIsOn() {
-        defaultValidateAttributeTrue(this as AndroidComponent, isOn, "on")
+        try {
+            defaultValidateAttributeTrue(this as AndroidComponent, isOn, "on")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateIsOff() {
-        defaultValidateAttributeTrue(this as AndroidComponent, !isOn, "off")
+        try {
+            defaultValidateAttributeTrue(this as AndroidComponent, !isOn, "off")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

@@ -12,6 +12,7 @@
  */
 package solutions.bellatrix.android.infrastructure.junit
 
+import solutions.bellatrix.android.components.listeners.BddLogging
 import solutions.bellatrix.core.plugins.junit.BaseTest
 import solutions.bellatrix.android.infrastructure.AppLifecyclePlugin
 import solutions.bellatrix.android.infrastructure.DownloadDemoAppsPlugin
@@ -28,5 +29,6 @@ open class AndroidTest : BaseTest() {
         addPlugin(MobileScreenshotPlugin.of())
         addPlugin(MobileVideoPlugin.of())
         addPlugin(DownloadDemoAppsPlugin.of())
+        addListener(BddLogging::class)
     }
 }

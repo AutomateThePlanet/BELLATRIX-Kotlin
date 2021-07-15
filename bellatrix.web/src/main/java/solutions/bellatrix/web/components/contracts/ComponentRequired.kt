@@ -14,16 +14,25 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentRequired : Component {
     val isRequired: Boolean
 
     fun validateIsRequired() {
-        defaultValidateAttributeTrue(this as WebComponent, isRequired, "required")
+        try {
+            defaultValidateAttributeTrue(this as WebComponent, { isRequired }, "required")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateNotRequired() {
-        defaultValidateAttributeFalse(this as WebComponent, isRequired, "required")
+        try {
+            defaultValidateAttributeFalse(this as WebComponent, { isRequired }, "required")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

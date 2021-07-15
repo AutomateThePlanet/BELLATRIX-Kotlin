@@ -14,20 +14,33 @@ package solutions.bellatrix.ios.components.contracts
 
 import solutions.bellatrix.ios.components.IOSComponent
 import solutions.bellatrix.ios.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentDate : Component {
     fun getDate(): String
 
     fun validateDateIs(value: String) {
-        defaultValidateAttributeIs(this as IOSComponent, getDate(), value, "date")
+        try {
+            defaultValidateAttributeIs(this as IOSComponent, getDate(), value, "date")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateDateContains(value: String) {
-        defaultValidateAttributeContains(this as IOSComponent, getDate(), value, "date")
+        try {
+            defaultValidateAttributeContains(this as IOSComponent, getDate(), value, "date")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateDateNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as IOSComponent, getDate(), value, "date")
+        try {
+            defaultValidateAttributeNotContains(this as IOSComponent, getDate(), value, "date")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

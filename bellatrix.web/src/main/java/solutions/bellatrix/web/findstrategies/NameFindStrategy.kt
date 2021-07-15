@@ -10,24 +10,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.desktop.components
+package solutions.bellatrix.web.findstrategies
 
-import solutions.bellatrix.core.plugins.EventListener
+import org.openqa.selenium.By
 
-class Password : DesktopComponent() {
-    override val componentClass: Class<*>
-        get() = javaClass
-
-    fun setPassword(password: String) {
-        defaultSetText(SETTING_PASSWORD, PASSWORD_SET, password)
+class NameFindStrategy(value: String) : FindStrategy(value) {
+    override fun convert(): By {
+        return By.name(value)
     }
 
-    fun getPassword(): String {
-        return defaultGetText()
-    }
-
-    companion object {
-        val SETTING_PASSWORD = EventListener<ComponentActionEventArgs>()
-        val PASSWORD_SET = EventListener<ComponentActionEventArgs>()
+    override fun toString(): String {
+        return "name = $value"
     }
 }

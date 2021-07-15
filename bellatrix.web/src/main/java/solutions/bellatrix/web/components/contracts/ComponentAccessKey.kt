@@ -14,20 +14,33 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentAccessKey : Component {
     val accessKey: String
 
     fun validateAccessKeyIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, accessKey, value, "accesskey")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, { accessKey }, value, "accesskey")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateAccessKeyIsSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, accessKey, "accesskey")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, { accessKey }, "accesskey")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateAccessKeyNotSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, accessKey, "accesskey")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, { accessKey }, "accesskey")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

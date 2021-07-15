@@ -16,7 +16,7 @@ import org.openqa.selenium.By
 
 class ClassFindStrategy(value: String) : FindStrategy(value) {
     override fun convert(): By {
-        return By.xpath("//*[@class='$value']")
+        return By.className(value)
     }
 
     override fun toString(): String {

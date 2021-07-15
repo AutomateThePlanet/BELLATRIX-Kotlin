@@ -13,13 +13,10 @@
 package solutions.bellatrix.ios.components
 
 import io.appium.java_client.MobileElement
-import io.appium.java_client.android.AndroidElement
 import io.appium.java_client.ios.IOSDriver
 import layout.LayoutComponentValidationsBuilder
-import org.apache.commons.lang3.StringUtils
 import org.openqa.selenium.*
 import org.openqa.selenium.interactions.Actions
-import org.openqa.selenium.support.ui.WebDriverWait
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.core.utilities.InstanceFactory
@@ -31,13 +28,8 @@ import solutions.bellatrix.ios.infrastructure.DriverService
 import solutions.bellatrix.ios.services.AppService
 import solutions.bellatrix.ios.services.ComponentCreateService
 import solutions.bellatrix.ios.services.ComponentWaitService
-import solutions.bellatrix.ios.waitstrategies.ToBeClickableWaitStrategy
-import solutions.bellatrix.ios.waitstrategies.ToBeVisibleWaitStrategy
-import solutions.bellatrix.ios.waitstrategies.ToExistsWaitStrategy
-import solutions.bellatrix.ios.waitstrategies.WaitStrategy
+import solutions.bellatrix.ios.waitstrategies.*
 import java.util.*
-import java.util.function.Function
-import java.util.function.Supplier
 
 open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
     protected var wrappedElementHolder: MobileElement? = null
@@ -62,7 +54,7 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
         protected set
     private val waitStrategies: MutableList<WaitStrategy>
     private val IOSSettings: IOSSettings
-    override val elementName: String
+    override val componentName: String
         get() = String.format("%s (%s)", componentClass.simpleName, findStrategy.toString())
 
     fun waitToBe() {
@@ -93,8 +85,26 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
         waitStrategies.add(waitStrategy)
     }
 
-    fun <TElementType : IOSComponent> toExists(): TElementType {
-        val waitStrategy = ToExistsWaitStrategy()
+    fun <TElementType : IOSComponent> toExist(): TElementType {
+        val waitStrategy = ToExistWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : IOSComponent> toNotExist(): TElementType {
+        val waitStrategy = ToNotExistWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : IOSComponent> toBeVisible(): TElementType {
+        val waitStrategy = ToBeVisibleWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : IOSComponent> toNotBeVisible(): TElementType {
+        val waitStrategy = ToNotBeVisibleWaitStrategy()
         ensureState(waitStrategy)
         return this as TElementType
     }
@@ -105,8 +115,58 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
         return this as TElementType
     }
 
-    fun <TElementType : IOSComponent> toBeVisible(): TElementType {
-        val waitStrategy = ToBeVisibleWaitStrategy()
+    fun <TElementType : IOSComponent> toBeDisabled(): TElementType {
+        val waitStrategy = ToBeDisabledWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : IOSComponent> toHaveContent(): TElementType {
+        val waitStrategy = ToHaveContentWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : IOSComponent> toExist(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToExistWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : IOSComponent> toNotExist(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToNotExistWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : IOSComponent> toBeVisible(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy =
+            ToBeVisibleWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : IOSComponent> toNotBeVisible(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToNotBeVisibleWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : IOSComponent> toBeClickable(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy =
+            ToBeClickableWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : IOSComponent> toBeDisabled(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToBeDisabledWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : IOSComponent> toHaveContent(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToHaveContentWaitStrategy(timeoutInterval, sleepInterval)
         ensureState(waitStrategy)
         return this as TElementType
     }
@@ -214,14 +274,14 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
 
     protected fun defaultClick(clicking: EventListener<ComponentActionEventArgs>, clicked: EventListener<ComponentActionEventArgs>) {
         clicking.broadcast(ComponentActionEventArgs(this))
-        toExists<IOSComponent>().toBeClickable<IOSComponent>().waitToBe()
+        toExist<IOSComponent>().toBeClickable<IOSComponent>().waitToBe()
         findElement().click()
         clicked.broadcast(ComponentActionEventArgs(this))
     }
 
     protected fun defaultCheck(clicking: EventListener<ComponentActionEventArgs>, clicked: EventListener<ComponentActionEventArgs>) {
         clicking.broadcast(ComponentActionEventArgs(this))
-        toExists<IOSComponent>().toBeClickable<IOSComponent>().waitToBe()
+        toExist<IOSComponent>().toBeClickable<IOSComponent>().waitToBe()
         if (!this.defaultGetCheckedAttribute()) {
             findElement().click()
         }
@@ -230,7 +290,7 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
 
     protected fun defaultUncheck(clicking: EventListener<ComponentActionEventArgs>, clicked: EventListener<ComponentActionEventArgs>) {
         clicking.broadcast(ComponentActionEventArgs(this))
-        toExists<IOSComponent>().toBeClickable<IOSComponent>().waitToBe()
+        toExist<IOSComponent>().toBeClickable<IOSComponent>().waitToBe()
         if (this.defaultGetCheckedAttribute()) {
             findElement().click()
         }
@@ -295,7 +355,7 @@ open class IOSComponent : LayoutComponentValidationsBuilder(), Component {
             action.moveToElement(wrappedElement).perform()
             if (shouldWait) {
                 Thread.sleep(500)
-                toExists<IOSComponent>().waitToBe()
+                toExist<IOSComponent>().waitToBe()
             }
         } catch (ex: ElementNotInteractableException) {
             ex.debugStackTrace()

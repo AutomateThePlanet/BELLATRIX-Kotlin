@@ -10,20 +10,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.ios.waitstrategies
+package solutions.bellatrix.web.findstrategies
 
-import solutions.bellatrix.ios.components.IOSComponent
+import org.openqa.selenium.By
 
-object WaitStrategyElementsExtensions {
-    fun toExists1(element: IOSComponent): IOSComponent {
-        val waitStrategy = ToExistsWaitStrategy()
-        element.ensureState(waitStrategy)
-        return element
+class IdEndingWithFindStrategy(value: String) : FindStrategy(value) {
+    override fun convert(): By {
+        return By.cssSelector("[id$='$value']")
     }
 
-    fun toExists1(element: IOSComponent, timeoutInterval: Int, sleepInterval: Int): IOSComponent {
-        val waitStrategy = ToExistsWaitStrategy(timeoutInterval.toLong(), sleepInterval.toLong())
-        element.ensureState(waitStrategy)
-        return element
+    override fun toString(): String {
+        return "id ending with $value"
     }
 }

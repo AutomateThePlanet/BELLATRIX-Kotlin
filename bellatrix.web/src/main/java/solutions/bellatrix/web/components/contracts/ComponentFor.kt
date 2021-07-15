@@ -14,20 +14,33 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentFor : Component {
     val forAttribute: String
 
     fun validateForIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, forAttribute, value, "for")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, { forAttribute }, value, "for")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateForIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, forAttribute, "for")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, { forAttribute }, "for")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateForNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, forAttribute, "for")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, { forAttribute }, "for")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

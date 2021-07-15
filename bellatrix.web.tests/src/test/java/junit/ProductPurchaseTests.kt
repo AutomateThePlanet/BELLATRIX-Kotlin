@@ -26,23 +26,19 @@ import solutions.bellatrix.web.infrastructure.junit.WebTest
 
 @ExecutionBrowser(browser = Browser.CHROME, lifecycle = Lifecycle.REUSE_IF_STARTED)
 class ProductPurchaseTests : WebTest() {
+    override fun afterMethod() {
+        app.cookies.deleteAll()
+    }
+
     @Test
     fun completePurchaseSuccessfully_first() {
         app.navigate.to("http://demos.bellatrix.solutions/")
         val addToCartFalcon9 = app.create.byCss<Anchor>("[data-product_id*='28']")
-        val blogLink = app.create.byCss<Anchor>("[data-product_id*='28']")
+        val blogLink = app.create.byLinkText<Anchor>("Blog")
         addToCartFalcon9.click()
-
-        blogLink.above(addToCartFalcon9).greaterThan(30).validate()
         blogLink.above(addToCartFalcon9).validate()
-        blogLink.height().equal(10).validate()
-        blogLink.width().greaterThanOrEqual(10).validate()
-        blogLink.inside(addToCartFalcon9).validate()
-        blogLink.topInside(addToCartFalcon9).greaterThan(5).validate()
-        blogLink.alignedHorizontallyTop(addToCartFalcon9, addToCartFalcon9).validate()
-
-        MainPage.asserts.productBoxLink("", "")
-        blogLink.validateHrefIs("http://demos.bellatrix.solutions/")
+        MainPage.asserts.productBoxLink("Falcon 9", "http://demos.bellatrix.solutions/?add-to-cart=28")
+        blogLink.validateHrefIs("http://demos.bellatrix.solutions/blog/")
     }
 
     @Test
@@ -55,13 +51,13 @@ class ProductPurchaseTests : WebTest() {
     @Test
     fun falcon9LinkAddsCorrectProduct() {
         MainPage.open()
-        MainPage.asserts.productBoxLink("Falcon 9", "http://demos.bellatrix.solutions/product/falcon-9/")
+        MainPage.asserts.productBoxLink("Falcon 9", "http://demos.bellatrix.solutions/?add-to-cart=28")
     }
 
     @Test
     fun saturnVLinkAddsCorrectProduct() {
         MainPage.open()
-        MainPage.asserts.productBoxLink("Saturn V", "http://demos.bellatrix.solutions/product/saturn-v/")
+        MainPage.asserts.productBoxLink("Saturn V", "http://demos.bellatrix.solutions/?add-to-cart=26")
     }
 
     @Test

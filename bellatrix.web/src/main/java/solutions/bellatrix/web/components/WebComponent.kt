@@ -13,12 +13,14 @@
 package solutions.bellatrix.web.components
 
 import layout.LayoutComponentValidationsBuilder
-import org.apache.commons.lang3.StringEscapeUtils
+import org.apache.commons.text.StringEscapeUtils
 import org.openqa.selenium.*
+import org.openqa.selenium.support.ui.FluentWait
 import org.openqa.selenium.support.ui.Select
 import solutions.bellatrix.core.configuration.ConfigurationService
 import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.core.utilities.InstanceFactory
+import solutions.bellatrix.core.utilities.Log
 import solutions.bellatrix.core.utilities.debugStackTrace
 import solutions.bellatrix.web.components.contracts.*
 import solutions.bellatrix.web.configuration.WebSettings
@@ -28,12 +30,10 @@ import solutions.bellatrix.web.services.BrowserService
 import solutions.bellatrix.web.services.ComponentCreateService
 import solutions.bellatrix.web.services.ComponentWaitService
 import solutions.bellatrix.web.services.JavaScriptService
-import solutions.bellatrix.web.waitstrategies.ToBeClickableWaitStrategy
-import solutions.bellatrix.web.waitstrategies.ToBeVisibleWaitStrategy
-import solutions.bellatrix.web.waitstrategies.ToExistsWaitStrategy
-import solutions.bellatrix.web.waitstrategies.WaitStrategy
+import solutions.bellatrix.web.waitstrategies.*
 import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
+import java.time.Duration
 import java.util.*
 
 abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, ComponentStyle, ComponentTitle, ComponentHtmlClass, ComponentVisible, ComponentTabIndex, ComponentAccessKey, ComponentDir, ComponentLang {
@@ -44,6 +44,8 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
                 wrappedElementHolder?.isDisplayed
                 wrappedElementHolder ?: findElement()
             } catch (ex: StaleElementReferenceException) {
+                findElement()
+            } catch (ex: NoSuchElementException) {
                 findElement()
             }
         }
@@ -88,7 +90,7 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
         val CREATED_ELEMENTS = EventListener<ComponentActionEventArgs>()
     }
 
-    override val elementName: String
+    override val componentName: String
         get() = "${componentClass.simpleName} ($findStrategy)"
 
     fun waitToBe() {
@@ -162,8 +164,26 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
         waitStrategies.add(waitStrategy)
     }
 
-    fun <TElementType : WebComponent> toExists(): TElementType {
-        val waitStrategy = ToExistsWaitStrategy()
+    fun <TElementType : WebComponent> toExist(): TElementType {
+        val waitStrategy = ToExistWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : WebComponent> toNotExist(): TElementType {
+        val waitStrategy = ToNotExistWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : WebComponent> toBeVisible(): TElementType {
+        val waitStrategy = ToBeVisibleWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : WebComponent> toNotBeVisible(): TElementType {
+        val waitStrategy = ToNotBeVisibleWaitStrategy()
         ensureState(waitStrategy)
         return this as TElementType
     }
@@ -174,8 +194,56 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
         return this as TElementType
     }
 
-    fun <TElementType : WebComponent> toBeVisible(): TElementType {
-        val waitStrategy = ToBeVisibleWaitStrategy()
+    fun <TElementType : WebComponent> toBeDisabled(): TElementType {
+        val waitStrategy = ToBeDisabledWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : WebComponent> toHaveContent(): TElementType {
+        val waitStrategy = ToHaveContentWaitStrategy()
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : WebComponent> toExist(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToExistWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : WebComponent> toNotExist(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToNotExistWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : WebComponent> toBeVisible(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToBeVisibleWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : WebComponent> toNotBeVisible(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToNotBeVisibleWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : WebComponent> toBeClickable(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToBeClickableWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : WebComponent> toBeDisabled(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToBeDisabledWaitStrategy(timeoutInterval, sleepInterval)
+        ensureState(waitStrategy)
+        return this as TElementType
+    }
+
+    fun <TElementType : WebComponent> toHaveContent(timeoutInterval: Long, sleepInterval: Long): TElementType {
+        val waitStrategy = ToHaveContentWaitStrategy(timeoutInterval, sleepInterval)
         ensureState(waitStrategy)
         return this as TElementType
     }
@@ -199,12 +267,32 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
         return create<TComponent, IdFindStrategy>(id)
     }
 
+    inline fun <reified TComponent : WebComponent> createByAttributeContaining(attributeName: String, value: String): TComponent {
+        return create<TComponent, AttributeContainingFindStrategy>(attributeName, value)
+    }
+
+    inline fun <reified TComponent : WebComponent> createByIdEndingWith(idEnding: String): TComponent {
+        return create<TComponent, IdEndingWithFindStrategy>(idEnding)
+    }
+
     inline fun <reified TComponent : WebComponent> createByCss(css: String): TComponent {
         return create<TComponent, CssFindStrategy>(css)
     }
 
-    inline fun <reified TComponent : WebComponent> createByClass(cclass: String): TComponent {
-        return create<TComponent, ClassFindStrategy>(cclass)
+    inline fun <reified TComponent : WebComponent> createByClass(className: String): TComponent {
+        return create<TComponent, ClassFindStrategy>(className)
+    }
+
+    inline fun <reified TComponent : WebComponent> createByName(name: String): TComponent {
+        return create<TComponent, NameFindStrategy>(name)
+    }
+
+    inline fun <reified TComponent : WebComponent> createByValueContaining(valueContaining: String): TComponent {
+        return create<TComponent, ValueContainingFindStrategy>(valueContaining)
+    }
+
+    inline fun <reified TComponent : WebComponent> createByClassContaining(classNameContaining: String): TComponent {
+        return create<TComponent, ClassContainingFindStrategy>(classNameContaining)
     }
 
     inline fun <reified TComponent : WebComponent> createByXPath(xpath: String): TComponent {
@@ -213,6 +301,10 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
 
     inline fun <reified TComponent : WebComponent> createByLinkText(linkText: String): TComponent {
         return create<TComponent, LinkTextFindStrategy>(linkText)
+    }
+
+    inline fun <reified TComponent : WebComponent> createByLinkTextContaining(linkTextContaining: String): TComponent {
+        return create<TComponent, LinkTextContainingFindStrategy>(linkTextContaining)
     }
 
     inline fun <reified TComponent : WebComponent> createByTag(tag: String): TComponent {
@@ -224,19 +316,39 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
     }
 
     inline fun <reified TComponent : WebComponent> createByInnerTextContaining(innerText: String): TComponent {
-        return create<TComponent, InnerTextContainsFindStrategy>(innerText)
+        return create<TComponent, InnerTextContainingFindStrategy>(innerText)
     }
 
     inline fun <reified TComponent : WebComponent> createAllById(id: String): List<TComponent> {
         return createAll<TComponent, IdFindStrategy>(id)
     }
 
-    inline fun <reified TComponent : WebComponent> createAllByCss(css: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent> createAllByAttributeContaining(attributeName: String, value: String): List<TComponent> {
+        return createAll<TComponent, AttributeContainingFindStrategy>(attributeName, value)
+    }
+
+    inline fun <reified TComponent : WebComponent> createAllByIdEndingWith(idEnding: String): List<TComponent> {
+        return createAll<TComponent, IdEndingWithFindStrategy>(idEnding)
+    }
+
+    inline fun <reified TComponent : WebComponent> createAllBbyCss(css: String): List<TComponent> {
         return createAll<TComponent, CssFindStrategy>(css)
     }
 
-    inline fun <reified TComponent : WebComponent> createAllByClass(cclass: String): List<TComponent> {
-        return createAll<TComponent, ClassFindStrategy>(cclass)
+    inline fun <reified TComponent : WebComponent> createAllByClass(className: String): List<TComponent> {
+        return createAll<TComponent, ClassFindStrategy>(className)
+    }
+
+    inline fun <reified TComponent : WebComponent> createAllByName(name: String): List<TComponent> {
+        return createAll<TComponent, NameFindStrategy>(name)
+    }
+
+    inline fun <reified TComponent : WebComponent> createAllByValueContaining(valueContaining: String): List<TComponent> {
+        return createAll<TComponent, ValueContainingFindStrategy>(valueContaining)
+    }
+
+    inline fun <reified TComponent : WebComponent> createAllByClassContaining(classNameContaining: String): List<TComponent> {
+        return createAll<TComponent, ClassContainingFindStrategy>(classNameContaining)
     }
 
     inline fun <reified TComponent : WebComponent> createAllByXPath(xpath: String): List<TComponent> {
@@ -245,6 +357,10 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
 
     inline fun <reified TComponent : WebComponent> createAllByLinkText(linkText: String): List<TComponent> {
         return createAll<TComponent, LinkTextFindStrategy>(linkText)
+    }
+
+    inline fun <reified TComponent : WebComponent> createAllByLinkTextContaining(linkTextContaining: String): List<TComponent> {
+        return createAll<TComponent, LinkTextContainingFindStrategy>(linkTextContaining)
     }
 
     inline fun <reified TComponent : WebComponent> createAllByTag(tag: String): List<TComponent> {
@@ -256,22 +372,22 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
     }
 
     inline fun <reified TComponent : WebComponent> createAllByInnerTextContaining(innerText: String): List<TComponent> {
-        return createAll<TComponent, InnerTextContainsFindStrategy>(innerText)
+        return createAll<TComponent, InnerTextContainingFindStrategy>(innerText)
     }
 
-    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> create(value: String): TComponent {
+    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> create(vararg values: String): TComponent {
         CREATING_ELEMENT.broadcast(ComponentActionEventArgs(this))
         findElement()
-        val findStrategy = InstanceFactory.create<TFindStrategy>(value)
+        val findStrategy = InstanceFactory.create<TFindStrategy>(values)
         this.findStrategy = findStrategy
         this.parentWrappedElement = wrappedElement
         CREATED_ELEMENT.broadcast(ComponentActionEventArgs(this))
         return this as TComponent
     }
 
-    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> createAll(value: String): List<TComponent> {
+    inline fun <reified TComponent : WebComponent, reified TFindStrategy : FindStrategy> createAll(vararg values: String): List<TComponent> {
         CREATING_ELEMENTS.broadcast(ComponentActionEventArgs(this))
-        val findStrategy = InstanceFactory.create<TFindStrategy>(value)
+        val findStrategy = InstanceFactory.create<TFindStrategy>(values)
         findElement()
         val nativeElements = wrappedElement.findElements(findStrategy.convert())
         val componentList = mutableListOf<TComponent>()
@@ -288,7 +404,7 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
 
     fun findElement(): WebElement {
         if (waitStrategies.stream().count() == 0L) {
-            waitStrategies.add(ToExistsWaitStrategy.of())
+            waitStrategies.add(ToExistWaitStrategy.of())
         }
         try {
             for (waitStrategy in waitStrategies) {
@@ -305,33 +421,64 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
             addArtificialDelay()
             waitStrategies.clear()
         } catch (ex: WebDriverException) {
-            print("\n\nThe component: \n Name: '${componentClass.simpleName}', \n Locator: '$findStrategy', \nWas not found on the page or didn't fulfill the specified conditions.\n\n")
+            Log.error("%n%nThe component: %n" +
+                              "     Type: \"\u001B[1m%s\u001B[0m\"%n" +
+                              "  Locator: \"\u001B[1m%s\u001B[0m\"%n" +
+                              "Was not found on the page or didn't fulfill the specified conditions.%n%n",
+                      this::class.simpleName, findStrategy.toString());
+            throw ex;
         }
         RETURNING_WRAPPED_ELEMENT.broadcast(ComponentActionEventArgs(this))
         return wrappedElement
     }
 
+
+    private fun clickInternal() {
+        val toBeClickableTimeout = webSettings.timeoutSettings.elementToBeClickableTimeout
+        val sleepInterval = webSettings.timeoutSettings.sleepInterval
+        val wait: FluentWait<WebDriver> = FluentWait(wrappedDriver)
+            .withTimeout(Duration.ofSeconds(toBeClickableTimeout))
+            .pollingEvery(Duration.ofSeconds(if (sleepInterval > 0) sleepInterval else 1))
+        try {
+            wait.until { x: WebDriver? -> tryClick() }
+        } catch (e: TimeoutException) {
+            toExist<WebComponent>().toBeClickable<WebComponent>().findElement().click()
+        }
+    }
+
+    private fun tryClick(): Boolean {
+        return try {
+            toExist<WebComponent>().toBeClickable<WebComponent>().findElement().click()
+            true
+        } catch (e: ElementNotInteractableException) {
+            false
+        } catch (e: WebDriverException) {
+            toExist<WebComponent>().toBeClickable<WebComponent>().waitToBe()
+            false
+        }
+    }
+
     protected fun defaultClick(clicking: EventListener<ComponentActionEventArgs>, clicked: EventListener<ComponentActionEventArgs>) {
         clicking.broadcast(ComponentActionEventArgs(this))
-        toExists<WebComponent>().toBeClickable<WebComponent>().waitToBe()
-        javaScriptService.execute("arguments[0].focus();arguments[0].click();", wrappedElement)
+        toExist<WebComponent>().toBeClickable<WebComponent>().waitToBe()
+        clickInternal()
         clicked.broadcast(ComponentActionEventArgs(this))
     }
 
     protected fun defaultCheck(checking: EventListener<ComponentActionEventArgs>, checked: EventListener<ComponentActionEventArgs>) {
         checking.broadcast(ComponentActionEventArgs(this))
-        toExists<WebComponent>().toBeClickable<WebComponent>().waitToBe()
+        toExist<WebComponent>().toBeClickable<WebComponent>().waitToBe()
         if (!findElement().isSelected) {
-            javaScriptService.execute("arguments[0].focus();arguments[0].click();", wrappedElement)
+            clickInternal()
         }
         checked.broadcast(ComponentActionEventArgs(this))
     }
 
     protected fun defaultUncheck(unchecking: EventListener<ComponentActionEventArgs>, unchecked: EventListener<ComponentActionEventArgs>) {
         unchecking.broadcast(ComponentActionEventArgs(this))
-        toExists<WebComponent>().toBeClickable<WebComponent>().waitToBe()
+        toExist<WebComponent>().toBeClickable<WebComponent>().waitToBe()
         if (findElement().isSelected) {
-            javaScriptService.execute("arguments[0].focus();arguments[0].click();", wrappedElement)
+            clickInternal()
         }
         unchecked.broadcast(ComponentActionEventArgs(this))
     }
@@ -427,7 +574,11 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
     }
 
     protected fun defaultGetText(): String {
-        return findElement().text ?: ""
+        return try {
+            Optional.ofNullable<String>(wrappedElement.text).orElse("")
+        } catch (e: StaleElementReferenceException) {
+            Optional.ofNullable(findElement().text).orElse("")
+        }
     }
 
     protected fun defaultGetMinAttribute(): Double? {
@@ -523,22 +674,22 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
     }
 
     protected fun defaultSetText(settingValue: EventListener<ComponentActionEventArgs>, valueSet: EventListener<ComponentActionEventArgs>, value: String) {
-        settingValue.broadcast(ComponentActionEventArgs(this))
-        findElement().clear()
-        findElement().sendKeys(value)
-        valueSet.broadcast(ComponentActionEventArgs(this))
+        settingValue.broadcast(ComponentActionEventArgs(this, value))
+        wrappedElement.clear()
+        wrappedElement.sendKeys(value)
+        valueSet.broadcast(ComponentActionEventArgs(this, value))
     }
 
     protected fun defaultSelectByText(settingValue: EventListener<ComponentActionEventArgs>, valueSet: EventListener<ComponentActionEventArgs>, value: String) {
-        settingValue.broadcast(ComponentActionEventArgs(this))
+        settingValue.broadcast(ComponentActionEventArgs(this, value))
         Select(findElement()).selectByVisibleText(value)
-        valueSet.broadcast(ComponentActionEventArgs(this))
+        valueSet.broadcast(ComponentActionEventArgs(this, value))
     }
 
     protected fun defaultSelectByIndex(settingValue: EventListener<ComponentActionEventArgs>, valueSet: EventListener<ComponentActionEventArgs>, value: Int) {
-        settingValue.broadcast(ComponentActionEventArgs(this))
+        settingValue.broadcast(ComponentActionEventArgs(this, value.toString()))
         Select(findElement()).selectByIndex(value)
-        valueSet.broadcast(ComponentActionEventArgs(this))
+        valueSet.broadcast(ComponentActionEventArgs(this, value.toString()))
     }
 
     private fun findNativeElement(): WebElement {
@@ -572,7 +723,7 @@ abstract class WebComponent : LayoutComponentValidationsBuilder(), Component, Co
             javaScriptService.execute("arguments[0].scrollIntoView(true);", wrappedElement)
             if (shouldWait) {
                 Thread.sleep(500)
-                toExists<WebComponent>().waitToBe()
+                toExist<WebComponent>().waitToBe()
             }
         } catch (ex: ElementNotInteractableException) {
             ex.debugStackTrace()

@@ -15,16 +15,16 @@ package solutions.bellatrix.web.components
 import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.web.components.contracts.*
 
-open class SearchInput : WebComponent(), ComponentDisabled, ComponentValue, ComponentSearch, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxLength, ComponentMinLength, ComponentSize, ComponentPlaceholder {
+open class EmailField : WebComponent(), ComponentDisabled, ComponentValue, ComponentEmail, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxLength, ComponentMinLength, ComponentSize, ComponentPlaceholder {
     override val componentClass: Class<*>
         get() = javaClass
 
-    override fun getSearch(): String {
+    override fun getEmail(): String {
         return value
     }
 
-    override fun setSearch(search: String) {
-        this.setValue(SETTING_SEARCH, SEARCH_SET, search)
+    override fun setEmail(email: String) {
+        setValue(SETTING_EMAIL, EMAIL_SET, email)
     }
 
     override val isAutoComplete: Boolean
@@ -55,7 +55,7 @@ open class SearchInput : WebComponent(), ComponentDisabled, ComponentValue, Comp
         get() = defaultGetValue()
 
     companion object {
-        val SETTING_SEARCH = EventListener<ComponentActionEventArgs>()
-        val SEARCH_SET = EventListener<ComponentActionEventArgs>()
+        val SETTING_EMAIL = EventListener<ComponentActionEventArgs>()
+        val EMAIL_SET = EventListener<ComponentActionEventArgs>()
     }
 }

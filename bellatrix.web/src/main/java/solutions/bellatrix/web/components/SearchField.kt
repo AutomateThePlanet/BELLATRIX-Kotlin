@@ -14,18 +14,17 @@ package solutions.bellatrix.web.components
 
 import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.web.components.contracts.*
-import java.time.LocalDateTime
 
-open class DateTimeInput : WebComponent(), ComponentDisabled, ComponentValue, ComponentDateTime, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxText, ComponentMinText, ComponentStep {
+open class SearchField : WebComponent(), ComponentDisabled, ComponentValue, ComponentSearch, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxLength, ComponentMinLength, ComponentSize, ComponentPlaceholder {
     override val componentClass: Class<*>
         get() = javaClass
 
-    override fun getTime(): String {
+    override fun getSearch(): String {
         return value
     }
 
-    override fun setTime(time: LocalDateTime) {
-        setValue(SETTING_TIME, TIME_SET, "${time.year}-${time.monthValue}-${time.dayOfMonth}T${time.hour}:${time.minute}")
+    override fun setSearch(search: String) {
+        this.setValue(SETTING_SEARCH, SEARCH_SET, search)
     }
 
     override val isAutoComplete: Boolean
@@ -34,11 +33,14 @@ open class DateTimeInput : WebComponent(), ComponentDisabled, ComponentValue, Co
     override val isDisabled: Boolean
         get() = defaultGetDisabledAttribute()
 
-    override val max: String
-        get() = defaultGetMaxAttributeAsString()
+    override val maxLength: Int?
+        get() = defaultGetMaxLengthAttribute()
 
-    override val min: String
-        get() = defaultGetMinAttributeAsString()
+    override val minLength: Int?
+        get() = defaultGetMinLengthAttribute()
+
+    override val placeholder: String
+        get() = defaultGetPlaceholderAttribute()
 
     override val isReadonly: Boolean
         get() = defaultGetReadonlyAttribute()
@@ -46,14 +48,14 @@ open class DateTimeInput : WebComponent(), ComponentDisabled, ComponentValue, Co
     override val isRequired: Boolean
         get() = defaultGetRequiredAttribute()
 
-    override val step: Double?
-        get() = defaultGetStepAttribute()
+    override val sizeAttribute: Int?
+        get() = defaultGetSizeAttribute()
 
     override val value: String
         get() = defaultGetValue()
 
     companion object {
-        val SETTING_TIME = EventListener<ComponentActionEventArgs>()
-        val TIME_SET = EventListener<ComponentActionEventArgs>()
+        val SETTING_SEARCH = EventListener<ComponentActionEventArgs>()
+        val SEARCH_SET = EventListener<ComponentActionEventArgs>()
     }
 }

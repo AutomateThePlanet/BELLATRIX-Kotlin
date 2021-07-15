@@ -14,20 +14,34 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
+import java.util.function.Supplier
 
 interface ComponentWidth : Component {
     val width: Int?
 
     fun validateWidthIs(value: Int) {
-        defaultValidateAttributeIs(this as WebComponent, width, value, "width")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, Supplier<Number> { width }, value, "width")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateWidthIsSet() {
-        defaultValidateAttributeNotNull(this as WebComponent, width, "width")
+        try {
+            defaultValidateAttributeNotNull(this as WebComponent, { width }, "width")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateWidthNotSet() {
-        defaultValidateAttributeIsNull(this as WebComponent, width, "width")
+        try {
+            defaultValidateAttributeIsNull(this as WebComponent, { width }, "width")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

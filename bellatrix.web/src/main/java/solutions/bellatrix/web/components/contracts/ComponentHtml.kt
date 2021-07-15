@@ -14,20 +14,33 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentHtml : Component {
     val html: String
 
     fun validateHtmlIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, html, value, "inner HTML")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, { html }, value, "inner HTML")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateHtmlContains(value: String) {
-        defaultValidateAttributeContains(this as WebComponent, html, value, "inner HTML")
+        try {
+            defaultValidateAttributeContains(this as WebComponent, { html }, value, "inner HTML")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateHtmlNotContains(value: String) {
-        defaultValidateAttributeNotContains(this as WebComponent, html, value, "inner HTML")
+        try {
+            defaultValidateAttributeNotContains(this as WebComponent, { html }, value, "inner HTML")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

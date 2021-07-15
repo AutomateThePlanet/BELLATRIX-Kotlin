@@ -14,20 +14,34 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
+import java.util.function.Supplier
 
 interface ComponentStep : Component {
     val step: Double?
 
     fun validateStepIs(value: Double) {
-        defaultValidateAttributeIs(this as WebComponent, step, value, "step")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, Supplier<Number> { step }, value, "step")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateStepIsSet() {
-        defaultValidateAttributeNotNull(this as WebComponent, step, "step")
+        try {
+            defaultValidateAttributeNotNull(this as WebComponent, { step }, "step")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateStepNotSet() {
-        defaultValidateAttributeIsNull(this as WebComponent, step, "step")
+        try {
+            defaultValidateAttributeIsNull(this as WebComponent, { step }, "step")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

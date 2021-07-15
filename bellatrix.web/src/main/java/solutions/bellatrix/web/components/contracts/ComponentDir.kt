@@ -14,20 +14,33 @@ package solutions.bellatrix.web.components.contracts
 
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentDir : Component {
     val dir: String
 
     fun validateDirIs(value: String) {
-        defaultValidateAttributeIs(this as WebComponent, dir, value, "dir")
+        try {
+            defaultValidateAttributeIs(this as WebComponent, { dir }, value, "dir")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateDirIsSet() {
-        defaultValidateAttributeIsSet(this as WebComponent, dir, "dir")
+        try {
+            defaultValidateAttributeIsSet(this as WebComponent, { dir }, "dir")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateDirNotSet() {
-        defaultValidateAttributeNotSet(this as WebComponent, dir, "dir")
+        try {
+            defaultValidateAttributeNotSet(this as WebComponent, { dir }, "dir")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

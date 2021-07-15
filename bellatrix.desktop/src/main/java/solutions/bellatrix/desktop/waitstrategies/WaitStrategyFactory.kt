@@ -13,12 +13,12 @@
 package solutions.bellatrix.desktop.waitstrategies
 
 class WaitStrategyFactory {
-    fun exists(): ToExistsWaitStrategy {
-        return ToExistsWaitStrategy(30, 2)
+    fun exists(): ToExistWaitStrategy {
+        return ToExistWaitStrategy(30, 2)
     }
 
-    fun exists(timeoutInterval: Int, sleepInterval: Int): ToExistsWaitStrategy {
-        return ToExistsWaitStrategy(timeoutInterval.toLong(), sleepInterval.toLong())
+    fun exists(timeoutInterval: Int, sleepInterval: Int): ToExistWaitStrategy {
+        return ToExistWaitStrategy(timeoutInterval.toLong(), sleepInterval.toLong())
     }
 
     fun beVisible(timeoutInterval: Int, sleepInterval: Int): ToBeVisibleWaitStrategy {

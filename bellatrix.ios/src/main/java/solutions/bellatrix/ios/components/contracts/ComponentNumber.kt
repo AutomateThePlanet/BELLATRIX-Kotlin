@@ -14,12 +14,17 @@ package solutions.bellatrix.ios.components.contracts
 
 import solutions.bellatrix.ios.components.IOSComponent
 import solutions.bellatrix.ios.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentNumber : Component {
     fun getNumber(): Double
 
     fun validateDateIs(value: Number) {
-        defaultValidateAttributeIs(this as IOSComponent, getNumber(), value, "number")
+        try {
+            defaultValidateAttributeIs(this as IOSComponent, getNumber(), value, "number")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

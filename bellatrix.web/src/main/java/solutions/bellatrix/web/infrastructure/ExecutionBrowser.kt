@@ -14,6 +14,6 @@ package solutions.bellatrix.web.infrastructure
 
 import org.openqa.selenium.Platform
 
-@Target(AnnotationTarget.ANNOTATION_CLASS, AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
+@Target(AnnotationTarget.CLASS)
 @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
 annotation class ExecutionBrowser(val browser: Browser = Browser.CHROME, val lifecycle: Lifecycle = Lifecycle.RESTART_EVERY_TIME, val browserVersion: Int = 0, val platform: Platform = Platform.ANY, val width: Int = 0, val height: Int = 0)

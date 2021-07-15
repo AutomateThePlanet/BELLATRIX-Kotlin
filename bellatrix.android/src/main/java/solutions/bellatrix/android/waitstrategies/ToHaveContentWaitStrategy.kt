@@ -10,42 +10,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package solutions.bellatrix.ios.waitstrategies
+package solutions.bellatrix.android.waitstrategies
 
 import io.appium.java_client.MobileElement
-import io.appium.java_client.ios.IOSDriver
+import io.appium.java_client.android.AndroidDriver
 import org.openqa.selenium.WebDriver
 import solutions.bellatrix.core.configuration.ConfigurationService
-import solutions.bellatrix.ios.configuration.IOSSettings
-import solutions.bellatrix.ios.findstrategies.FindStrategy
-import solutions.bellatrix.ios.infrastructure.DriverService.getWrappedIOSDriver
+import solutions.bellatrix.android.configuration.AndroidSettings
+import solutions.bellatrix.android.findstrategies.FindStrategy
+import solutions.bellatrix.android.infrastructure.DriverService.getWrappedAndroidDriver
 import java.util.function.Function
 
-class ToExistsWaitStrategy : WaitStrategy {
+class ToHaveContentWaitStrategy : WaitStrategy {
     constructor() {
-        timeoutInterval = ConfigurationService.get<IOSSettings>().timeoutSettings.elementToExistTimeout
-        sleepInterval = ConfigurationService.get<IOSSettings>().timeoutSettings.sleepInterval
+        timeoutInterval = ConfigurationService.get<AndroidSettings>().timeoutSettings.elementToExistTimeout
+        sleepInterval = ConfigurationService.get<AndroidSettings>().timeoutSettings.sleepInterval
     }
 
     constructor(timeoutIntervalSeconds: Long, sleepIntervalSeconds: Long) : super(timeoutIntervalSeconds, sleepIntervalSeconds) {}
 
     override fun <TFindStrategy : FindStrategy> waitUntil(findStrategy: TFindStrategy) {
-        val func = Function { w: WebDriver -> elementExists(getWrappedIOSDriver(), findStrategy) }
+        val func = Function { w: WebDriver -> elementHasContent(getWrappedAndroidDriver(), findStrategy) }
         waitUntil(func)
     }
 
-    private fun <TFindStrategy : FindStrategy> elementExists(searchContext: IOSDriver<MobileElement>, findStrategy: TFindStrategy): Boolean {
+    private fun <TFindStrategy : FindStrategy> elementHasContent(searchContext: AndroidDriver<MobileElement>, findStrategy: TFindStrategy): Boolean {
         return try {
             val element = findStrategy.findElement(searchContext)
-            element != null
+            element != null && !element.text.isNullOrEmpty()
         } catch (e: Exception) {
             false
         }
     }
 
     companion object {
-        fun of(): ToExistsWaitStrategy {
-            return ToExistsWaitStrategy()
+        fun of(): ToHaveContentWaitStrategy {
+            return ToHaveContentWaitStrategy()
         }
     }
 }

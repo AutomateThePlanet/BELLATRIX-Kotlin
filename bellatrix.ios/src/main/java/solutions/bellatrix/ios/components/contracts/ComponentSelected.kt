@@ -14,16 +14,25 @@ package solutions.bellatrix.ios.components.contracts
 
 import solutions.bellatrix.ios.components.IOSComponent
 import solutions.bellatrix.ios.validations.ComponentValidator
+import java.lang.reflect.InvocationTargetException
 
 interface ComponentSelected : Component {
     val isSelected: Boolean
 
     fun validateIsSelected() {
-        defaultValidateAttributeTrue(this as IOSComponent, isSelected, "selected")
+        try {
+            defaultValidateAttributeTrue(this as IOSComponent, isSelected, "selected")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     fun validateNotSelected() {
-        defaultValidateAttributeFalse(this as IOSComponent, isSelected, "selected")
+        try {
+            defaultValidateAttributeFalse(this as IOSComponent, isSelected, "selected")
+        } catch (e: InvocationTargetException) {
+            throw e.cause!!
+        }
     }
 
     companion object : ComponentValidator()

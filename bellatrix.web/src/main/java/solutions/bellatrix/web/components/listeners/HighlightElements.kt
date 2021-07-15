@@ -12,41 +12,50 @@
  */
 package solutions.bellatrix.web.components.listeners
 
+import org.openqa.selenium.NoSuchSessionException
 import solutions.bellatrix.core.configuration.ConfigurationService
+import solutions.bellatrix.core.plugins.Listener
 import solutions.bellatrix.web.components.ComponentActionEventArgs
 import solutions.bellatrix.web.components.WebComponent
 import solutions.bellatrix.web.configuration.WebSettings
 import solutions.bellatrix.web.infrastructure.Browser
 import solutions.bellatrix.web.infrastructure.DriverService
-import solutions.bellatrix.web.services.JavaScriptService
 
-fun WebComponent.highlight() {
-    val currentBrowser = DriverService.browserConfiguration().browser
-    if (currentBrowser == Browser.CHROME_HEADLESS || currentBrowser == Browser.EDGE_HEADLESS) return
-    try {
-        val nativeElement = this.wrappedElement
-        val originalElementBorder = nativeElement.getCssValue("background-color") ?: ""
-        JavaScriptService.execute("arguments[0].style.background='yellow'; return;", nativeElement)
-        val runnable = Runnable {
-            Thread.sleep(100)
-            JavaScriptService.execute("arguments[0].style.background='$originalElementBorder'; return;", nativeElement)
+object HighlightElements : Listener() {
+    private var isHighlightElementsAdded = false
+    override fun addListener() {
+        if (!isHighlightElementsAdded) {
+            val shouldHighlightElements = ConfigurationService.get<WebSettings>().shouldHighlightElements
+            if (shouldHighlightElements) {
+                WebComponent.RETURNING_WRAPPED_ELEMENT.addListener { x: ComponentActionEventArgs -> x.component.highlight() }
+            }
+            isHighlightElementsAdded = true
         }
-        Thread(runnable).start()
-    } catch (ignored: Exception) {
     }
 }
 
-class HighlightElements {
-    companion object {
-        private var isHighlightElementsAdded = false
-        fun addPlugin() {
-            if (!isHighlightElementsAdded) {
-                val shouldHighlightElements = ConfigurationService.get<WebSettings>().shouldHighlightElements
-                if (shouldHighlightElements) {
-                    WebComponent.RETURNING_WRAPPED_ELEMENT.addListener { x: ComponentActionEventArgs -> x.component.highlight() }
-                }
-                isHighlightElementsAdded = true
+fun WebComponent.highlight() {
+    val currentBrowser = DriverService.browserConfiguration().browser
+    if (currentBrowser == Browser.CHROME_HEADLESS) return
+
+    try {
+        val originalElementBackground: String = wrappedElement.getCssValue("background")
+        val originalElementColor: String = wrappedElement.getCssValue("color")
+        val originalElementOutline: String = wrappedElement.getCssValue("outline")
+        javaScriptService.execute("arguments[0].style.background='yellow';arguments[0].style.color='black';arguments[0].style.outline='1px solid black';return;", wrappedElement)
+
+        val runnable = Runnable {
+            Thread.sleep(100)
+            try {
+                javaScriptService.execute(
+                    "arguments[0].style.background='$originalElementBackground';arguments[0].style.color='$originalElementColor';arguments[0].style.outline='$originalElementOutline';return;",
+                    wrappedElement
+                )
+            } catch (ignored: NoSuchSessionException) {
+            } catch (ignored: NullPointerException) {
             }
         }
+        Thread(runnable).start()
+    } catch (ignored: Exception) {
     }
 }
