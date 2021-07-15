@@ -15,16 +15,16 @@ package solutions.bellatrix.web.components
 import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.web.components.contracts.*
 
-open class PhoneInput : WebComponent(), ComponentDisabled, ComponentValue, ComponentPhone, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxLength, ComponentMinLength, ComponentSize, ComponentPlaceholder {
+open class UrlField : WebComponent(), ComponentDisabled, ComponentValue, ComponentUrl, ComponentAutoComplete, ComponentReadonly, ComponentRequired, ComponentMaxLength, ComponentMinLength, ComponentSize, ComponentPlaceholder {
     override val componentClass: Class<*>
         get() = javaClass
 
-    override fun getPhone(): String {
+    override fun getUrl(): String {
         return value
     }
 
-    override fun setPhone(value: String) {
-        setValue(SETTING_PHONE, PHONE_SET, value)
+    override fun setUrl(url: String) {
+        this.setValue(SETTING_URL, URL_SET, url)
     }
 
     override val isAutoComplete: Boolean
@@ -55,7 +55,7 @@ open class PhoneInput : WebComponent(), ComponentDisabled, ComponentValue, Compo
         get() = defaultGetValue()
 
     companion object {
-        val SETTING_PHONE = EventListener<ComponentActionEventArgs>()
-        val PHONE_SET = EventListener<ComponentActionEventArgs>()
+        val SETTING_URL = EventListener<ComponentActionEventArgs>()
+        val URL_SET = EventListener<ComponentActionEventArgs>()
     }
 }

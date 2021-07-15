@@ -15,7 +15,7 @@ package solutions.bellatrix.ios.components
 import solutions.bellatrix.ios.components.contracts.ComponentDisabled
 import solutions.bellatrix.core.plugins.EventListener
 
-class PasswordInput : IOSComponent(), ComponentDisabled {
+class PasswordField : IOSComponent(), ComponentDisabled {
     override val componentClass: Class<*>
         get() = javaClass
 

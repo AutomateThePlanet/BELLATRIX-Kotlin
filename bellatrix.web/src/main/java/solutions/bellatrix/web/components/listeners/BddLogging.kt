@@ -26,23 +26,23 @@ object BddLogging : Listener() {
             CheckBox.CHECKING.addListener { Log.info("checking ${it.component.componentName}}") }
             CheckBox.UNCHECKING.addListener { Log.info("unchecking ${it.component.componentName}}") }
             ColorInput.SETTING_COLOR.addListener { Log.info("setting '${it.actionValue}' in ${it.component.componentName}}") }
-            DateInput.SETTING_DATE.addListener { Log.info("setting '${it.actionValue}' in ${it.component.componentName}}") }
-            DateTimeInput.SETTING_TIME.addListener { Log.info("setting '${it.actionValue}' in ${it.component.componentName}}") }
-            EmailInput.SETTING_EMAIL.addListener { Log.info("typing '${it.actionValue}' in ${it.component.componentName}}") }
+            DateField.SETTING_DATE.addListener { Log.info("setting '${it.actionValue}' in ${it.component.componentName}}") }
+            DateTimeField.SETTING_TIME.addListener { Log.info("setting '${it.actionValue}' in ${it.component.componentName}}") }
+            EmailField.SETTING_EMAIL.addListener { Log.info("typing '${it.actionValue}' in ${it.component.componentName}}") }
             FileInput.UPLOADING.addListener { Log.info("uploading '${it.actionValue}' to ${it.component.componentName}}") }
             MonthInput.SETTING_MONTH.addListener { Log.info("setting '${it.actionValue}' in ${it.component.componentName}}") }
             NumberInput.SETTING_NUMBER.addListener { Log.info("typing '${it.actionValue}' in ${it.component.componentName}}") }
-            PasswordInput.SETTING_PASSWORD.addListener { Log.info("typing '${it.actionValue}' in ${it.component.componentName}}") }
-            PhoneInput.SETTING_PHONE.addListener { Log.info("typing '${it.actionValue}' in ${it.component.componentName}}") }
+            PasswordField.SETTING_PASSWORD.addListener { Log.info("typing '${it.actionValue}' in ${it.component.componentName}}") }
+            PhoneField.SETTING_PHONE.addListener { Log.info("typing '${it.actionValue}' in ${it.component.componentName}}") }
             RadioButton.CLICKING.addListener { Log.info("clicking ${it.component.componentName}}") }
             Range.SETTING_RANGE.addListener { Log.info("setting '${it.actionValue}' in ${it.component.componentName}}") }
             Reset.CLICKING.addListener { Log.info("clicking ${it.component.componentName}}") }
-            SearchInput.SETTING_SEARCH.addListener { Log.info("typing '${it.actionValue}' in ${it.component.componentName}}") }
+            SearchField.SETTING_SEARCH.addListener { Log.info("typing '${it.actionValue}' in ${it.component.componentName}}") }
             Select.SELECTING.addListener { Log.info("selecting '${it.actionValue}' from ${it.component.componentName}}") }
             TextArea.SETTING_TEXT.addListener { Log.info("typing '${it.actionValue}' in ${it.component.componentName}}") }
             TextField.SETTING_TEXT.addListener { Log.info("typing '${it.actionValue}' in ${it.component.componentName}}") }
             TimeInput.SETTING_TIME.addListener { Log.info("setting '${it.actionValue}' in ${it.component.componentName}}") }
-            UrlInput.SETTING_URL.addListener { Log.info("typing '${it.actionValue}' in ${it.component.componentName}}") }
+            UrlField.SETTING_URL.addListener { Log.info("typing '${it.actionValue}' in ${it.component.componentName}}") }
             WeekInput.SETTING_WEEK.addListener { Log.info("setting '${it.actionValue}' in ${it.component.componentName}}") }
             WebComponent.HOVERING.addListener { Log.info("hovering ${it.component.componentName}}") }
             WebComponent.FOCUSING.addListener { Log.info("focusing ${it.component.componentName}}") }

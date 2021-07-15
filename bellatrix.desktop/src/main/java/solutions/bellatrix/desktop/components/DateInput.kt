@@ -16,7 +16,7 @@ import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.desktop.components.contracts.ComponentDate
 import solutions.bellatrix.desktop.components.contracts.ComponentDisabled
 
-class Date : DesktopComponent(), ComponentDisabled, ComponentDate {
+class DateInput : DesktopComponent(), ComponentDisabled, ComponentDate {
     override val componentClass: Class<*>
         get() = javaClass
 

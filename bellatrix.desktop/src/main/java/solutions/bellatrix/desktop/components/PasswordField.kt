@@ -14,7 +14,7 @@ package solutions.bellatrix.desktop.components
 
 import solutions.bellatrix.core.plugins.EventListener
 
-class Password : DesktopComponent() {
+class PasswordField : DesktopComponent() {
     override val componentClass: Class<*>
         get() = javaClass
 

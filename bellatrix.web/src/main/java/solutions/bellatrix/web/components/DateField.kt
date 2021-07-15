@@ -15,7 +15,7 @@ package solutions.bellatrix.web.components
 import solutions.bellatrix.core.plugins.EventListener
 import solutions.bellatrix.web.components.contracts.*
 
-open class DateInput : WebComponent(), ComponentDisabled, ComponentValue, ComponentDate, ComponentAutoComplete, ComponentRequired, ComponentReadonly, ComponentMaxText, ComponentMinText, ComponentStep {
+open class DateField : WebComponent(), ComponentDisabled, ComponentValue, ComponentDate, ComponentAutoComplete, ComponentRequired, ComponentReadonly, ComponentMaxText, ComponentMinText, ComponentStep {
     override val componentClass: Class<*>
         get() = javaClass
 
